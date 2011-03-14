@@ -1,0 +1,4 @@
+syntax:glob
+*~
+config/core.php
+config/database.php
