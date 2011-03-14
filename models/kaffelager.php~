@@ -1,0 +1,7 @@
+<?php
+class Kaffeflytting extends AppModel {
+  var $useTable = 'kaffeflytting'; 
+  var $primaryKey = 'nummer';
+  var $name = 'Kaffeflytting';
+  }
+?>

@@ -1,0 +1,10 @@
+<?php
+class KunderController extends AppController {
+  function index(){
+    echo "<h1>Kundeliste</h1>";
+  }
+  function view($id){
+    echo "Se kunde $id";
+  }
+  }
+?>

@@ -1,0 +1,21 @@
+<table>
+	<tr> 
+		<th><?php echo $paginator->sort('Nummer', 'nummer'); ?></th> 
+		<th><?php echo $paginator->sort('Navn', 'navn'); ?></th> 
+		<th><?php echo $paginator->sort('Telefon', 'telefon'); ?></th> 
+		<th><?php echo $paginator->sort('Fakturaadresse', 'fakturaadresse'); ?></th> 
+		<th><?php echo $paginator->sort('Leveringsadresse', 'leveringsadresse'); ?></th> 
+		<th><?php echo $paginator->sort('Kontaktperson', 'kontaktperson'); ?></th> 
+	</tr> 
+	   <?php foreach($data as $kunde): ?> 
+	<tr> 
+		<td><?php echo $kunde['Kunde']['nummer']; ?> </td> 
+		<td><?php echo $kunde['Kunde']['navn']; ?> </td> 
+		<td><?php echo $kunde['Kunde']['telefon']; ?> </td> 
+		<td><?php echo $kunde['Kunde']['fakturaadresse']; ?> </td> 
+		<td><?php echo $kunde['Kunde']['leveringsadresse']; ?> </td> 
+		<td><?php echo $kunde['Kunde']['kontaktperson']; ?> </td> 
+	</tr> 
+	<?php endforeach; ?> 
+</table> 
+

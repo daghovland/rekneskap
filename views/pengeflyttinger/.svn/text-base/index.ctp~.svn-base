@@ -1,0 +1,31 @@
+<table>
+	<tr> 
+		<th><?php echo $paginator->sort('Nummer', 'nummer'); ?></th> 
+		<th><?php echo $paginator->sort('Dato', 'dato'); ?></th> 
+		<th><?php echo $paginator->sort('Fra', 'fra'); ?></th> 
+		<th><?php echo $paginator->sort('Til', 'til'); ?></th> 
+		<th><?php echo $paginator->sort('Antall', 'antall'); ?></th> 
+		<th><?php echo $paginator->sort('Type', 'type'); ?></th> 
+		<th><?php echo $paginator->sort('Beskrivelse', 'beskrivelse'); ?></th> 
+	</tr> 
+	   <?php foreach($data as $flytting): ?> 
+	<tr> 
+		<td><?php echo $flytting['Kaffeflytting']['nummer']; ?> </td> 
+		<td><?php echo $flytting['Kaffeflytting']['dato']; ?> </td> 
+		<td><?php echo $flytting['Fralager']['beskrivelse']; ?> </td> 
+		<td><?php echo $flytting['Tillager']['beskrivelse']; ?> </td> 
+		<td><?php echo $flytting['Kaffeflytting']['antall']; ?> </td> 
+		<td><?php echo $flytting['Kaffetype']['type']; ?> </td> 
+		<td><?php echo $flytting['Kaffeflytting']['beskrivelse']; ?> </td> 
+	</tr> 
+	<?php endforeach; ?> 
+</table> 
+<!-- Shows the page numbers -->
+<?php echo $paginator->numbers(); ?>
+<!-- Shows the next and previous links -->
+<?php
+	echo $paginator->prev('« Oppover ', null, null, array('class' => 'disabled'));
+	echo $paginator->next(' Nedover »', null, null, array('class' => 'disabled'));
+?> 
+<!-- prints X of Y, where X is current page and Y is number of pages -->
+<?php echo $paginator->counter(); ?>

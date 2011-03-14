@@ -1,0 +1,16 @@
+<?php
+class KaffeflyttingerController extends AppController {
+  function index(){
+    $this->pageTitle = 'Kaffeflyttinger';
+    $this->layout = 'default';
+    $paginate = array(
+		      'limit' => 25,
+		      'order' => array(
+				       'Kaffeflytting.nummer' => 'desc'
+				       )
+		      );
+    $data = $this->paginate('Kaffeflytting');
+    $this->set('data', $data);
+  }
+  }
+?>
