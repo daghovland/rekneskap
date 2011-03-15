@@ -1,6 +1,0 @@
-<?php
-class Kaffepris extends AppModel {
-  var $useTable = 'kaffepris';
-  var $primaryKey = 'nummer';
-  }
-?>

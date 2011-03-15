@@ -1,6 +1,7 @@
 syntax:glob
 *~
-*.swp
+.*.swp
+.*.swo
 config/core.php
 config/database.php
 tmp

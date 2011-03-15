@@ -1,5 +1,0 @@
-<?php
-class Kunde extends AppModel {
-  var $primaryKey = 'nummer';
-  }
-?>
