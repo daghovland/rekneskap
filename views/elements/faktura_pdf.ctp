@@ -116,7 +116,7 @@ $tcpdf->setJPEGQuality(75);
 
 
 // Image example
-$tcpdf->Image('/var/www/regnskap/www/cake/app/webroot/img/regninglogo.jpg', 0, 10, 50, 0, 'jpeg', 'http://www.zapatista.no', 'T', true, 300, 'R', false, false, 0, true, false);
+$tcpdf->Image(ROOT . DS . WEBROOT_DIR . DS . 'img' . DS . 'regninglogo.jpg', 0, 10, 50, 0, 'jpeg', 'http://www.zapatista.no', 'T', true, 300, 'R', false, false, 0, true, false);
 
 
 

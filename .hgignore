@@ -1,4 +1,8 @@
 syntax:glob
 *~
+*.swp
 config/core.php
 config/database.php
+tmp
+vendors
+.svn
