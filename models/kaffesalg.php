@@ -146,7 +146,7 @@ class Kaffesalg extends AppModel {
 		$frakt_mva = round($frakt_uten * $vanlig_mva, 2);
 		$frakt_total = round($frakt_uten + $frakt_mva, 0);
 	  if($frakt > 0 && is_numeric($frakt)){
-	    $tekst .= '<tr><td>Frakt (' . $vanlig_mva * 100 . '% mva)</td><td>' . sprintf("%.2f", $frakt_uten) . ',- kr</td>';
+	    $tekst .= '<tr><td>Frakt (' . $vanlig_mva * 100 . '% mva)</td><td>' . sprintf("%.2f", $frakt_uten) . ' kr</td>';
 	$tekst .= '<td>' . sprintf("%.2f", $frakt_mva) . ' kr</td>';
 	    $tekst .= '<td>' . sprintf("%.0f", $frakt_total) . ' kr</td></tr>';
 	    $total += $frakt_total;
