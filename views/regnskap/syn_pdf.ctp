@@ -21,20 +21,22 @@ $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 // Now you position and print your page content
 // example: 
 $tcpdf->SetTextColor(0, 0, 0);
-$tcpdf->SetFont($textfont,'B',9);
+$tcpdf->SetFont($textfont,'B',10);
 $tcpdf->AddPage();
 
 $tcpdf->MultiCell(200,0,"Rekneskap for Zapatistgruppa i Bergen." . $regnskap['Regnskap']['beskrivelse'], 0, 'L', 0, 1);
 $tcpdf->MultiCell(200,0," Start: " . $regnskap['Regnskap']['start'] . ", slutt: " . $regnskap['Regnskap']['slutt'],  0, 'L', 0, 1);
 //$pdf->Image('/var/www/regnskap/www/cake/app/webroot/img/yabastalogo.xcf', 50, 50, 0, 0, 'PNG');
 
-$tcpdf->SetFont($textfont,'R',9);
+$tcpdf->SetFont($textfont,'R',10);
 
 $tcpdf->writeHTML($this->element("pdfregnskap", array("overskrift" => "Utgiftar", "saldoer" => $utgifter, 'feltnavn' => 'RegnskapUtgifter')), true, 0, true, 0);
 
 
 $tcpdf->writeHTML($this->element("pdfregnskap", array("overskrift" => "Inntektar", "saldoer" => $inntekter, 'feltnavn' => 'RegnskapInntekter')), true, 0, true, 0);
 
+
+$tcpdf->AddPage();
 
 
 $tcpdf->SetFont($textfont,'B',9);

@@ -3,7 +3,7 @@
         if (!empty($saldoer)):?>
         <table cellpadding = "5" cellspacing = "10">
         <tr>
-                <th style="width: 50px"><?php __('Sum'); ?></th>
+                <th style="width: 100px"><?php __('Sum'); ?></th>
 			<td style="width: 20px"></td>
                 <th><?php __('Konto'); ?></th>
         </tr>
@@ -18,7 +18,7 @@
                         }
                 ?>
                 <tr<?php echo $class;?>>
-                        <td style="text-align:right; width: 50px"><?php echo $utgift[$feltnavn]['kroner'] . "," . $utgift[$feltnavn]['oere'] ; ?></td>
+                        <td style="text-align:right; width: 100px"><?php echo $utgift[$feltnavn]['kroner'] . "," . $utgift[$feltnavn]['oere'] ; ?></td>
 			<td style="width: 20px"></td>
                         <td><?php echo $utgift[$feltnavn]['beskrivelse']; ?></td>
                 </tr>

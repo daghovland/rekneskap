@@ -4,7 +4,7 @@
  		<legend><?php __('Registrer Fakturainnbetaling');?></legend>
 	<?php
 		echo $form->hidden('fra', array('value' => 51));
-		echo $form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 4));
+		echo $form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));
 		echo $form->input('kroner');
 		echo $form->input('oere', array('label' => 'Øre', 'value' => 0));
 		echo $form->input('dato');

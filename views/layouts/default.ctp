@@ -66,7 +66,7 @@
 			<select onChange = "window.location = this.options[this.selectedIndex].value">
                                 <option>Oversikt og lister:</option>
                                 <option value="<?php echo $html->url(array('controller' => 'selgere', 'action' => 'oversikt')); ?>">Kaffi-oversikt</option>
-                                <option value="<?php echo $html->url(array('controller' => 'regnskap', 'action' => 'view', 2)); ?>">Pengeoversikt</option>
+                                <option value="<?php echo $html->url(array('controller' => 'regnskap', 'action' => 'view', 15)); ?>">Pengeoversikt</option>
                                 <option value="<?php echo $html->url(array('controller' => 'regnskap', 'action' => 'index')); ?>">Rekneskapar</option>
                                 <option value="<?php echo $html->url(array('controller' => 'sal_per_maanad')); ?>">Salsoversikt</option>
                                 <option value="<?php echo $html->url(array('controller' => 'kaffiimportar')); ?>">Kaffiimportar</option>
