@@ -15,7 +15,9 @@ $javascript->link('scriptaculous', false);
        echo $form->input('fra', array('options' => $fralagernavn, 
 				      'label' => 'Frå lager', 
 				      'id' => 'KaffeSalgFra',
-				      'selected' => $selgerInfo[0]['Kaffelager']['nummer'])); 
+//				      'selected' => $selgerInfo[0]['Kaffelager']['nummer']
+				'selected' => 8 // Sentrallager
+			)); 
        echo $form->radio("Betaling", 
 			 array("Kontant" => "Kontant", "Post" => "Rekning i posten", "Epost" => "Rekning på epost")
 //	, array('onChange' => 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\')')
@@ -172,7 +174,7 @@ $script = 'new Form.Element.EventObserver(\'KaffesalgBetalingEpost\', function(e
 	. '})';
 echo $javascript->codeBlock($script, array('inline' => true));
 
-$script = 'document.onLoad = document.getElementById(\'KaffesalgBetalingKontant\').checked = true;visAdresser(\'' . $html->url(array('controller' => 'kunder')). '\'); lastetSideSalg()';
+$script = 'document.onLoad = document.getElementById(\'KaffesalgBetalingPost\').checked = true;visAdresser(\'' . $html->url(array('controller' => 'kunder')). '\'); lastetSideSalg()';
 echo $javascript->codeBlock($script);
 
 // Lager settFakturaTekst
