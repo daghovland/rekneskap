@@ -4,23 +4,18 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Adresse', true), array('action'=>'edit', $adresse['Adresse']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Adresse', true), array('action'=>'delete', $adresse['Adresse']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $adresse['Adresse']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Adresser', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Adresse', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Leveringsadressekunde', true), array('controller'=> 'kunder', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Adressefakturaer', true), array('controller'=> 'fakturaer', 'action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('Endre Adresse', true), array('action'=>'edit', $adresse['Adresse']['nummer'])); ?> </li>
+		<li><?php echo $html->link(__('Alle Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
 	</ul>
 </div>
 	<div class="related">
-		<h3><?php  __('Related Kunder');?></h3>
+		<h3><?php  __('Kunde');?></h3>
 	<?php if (!empty($adresse['leveringsadressekunde'])):?>
 		<dl>	<?php $i = 0; $class = ' class="altrow"';?>
 			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-	<?php echo $adresse['leveringsadressekunde']['nummer'];?>
+	<?php echo $html->link(__($adresse['leveringsadressekunde']['nummer'], true), array('controller' => 'kunder', 'action' => 'view', $adresse['leveringsadressekunde']['nummer']));
+	?>
 &nbsp;</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Navn');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
@@ -110,6 +105,7 @@
 			</ul>
 		</div>
 	</div>
+-->
 	<div class="related">
 	<h3><?php __('Related Fakturaer');?></h3>
 	<?php if (!empty($adresse['adressefakturaer'])):?>

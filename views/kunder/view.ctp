@@ -50,12 +50,9 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Endre Kunde', true), array('action'=>'edit', $kunde['Kunde']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('Slett Kunde', true), array('action'=>'delete', $kunde['Kunde']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kunde['Kunde']['nummer'])); ?> </li>
+		<li><?php echo $html->link(__('Endre leveringsadresse', true), array('controller' => 'adresser', 'action'=>'edit', $kunde['LeveringsAdresse']['nummer'])); ?> </li>
 		<li><?php echo $html->link(__('List alle Kunder', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Ny Kunde', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
 	</ul>
 </div>
 <div class="related">

@@ -6,7 +6,7 @@
 	<th><?php echo __('Navn');?></th>
 	<?php 
 		foreach ($kaffetyper as $kaffetype)
-		  echo "<th>" . $kaffetype['Kaffepris']['intern_navn'] . "</th>";
+		  echo "<th>" . $kaffetype['Kaffepris']['intern_navn'] . " haldbar til " . $kaffetype['Kaffepris']['haldbar'] . "</th>";
 	?>
 	<th><?php echo __('Gjeld');?></th>
 	<th class="actions"><?php __('Actions');?></th>

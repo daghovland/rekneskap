@@ -27,7 +27,7 @@ $javascript->link('scriptaculous', false);
          echo $form->input('antall' . $kaffetype['Kaffepris']['nummer'], 
                                        array('options' => array(), 
                                              'id' => 'KaffeSalg' . $kaffetype['Kaffepris']['nummer'], 
-                                             'label' => $kaffetype['Kaffepris']['type'] . " (" . $kaffetype['Kaffepris']['beskrivelse'] . ') - ' . $kaffetype['Kaffepris']['intern_navn']
+                                             'label' => $kaffetype['Kaffepris']['type'] . " (" . $kaffetype['Kaffepris']['beskrivelse'] . ') - haldbar til ' . $kaffetype['Kaffepris']['haldbar']
 					     //, 'onChange' => 'settFakturaTekst(this.form)'
                                           )
                                     );
@@ -47,6 +47,7 @@ echo $form->checkbox('postSending', array('label' => 'Sendes med post'
 					     //  'onChange' => 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\')',
 					       'label' => 'Til kunde',
 					       'id' => 'KaffeSalgKunde',
+						'selected' => $kunde_nummer,
 					       'div' => array('id' => 'KaffeSalgKundeDiv', 'style' => 'visibility:hidden')));
 		echo $html->link(__('Ny kunde', true), array('controller' => 'kunder', 'action' => 'add'), array('id' => 'nyKundeKnapp')); 
 	?><p id="fraktanslag" /> <?php
