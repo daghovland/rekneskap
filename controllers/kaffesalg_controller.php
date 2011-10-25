@@ -102,7 +102,8 @@ class KaffesalgController extends AppController {
 					  $this->Kaffesalg->id));
 		  }
 		}
-		
+		if(isset($this->params['named']['kundenummer']))
+			$this->set('kundenummer', $this->params['named']['kundenummer']);		
 		$this->set('rabatter', $this->Kaffesalg->hent_rabatter());
 	        $this->set('fralagre', $this->Kaffesalg->Kaffeflytting->Fra->find('list'));
 	        $this->set('kunder', $this->Kaffesalg->Faktura->Kunde->find('list', array('fields' => array('navn'), 'order' => array('navn ASC'))));

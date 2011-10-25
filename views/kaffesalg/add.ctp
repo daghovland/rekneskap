@@ -47,7 +47,7 @@ echo $form->checkbox('postSending', array('label' => 'Sendes med post'
 					     //  'onChange' => 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\')',
 					       'label' => 'Til kunde',
 					       'id' => 'KaffeSalgKunde',
-						'selected' => $kunde_nummer,
+						'selected' => $kundenummer,
 					       'div' => array('id' => 'KaffeSalgKundeDiv', 'style' => 'visibility:hidden')));
 		echo $html->link(__('Ny kunde', true), array('controller' => 'kunder', 'action' => 'add'), array('id' => 'nyKundeKnapp')); 
 	?><p id="fraktanslag" /> <?php

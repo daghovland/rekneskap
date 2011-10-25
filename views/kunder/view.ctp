@@ -50,6 +50,7 @@
 </div>
 <div class="actions">
 	<ul>
+		<li><?php echo $html->link(__('Sel kaffi til', true), array('controller' => 'kaffesalg', 'action'=>'add', 'kundenummer' => $kunde['Kunde']['nummer'])); ?> </li>
 		<li><?php echo $html->link(__('Endre leveringsadresse', true), array('controller' => 'adresser', 'action'=>'edit', $kunde['LeveringsAdresse']['nummer'])); ?> </li>
 		<li><?php echo $html->link(__('List alle Kunder', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $html->link(__('Ny Kunde', true), array('action'=>'add')); ?> </li>
