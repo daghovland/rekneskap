@@ -47,6 +47,8 @@ if($faktura['fakturaadresse']['linje3'] != "")
 $adressetekst .= $faktura['fakturaadresse']['postnummer'] . " " . $faktura['fakturaadresse']['poststad'] . "\n";
 if($faktura['fakturaadresse']['merkes'] != "")
 	$adressetekst .= "Merk: " . $faktura['fakturaadresse']['merkes'] . "\n";	
+if($faktura['Kunde']['telefon'] != "")
+	$adressetekst .= "Tlf.: " . $faktura['Kunde']['telefon'] . "\n";	
 $tcpdf->MultiCell(190,0, $adressetekst, 0, 'L', 0, 1);
 
 $tcpdf->SetFont($textfont,'',9);
@@ -95,7 +97,7 @@ if(is_string($fakturatekst) && substr($fakturatekst,0,6) == '<table')
 $tcpdf->setY(-100);
 
 $tcpdf->SetFont($textfont,'',9);
-$tcpdf->MultiCell(60,0, "Org.nr. 991 653 503\nFakturanr." . $faktura['Faktura']['nummer'] . "\nFakturadato: " . $faktura['Faktura']['faktura_dato'], 0, 'L', 0, 1);
+$tcpdf->MultiCell(60,0, "Org.nr. 991 653 503 MVA\nFakturanr." . $faktura['Faktura']['nummer'] . "\nFakturadato: " . $faktura['Faktura']['faktura_dato'], 0, 'L', 0, 1);
 $tcpdf->Cell(190,0,"Forfallsdato: " . $faktura['Faktura']['betalings_frist'], 0, 1, 'R', 0);
 $tcpdf->SetFont($textfont,'B',12);
 if(strtotime($faktura['Faktura']['faktura_dato'])- strtotime('10.3.2010') < 0)

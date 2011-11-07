@@ -192,7 +192,7 @@ echo $javascript->codeBlock($script);
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List Kaffesalg', true), array('action'=>'index'));?></li>
-		<li><?php echo $html->link(__('New Kaffesalg', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $html->link(__('List kaffisal', true), array('action'=>'index'));?></li>
+		<li><?php echo $html->link(__('List kunder', true), array('controller' => 'kunder', 'action'=>'index'));?></li>
 	</ul>
 </div>
