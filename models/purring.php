@@ -40,11 +40,11 @@ class Purring extends AppModel {
 				$purretekst .= "<p>Her er detaljane om innhaldet og prisen p&aring; kaffien. Gje oss ei melding om du treng ein ny kopi av rekninga, eller om du meiner det er noko feil. (Har du ikkje f&aring;tt kaffien, ta kontakt med oss snarast.)";
 				$purretekst .= $faktura['Faktura']['tekst'];
 				$purretekst .= " <p>Mvh<br>Dag Hovland<br>Zapatistgruppa i Bergen</p>";
-	                        if(!mail("dag@zapatista.no", "Purring fr&aring; Zapatistgruppa", $purretekst, $headers)){
+	                        if(!mail("dag@zapatista.no", "Purring frå Zapatistgruppa", $purretekst, $headers)){
 	        	                print "Could not send email.";
 				}
                 	} else if ($i_dag > $en_dag_forfall){
-				mail("dag@zapatista.no", "Om kaffien fr&aring Zapatistgruppa", "<p>Dette er ein automatisk utsendt epost fr&aring; Zapatistgruppa i Bergen. Vi sendte deg kaffi for eit par veker sida. Om du ikkje har fi&aring;tt kaffien no, ta kontakt med oss snarast, så vi kan finne ut av dette. Elles forfallar alts&aring; rekninga til betaling i morgon.</p><p>Mvh Dag Hovland, Zapatistgruppa i Bergen</p>", $headers);
+				mail("dag@zapatista.no", "Om kaffien frå Zapatistgruppa", "<p>Dette er ein automatisk utsendt epost fr&aring; Zapatistgruppa i Bergen. Vi sendte deg kaffi for eit par veker sida. Om du ikkje har fi&aring;tt kaffien no, ta kontakt med oss snarast, så vi kan finne ut av dette. Elles forfallar alts&aring; rekninga til betaling i morgon.</p><p>Mvh Dag Hovland, Zapatistgruppa i Bergen</p>", $headers);
 			}
 		}
 
