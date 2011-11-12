@@ -43,6 +43,8 @@ echo $form->checkbox('postSending', array('label' => 'Sendes med post'
 		     , 'id'=> 'KaffeSalgPostSending'
                     // , 'onChange' => 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\')'
 			));
+	if(!isset($kundenummer))
+		$kundenummer=0;
                 echo $form->input('til', array('options' => $kunder,
 					     //  'onChange' => 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\')',
 					       'label' => 'Til kunde',
@@ -61,7 +63,7 @@ echo $form->checkbox('postSending', array('label' => 'Sendes med post'
                 echo $form->input('beskrivelse', array('label' => 'Kommentar'));
                 echo $form->input('dato', array('minYear' => 2008, 'maxYear' => date('Y')));
 echo $form->input('betalingsfrist', array('options' => array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12),
-					  'selected' => 4,
+					  'selected' => 3,
 					  'label' => 'Betalingsfrist (uker)',
 					  'div' => array('id' => 'BetalingsfristDiv')));
                 echo $form->hidden('fralagertype', array('value' => 3));
