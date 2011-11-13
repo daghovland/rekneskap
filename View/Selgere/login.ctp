@@ -1,12 +1,12 @@
 <?php
-$session->flash('auth');
-$session->flash('acl');
-echo $form->create('Selger', array('url' => array('controller' => 'selgere', 'action' =>'login')));
+$this->Session->flash('auth');
+$this->Session->flash('acl');
+echo $this->Form->create('Selger', array('url' => array('controller' => 'selgere', 'action' =>'login')));
 ?>
 <fieldset>
 <legend><?php __('Logg på');?></legend>
-<?php echo $form->input('navn'); ?>
+<?php echo $this->Form->input('navn'); ?>
 <label>Passord</label>
-<?php echo $form->password('passord'); ?>
+<?php echo $this->Form->password('passord'); ?>
 </fieldset>
-<?php echo $form->end('Logg på'); ?>
+<?php echo $this->Form->end('Logg på'); ?>
