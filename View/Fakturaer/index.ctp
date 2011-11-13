@@ -2,21 +2,21 @@
 <h2><?php __('Fakturaer');?></h2>
 <p>
 <?php
-echo $paginator->counter(array(
+echo $this->Paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('nummer');?></th>
-	<th><?php echo $paginator->sort('kunde');?></th>
-	<th><?php echo $paginator->sort('faktura_dato');?></th>
-	<th><?php echo $paginator->sort('betalings_frist');?></th>
-	<th><?php echo $paginator->sort('melding');?></th>
-	<th><?php echo $paginator->sort('kroner');?></th>
-	<th><?php echo $paginator->sort('adresse');?></th>
-	<th><?php echo $paginator->sort('mva');?></th>
-	<th><?php echo $paginator->sort('totalpris');?></th>
+	<th><?php echo $this->Paginator->sort('nummer');?></th>
+	<th><?php echo $this->Paginator->sort('kunde');?></th>
+	<th><?php echo $this->Paginator->sort('faktura_dato');?></th>
+	<th><?php echo $this->Paginator->sort('betalings_frist');?></th>
+	<th><?php echo $this->Paginator->sort('melding');?></th>
+	<th><?php echo $this->Paginator->sort('kroner');?></th>
+	<th><?php echo $this->Paginator->sort('adresse');?></th>
+	<th><?php echo $this->Paginator->sort('mva');?></th>
+	<th><?php echo $this->Paginator->sort('totalpris');?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
@@ -66,9 +66,9 @@ foreach ($fakturaer as $faktura):
 </table>
 </div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
+	<?php echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
+ | 	<?php echo $this->Paginator->numbers();?>
+	<?php echo $this->Paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
 </div>
 <div class="actions">
 	<ul>

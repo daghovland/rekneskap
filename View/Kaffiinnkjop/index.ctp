@@ -2,21 +2,21 @@
 <h2><?php __('Kaffiinnkjop');?></h2>
 <p>
 <?php
-echo $paginator->counter(array(
+echo $this->Paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('id');?></th>
-	<th><?php echo $paginator->sort('kaffibrenning_id');?></th>
-	<th><?php echo $paginator->sort('kaffitype_id');?></th>
-	<th><?php echo $paginator->sort('kommentar');?></th>
-	<th><?php echo $paginator->sort('dato');?></th>
-	<th><?php echo $paginator->sort('created');?></th>
-	<th><?php echo $paginator->sort('modified');?></th>
-	<th><?php echo $paginator->sort('pengeflytting_id');?></th>
-	<th><?php echo $paginator->sort('kaffeflytting_id');?></th>
+	<th><?php echo $this->Paginator->sort('id');?></th>
+	<th><?php echo $this->Paginator->sort('kaffibrenning_id');?></th>
+	<th><?php echo $this->Paginator->sort('kaffitype_id');?></th>
+	<th><?php echo $this->Paginator->sort('kommentar');?></th>
+	<th><?php echo $this->Paginator->sort('dato');?></th>
+	<th><?php echo $this->Paginator->sort('created');?></th>
+	<th><?php echo $this->Paginator->sort('modified');?></th>
+	<th><?php echo $this->Paginator->sort('pengeflytting_id');?></th>
+	<th><?php echo $this->Paginator->sort('kaffeflytting_id');?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
@@ -65,9 +65,9 @@ foreach ($kaffiinnkjop as $kaffiinnkjop):
 </table>
 </div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class' => 'disabled'));?>
+	<?php echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
+ | 	<?php echo $this->Paginator->numbers();?>
+	<?php echo $this->Paginator->next(__('next', true).' >>', array(), null, array('class' => 'disabled'));?>
 </div>
 <div class="actions">
 	<ul>

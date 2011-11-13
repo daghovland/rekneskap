@@ -101,24 +101,24 @@ echo $javascript->codeBlock($script);
 
 <div class="related">
 <?php
-        $paginator->options(array('url' => array('controller' => 'kontoer', 'action' => 'view', $konto['Konto']['nummer'])));
-        echo $paginator->counter(array(
+        $this->Paginator->options(array('url' => array('controller' => 'kontoer', 'action' => 'view', $konto['Konto']['nummer'])));
+        echo $this->Paginator->counter(array(
                                 'format' => __('Side %page% av %pages%. Viser %current% postar av totalt %count%. Startar med post %start%, sluttar med %end%', true)
                 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">
 <table id="kontobevegelser" cellpadding="0" cellspacing="0">
 <tr>
-        <th><?php echo $paginator->sort('nummer');?></th>
-        <th><?php echo $paginator->sort('fra');?></th>
-        <th><?php echo $paginator->sort('til');?></th>
-        <th><?php echo $paginator->sort('kroner');?></th>
-        <th><?php echo $paginator->sort('dato');?></th>
-        <th><?php echo $paginator->sort('beskrivelse');?></th>
-        <th><?php echo $paginator->sort('faktura');?></th>
-        <th><?php echo $paginator->sort('kaffiimport_id');?></th>
-        <th><?php echo $paginator->sort('kaffibrenning_id');?></th>
-        <th><?php echo $paginator->sort('kaffesalg_id');?></th>
+        <th><?php echo $this->Paginator->sort('nummer');?></th>
+        <th><?php echo $this->Paginator->sort('fra');?></th>
+        <th><?php echo $this->Paginator->sort('til');?></th>
+        <th><?php echo $this->Paginator->sort('kroner');?></th>
+        <th><?php echo $this->Paginator->sort('dato');?></th>
+        <th><?php echo $this->Paginator->sort('beskrivelse');?></th>
+        <th><?php echo $this->Paginator->sort('faktura');?></th>
+        <th><?php echo $this->Paginator->sort('kaffiimport_id');?></th>
+        <th><?php echo $this->Paginator->sort('kaffibrenning_id');?></th>
+        <th><?php echo $this->Paginator->sort('kaffesalg_id');?></th>
 	<th><?php echo __('Vedlegg'); ?>
         <th class="actions"><?php __('Actions');?></th>
 </tr>
@@ -126,9 +126,9 @@ echo $javascript->codeBlock($script);
 <?php echo $this->element("pengeflytting", array('pengeflyttinger' => $pengeflyttinger, 'key' => 'kontoInnskudd', 'vedlegg' => $vedlegg)); ?>
 </table>
 <div class="paging">
-        <?php echo $paginator->prev('<< '.__('forrige', true), array(), null, array('class'=>'disabled'));?>
- |      <?php echo $paginator->numbers();?>
-        <?php echo $paginator->next(__('neste', true).' >>', array(), null, array('class'=>'disabled'));?>
+        <?php echo $this->Paginator->prev('<< '.__('forrige', true), array(), null, array('class'=>'disabled'));?>
+ |      <?php echo $this->Paginator->numbers();?>
+        <?php echo $this->Paginator->next(__('neste', true).' >>', array(), null, array('class'=>'disabled'));?>
 </div>
 
         <div class="actions">

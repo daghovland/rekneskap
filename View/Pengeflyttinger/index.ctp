@@ -53,22 +53,22 @@ echo $javascript->codeBlock($script);
 ?>
 
 <?php
-echo $paginator->counter(array(
+echo $this->Paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
 <table cellpadding="0" id="kontobevegelser" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('nummer');?></th>
-	<th><?php echo $paginator->sort('fra');?></th>
-	<th><?php echo $paginator->sort('til');?></th>
-	<th><?php echo $paginator->sort('kroner');?></th>
-	<th><?php echo $paginator->sort('dato');?></th>
-	<th><?php echo $paginator->sort('beskrivelse');?></th>
-	<th><?php echo $paginator->sort('dekningsFaktura');?></th>
-	<th><?php echo $paginator->sort('kaffiimport_id');?></th>
-	<th><?php echo $paginator->sort('kaffibrenning_id');?></th>
-	<th><?php echo $paginator->sort('Kaffisal', 'kaffesalg');?></th>
+	<th><?php echo $this->Paginator->sort('nummer');?></th>
+	<th><?php echo $this->Paginator->sort('fra');?></th>
+	<th><?php echo $this->Paginator->sort('til');?></th>
+	<th><?php echo $this->Paginator->sort('kroner');?></th>
+	<th><?php echo $this->Paginator->sort('dato');?></th>
+	<th><?php echo $this->Paginator->sort('beskrivelse');?></th>
+	<th><?php echo $this->Paginator->sort('dekningsFaktura');?></th>
+	<th><?php echo $this->Paginator->sort('kaffiimport_id');?></th>
+	<th><?php echo $this->Paginator->sort('kaffibrenning_id');?></th>
+	<th><?php echo $this->Paginator->sort('Kaffisal', 'kaffesalg');?></th>
 	<th><?php echo __('Vedlegg'); ?> </th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
@@ -76,9 +76,9 @@ echo $paginator->counter(array(
 </table>
 </div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
+	<?php echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
+ | 	<?php echo $this->Paginator->numbers();?>
+	<?php echo $this->Paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
 </div>
 <div class="actions">
 	<ul>

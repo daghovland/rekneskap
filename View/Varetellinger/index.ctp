@@ -2,19 +2,19 @@
 <h2><?php __('Varetellinger');?></h2>
 <p>
 <?php
-echo $paginator->counter(array(
+echo $this->Paginator->counter(array(
 'format' => __('Side %page% av %pages%, viser %current% postar av %count%, startar med %start%, sluttar med %end%', true)
 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('id');?></th>
-	<th><?php echo $paginator->sort('kaffelager_id');?></th>
-	<th><?php echo $paginator->link('Kaffitype', array('sort' => 'kaffepris_id'));?></th>
+	<th><?php echo $this->Paginator->sort('id');?></th>
+	<th><?php echo $this->Paginator->sort('kaffelager_id');?></th>
+	<th><?php echo $this->Paginator->link('Kaffitype', array('sort' => 'kaffepris_id'));?></th>
 	<th><?php echo __('Telt antall');?></th>
 	<th><?php echo __('Berekna antall');?></th>
-	<th><?php echo $paginator->sort('dato');?></th>
-	<th><?php echo $paginator->link('Ansvarleg', array('sort' => 'selger_id'));?></th>
+	<th><?php echo $this->Paginator->sort('dato');?></th>
+	<th><?php echo $this->Paginator->link('Ansvarleg', array('sort' => 'selger_id'));?></th>
 	<th class="actions"><?php __('Handlingar');?></th>
 </tr>
 <?php
@@ -62,9 +62,9 @@ foreach ($varetellinger as $varetelling):
 </table>
 </div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('forrige', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('neste', true).' >>', array(), null, array('class'=>'disabled'));?>
+	<?php echo $this->Paginator->prev('<< '.__('forrige', true), array(), null, array('class'=>'disabled'));?>
+ | 	<?php echo $this->Paginator->numbers();?>
+	<?php echo $this->Paginator->next(__('neste', true).' >>', array(), null, array('class'=>'disabled'));?>
 </div>
 <div class="actions">
 	<ul>

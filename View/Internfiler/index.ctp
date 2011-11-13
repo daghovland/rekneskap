@@ -2,19 +2,19 @@
 <h2><?php __('Filar');?></h2>
 <p>
 <?php
-echo $paginator->counter(array(
+echo $this->Paginator->counter(array(
 'format' => __('Side %page% av %pages%, viser %current% filar av i alt  %count%, startar på fil %start%, sluttar med %end%', true)
 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('Namn', 'filnavn');?></th>
-	<th><?php echo $paginator->sort('kommentar');?></th>
-	<th><?php echo $paginator->sort('filtype');?></th>
-	<th><?php echo $paginator->sort('Storleik', 'size');?></th>
-	<th><?php echo $paginator->sort('Oppretta', 'created');?></th>
-	<th><?php echo $paginator->sort('Endra', 'modified');?></th>
-	<th><?php echo $paginator->sort('selger_id');?></th>
+	<th><?php echo $this->Paginator->sort('Namn', 'filnavn');?></th>
+	<th><?php echo $this->Paginator->sort('kommentar');?></th>
+	<th><?php echo $this->Paginator->sort('filtype');?></th>
+	<th><?php echo $this->Paginator->sort('Storleik', 'size');?></th>
+	<th><?php echo $this->Paginator->sort('Oppretta', 'created');?></th>
+	<th><?php echo $this->Paginator->sort('Endra', 'modified');?></th>
+	<th><?php echo $this->Paginator->sort('selger_id');?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
@@ -57,9 +57,9 @@ foreach ($internfiler as $internfil):
 </table>
 </div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
+	<?php echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
+ | 	<?php echo $this->Paginator->numbers();?>
+	<?php echo $this->Paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
 </div>
 <div class="actions">
 	<ul>

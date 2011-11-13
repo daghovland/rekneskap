@@ -2,21 +2,21 @@
 <h2><?php __('Kaffibrenningar');?></h2>
 <p>
 <?php
-echo $paginator->counter(array(
+echo $this->Paginator->counter(array(
 'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
-	<th><?php echo $paginator->sort('id');?></th>
-	<th><?php echo $paginator->sort('navn');?></th>
-	<th><?php echo $paginator->sort('brenneri');?></th>
-	<th><?php echo $paginator->sort('brent');?></th>
-	<th><?php echo $paginator->sort('kilo');?></th>
+	<th><?php echo $this->Paginator->sort('id');?></th>
+	<th><?php echo $this->Paginator->sort('navn');?></th>
+	<th><?php echo $this->Paginator->sort('brenneri');?></th>
+	<th><?php echo $this->Paginator->sort('brent');?></th>
+	<th><?php echo $this->Paginator->sort('kilo');?></th>
 	<th><?php echo __('Verdi av grønne bønner');?></th>
 	<th><?php echo __('Brennekostnad');?></th>
 	<th><?php echo __('Verdi per kg. ferdig');?></th>
-	<th><?php echo $paginator->sort('kaffiimport_id');?></th>
+	<th><?php echo $this->Paginator->sort('kaffiimport_id');?></th>
 	<th class="actions"><?php __('Actions');?></th>
 </tr>
 <?php
@@ -68,9 +68,9 @@ foreach ($kaffibrenningar as $kaffibrenning):
 </table>
 </div>
 <div class="paging">
-	<?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
- | 	<?php echo $paginator->numbers();?>
-	<?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
+	<?php echo $this->Paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
+ | 	<?php echo $this->Paginator->numbers();?>
+	<?php echo $this->Paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
 </div>
 <div class="actions">
 	<ul>

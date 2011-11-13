@@ -18,7 +18,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fra'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($kaffeflytting['Fra']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $kaffeflytting['Fra']['nummer'])); ?>(<?php echo $html->link($kaffeflytting['Fralagertypenavn']['navn'], array('controller'=> 'lagertyper', 'action'=>'view', $kaffeflytting['Fralagertypenavn']['nummer'])); ?>)
+			<?php echo $this->Html->link($kaffeflytting['Fra']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $kaffeflytting['Fra']['nummer'])); ?>(<?php echo $this->Html->link($kaffeflytting['Fralagertypenavn']['navn'], array('controller'=> 'lagertyper', 'action'=>'view', $kaffeflytting['Fralagertypenavn']['nummer'])); ?>)
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse'); ?></dt>
@@ -28,7 +28,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Til'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $this->Html->link($kaffeflytting['Til']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $kaffeflytting['Til']['nummer'])); ?>(<?php echo $html->link($kaffeflytting['Tillagertypenavn']['navn'], array('controller'=> 'lagertyper', 'action'=>'view', $kaffeflytting['Tillagertypenavn']['nummer'])); ?>)
+			<?php echo $this->Html->link($kaffeflytting['Til']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $kaffeflytting['Til']['nummer'])); ?>(<?php echo $this->Html->link($kaffeflytting['Tillagertypenavn']['navn'], array('controller'=> 'lagertyper', 'action'=>'view', $kaffeflytting['Tillagertypenavn']['nummer'])); ?>)
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Dato'); ?></dt>

@@ -52,7 +52,6 @@
 					} else {
 						echo " Du er ikkje logga inn!";
 					}
-					echo $userid;
 				?>
 			</h1>
 			 <select onChange = "window.location = this.options[this.selectedIndex].value">
