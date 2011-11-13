@@ -8,7 +8,7 @@ foreach ($kaffesalg as $pengeflytting):
 ?>
 	<tr<?php echo $class;?>>
 		<td>
-			<?php echo $html->link($pengeflytting[$key]['selger_id'], array('controller' => 'selgere', 'action' => 'view', $pengeflytting[$key]['selger_id']));; ?>
+			<?php echo $this->Html->link($pengeflytting[$key]['selger_id'], array('controller' => 'selgere', 'action' => 'view', $pengeflytting[$key]['selger_id']));; ?>
 		</td>
 		<td>
 			<?php echo $pengeflytting[$key]['frakt']; ?>

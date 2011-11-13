@@ -29,7 +29,7 @@ foreach ($pengetellingar as $pengetelling):
 			<?php echo $pengetelling['Pengetelling']['id']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($pengetelling['Konto']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $pengetelling['Konto']['nummer'])); ?>
+			<?php echo $this->Html->link($pengetelling['Konto']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $pengetelling['Konto']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $pengetelling['Pengetelling']['kroner']; ?>,
@@ -54,12 +54,12 @@ foreach ($pengetellingar as $pengetelling):
 			<?php echo $pengetelling['Pengetelling']['dato']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($pengetelling['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $pengetelling['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($pengetelling['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $pengetelling['Selger']['nummer'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Vis', true), array('action'=>'view', $pengetelling['Pengetelling']['id'])); ?>
-			<?php echo $html->link(__('Endre', true), array('action'=>'edit', $pengetelling['Pengetelling']['id'])); ?>
-			<?php echo $html->link(__('Slett', true), array('action'=>'delete', $pengetelling['Pengetelling']['id']), null, sprintf(__('Vil du virkelig slette # %s?', true), $pengetelling['Pengetelling']['id'])); ?>
+			<?php echo $this->Html->link(__('Vis', true), array('action'=>'view', $pengetelling['Pengetelling']['id'])); ?>
+			<?php echo $this->Html->link(__('Endre', true), array('action'=>'edit', $pengetelling['Pengetelling']['id'])); ?>
+			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $pengetelling['Pengetelling']['id']), null, sprintf(__('Vil du virkelig slette # %s?', true), $pengetelling['Pengetelling']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -72,6 +72,6 @@ foreach ($pengetellingar as $pengetelling):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Ny Pengetelling', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Ny Pengetelling', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

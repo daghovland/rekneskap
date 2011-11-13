@@ -1,7 +1,7 @@
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($adresse['nummer'], array('controller' => 'adresser', 
+			<?php echo $this->Html->link($adresse['nummer'], array('controller' => 'adresser', 
 'action' => 'view', $adresse['nummer'])); ?>
 			&nbsp;
 		</dd>

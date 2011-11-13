@@ -33,7 +33,7 @@ foreach ($fakturaer as $faktura):
 			<?php echo $faktura['Faktura']['nummer']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($faktura['fakturakunde']['nummer'], array('controller'=> 'kunder', 'action'=>'view', $faktura['fakturakunde']['nummer'])); ?>
+			<?php echo $this->Html->link($faktura['fakturakunde']['nummer'], array('controller'=> 'kunder', 'action'=>'view', $faktura['fakturakunde']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $faktura['Faktura']['faktura_dato']; ?>
@@ -51,7 +51,7 @@ foreach ($fakturaer as $faktura):
 			<?php echo $faktura['Faktura']['kroner']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($faktura['fakturaadresse']['nummer'], array('controller'=> 'adresser', 'action'=>'view', $faktura['fakturaadresse']['nummer'])); ?>
+			<?php echo $this->Html->link($faktura['fakturaadresse']['nummer'], array('controller'=> 'adresser', 'action'=>'view', $faktura['fakturaadresse']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $faktura['Faktura']['mva']; ?>
@@ -60,9 +60,9 @@ foreach ($fakturaer as $faktura):
 			<?php echo $faktura['Faktura']['totalpris']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $faktura['Faktura']['nummer'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $faktura['Faktura']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $faktura['Faktura']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $faktura['Faktura']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -75,14 +75,14 @@ foreach ($fakturaer as $faktura):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Faktura', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Fakturakunde', true), array('controller'=> 'kunder', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Fakturaadresse', true), array('controller'=> 'adresser', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Fakturainnbetaling', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Fakturakaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Faktura', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Fakturakunde', true), array('controller'=> 'kunder', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Fakturaadresse', true), array('controller'=> 'adresser', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Fakturainnbetaling', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Fakturakaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

@@ -32,7 +32,7 @@
 
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Seljar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($kaffesalg['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $kaffesalg['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($kaffesalg['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $kaffesalg['Selger']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Total'); ?></dt>
@@ -86,13 +86,13 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Slett Kaffisal', true), array('action'=>'delete', $kaffesalg['Kaffesalg']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffesalg['Kaffesalg']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Kaffisal', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Nytt Kaffisal', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('Ny postsending', true), array('controller' => 'postsendingar', 'action'=>'add', '/kaffesalg:' . $kaffesalg['Kaffesalg']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Slett Kaffisal', true), array('action'=>'delete', $kaffesalg['Kaffesalg']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffesalg['Kaffesalg']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffisal', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nytt Kaffisal', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny postsending', true), array('controller' => 'postsendingar', 'action'=>'add', '/kaffesalg:' . $kaffesalg['Kaffesalg']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -105,7 +105,7 @@
 	</tr>
 		<?php foreach($kaffesalg['Postsending'] as $sending):?>
 		<tr>
-		<td><?php echo $html->link($sending['sendingsnummer'], array('controller' => 'postsendingar', 'action' => 'view', $sending['id'])); ?></td>
+		<td><?php echo $this->Html->link($sending['sendingsnummer'], array('controller' => 'postsendingar', 'action' => 'view', $sending['id'])); ?></td>
 		<td><?php echo $sending['kommentar']; ?></td>
 		</tr>
 		<?php endforeach; ?>
@@ -115,7 +115,7 @@
 	<div class="actions">
 		<ul>
 			<li><?php 
-			    echo $html->link(__('Ny Postsending', true), 
+			    echo $this->Html->link(__('Ny Postsending', true), 
 					     array('controller'=> 'postsendingar'
 						   , 'action'=>'add'
 						   , '/kaffesalg:' . $kaffesalg['Kaffesalg']['nummer']));?> </li>
@@ -147,7 +147,7 @@
 	<div class="actions">
 		<ul>
 			<li><?php 
-			    echo $html->link(__('Ny Kaffiflytting', true), 
+			    echo $this->Html->link(__('Ny Kaffiflytting', true), 
 					     array('controller'=> 'kaffeflyttinger'
 						   , 'action'=>'add'
 						   , '/dato:' . $kaffesalg['Kaffesalg']['dato'] . '/kaffesalg:' . $kaffesalg['Kaffesalg']['nummer']));?> </li>
@@ -177,9 +177,9 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $html->link($pengeflytting['nummer'], array('controller' => 'pengeflyttinger', 'action' => 'view', $pengeflytting['nummer']));?></td>
-			<td><?php echo $html->link($kontoer[$pengeflytting['fra']], array('controller' => 'kontoer', 'action' => 'view', $pengeflytting['fra']));?></td>
-			<td><?php echo $html->link($kontoer[$pengeflytting['til']], array('controller' => 'kontoer', 'action' => 'view', $pengeflytting['til']));?></td>
+			<td><?php echo $this->Html->link($pengeflytting['nummer'], array('controller' => 'pengeflyttinger', 'action' => 'view', $pengeflytting['nummer']));?></td>
+			<td><?php echo $this->Html->link($kontoer[$pengeflytting['fra']], array('controller' => 'kontoer', 'action' => 'view', $pengeflytting['fra']));?></td>
+			<td><?php echo $this->Html->link($kontoer[$pengeflytting['til']], array('controller' => 'kontoer', 'action' => 'view', $pengeflytting['til']));?></td>
 			<td><?php echo $pengeflytting['kroner'];?></td>
 			<td><?php echo $pengeflytting['oere'];?></td>
 			<td><?php echo $pengeflytting['dato'];?></td>
@@ -192,7 +192,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $html->link(__('Ny Pengeflytting', true), array('controller'=> 'pengeflyttinger', 
+			<li><?php echo $this->Html->link(__('Ny Pengeflytting', true), array('controller'=> 'pengeflyttinger', 
 										       'action'=>'add', 
 										       '/dato:' . $kaffesalg['Kaffesalg']['dato'] . '/kaffesalg:' . $kaffesalg['Kaffesalg']['nummer']));?> </li>
 		</ul>
@@ -205,14 +205,14 @@
                 <dl>    <?php $i = 0; $class = ' class="altrow"';?>
                         <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($kaffesalg['Faktura']['nummer'],
+			<?php echo $this->Html->link($kaffesalg['Faktura']['nummer'],
 					       array('controller' => 'fakturaer', 
 						     'action' => 'view',
 						     $kaffesalg['Faktura']['nummer']));?>
 &nbsp;</dd>
                 <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kunde');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
-        <?php echo $html->link($kunder[$kaffesalg['Faktura']['kunde']], array('controller' => 'kunder', 'action' => 'view', $kaffesalg['Faktura']['kunde']));?>
+        <?php echo $this->Html->link($kunder[$kaffesalg['Faktura']['kunde']], array('controller' => 'kunder', 'action' => 'view', $kaffesalg['Faktura']['kunde']));?>
 &nbsp;</dd>
                 <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Faktura Dato');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>

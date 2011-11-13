@@ -40,17 +40,17 @@ foreach ($kunder as $kunde):
 		<td>
 			<?php 
 				if(is_numeric($kunde['FakturaAdresse']['nummer']))
-					echo $html->link($kunde['FakturaAdresse']['linje1'] . ", " . $kunde['FakturaAdresse']['poststad'], array('controller'=> 'adresser', 'action'=>'view', $kunde['FakturaAdresse']['nummer']));
+					echo $this->Html->link($kunde['FakturaAdresse']['linje1'] . ", " . $kunde['FakturaAdresse']['poststad'], array('controller'=> 'adresser', 'action'=>'view', $kunde['FakturaAdresse']['nummer']));
 				 else
 					echo "-";
 			?>
 		</td>
 		<td>
-			<?php echo $html->link($kunde['LeveringsAdresse']['linje1'] . ", " . $kunde['LeveringsAdresse']['poststad'], array('controller'=> 'adresser', 'action'=>'view', $kunde['LeveringsAdresse']['nummer'])); ?>
+			<?php echo $this->Html->link($kunde['LeveringsAdresse']['linje1'] . ", " . $kunde['LeveringsAdresse']['poststad'], array('controller'=> 'adresser', 'action'=>'view', $kunde['LeveringsAdresse']['nummer'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Syn', true), array('action'=>'view', $kunde['Kunde']['nummer'])); ?>
-			<?php echo $html->link(__('Sel kaffi til', true), array('controller' => 'kaffesalg', 'action'=>'add', 'kundenummer' => $kunde['Kunde']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $kunde['Kunde']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Sel kaffi til', true), array('controller' => 'kaffesalg', 'action'=>'add', 'kundenummer' => $kunde['Kunde']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -63,7 +63,7 @@ foreach ($kunder as $kunde):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Ny Kunde', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Kunde', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>
 	</ul>
 </div>

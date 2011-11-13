@@ -32,9 +32,9 @@ foreach ($kaffityper as $kaffitype):
 			<?php echo $kaffitype['Kaffitype']['namn']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action' => 'view', $kaffitype['Kaffitype']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action' => 'edit', $kaffitype['Kaffitype']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action' => 'delete', $kaffitype['Kaffitype']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffitype['Kaffitype']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $kaffitype['Kaffitype']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $kaffitype['Kaffitype']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $kaffitype['Kaffitype']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffitype['Kaffitype']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -47,8 +47,8 @@ foreach ($kaffityper as $kaffitype):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Kaffitype', true), array('action' => 'add')); ?></li>
-		<li><?php echo $html->link(__('List Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffitype', true), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

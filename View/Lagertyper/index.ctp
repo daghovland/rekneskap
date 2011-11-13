@@ -28,9 +28,9 @@ foreach ($lagertyper as $lagertype):
 			<?php echo $lagertype['Lagertype']['navn']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $lagertype['Lagertype']['nummer'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $lagertype['Lagertype']['nummer'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $lagertype['Lagertype']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagertype['Lagertype']['nummer'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $lagertype['Lagertype']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $lagertype['Lagertype']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $lagertype['Lagertype']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagertype['Lagertype']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -43,6 +43,6 @@ foreach ($lagertyper as $lagertype):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Lagertype', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Lagertype', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

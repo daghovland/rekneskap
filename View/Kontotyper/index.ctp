@@ -28,9 +28,9 @@ foreach ($kontotyper as $kontotype):
 			<?php echo $kontotype['Kontotype']['beskrivelse']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $kontotype['Kontotype']['nummer'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $kontotype['Kontotype']['nummer'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $kontotype['Kontotype']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kontotype['Kontotype']['nummer'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $kontotype['Kontotype']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $kontotype['Kontotype']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $kontotype['Kontotype']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kontotype['Kontotype']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -43,6 +43,6 @@ foreach ($kontotyper as $kontotype):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Kontotype', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Kontotype', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

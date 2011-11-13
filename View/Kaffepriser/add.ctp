@@ -15,8 +15,8 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List Kaffepriser', true), array('action'=>'index'));?></li>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffe Type Flyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffepriser', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffe Type Flyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

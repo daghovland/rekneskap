@@ -38,13 +38,13 @@ foreach ($kaffesalg as $kaffesalg):
 			<?php echo $kaffesalg['Kaffesalg']['dato']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($kaffesalg['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $kaffesalg['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($kaffesalg['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $kaffesalg['Selger']['nummer'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($kaffesalg['Faktura']['nummer'], array('controller' => 'fakturaer', 'action' => 'view', $kaffesalg['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link($kaffesalg['Faktura']['nummer'], array('controller' => 'fakturaer', 'action' => 'view', $kaffesalg['Faktura']['nummer'])); ?>
 			<?php if(is_numeric($kaffesalg['Faktura']['nummer'])){
 				echo "(";
-				echo $html->link("pdf", array('controller' => 'fakturaer', 'action' => 'synPdf', $kaffesalg['Faktura']['nummer']));
+				echo $this->Html->link("pdf", array('controller' => 'fakturaer', 'action' => 'synPdf', $kaffesalg['Faktura']['nummer']));
 				echo ")";
 			}
 			 ?>
@@ -63,7 +63,7 @@ foreach ($kaffesalg as $kaffesalg):
 			<?php echo sprintf("%.2f kg", $kaffesalgvekt[$kaffesalg['Kaffesalg']['nummer']]); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Sjå meir', true), array('action'=>'view', $kaffesalg['Kaffesalg']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Sjå meir', true), array('action'=>'view', $kaffesalg['Kaffesalg']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -76,12 +76,12 @@ foreach ($kaffesalg as $kaffesalg):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Kaffesalg', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Faktura', true), array('controller'=> 'fakturaer', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffeflytting', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Pengeflytting', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffesalg', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Faktura', true), array('controller'=> 'fakturaer', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffeflytting', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Pengeflytting', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

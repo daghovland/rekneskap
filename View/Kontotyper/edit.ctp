@@ -11,7 +11,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Delete', true), array('action'=>'delete', $form->value('Kontotype.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kontotype.nummer'))); ?></li>
-		<li><?php echo $html->link(__('List Kontotyper', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $form->value('Kontotype.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kontotype.nummer'))); ?></li>
+		<li><?php echo $this->Html->link(__('List Kontotyper', true), array('action'=>'index'));?></li>
 	</ul>
 </div>

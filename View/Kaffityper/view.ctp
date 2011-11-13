@@ -20,12 +20,12 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Kaffitype', true), array('action' => 'edit', $kaffitype['Kaffitype']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Kaffitype', true), array('action' => 'delete', $kaffitype['Kaffitype']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffitype['Kaffitype']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Kaffityper', true), array('action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffitype', true), array('action' => 'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Kaffitype', true), array('action' => 'edit', $kaffitype['Kaffitype']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Kaffitype', true), array('action' => 'delete', $kaffitype['Kaffitype']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffitype['Kaffitype']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffityper', true), array('action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffitype', true), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -63,9 +63,9 @@
 			<td><?php echo $kaffiinnkjop['pengeflytting_id'];?></td>
 			<td><?php echo $kaffiinnkjop['kaffeflytting_id'];?></td>
 			<td class="actions">
-				<?php echo $html->link(__('View', true), array('controller' => 'kaffiinnkjop', 'action' => 'view', $kaffiinnkjop['id'])); ?>
-				<?php echo $html->link(__('Edit', true), array('controller' => 'kaffiinnkjop', 'action' => 'edit', $kaffiinnkjop['id'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller' => 'kaffiinnkjop', 'action' => 'delete', $kaffiinnkjop['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffiinnkjop['id'])); ?>
+				<?php echo $this->Html->link(__('View', true), array('controller' => 'kaffiinnkjop', 'action' => 'view', $kaffiinnkjop['id'])); ?>
+				<?php echo $this->Html->link(__('Edit', true), array('controller' => 'kaffiinnkjop', 'action' => 'edit', $kaffiinnkjop['id'])); ?>
+				<?php echo $this->Html->link(__('Delete', true), array('controller' => 'kaffiinnkjop', 'action' => 'delete', $kaffiinnkjop['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffiinnkjop['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -74,7 +74,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add'));?> </li>
+			<li><?php echo $this->Html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add'));?> </li>
 		</ul>
 	</div>
 </div>

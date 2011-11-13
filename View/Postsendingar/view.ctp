@@ -40,9 +40,9 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Postsending', true), array('action'=>'edit', $postsending['Postsending']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Postsending', true), array('action'=>'delete', $postsending['Postsending']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $postsending['Postsending']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Postsendingar', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Postsending', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Postsending', true), array('action'=>'edit', $postsending['Postsending']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Postsending', true), array('action'=>'delete', $postsending['Postsending']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $postsending['Postsending']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Postsendingar', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Postsending', true), array('action'=>'add')); ?> </li>
 	</ul>
 </div>

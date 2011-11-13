@@ -8,12 +8,12 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kaffelager'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($varetelling['Kaffelager']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $varetelling['Kaffelager']['nummer'])); ?>
+			<?php echo $this->Html->link($varetelling['Kaffelager']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $varetelling['Kaffelager']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kaffepris'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($varetelling['Kaffepris']['type'], array('controller'=> 'kaffepriser', 'action'=>'view', $varetelling['Kaffepris']['nummer'])); ?>
+			<?php echo $this->Html->link($varetelling['Kaffepris']['type'], array('controller'=> 'kaffepriser', 'action'=>'view', $varetelling['Kaffepris']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Antall'); ?></dt>
@@ -38,20 +38,20 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ansvarlig'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($varetelling['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $varetelling['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($varetelling['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $varetelling['Selger']['nummer'])); ?>
 			&nbsp;
 		</dd>
 	</dl>
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Varetelling', true), array('action'=>'edit', $varetelling['Varetelling']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Varetelling', true), array('action'=>'delete', $varetelling['Varetelling']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $varetelling['Varetelling']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Varetellinger', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Varetelling', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffepriser', true), array('controller'=> 'kaffepriser', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffepris', true), array('controller'=> 'kaffepriser', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffelagre', true), array('controller'=> 'kaffelagre', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffelager', true), array('controller'=> 'kaffelagre', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Varetelling', true), array('action'=>'edit', $varetelling['Varetelling']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Varetelling', true), array('action'=>'delete', $varetelling['Varetelling']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $varetelling['Varetelling']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Varetellinger', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Varetelling', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffepriser', true), array('controller'=> 'kaffepriser', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffepris', true), array('controller'=> 'kaffepriser', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffelagre', true), array('controller'=> 'kaffelagre', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffelager', true), array('controller'=> 'kaffelagre', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

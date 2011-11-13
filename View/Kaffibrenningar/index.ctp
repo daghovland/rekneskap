@@ -56,12 +56,12 @@ foreach ($kaffibrenningar as $kaffibrenning):
 		 ?>
 		</td>
 		<td>
-			<?php echo $html->link($kaffibrenning['Kaffiimport']['navn'], array('controller'=> 'kaffiimportar', 'action'=>'view', $kaffibrenning['Kaffiimport']['id'])); ?>
+			<?php echo $this->Html->link($kaffibrenning['Kaffiimport']['navn'], array('controller'=> 'kaffiimportar', 'action'=>'view', $kaffibrenning['Kaffiimport']['id'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Syn', true), array('action'=>'view', $kaffibrenning['Kaffibrenning']['id'])); ?>
-			<?php echo $html->link(__('Endre', true), array('action'=>'edit', $kaffibrenning['Kaffibrenning']['id'])); ?>
-			<?php echo $html->link(__('Slett', true), array('action'=>'delete', $kaffibrenning['Kaffibrenning']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffibrenning['Kaffibrenning']['id'])); ?>
+			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $kaffibrenning['Kaffibrenning']['id'])); ?>
+			<?php echo $this->Html->link(__('Endre', true), array('action'=>'edit', $kaffibrenning['Kaffibrenning']['id'])); ?>
+			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $kaffibrenning['Kaffibrenning']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffibrenning['Kaffibrenning']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -74,8 +74,8 @@ foreach ($kaffibrenningar as $kaffibrenning):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Kaffibrenning', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Kaffiimportar', true), array('controller'=> 'kaffiimportar', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffiimport', true), array('controller'=> 'kaffiimportar', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffibrenning', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kaffiimportar', true), array('controller'=> 'kaffiimportar', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffiimport', true), array('controller'=> 'kaffiimportar', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

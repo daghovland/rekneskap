@@ -20,7 +20,7 @@ $javascript->link('scriptaculous', false);
 			)); 
        echo $form->radio("Betaling", 
 			 array("Kontant" => "Kontant", "Post" => "Rekning i posten", "Epost" => "Rekning på epost")
-//	, array('onChange' => 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\')')
+//	, array('onChange' => 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\')')
 	);
        foreach($kaffetyper as $kaffetype){
 	echo "<fieldset>";
@@ -41,17 +41,17 @@ $javascript->link('scriptaculous', false);
 	echo $form->label('postSending', 'Sendes i posten');
 echo $form->checkbox('postSending', array('label' => 'Sendes med post' 
 		     , 'id'=> 'KaffeSalgPostSending'
-                    // , 'onChange' => 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\')'
+                    // , 'onChange' => 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\')'
 			));
 	if(!isset($kundenummer))
 		$kundenummer=0;
                 echo $form->input('til', array('options' => $kunder,
-					     //  'onChange' => 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\')',
+					     //  'onChange' => 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\')',
 					       'label' => 'Til kunde',
 					       'id' => 'KaffeSalgKunde',
 						'selected' => $kundenummer,
 					       'div' => array('id' => 'KaffeSalgKundeDiv', 'style' => 'visibility:hidden')));
-		echo $html->link(__('Ny kunde', true), array('controller' => 'kunder', 'action' => 'add'), array('id' => 'nyKundeKnapp')); 
+		echo $this->Html->link(__('Ny kunde', true), array('controller' => 'kunder', 'action' => 'add'), array('id' => 'nyKundeKnapp')); 
 	?><p id="fraktanslag" /> <?php
 		echo $form->input('frakt', array('onKeyDown' => 'return sjekk_frakt_tast(event);'));
                 echo $form->input('selger', array('options' => $selgerListe,
@@ -76,7 +76,7 @@ $updater = "";
 foreach ($kaffetyper as $kaffetype){
 	$kaffeid = $kaffetype['Kaffepris']['nummer'];
 	$updater = $updater . 'new Ajax.Updater(\'KaffeSalg' . $kaffeid . '\',\'' . 
-			$html->url(array(
+			$this->Html->url(array(
 					'controller' => 'kaffelagre', 
 					'action' => 'lager_type_beholdning'
 				)) . '\', {asynchronous:false, 
@@ -94,7 +94,7 @@ echo $javascript->codeBlock($script);
 
 
 
-$faktura_tekst_url = $html->url(array('controller' => 'kaffesalg', 
+$faktura_tekst_url = $this->Html->url(array('controller' => 'kaffesalg', 
 				      'action' => 'faktura_tekst'
 				      )
 				); 
@@ -122,7 +122,7 @@ $updater = 'new Ajax.Request(\'' . $faktura_tekst_url . '\'
                                  }
                               )';
 
-$frakt_pris_url = $html->url(array('controller' => 'kaffesalg', 
+$frakt_pris_url = $this->Html->url(array('controller' => 'kaffesalg', 
 				      'action' => 'frakt_pris'
 				      )
 				); 
@@ -151,14 +151,14 @@ $script = 'new Form.Element.EventObserver(\'KaffesalgFrakt\', function(element, 
 echo $javascript->codeBlock($script, array('inline' => true));
 
 $script = 'new Form.Element.EventObserver(\'KaffeSalgPostSending\', function(element, value) {'
-	. 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\'); '
+	. 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\'); '
 	 . $frakt_updater 
 	 . '})';
 
 echo $javascript->codeBlock($script, array('inline' => true));
 
 $script = 'new Form.Element.EventObserver(\'KaffeSalgKunde\', function(element, value) {'
-	. 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\'); '
+	. 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\'); '
 	 . $frakt_updater . '})';
 echo $javascript->codeBlock($script, array('inline' => true));
 
@@ -167,23 +167,23 @@ echo $javascript->codeBlock($script, array('inline' => true));
 
 
 $script = 'new Form.Element.EventObserver(\'KaffesalgBetalingPost\', function(element, value) {' 
-	. 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\'); '
+	. 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\'); '
 	. '})';
 echo $javascript->codeBlock($script, array('inline' => true));
 
 
 $script = 'new Form.Element.EventObserver(\'KaffesalgBetalingEpost\', function(element, value) {' 
-	. 'visAdresser(\'' . $html->url(array('controller' => 'kunder'))  . '\'); '
+	. 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\'); '
 	. '})';
 echo $javascript->codeBlock($script, array('inline' => true));
 
-$script = 'document.onLoad = document.getElementById(\'KaffesalgBetalingPost\').checked = true;visAdresser(\'' . $html->url(array('controller' => 'kunder')). '\'); lastetSideSalg()';
+$script = 'document.onLoad = document.getElementById(\'KaffesalgBetalingPost\').checked = true;visAdresser(\'' . $this->Html->url(array('controller' => 'kunder')). '\'); lastetSideSalg()';
 echo $javascript->codeBlock($script);
 
 // Lager settFakturaTekst
 //$script = "function settFakturaTekst(skjema){";
 //$script .= 'new Ajax.Updater(\'fakturatekst\', \'';
-//$script .= $html->url(array('controller' => 'kaffesalg',
+//$script .= $this->Html->url(array('controller' => 'kaffesalg',
 //			    'action' => 'faktura_tekst'));
 //$script .= '\', {asynchronous:false, evalScripts:true, parameters: {  }, requestHeaders:[\'X-Update\', \'fakturatekst\']});';
 //$script .= '}';
@@ -194,7 +194,7 @@ echo $javascript->codeBlock($script);
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List kaffisal', true), array('action'=>'index'));?></li>
-		<li><?php echo $html->link(__('List kunder', true), array('controller' => 'kunder', 'action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('List kaffisal', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('List kunder', true), array('controller' => 'kunder', 'action'=>'index'));?></li>
 	</ul>
 </div>

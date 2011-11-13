@@ -6,7 +6,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fakturakunde'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($faktura['Kunde']['navn'], array('controller'=> 'kunder', 'action'=>'view', $faktura['Kunde']['nummer'])); ?>
+			<?php echo $this->Html->link($faktura['Kunde']['navn'], array('controller'=> 'kunder', 'action'=>'view', $faktura['Kunde']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Faktura Dato'); ?></dt>
@@ -46,7 +46,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fakturaadresse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($faktura['fakturaadresse']['linje1'] . ", " . $faktura['fakturaadresse']['poststad'] , array('controller'=> 'adresser', 'action'=>'view', $faktura['fakturaadresse']['nummer'])); ?>
+			<?php echo $this->Html->link($faktura['fakturaadresse']['linje1'] . ", " . $faktura['fakturaadresse']['poststad'] , array('controller'=> 'adresser', 'action'=>'view', $faktura['fakturaadresse']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mva'); ?></dt>
@@ -56,7 +56,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Del av kaffisal'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($faktura['Kaffesalg']['nummer'], array('controller' => 'kaffesalg', 'action' => 'view',$faktura['Kaffesalg']['nummer'])) ; ?>
+			<?php echo $this->Html->link($faktura['Kaffesalg']['nummer'], array('controller' => 'kaffesalg', 'action' => 'view',$faktura['Kaffesalg']['nummer'])) ; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Totalpris'); ?></dt>

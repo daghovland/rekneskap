@@ -14,8 +14,8 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List opp vedlegg', true), array('action'=>'index'));?></li>
-		<li><?php echo $html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Ny Pengeflytting', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List opp vedlegg', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Pengeflytting', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

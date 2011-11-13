@@ -39,15 +39,15 @@ foreach ($kaffelagre as $kaffelager):
 			}
 		?>	
 		<td>
-			<?php echo $html->link($kaffelager['Selger']['navn'], array('controller'=> 'selgere', 'action'=>'view', $kaffelager['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($kaffelager['Selger']['navn'], array('controller'=> 'selgere', 'action'=>'view', $kaffelager['Selger']['nummer'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($kaffelager['lagertypenavn']['navn'], array('controller' => 'lagertyper', 'action' => 'view', $kaffelager['lagertypenavn']['nummer'])); ?>
+			<?php echo $this->Html->link($kaffelager['lagertypenavn']['navn'], array('controller' => 'lagertyper', 'action' => 'view', $kaffelager['lagertypenavn']['nummer'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $kaffelager['Kaffelager']['nummer'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $kaffelager['Kaffelager']['nummer'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $kaffelager['Kaffelager']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffelager['Kaffelager']['nummer'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $kaffelager['Kaffelager']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $kaffelager['Kaffelager']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $kaffelager['Kaffelager']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffelager['Kaffelager']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -55,8 +55,8 @@ foreach ($kaffelagre as $kaffelager):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Kaffelager', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Lageransvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffelager', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Lageransvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

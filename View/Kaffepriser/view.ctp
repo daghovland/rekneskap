@@ -55,12 +55,12 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Kaffepris', true), array('action'=>'edit', $kaffepris['Kaffepris']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Kaffepris', true), array('action'=>'delete', $kaffepris['Kaffepris']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffepris['Kaffepris']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Kaffepriser', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffepris', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffe Type Flyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Kaffepris', true), array('action'=>'edit', $kaffepris['Kaffepris']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Kaffepris', true), array('action'=>'delete', $kaffepris['Kaffepris']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffepris['Kaffepris']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffepriser', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffepris', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffe Type Flyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -104,9 +104,9 @@
 			<td><?php echo $kaffeTypeFlyttinger['ansvarlig'];?></td>
 			<td><?php echo $kaffeTypeFlyttinger['faktura'];?></td>
 			<td class="actions">
-				<?php echo $html->link(__('View', true), array('controller'=> 'kaffeflyttinger', 'action'=>'view', $kaffeTypeFlyttinger['nummer'])); ?>
-				<?php echo $html->link(__('Edit', true), array('controller'=> 'kaffeflyttinger', 'action'=>'edit', $kaffeTypeFlyttinger['nummer'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller'=> 'kaffeflyttinger', 'action'=>'delete', $kaffeTypeFlyttinger['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffeTypeFlyttinger['nummer'])); ?>
+				<?php echo $this->Html->link(__('View', true), array('controller'=> 'kaffeflyttinger', 'action'=>'view', $kaffeTypeFlyttinger['nummer'])); ?>
+				<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'kaffeflyttinger', 'action'=>'edit', $kaffeTypeFlyttinger['nummer'])); ?>
+				<?php echo $this->Html->link(__('Delete', true), array('controller'=> 'kaffeflyttinger', 'action'=>'delete', $kaffeTypeFlyttinger['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffeTypeFlyttinger['nummer'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -115,7 +115,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $html->link(__('New Kaffe Type Flyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add'));?> </li>
+			<li><?php echo $this->Html->link(__('New Kaffe Type Flyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add'));?> </li>
 		</ul>
 	</div>
 </div>

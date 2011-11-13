@@ -76,13 +76,13 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Pdf utgåve', true), array('action'=>'syn_pdf', $kaffiimport['Kaffiimport']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Endre Kaffiimport', true), array('action'=>'edit', $kaffiimport['Kaffiimport']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Slett Kaffiimport', true), array('action'=>'delete', $kaffiimport['Kaffiimport']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffiimport['Kaffiimport']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Kaffiimportar', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Ny Kaffiimport', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffibrenningar', true), array('controller'=> 'kaffibrenningar', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Ny Kaffibrenning', true), array('controller'=> 'kaffibrenningar', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Pdf utgåve', true), array('action'=>'syn_pdf', $kaffiimport['Kaffiimport']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Endre Kaffiimport', true), array('action'=>'edit', $kaffiimport['Kaffiimport']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Slett Kaffiimport', true), array('action'=>'delete', $kaffiimport['Kaffiimport']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffiimport['Kaffiimport']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffiimportar', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Kaffiimport', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffibrenningar', true), array('controller'=> 'kaffibrenningar', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Kaffibrenning', true), array('controller'=> 'kaffibrenningar', 'action'=>'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -118,9 +118,9 @@
 			<td><?php echo $kaffibrenning['modified'];?></td>
 			<td><?php echo $kaffibrenning['created'];?></td>
 			<td class="actions">
-				<?php echo $html->link(__('View', true), array('controller'=> 'kaffibrenningar', 'action'=>'view', $kaffibrenning['id'])); ?>
-				<?php echo $html->link(__('Edit', true), array('controller'=> 'kaffibrenningar', 'action'=>'edit', $kaffibrenning['id'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller'=> 'kaffibrenningar', 'action'=>'delete', $kaffibrenning['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffibrenning['id'])); ?>
+				<?php echo $this->Html->link(__('View', true), array('controller'=> 'kaffibrenningar', 'action'=>'view', $kaffibrenning['id'])); ?>
+				<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'kaffibrenningar', 'action'=>'edit', $kaffibrenning['id'])); ?>
+				<?php echo $this->Html->link(__('Delete', true), array('controller'=> 'kaffibrenningar', 'action'=>'delete', $kaffibrenning['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffibrenning['id'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -129,7 +129,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $html->link(__('Ny Kaffibrenning', true), array('controller'=> 'kaffibrenningar', 'action'=>'add', 'kaffiimport' => $kaffiimport['Kaffiimport']['id']));?> </li>
+			<li><?php echo $this->Html->link(__('Ny Kaffibrenning', true), array('controller'=> 'kaffibrenningar', 'action'=>'add', 'kaffiimport' => $kaffiimport['Kaffiimport']['id']));?> </li>
 		</ul>
 	</div>
 </div>
@@ -154,7 +154,7 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $html->link($utgift['nummer'], array('controller' => 'pengeflyttinger', 'action' => 'view', $utgift['nummer']));?></td>
+			<td><?php echo $this->Html->link($utgift['nummer'], array('controller' => 'pengeflyttinger', 'action' => 'view', $utgift['nummer']));?></td>
 			<td><?php echo $utgift['fra'];?></td>
 			<td><?php echo $utgift['til'];?></td>
 			<td><?php echo $utgift['kroner'];?>,
@@ -167,7 +167,7 @@
 <?php endif; ?>
 <div class="actions">
                 <ul>
-                        <li><?php echo $html->link(__('Ny utgift', true), array('controller'=> 'pengeflyttinger', 'action'=>'add', 'kaffiimport' => $kaffiimport['Kaffiimport']['id']));?> </li>
+                        <li><?php echo $this->Html->link(__('Ny utgift', true), array('controller'=> 'pengeflyttinger', 'action'=>'add', 'kaffiimport' => $kaffiimport['Kaffiimport']['id']));?> </li>
                 </ul>
         </div>
 
@@ -193,7 +193,7 @@
                         }
                 ?>
                 <tr<?php echo $class;?>>
-                        <td><?php echo $html->link($utgift['id'], array('controller' => 'budsjett_pengeflyttinger', 'action' => 'view', $utgift['id']));?></td>
+                        <td><?php echo $this->Html->link($utgift['id'], array('controller' => 'budsjett_pengeflyttinger', 'action' => 'view', $utgift['id']));?></td>
                         <td><?php echo $utgift['fra'];?></td>
                         <td><?php echo $utgift['til'];?></td>
                         <td><?php echo $utgift['kroner'];?>,
@@ -206,7 +206,7 @@
 <?php endif; ?>
 <div class="actions">
                 <ul>
-                        <li><?php echo $html->link(__('Budsjetter ny utgift', true), array('controller'=> 'budsjett_pengeflyttinger', 'action'=>'add', 'kaffiimport' => $kaffiimport['Kaffiimport']['id']));?> </li>
+                        <li><?php echo $this->Html->link(__('Budsjetter ny utgift', true), array('controller'=> 'budsjett_pengeflyttinger', 'action'=>'add', 'kaffiimport' => $kaffiimport['Kaffiimport']['id']));?> </li>
                 </ul>
         </div>
 

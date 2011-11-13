@@ -25,11 +25,11 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Pdf for utskrift av rekneskap', true), array('action'=>'syn_pdf', $regnskap['Regnskap']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Endre Rekneskap', true), array('action'=>'edit', $regnskap['Regnskap']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Slett Rekneskap', true), array('action'=>'delete', $regnskap['Regnskap']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $regnskap['Regnskap']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Rekneskapar', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Ny Rekneskap', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Pdf for utskrift av rekneskap', true), array('action'=>'syn_pdf', $regnskap['Regnskap']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Endre Rekneskap', true), array('action'=>'edit', $regnskap['Regnskap']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Slett Rekneskap', true), array('action'=>'delete', $regnskap['Regnskap']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $regnskap['Regnskap']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Rekneskapar', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Rekneskap', true), array('action'=>'add')); ?> </li>
 	</ul>
 </div>
 
@@ -95,7 +95,7 @@
                 <tr<?php echo $class;?>>
                         <td><?php echo $beholdning['RegnskapBalanserVisning']['start_kroner'] . "," . $beholdning['RegnskapBalanserVisning']['start_oere'] ; ?></td>
                         <td><?php echo $beholdning['RegnskapBalanserVisning']['slutt_kroner']. "," . $beholdning['RegnskapBalanserVisning']['slutt_oere']; ?></td>
-                        <td><?php echo $html->link($beholdning['RegnskapBalanserVisning']['beskrivelse'], array('controller' => 'kontoer', 'action' => 'view', $beholdning['RegnskapBalanserVisning']['konto_id'])); ?></td>
+                        <td><?php echo $this->Html->link($beholdning['RegnskapBalanserVisning']['beskrivelse'], array('controller' => 'kontoer', 'action' => 'view', $beholdning['RegnskapBalanserVisning']['konto_id'])); ?></td>
                 </tr>
                 <?php endforeach; ?>
         <?php endif; ?>
@@ -134,7 +134,7 @@
 	           echo "</tr>";
                 ?>
                 <tr<?php echo $class;?>>
-		<td><?php echo $html->link($kaffelagre[$lagerid], array('controller' => 'kaffelagre'
+		<td><?php echo $this->Html->link($kaffelagre[$lagerid], array('controller' => 'kaffelagre'
 									, 'action' => 'view'
 									, $lagerid));?></td>
                  <?php endif; ?>

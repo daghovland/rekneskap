@@ -11,8 +11,8 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List Kaffityper', true), array('action' => 'index'));?></li>
-		<li><?php echo $html->link(__('List Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffityper', true), array('action' => 'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

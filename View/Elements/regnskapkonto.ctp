@@ -15,7 +15,7 @@
                 ?>
                 <tr<?php echo $class;?>>
                         <td><?php echo $utgift[$feltnavn]['kroner'] . "," . $utgift[$feltnavn]['oere'] ; ?></td>
-                        <td><?php echo $html->link($utgift[$feltnavn]['beskrivelse'], array('controller' => 'kontoer', 'action' => 'view', $utgift[$feltnavn]['konto_id'])); ?></td>
+                        <td><?php echo $this->Html->link($utgift[$feltnavn]['beskrivelse'], array('controller' => 'kontoer', 'action' => 'view', $utgift[$feltnavn]['konto_id'])); ?></td>
                 </tr>
                 <?php endforeach; ?>
         <?php endif; ?>

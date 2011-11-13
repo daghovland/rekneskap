@@ -11,6 +11,6 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List Lagerverdikontoer', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Lagerverdikontoer', true), array('action'=>'index'));?></li>
 	</ul>
 </div>

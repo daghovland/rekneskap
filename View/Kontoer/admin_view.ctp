@@ -30,9 +30,9 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Konto', true), array('action'=>'edit', $konto['Konto']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Konto', true), array('action'=>'delete', $konto['Konto']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $konto['Konto']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Kontoer', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Konto', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Konto', true), array('action'=>'edit', $konto['Konto']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Konto', true), array('action'=>'delete', $konto['Konto']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $konto['Konto']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kontoer', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Konto', true), array('action'=>'add')); ?> </li>
 	</ul>
 </div>

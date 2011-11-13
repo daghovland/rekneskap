@@ -15,10 +15,10 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Lagertype', true), array('action'=>'edit', $lagertype['Lagertype']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Lagertype', true), array('action'=>'delete', $lagertype['Lagertype']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagertype['Lagertype']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Lagertyper', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Lagertype', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Lagertype', true), array('action'=>'edit', $lagertype['Lagertype']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Lagertype', true), array('action'=>'delete', $lagertype['Lagertype']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagertype['Lagertype']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Lagertyper', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Lagertype', true), array('action'=>'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">

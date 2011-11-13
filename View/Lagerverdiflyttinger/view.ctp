@@ -8,12 +8,12 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fra'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($lagerverdiflytting['Frakonto']['navn'], array('controller' => 'lagerverdikontoer', 'action' => 'view', $lagerverdiflytting['Frakonto']['id'])); ?>
+			<?php echo $this->Html->link($lagerverdiflytting['Frakonto']['navn'], array('controller' => 'lagerverdikontoer', 'action' => 'view', $lagerverdiflytting['Frakonto']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Til'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($lagerverdiflytting['Tilkonto']['navn'], array('controller' => 'lagerverdikontoer', 'action' => 'view', $lagerverdiflytting['Tilkonto']['id'])); ?>
+			<?php echo $this->Html->link($lagerverdiflytting['Tilkonto']['navn'], array('controller' => 'lagerverdikontoer', 'action' => 'view', $lagerverdiflytting['Tilkonto']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kroner'); ?></dt>
@@ -70,9 +70,9 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Lagerverdiflytting', true), array('action'=>'edit', $lagerverdiflytting['Lagerverdiflytting']['id'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Lagerverdiflytting', true), array('action'=>'delete', $lagerverdiflytting['Lagerverdiflytting']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagerverdiflytting['Lagerverdiflytting']['id'])); ?> </li>
-		<li><?php echo $html->link(__('List Lagerverdiflyttinger', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Lagerverdiflytting', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Lagerverdiflytting', true), array('action'=>'edit', $lagerverdiflytting['Lagerverdiflytting']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Lagerverdiflytting', true), array('action'=>'delete', $lagerverdiflytting['Lagerverdiflytting']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagerverdiflytting['Lagerverdiflytting']['id'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Lagerverdiflyttinger', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Lagerverdiflytting', true), array('action'=>'add')); ?> </li>
 	</ul>
 </div>

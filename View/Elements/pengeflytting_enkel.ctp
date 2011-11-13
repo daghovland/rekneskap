@@ -8,10 +8,10 @@ foreach ($pengeflyttinger as $pengeflytting):
 ?>
 	<tr<?php echo $class;?>>
 		<td>
-			<?php echo $html->link($pengeflytting[$key]['fra'], array('controller' => 'kontoer', 'action' => 'view', $pengeflytting[$key]['fra']));; ?>
+			<?php echo $this->Html->link($pengeflytting[$key]['fra'], array('controller' => 'kontoer', 'action' => 'view', $pengeflytting[$key]['fra']));; ?>
 		</td>
 		<td>
-			<?php echo $html->link($pengeflytting[$key]['til'], array('controller' => 'kontoer', 'action' => 'view', $pengeflytting[$key]['til']));; ?>
+			<?php echo $this->Html->link($pengeflytting[$key]['til'], array('controller' => 'kontoer', 'action' => 'view', $pengeflytting[$key]['til']));; ?>
 		</td>
 		<td>
 			<?php echo $pengeflytting[$key]['kroner']; ?>,

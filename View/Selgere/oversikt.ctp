@@ -50,8 +50,8 @@ foreach ($kaffelagre as $array_key => $selger):
 			?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Meir info', true), array('action'=>'view', $selger['Selger']['nummer'])); ?>
-			<?php echo $html->link(__('Endre passord', true), array('action'=>'endre_passord', $selger['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Meir info', true), array('action'=>'view', $selger['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Endre passord', true), array('action'=>'endre_passord', $selger['Selger']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -59,10 +59,10 @@ foreach ($kaffelagre as $array_key => $selger):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Selger', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Roller', true), array('controller'=> 'roller', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Rolle', true), array('controller'=> 'roller', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffelagre', true), array('controller'=> 'kaffelagre', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Selger Lager', true), array('controller'=> 'kaffelagre', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Selger', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Roller', true), array('controller'=> 'roller', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Rolle', true), array('controller'=> 'roller', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffelagre', true), array('controller'=> 'kaffelagre', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Selger Lager', true), array('controller'=> 'kaffelagre', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

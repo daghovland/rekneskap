@@ -48,9 +48,9 @@ foreach ($adresser as $adresse):
 			<?php echo $adresse['Adresse']['poststad']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $adresse['Adresse']['nummer'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $adresse['Adresse']['nummer'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $adresse['Adresse']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $adresse['Adresse']['nummer'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $adresse['Adresse']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $adresse['Adresse']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $adresse['Adresse']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $adresse['Adresse']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -63,10 +63,10 @@ foreach ($adresser as $adresse):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Adresse', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Leveringsadressekunde', true), array('controller'=> 'kunder', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Adressefakturaer', true), array('controller'=> 'fakturaer', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Adresse', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Leveringsadressekunde', true), array('controller'=> 'kunder', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Adressefakturaer', true), array('controller'=> 'fakturaer', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

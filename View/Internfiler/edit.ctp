@@ -11,7 +11,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Slett', true), array('action'=>'delete', $form->value('Internfil.id')), null, sprintf(__('Er du sikker på at du vil slette fila %s?', true), $form->value('Internfil.filnavn'))); ?></li>
-		<li><?php echo $html->link(__('List Internfiler', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $form->value('Internfil.id')), null, sprintf(__('Er du sikker på at du vil slette fila %s?', true), $form->value('Internfil.filnavn'))); ?></li>
+		<li><?php echo $this->Html->link(__('List Internfiler', true), array('action'=>'index'));?></li>
 	</ul>
 </div>

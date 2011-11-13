@@ -32,9 +32,9 @@ foreach ($lagerverdikontoer as $lagerverdikonto):
 			<?php echo $lagerverdikonto['Lagerverdikonto']['lagerverditype_id']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $lagerverdikonto['Lagerverdikonto']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $lagerverdikonto['Lagerverdikonto']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $lagerverdikonto['Lagerverdikonto']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagerverdikonto['Lagerverdikonto']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $lagerverdikonto['Lagerverdikonto']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $lagerverdikonto['Lagerverdikonto']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $lagerverdikonto['Lagerverdikonto']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagerverdikonto['Lagerverdikonto']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -47,6 +47,6 @@ foreach ($lagerverdikontoer as $lagerverdikonto):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Lagerverdikonto', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Lagerverdikonto', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

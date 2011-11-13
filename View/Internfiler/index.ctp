@@ -45,12 +45,12 @@ foreach ($internfiler as $internfil):
 			<?php echo $internfil['Internfil']['modified']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($internfil['Selger']['nummer'], array('controller'=> 'selgere', 'action'=>'view', $internfil['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($internfil['Selger']['nummer'], array('controller'=> 'selgere', 'action'=>'view', $internfil['Selger']['nummer'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Last ned', true), array('action'=>'view', $internfil['Internfil']['id'])); ?>
-			<?php echo $html->link(__('Endre opplysningar', true), array('action'=>'edit', $internfil['Internfil']['id'])); ?>
-			<?php echo $html->link(__('Slett', true), array('action'=>'delete', $internfil['Internfil']['id']), null, sprintf(__('Vil du verkeleg slette fila %s?', true), $internfil['Internfil']['filnavn'])); ?>
+			<?php echo $this->Html->link(__('Last ned', true), array('action'=>'view', $internfil['Internfil']['id'])); ?>
+			<?php echo $this->Html->link(__('Endre opplysningar', true), array('action'=>'edit', $internfil['Internfil']['id'])); ?>
+			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $internfil['Internfil']['id']), null, sprintf(__('Vil du verkeleg slette fila %s?', true), $internfil['Internfil']['filnavn'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -63,6 +63,6 @@ foreach ($internfiler as $internfil):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Last opp ny fil', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Last opp ny fil', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

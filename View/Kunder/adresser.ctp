@@ -9,11 +9,11 @@ if($to_adresser){
 <?php
     echo $this->element("adresse", array("adresse" => $kunde['FakturaAdresse']));
     echo "<br />";
-    echo $html->link(__('Endre adresse', true), array('controller' => 'adresser', 'action' => 'edit', $kunde['FakturaAdresse']['nummer']));
+    echo $this->Html->link(__('Endre adresse', true), array('controller' => 'adresser', 'action' => 'edit', $kunde['FakturaAdresse']['nummer']));
     echo "</td><td>";
     echo $this->element("adresse", array("adresse" => $kunde['LeveringsAdresse']));
     echo "<br />";
-    echo $html->link(__('Endre adresse', true), array('controller' => 'adresser', 'action' => 'edit', $kunde['LeveringsAdresse']['nummer']));
+    echo $this->Html->link(__('Endre adresse', true), array('controller' => 'adresser', 'action' => 'edit', $kunde['LeveringsAdresse']['nummer']));
  } else {
   ?>
   <tr><th>Adresse</th></tr>
@@ -21,7 +21,7 @@ if($to_adresser){
 <?php
     echo $this->element("adresse", array("adresse" => $kunde['LeveringsAdresse']));
     echo "<br />";
-    echo $html->link(__('Endre adresse', true), array('controller' => 'adresser', 'action' => 'edit', $kunde['LeveringsAdresse']['nummer']));
+    echo $this->Html->link(__('Endre adresse', true), array('controller' => 'adresser', 'action' => 'edit', $kunde['LeveringsAdresse']['nummer']));
  }
 ?>
 </td></tr>

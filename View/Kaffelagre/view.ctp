@@ -8,7 +8,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Lageransvarlig'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($kaffelager['Selger']['navn'], array('controller'=> 'selgere', 'action'=>'view', $kaffelager['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($kaffelager['Selger']['navn'], array('controller'=> 'selgere', 'action'=>'view', $kaffelager['Selger']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse'); ?></dt>
@@ -18,12 +18,12 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Lagertypenavn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($kaffelager['lagertypenavn']['navn'], array('controller'=> 'lagertyper', 'action'=>'view', $kaffelager['lagertypenavn']['nummer'])); ?>
+			<?php echo $this->Html->link($kaffelager['lagertypenavn']['navn'], array('controller'=> 'lagertyper', 'action'=>'view', $kaffelager['lagertypenavn']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Lagerkonto'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($kaffelager['lagerkonto']['nummer'], array('controller'=> 'kontoer', 'action'=>'view', $kaffelager['lagerkonto']['nummer'])); ?>
+			<?php echo $this->Html->link($kaffelager['lagerkonto']['nummer'], array('controller'=> 'kontoer', 'action'=>'view', $kaffelager['lagerkonto']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<?php 
@@ -34,14 +34,14 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Endre Kaffelager', true), array('action'=>'edit', $kaffelager['Kaffelager']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('Slett Kaffelager', true), array('action'=>'delete', $kaffelager['Kaffelager']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffelager['Kaffelager']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Kaffelagre', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Nytt Kaffelager', true), array('action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Lagertyper', true), array('controller'=> 'lagertyper', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Endre Kaffelager', true), array('action'=>'edit', $kaffelager['Kaffelager']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Slett Kaffelager', true), array('action'=>'delete', $kaffelager['Kaffelager']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffelager['Kaffelager']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffelagre', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nytt Kaffelager', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Lagertyper', true), array('controller'=> 'lagertyper', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -84,7 +84,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $html->link(__('New Lagerfraflytting', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add'));?> </li>
+			<li><?php echo $this->Html->link(__('New Lagerfraflytting', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add'));?> </li>
 		</ul>
 	</div>
 </div>

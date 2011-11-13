@@ -32,10 +32,10 @@ foreach ($pengeflyttinger as $pengeflytting):
 			<?php echo $pengeflytting['Pengeflytting']['nummer']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($pengeflytting['Frakonto']['nummer'], array('controller'=> 'kontoer', 'action'=>'view', $pengeflytting['Frakonto']['nummer'])); ?>
+			<?php echo $this->Html->link($pengeflytting['Frakonto']['nummer'], array('controller'=> 'kontoer', 'action'=>'view', $pengeflytting['Frakonto']['nummer'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($pengeflytting['Tilkonto']['nummer'], array('controller'=> 'kontoer', 'action'=>'view', $pengeflytting['Tilkonto']['nummer'])); ?>
+			<?php echo $this->Html->link($pengeflytting['Tilkonto']['nummer'], array('controller'=> 'kontoer', 'action'=>'view', $pengeflytting['Tilkonto']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $pengeflytting['Pengeflytting']['kroner']; ?>
@@ -50,15 +50,15 @@ foreach ($pengeflyttinger as $pengeflytting):
 			<?php echo $pengeflytting['Pengeflytting']['beskrivelse']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($pengeflytting['kaffeflyttingfaktura']['nummer'], array('controller'=> 'fakturaer', 'action'=>'view', $pengeflytting['kaffeflyttingfaktura']['nummer'])); ?>
+			<?php echo $this->Html->link($pengeflytting['kaffeflyttingfaktura']['nummer'], array('controller'=> 'fakturaer', 'action'=>'view', $pengeflytting['kaffeflyttingfaktura']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $pengeflytting['Pengeflytting']['oere']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $pengeflytting['Pengeflytting']['nummer'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $pengeflytting['Pengeflytting']['nummer'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $pengeflytting['Pengeflytting']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $pengeflytting['Pengeflytting']['nummer'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $pengeflytting['Pengeflytting']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $pengeflytting['Pengeflytting']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $pengeflytting['Pengeflytting']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $pengeflytting['Pengeflytting']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -71,10 +71,10 @@ foreach ($pengeflyttinger as $pengeflytting):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Pengeflytting', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Frakonto', true), array('controller'=> 'kontoer', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffeflyttingfaktura', true), array('controller'=> 'fakturaer', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Pengeflytting', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Frakonto', true), array('controller'=> 'kontoer', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffeflyttingfaktura', true), array('controller'=> 'fakturaer', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

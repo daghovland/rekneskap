@@ -28,7 +28,7 @@ foreach ($startsaldoer as $startsaldo):
 			<?php echo $startsaldo['Startsaldo']['id']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($startsaldo['Regnskap']['beskrivelse'], array('controller'=> 'regnskap', 'action'=>'view', $startsaldo['Regnskap']['id'])); ?>
+			<?php echo $this->Html->link($startsaldo['Regnskap']['beskrivelse'], array('controller'=> 'regnskap', 'action'=>'view', $startsaldo['Regnskap']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $startsaldo['Startsaldo']['kroner']; ?>
@@ -37,12 +37,12 @@ foreach ($startsaldoer as $startsaldo):
 			<?php echo $startsaldo['Startsaldo']['oere']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($startsaldo['Konto']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $startsaldo['Konto']['nummer'])); ?>
+			<?php echo $this->Html->link($startsaldo['Konto']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $startsaldo['Konto']['nummer'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $startsaldo['Startsaldo']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $startsaldo['Startsaldo']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $startsaldo['Startsaldo']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $startsaldo['Startsaldo']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $startsaldo['Startsaldo']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $startsaldo['Startsaldo']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $startsaldo['Startsaldo']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $startsaldo['Startsaldo']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -55,10 +55,10 @@ foreach ($startsaldoer as $startsaldo):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Startsaldoer', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Regnskap', true), array('controller'=> 'regnskap', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Regnskap', true), array('controller'=> 'regnskap', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Konto', true), array('controller'=> 'kontoer', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Startsaldoer', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Regnskap', true), array('controller'=> 'regnskap', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Regnskap', true), array('controller'=> 'regnskap', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Konto', true), array('controller'=> 'kontoer', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

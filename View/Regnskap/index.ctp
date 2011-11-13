@@ -36,8 +36,8 @@ foreach ($regnskaper as $regnskap):
 			<?php echo $regnskap['Regnskap']['beskrivelse']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Syn', true), array('action'=>'view', $regnskap['Regnskap']['id'])); ?>
-			<?php echo $html->link(__('Pdf', true), array('action'=>'syn_pdf', $regnskap['Regnskap']['id'])); ?>
+			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $regnskap['Regnskap']['id'])); ?>
+			<?php echo $this->Html->link(__('Pdf', true), array('action'=>'syn_pdf', $regnskap['Regnskap']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -50,8 +50,8 @@ foreach ($regnskaper as $regnskap):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Ny Rekneskap', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Startsaldoar', true), array('controller'=> 'start_saldoer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Start Saldo', true), array('controller'=> 'start_saldoer', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Rekneskap', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Startsaldoar', true), array('controller'=> 'start_saldoer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Start Saldo', true), array('controller'=> 'start_saldoer', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

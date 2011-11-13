@@ -36,10 +36,10 @@ foreach ($lagerverdiflyttinger as $lagerverdiflytting):
 			<?php echo $lagerverdiflytting['Lagerverdiflytting']['id']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($lagerverdiflytting['Frakonto']['navn'], array('controller' => 'lagerverdikontoer', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['fra'])); ?>
+			<?php echo $this->Html->link($lagerverdiflytting['Frakonto']['navn'], array('controller' => 'lagerverdikontoer', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['fra'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($lagerverdiflytting['Tilkonto']['navn'], array('controller' => 'lagerverdikontoer', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['til'])); ?>
+			<?php echo $this->Html->link($lagerverdiflytting['Tilkonto']['navn'], array('controller' => 'lagerverdikontoer', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['til'])); ?>
 		</td>
 		<td>
 			<?php echo $lagerverdiflytting['Lagerverdiflytting']['kroner']; ?>
@@ -60,21 +60,21 @@ foreach ($lagerverdiflyttinger as $lagerverdiflytting):
 			<?php echo $lagerverdiflytting['Lagerverdiflytting']['modified']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($lagerverdiflytting['Lagerverdiflytting']['pengeflytting_id'], array('controller' => 'pengeflyttinger', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['pengeflytting_id'])); ?>
+			<?php echo $this->Html->link($lagerverdiflytting['Lagerverdiflytting']['pengeflytting_id'], array('controller' => 'pengeflyttinger', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['pengeflytting_id'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($lagerverdiflytting['Lagerverdiflytting']['kaffeflytting_id'], array('controller' => 'kaffeflyttinger', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['kaffeflytting_id'])); ?>
+			<?php echo $this->Html->link($lagerverdiflytting['Lagerverdiflytting']['kaffeflytting_id'], array('controller' => 'kaffeflyttinger', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['kaffeflytting_id'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($lagerverdiflytting['Lagerverdiflytting']['kaffiimport_id'], array('controller' => 'kaffiimportar', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['kaffiimport_id'])); ?>
+			<?php echo $this->Html->link($lagerverdiflytting['Lagerverdiflytting']['kaffiimport_id'], array('controller' => 'kaffiimportar', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['kaffiimport_id'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($lagerverdiflytting['Lagerverdiflytting']['kaffesalg_id'], array('controller' => 'kaffesalg', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['kaffesalg_id'])); ?>
+			<?php echo $this->Html->link($lagerverdiflytting['Lagerverdiflytting']['kaffesalg_id'], array('controller' => 'kaffesalg', 'action' => 'view', $lagerverdiflytting['Lagerverdiflytting']['kaffesalg_id'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $lagerverdiflytting['Lagerverdiflytting']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $lagerverdiflytting['Lagerverdiflytting']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $lagerverdiflytting['Lagerverdiflytting']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagerverdiflytting['Lagerverdiflytting']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $lagerverdiflytting['Lagerverdiflytting']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $lagerverdiflytting['Lagerverdiflytting']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $lagerverdiflytting['Lagerverdiflytting']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $lagerverdiflytting['Lagerverdiflytting']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -87,6 +87,6 @@ foreach ($lagerverdiflyttinger as $lagerverdiflytting):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Lagerverdiflytting', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Lagerverdiflytting', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

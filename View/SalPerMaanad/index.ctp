@@ -6,7 +6,7 @@
 	<th><?php echo ('Månad');?></th>
 	<?php foreach($kaffepriser as $i => $kaffepris): ?>
 	  <th>
-            <?php echo $html->link($kaffepris['Kaffepris']['intern_navn'], array('controller'=> 'kaffepriser', 'action'=>'view', $kaffepris['Kaffepris']['nummer'])); ?>
+            <?php echo $this->Html->link($kaffepris['Kaffepris']['intern_navn'], array('controller'=> 'kaffepriser', 'action'=>'view', $kaffepris['Kaffepris']['nummer'])); ?>
           </th>
 	<?php endforeach; ?>
 </tr>

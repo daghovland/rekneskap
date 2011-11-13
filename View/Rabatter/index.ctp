@@ -23,7 +23,7 @@ foreach ($rabatter as $rabatt):
 ?>
 	<tr<?php echo $class;?>>
 		<td>
-			<?php echo $html->link($rabatt['Kaffepris']['type'], array('controller' => 'kaffepriser', 'action' => 'view', $rabatt['Rabatt']['kaffepris_id'])); ?>
+			<?php echo $this->Html->link($rabatt['Kaffepris']['type'], array('controller' => 'kaffepriser', 'action' => 'view', $rabatt['Rabatt']['kaffepris_id'])); ?>
 		</td>
 		<td>
 			<?php echo $rabatt['Rabatt']['pris']; ?>
@@ -32,7 +32,7 @@ foreach ($rabatter as $rabatt):
 			<?php echo $rabatt['Rabatt']['beskrivelse']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Syn', true), array('action'=>'view', $rabatt['Rabatt']['id'])); ?>
+			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $rabatt['Rabatt']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -45,10 +45,10 @@ foreach ($rabatter as $rabatt):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Rabatt', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Kaffepriser', true), array('controller'=> 'kaffepriser', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffepris', true), array('controller'=> 'kaffepriser', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffesalg', true), array('controller'=> 'kaffesalg', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffesalg', true), array('controller'=> 'kaffesalg', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Rabatt', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kaffepriser', true), array('controller'=> 'kaffepriser', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffepris', true), array('controller'=> 'kaffepriser', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffesalg', true), array('controller'=> 'kaffesalg', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffesalg', true), array('controller'=> 'kaffesalg', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

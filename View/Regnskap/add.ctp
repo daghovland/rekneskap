@@ -12,8 +12,8 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List Regnskap', true), array('action'=>'index'));?></li>
-		<li><?php echo $html->link(__('List Start Saldoers', true), array('controller'=> 'start_saldoers', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Start Saldoer', true), array('controller'=> 'start_saldoers', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Regnskap', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Start Saldoers', true), array('controller'=> 'start_saldoers', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Start Saldoer', true), array('controller'=> 'start_saldoers', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

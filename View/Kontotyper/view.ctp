@@ -15,9 +15,9 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Edit Kontotype', true), array('action'=>'edit', $kontotype['Kontotype']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('Delete Kontotype', true), array('action'=>'delete', $kontotype['Kontotype']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kontotype['Kontotype']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Kontotyper', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kontotype', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Edit Kontotype', true), array('action'=>'edit', $kontotype['Kontotype']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete Kontotype', true), array('action'=>'delete', $kontotype['Kontotype']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kontotype['Kontotype']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kontotyper', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kontotype', true), array('action'=>'add')); ?> </li>
 	</ul>
 </div>

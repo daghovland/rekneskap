@@ -19,12 +19,12 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontotypenavn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($konto['Kontotype']['beskrivelse'], array('controller'=> 'kontotyper', 'action'=>'view', $konto['Kontotype']['nummer'])); ?>
+			<?php echo $this->Html->link($konto['Kontotype']['beskrivelse'], array('controller'=> 'kontotyper', 'action'=>'view', $konto['Kontotype']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontoansvarlig'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $html->link($konto['Selger']['navn'], array('controller'=> 'selgere', 'action'=>'view', $konto['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($konto['Selger']['navn'], array('controller'=> 'selgere', 'action'=>'view', $konto['Selger']['nummer'])); ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Balanse'); ?></dt>
@@ -42,11 +42,11 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Endre Konto', true), array('action'=>'edit', $konto['Konto']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('Slett Konto', true), array('action'=>'delete', $konto['Konto']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $konto['Konto']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Kontoer', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Ny Konto', true), array('action'=>'add')); ?> </li
-		<li><?php echo $html->link(__('Ny Pengeflytting', true), array('controller' => 'pengeflyttinger', 'action'=>'add')); ?> </li
+		<li><?php echo $this->Html->link(__('Endre Konto', true), array('action'=>'edit', $konto['Konto']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Slett Konto', true), array('action'=>'delete', $konto['Konto']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $konto['Konto']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kontoer', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Konto', true), array('action'=>'add')); ?> </li
+		<li><?php echo $this->Html->link(__('Ny Pengeflytting', true), array('controller' => 'pengeflyttinger', 'action'=>'add')); ?> </li
 	</ul>
 </div>
 <div class="related">
@@ -88,7 +88,7 @@ $options = array(
 
 $script = 'function oppdaterBevegelser(event) { 
 			new Ajax.Updater(\'kontobevegelser\','
-					. $html->url(array('controller' =>'kontoer', 'action' => 'view'))
+					. $this->Html->url(array('controller' =>'kontoer', 'action' => 'view'))
 					. ', {asynchronous:true, 
 						evalScripts:true, 
 						parameters:Form.serialize(\'bevegelserIntervallForm\'), 
@@ -133,7 +133,7 @@ echo $javascript->codeBlock($script);
 
         <div class="actions">
                 <ul>
-                        <li><?php echo $html->link(__('New Lagerfraflytting', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add'));?> </li>
+                        <li><?php echo $this->Html->link(__('New Lagerfraflytting', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add'));?> </li>
                 </ul>
         </div>
 </div>

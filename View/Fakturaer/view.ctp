@@ -4,12 +4,12 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Vis pdf Faktura', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List Fakturaer', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Vis pdf Faktura', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
 	</ul>
 </div>
 	<div class="related">
@@ -21,7 +21,7 @@
 			<dt<?php if ($i % 2 == 0) echo $class;?>>
 		<?php __('Nummer');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-	<?php echo $html->link($flytting['nummer'], array('controller' => 'pengeflyttinger','action' => 'view', $flytting['nummer']));?>
+	<?php echo $this->Html->link($flytting['nummer'], array('controller' => 'pengeflyttinger','action' => 'view', $flytting['nummer']));?>
 &nbsp;</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fra');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
@@ -83,7 +83,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $html->link(__('New Fakturakaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add'));?> </li>
+			<li><?php echo $this->Html->link(__('New Fakturakaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add'));?> </li>
 		</ul>
 	</div>
 </div>

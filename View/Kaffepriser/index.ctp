@@ -46,7 +46,7 @@ foreach ($kaffepriser as $kaffepris):
 			<?php echo $kaffepris['Kaffepris']['intern_navn']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($kaffepris['Kaffibrenning']['navn'], array('controller' => 'kaffibrenningar', 'action' => 'view', $kaffepris['Kaffepris']['kaffibrenning_id'])); ?>
+			<?php echo $this->Html->link($kaffepris['Kaffibrenning']['navn'], array('controller' => 'kaffibrenningar', 'action' => 'view', $kaffepris['Kaffepris']['kaffibrenning_id'])); ?>
 		</td>
 		<td>
 			<?php echo $kaffepris['Kaffepris']['beskrivelse']; ?>
@@ -64,9 +64,9 @@ foreach ($kaffepriser as $kaffepris):
 			<?php echo $kaffepris['Kaffepris']['gram']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $kaffepris['Kaffepris']['nummer'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $kaffepris['Kaffepris']['nummer'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $kaffepris['Kaffepris']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffepris['Kaffepris']['nummer'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $kaffepris['Kaffepris']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $kaffepris['Kaffepris']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $kaffepris['Kaffepris']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffepris['Kaffepris']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -79,8 +79,8 @@ foreach ($kaffepriser as $kaffepris):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Kaffepris', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kaffe Type Flyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffepris', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffe Type Flyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

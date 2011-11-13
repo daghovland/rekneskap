@@ -55,7 +55,7 @@ foreach ($kontoutskrifter as $kontoutskrift):
 			<?php echo $kontoutskrift['Kontoutskrift']['modified']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($kontoutskrift['Konto']['beskrivelse'], array('controller' => 'kontoer', 'action' => 'view', $kontoutskrift['Konto']['nummer'])); ?>
+			<?php echo $this->Html->link($kontoutskrift['Konto']['beskrivelse'], array('controller' => 'kontoer', 'action' => 'view', $kontoutskrift['Konto']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $kontoutskrift['Kontoutskrift']['mnd']; ?>
@@ -76,9 +76,9 @@ foreach ($kontoutskrifter as $kontoutskrift):
 			<?php echo $kontoutskrift['Kontoutskrift']['inn_oere']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action' => 'view', $kontoutskrift['Kontoutskrift']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action' => 'edit', $kontoutskrift['Kontoutskrift']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action' => 'delete', $kontoutskrift['Kontoutskrift']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kontoutskrift['Kontoutskrift']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $kontoutskrift['Kontoutskrift']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $kontoutskrift['Kontoutskrift']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $kontoutskrift['Kontoutskrift']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kontoutskrift['Kontoutskrift']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -91,8 +91,8 @@ foreach ($kontoutskrifter as $kontoutskrift):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Kontoutskrift', true), array('action' => 'add')); ?></li>
-		<li><?php echo $html->link(__('List Kontoer', true), array('controller' => 'kontoer', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Konto', true), array('controller' => 'kontoer', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kontoutskrift', true), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kontoer', true), array('controller' => 'kontoer', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Konto', true), array('controller' => 'kontoer', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

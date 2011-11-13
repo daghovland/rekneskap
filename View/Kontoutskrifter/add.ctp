@@ -20,8 +20,8 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List Kontoutskrifter', true), array('action' => 'index'));?></li>
-		<li><?php echo $html->link(__('List Kontoer', true), array('controller' => 'kontoer', 'action' => 'index')); ?> </li>
-		<li><?php echo $html->link(__('New Konto', true), array('controller' => 'kontoer', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kontoutskrifter', true), array('action' => 'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Kontoer', true), array('controller' => 'kontoer', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Konto', true), array('controller' => 'kontoer', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

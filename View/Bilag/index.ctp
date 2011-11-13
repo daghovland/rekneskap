@@ -40,7 +40,7 @@ foreach ($bilag as $bilaget):
 			<?php echo $bilaget['Bilag']['size']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($bilaget['Pengeflytting']['nummer'], array('controller'=> 'pengeflyttinger', 'action'=>'view', $bilaget['Pengeflytting']['nummer'])); ?>
+			<?php echo $this->Html->link($bilaget['Pengeflytting']['nummer'], array('controller'=> 'pengeflyttinger', 'action'=>'view', $bilaget['Pengeflytting']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $bilaget['Bilag']['created']; ?>
@@ -49,12 +49,12 @@ foreach ($bilag as $bilaget):
 			<?php echo $bilaget['Bilag']['modified']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($bilaget['Selger']['nummer'], array('controller'=> 'selgere', 'action'=>'view', $bilaget['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($bilaget['Selger']['nummer'], array('controller'=> 'selgere', 'action'=>'view', $bilaget['Selger']['nummer'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $bilaget['Bilag']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $bilaget['Bilag']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $bilaget['Bilag']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $bilaget['Bilag']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $bilaget['Bilag']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $bilaget['Bilag']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $bilaget['Bilag']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $bilaget['Bilag']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -67,10 +67,10 @@ foreach ($bilag as $bilaget):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New PengeflyttingBilag', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Selger', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Pengeflytting', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New PengeflyttingBilag', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Selger', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Pengeflytting', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

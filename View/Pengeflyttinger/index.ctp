@@ -41,7 +41,7 @@ $options = array(
 
 $script = 'function oppdaterBevegelser(event) { 
 			new Ajax.Updater(\'kontobevegelser\','
-					. $html->url(array('controller' =>'pengeflyttinger', 'action' => 'liste'))
+					. $this->Html->url(array('controller' =>'pengeflyttinger', 'action' => 'liste'))
 					. ', {asynchronous:true, 
 						evalScripts:true, 
 						parameters:Form.serialize(\'bevegelserIntervallForm\'), 
@@ -82,8 +82,8 @@ echo $paginator->counter(array(
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Ny Pengeflytting', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Pengeflytting', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
 	</ul>
 </div>

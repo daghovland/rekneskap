@@ -25,10 +25,10 @@ foreach ($kontoer as $konto):
 			<?php echo $konto['Konto']['beskrivelse']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($kontotyper[$konto['Konto']['type']], array('controller'=> 'kontotyper', 'action'=>'view', $konto['Konto']['type'])); ?>
+			<?php echo $this->Html->link($kontotyper[$konto['Konto']['type']], array('controller'=> 'kontotyper', 'action'=>'view', $konto['Konto']['type'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($selgere[$konto['Konto']['ansvarlig']], array('controller'=> 'selgere', 'action'=>'view', $konto['Konto']['ansvarlig'])); ?>
+			<?php echo $this->Html->link($selgere[$konto['Konto']['ansvarlig']], array('controller'=> 'selgere', 'action'=>'view', $konto['Konto']['ansvarlig'])); ?>
 		</td>
 		<td>
 			<?php echo $konto['Kontobalanse']['kroner']; ?>
@@ -41,9 +41,9 @@ foreach ($kontoer as $konto):
 			?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $konto['Konto']['nummer'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $konto['Konto']['nummer'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $konto['Konto']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $konto['Konto']['nummer'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $konto['Konto']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $konto['Konto']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $konto['Konto']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $konto['Konto']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -51,10 +51,10 @@ foreach ($kontoer as $konto):
 </div>
 <div class = "actions">	
 	<ul>
-		<li><?php echo $html->link(__('New Konto', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Kontotyper', true), array('controller'=> 'kontotyper', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kontotypenavn', true), array('controller'=> 'kontotyper', 'action'=>'add')); ?> </li>
-		<li><?php echo $html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Kontoansvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Konto', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kontotyper', true), array('controller'=> 'kontotyper', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kontotypenavn', true), array('controller'=> 'kontotyper', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kontoansvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

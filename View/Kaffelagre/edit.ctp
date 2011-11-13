@@ -14,9 +14,9 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Delete', true), array('action'=>'delete', $form->value('Kaffelager.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kaffelager.nummer'))); ?></li>
-		<li><?php echo $html->link(__('List Kaffelagre', true), array('action'=>'index'));?></li>
-		<li><?php echo $html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Lageransvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $form->value('Kaffelager.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kaffelager.nummer'))); ?></li>
+		<li><?php echo $this->Html->link(__('List Kaffelagre', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Lageransvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

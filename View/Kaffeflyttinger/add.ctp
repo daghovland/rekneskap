@@ -1,6 +1,6 @@
 <div class="kaffeflyttinger form">
 <?php echo $form->create('Kaffeflytting');?>
-<p>Det er vanlegvis betre å bruke <?php echo $html->link('eit anna skjema', array('action' => 'hent_kaffi')); ?> </p>
+<p>Det er vanlegvis betre å bruke <?php echo $this->Html->link('eit anna skjema', array('action' => 'hent_kaffi')); ?> </p>
 	<fieldset>
  		<legend><?php __('Legg til ein kaffeflytting');?></legend>
 	<?php
@@ -28,10 +28,10 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('List Kaffeflyttinger', true), array('action'=>'index'));?></li>
-		<li><?php echo $html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffelagre', true), array('controller'=> 'kaffelagre', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Kaffepriser', true), array('controller'=> 'kaffepriser', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('List Lagertyper', true), array('controller'=> 'lagertyper', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('action'=>'index'));?></li>
+		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffelagre', true), array('controller'=> 'kaffelagre', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffepriser', true), array('controller'=> 'kaffepriser', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Lagertyper', true), array('controller'=> 'lagertyper', 'action'=>'index')); ?> </li>
 	</ul>
 </div>

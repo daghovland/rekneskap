@@ -50,10 +50,10 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Sel kaffi til', true), array('controller' => 'kaffesalg', 'action'=>'add', 'kundenummer' => $kunde['Kunde']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('Endre leveringsadresse', true), array('controller' => 'adresser', 'action'=>'edit', $kunde['LeveringsAdresse']['nummer'])); ?> </li>
-		<li><?php echo $html->link(__('List alle Kunder', true), array('action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('Ny Kunde', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Sel kaffi til', true), array('controller' => 'kaffesalg', 'action'=>'add', 'kundenummer' => $kunde['Kunde']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Endre leveringsadresse', true), array('controller' => 'adresser', 'action'=>'edit', $kunde['LeveringsAdresse']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('List alle Kunder', true), array('action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Kunde', true), array('action'=>'add')); ?> </li>
 	</ul>
 </div>
 <div class="related">
@@ -92,7 +92,7 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $html->link($faktura['nummer'], array('controller' => 'fakturaer', 'action' => 'view', $faktura['nummer']));?></td>
+			<td><?php echo $this->Html->link($faktura['nummer'], array('controller' => 'fakturaer', 'action' => 'view', $faktura['nummer']));?></td>
 			<td><?php echo $faktura['kunde'];?></td>
 			<td><?php echo $faktura['faktura_dato'];?></td>
 			<td><?php echo $faktura['betalings_frist'];?></td>
@@ -101,11 +101,11 @@
 			<td><?php echo $faktura['adresse'];?></td>
 			<td><?php echo $faktura['mva'];?></td>
 			<td><?php echo $faktura['totalpris'];?></td>
-			<td><?php echo $html->link($faktura['kaffesalg_id'], array('controller' => 'kaffesalg', 'action' => 'view', $faktura['kaffesalg_id']));?></td>
+			<td><?php echo $this->Html->link($faktura['kaffesalg_id'], array('controller' => 'kaffesalg', 'action' => 'view', $faktura['kaffesalg_id']));?></td>
 			<td class="actions">
-				<?php echo $html->link(__('View', true), array('controller'=> 'fakturaer', 'action'=>'view', $faktura['nummer'])); ?>
-				<?php echo $html->link(__('Edit', true), array('controller'=> 'fakturaer', 'action'=>'edit', $faktura['nummer'])); ?>
-				<?php echo $html->link(__('Delete', true), array('controller'=> 'fakturaer', 'action'=>'delete', $faktura['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $faktura['nummer'])); ?>
+				<?php echo $this->Html->link(__('View', true), array('controller'=> 'fakturaer', 'action'=>'view', $faktura['nummer'])); ?>
+				<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'fakturaer', 'action'=>'edit', $faktura['nummer'])); ?>
+				<?php echo $this->Html->link(__('Delete', true), array('controller'=> 'fakturaer', 'action'=>'delete', $faktura['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $faktura['nummer'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -114,7 +114,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $html->link(__('New Faktura', true), array('controller'=> 'fakturaer', 'action'=>'add'));?> </li>
+			<li><?php echo $this->Html->link(__('New Faktura', true), array('controller'=> 'fakturaer', 'action'=>'add'));?> </li>
 		</ul>
 	</div>
 </div>

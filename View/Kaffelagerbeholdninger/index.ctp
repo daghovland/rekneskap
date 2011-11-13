@@ -5,7 +5,7 @@
       <th>Lager nummer</th>
       <th>Lagernavn</th>
       <?php foreach($kaffetyper as $kaffetype): ?>
-   <th><?php echo $html->link($kaffetype['Kaffepris']['type'], array('controller' => 'kaffepriser', 'action' => 'view',$kaffetype['Kaffepris']['nummer'])); ?> </th>
+   <th><?php echo $this->Html->link($kaffetype['Kaffepris']['type'], array('controller' => 'kaffepriser', 'action' => 'view',$kaffetype['Kaffepris']['nummer'])); ?> </th>
       <?php endforeach; ?>
       <th>Pengebalanse</th>
     </tr>
@@ -21,10 +21,10 @@
        ?>
     <tr<?php echo $class;?>>
       <td>
-	<?php echo $html->link($kaffelager['Kaffelager']['nummer'], array('controller' => 'kaffelagre', 'action' => 'view', $kaffelager['Kaffelager']['nummer'])); ?>
+	<?php echo $this->Html->link($kaffelager['Kaffelager']['nummer'], array('controller' => 'kaffelagre', 'action' => 'view', $kaffelager['Kaffelager']['nummer'])); ?>
       </td>
       <td>
-      <?php echo $html->link($kaffelager['Kaffelager']['beskrivelse'], array('controller' => 'kaffelagre', 'action' => 'view', $kaffelager['Kaffelager']['nummer'])); ?>
+      <?php echo $this->Html->link($kaffelager['Kaffelager']['beskrivelse'], array('controller' => 'kaffelagre', 'action' => 'view', $kaffelager['Kaffelager']['nummer'])); ?>
       </td>
       <?php foreach($kaffetyper as $kaffetype): ?>
       <td>
@@ -50,8 +50,8 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Kaffelager', true), array('action'=>'add')); ?></li>
-		<li><?php echo $html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
-		<li><?php echo $html->link(__('New Lageransvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffelager', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Lageransvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

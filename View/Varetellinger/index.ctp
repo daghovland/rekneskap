@@ -30,10 +30,10 @@ foreach ($varetellinger as $varetelling):
 			<?php echo $varetelling['Varetelling']['id']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($varetelling['Kaffelager']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $varetelling['Kaffelager']['nummer'])); ?>
+			<?php echo $this->Html->link($varetelling['Kaffelager']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $varetelling['Kaffelager']['nummer'])); ?>
 		</td>
 		<td>
-			<?php echo $html->link($varetelling['Kaffepris']['type'], array('controller'=> 'kaffepriser', 'action'=>'view', $varetelling['Kaffepris']['nummer'])); ?>
+			<?php echo $this->Html->link($varetelling['Kaffepris']['type'], array('controller'=> 'kaffepriser', 'action'=>'view', $varetelling['Kaffepris']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $varetelling['Varetelling']['antall']; ?>
@@ -50,12 +50,12 @@ foreach ($varetellinger as $varetelling):
 			<?php echo $varetelling['Varetelling']['dato']; ?>
 		</td>
 		<td>
-			<?php echo $html->link($varetelling['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $varetelling['Selger']['nummer'])); ?>
+			<?php echo $this->Html->link($varetelling['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $varetelling['Selger']['nummer'])); ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('Vis', true), array('action'=>'view', $varetelling['Varetelling']['id'])); ?>
-			<?php echo $html->link(__('Endre', true), array('action'=>'edit', $varetelling['Varetelling']['id'])); ?>
-			<?php echo $html->link(__('Slett', true), array('action'=>'delete', $varetelling['Varetelling']['id']), null, sprintf(__('Vil du virkelig slette # %s?', true), $varetelling['Varetelling']['id'])); ?>
+			<?php echo $this->Html->link(__('Vis', true), array('action'=>'view', $varetelling['Varetelling']['id'])); ?>
+			<?php echo $this->Html->link(__('Endre', true), array('action'=>'edit', $varetelling['Varetelling']['id'])); ?>
+			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $varetelling['Varetelling']['id']), null, sprintf(__('Vil du virkelig slette # %s?', true), $varetelling['Varetelling']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -68,6 +68,6 @@ foreach ($varetellinger as $varetelling):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('Ny Varetelling', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Ny Varetelling', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

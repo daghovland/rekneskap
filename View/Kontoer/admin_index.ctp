@@ -40,9 +40,9 @@ foreach ($kontoer as $konto):
 			<?php echo $konto['Konto']['delav']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $html->link(__('View', true), array('action'=>'view', $konto['Konto']['id'])); ?>
-			<?php echo $html->link(__('Edit', true), array('action'=>'edit', $konto['Konto']['id'])); ?>
-			<?php echo $html->link(__('Delete', true), array('action'=>'delete', $konto['Konto']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $konto['Konto']['id'])); ?>
+			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $konto['Konto']['id'])); ?>
+			<?php echo $this->Html->link(__('Edit', true), array('action'=>'edit', $konto['Konto']['id'])); ?>
+			<?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $konto['Konto']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $konto['Konto']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -55,6 +55,6 @@ foreach ($kontoer as $konto):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $html->link(__('New Konto', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('New Konto', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

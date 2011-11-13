@@ -26,7 +26,7 @@
                    echo "</tr>";
                 ?>
                 <tr<?php echo $class;?>>
-                <td><?php echo $html->link($kaffelagre[$lagerid], array('controller' => 'kaffelagre'
+                <td><?php echo $this->Html->link($kaffelagre[$lagerid], array('controller' => 'kaffelagre'
                                                                         , 'action' => 'view'
                                                                         , $lagerid));?></td>
                  <?php endif; ?>
