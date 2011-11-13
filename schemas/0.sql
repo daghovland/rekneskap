@@ -19,7 +19,6 @@
 -- Table structure for table `TypeTabell`
 --
 
-DROP TABLE IF EXISTS `TypeTabell`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TypeTabell` (
@@ -33,7 +32,6 @@ CREATE TABLE `TypeTabell` (
 -- Table structure for table `acos`
 --
 
-DROP TABLE IF EXISTS `acos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `acos` (
@@ -52,7 +50,6 @@ CREATE TABLE `acos` (
 -- Table structure for table `adresser`
 --
 
-DROP TABLE IF EXISTS `adresser`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `adresser` (
@@ -72,7 +69,6 @@ CREATE TABLE `adresser` (
 -- Temporary table structure for view `alle_kaffesalg_penger_per_dag`
 --
 
-DROP TABLE IF EXISTS `alle_kaffesalg_penger_per_dag`;
 /*!50001 DROP VIEW IF EXISTS `alle_kaffesalg_penger_per_dag`*/;
 /*!50001 CREATE TABLE `alle_kaffesalg_penger_per_dag` (
   `sum(pengeflytting.kroner)` decimal(33,0),
@@ -83,7 +79,6 @@ DROP TABLE IF EXISTS `alle_kaffesalg_penger_per_dag`;
 -- Temporary table structure for view `alle_sals_datoar`
 --
 
-DROP TABLE IF EXISTS `alle_sals_datoar`;
 /*!50001 DROP VIEW IF EXISTS `alle_sals_datoar`*/;
 /*!50001 CREATE TABLE `alle_sals_datoar` (
   `dato` varchar(10),
@@ -96,7 +91,6 @@ DROP TABLE IF EXISTS `alle_sals_datoar`;
 -- Table structure for table `aros`
 --
 
-DROP TABLE IF EXISTS `aros`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aros` (
@@ -115,7 +109,6 @@ CREATE TABLE `aros` (
 -- Table structure for table `aros_acos`
 --
 
-DROP TABLE IF EXISTS `aros_acos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aros_acos` (
@@ -135,7 +128,6 @@ CREATE TABLE `aros_acos` (
 -- Temporary table structure for view `beholdning`
 --
 
-DROP TABLE IF EXISTS `beholdning`;
 /*!50001 DROP VIEW IF EXISTS `beholdning`*/;
 /*!50001 CREATE TABLE `beholdning` (
   `inn` decimal(33,0),
@@ -148,7 +140,6 @@ DROP TABLE IF EXISTS `beholdning`;
 -- Table structure for table `bestillinger`
 --
 
-DROP TABLE IF EXISTS `bestillinger`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bestillinger` (
@@ -168,7 +159,6 @@ CREATE TABLE `bestillinger` (
 -- Table structure for table `bilag`
 --
 
-DROP TABLE IF EXISTS `bilag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bilag` (
@@ -193,7 +183,6 @@ CREATE TABLE `bilag` (
 -- Table structure for table `bringsonestruktur`
 --
 
-DROP TABLE IF EXISTS `bringsonestruktur`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bringsonestruktur` (
@@ -210,7 +199,6 @@ CREATE TABLE `bringsonestruktur` (
 -- Table structure for table `budsjett_pengeflyttinger`
 --
 
-DROP TABLE IF EXISTS `budsjett_pengeflyttinger`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `budsjett_pengeflyttinger` (
@@ -241,7 +229,6 @@ CREATE TABLE `budsjett_pengeflyttinger` (
 -- Table structure for table `counter`
 --
 
-DROP TABLE IF EXISTS `counter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `counter` (
@@ -253,7 +240,6 @@ CREATE TABLE `counter` (
 -- Temporary table structure for view `faktura_innbetalt`
 --
 
-DROP TABLE IF EXISTS `faktura_innbetalt`;
 /*!50001 DROP VIEW IF EXISTS `faktura_innbetalt`*/;
 /*!50001 CREATE TABLE `faktura_innbetalt` (
   `faktura_id` int(10) unsigned,
@@ -265,7 +251,6 @@ DROP TABLE IF EXISTS `faktura_innbetalt`;
 -- Temporary table structure for view `faktura_ubetalt`
 --
 
-DROP TABLE IF EXISTS `faktura_ubetalt`;
 /*!50001 DROP VIEW IF EXISTS `faktura_ubetalt`*/;
 /*!50001 CREATE TABLE `faktura_ubetalt` (
   `faktura_id` int(10) unsigned,
@@ -276,7 +261,6 @@ DROP TABLE IF EXISTS `faktura_ubetalt`;
 -- Table structure for table `fakturaer`
 --
 
-DROP TABLE IF EXISTS `fakturaer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fakturaer` (
@@ -310,7 +294,6 @@ CREATE TABLE `fakturaer` (
 -- Table structure for table `fakturapdf`
 --
 
-DROP TABLE IF EXISTS `fakturapdf`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `fakturapdf` (
@@ -327,7 +310,6 @@ CREATE TABLE `fakturapdf` (
 -- Table structure for table `filer`
 --
 
-DROP TABLE IF EXISTS `filer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `filer` (
@@ -343,7 +325,6 @@ CREATE TABLE `filer` (
 -- Temporary table structure for view `gronne_bonner_verdi`
 --
 
-DROP TABLE IF EXISTS `gronne_bonner_verdi`;
 /*!50001 DROP VIEW IF EXISTS `gronne_bonner_verdi`*/;
 /*!50001 CREATE TABLE `gronne_bonner_verdi` (
   `kaffiimport_id` int(11) unsigned,
@@ -354,7 +335,6 @@ DROP TABLE IF EXISTS `gronne_bonner_verdi`;
 -- Temporary table structure for view `gronne_bonner_verdi_sum`
 --
 
-DROP TABLE IF EXISTS `gronne_bonner_verdi_sum`;
 /*!50001 DROP VIEW IF EXISTS `gronne_bonner_verdi_sum`*/;
 /*!50001 CREATE TABLE `gronne_bonner_verdi_sum` (
   `kaffiimport_id` int(11) unsigned,
@@ -365,7 +345,6 @@ DROP TABLE IF EXISTS `gronne_bonner_verdi_sum`;
 -- Temporary table structure for view `gronne_bonner_verdi_total`
 --
 
-DROP TABLE IF EXISTS `gronne_bonner_verdi_total`;
 /*!50001 DROP VIEW IF EXISTS `gronne_bonner_verdi_total`*/;
 /*!50001 CREATE TABLE `gronne_bonner_verdi_total` (
   `sum(verdi)` decimal(65,8)
@@ -375,7 +354,6 @@ DROP TABLE IF EXISTS `gronne_bonner_verdi_total`;
 -- Table structure for table `intern_filer`
 --
 
-DROP TABLE IF EXISTS `intern_filer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `intern_filer` (
@@ -398,7 +376,6 @@ CREATE TABLE `intern_filer` (
 -- Table structure for table `kaffeflytting`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffeflytting` (
@@ -443,7 +420,6 @@ CREATE TABLE `kaffeflytting` (
 -- Temporary table structure for view `kaffeflytting_regnskap_kaffelager_lagertype_innut`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_innut`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_innut`*/;
 /*!50001 CREATE TABLE `kaffeflytting_regnskap_kaffelager_lagertype_innut` (
   `regnskap_id` int(11) unsigned,
@@ -457,7 +433,6 @@ DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_innut`;
 -- Temporary table structure for view `kaffeflytting_regnskap_kaffelager_lagertype_slutt`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_slutt`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_slutt`*/;
 /*!50001 CREATE TABLE `kaffeflytting_regnskap_kaffelager_lagertype_slutt` (
   `regnskap_id` int(11) unsigned,
@@ -471,7 +446,6 @@ DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_slutt`;
 -- Temporary table structure for view `kaffeflytting_regnskap_kaffelager_lagertype_start`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_start`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_start`*/;
 /*!50001 CREATE TABLE `kaffeflytting_regnskap_kaffelager_lagertype_start` (
   `regnskap_id` int(11) unsigned,
@@ -485,7 +459,6 @@ DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_lagertype_start`;
 -- Temporary table structure for view `kaffeflytting_regnskap_kaffelager_slutt`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_slutt`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_regnskap_kaffelager_slutt`*/;
 /*!50001 CREATE TABLE `kaffeflytting_regnskap_kaffelager_slutt` (
   `regnskap_id` int(11) unsigned,
@@ -499,7 +472,6 @@ DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_slutt`;
 -- Temporary table structure for view `kaffeflytting_regnskap_kaffelager_start`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_start`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_regnskap_kaffelager_start`*/;
 /*!50001 CREATE TABLE `kaffeflytting_regnskap_kaffelager_start` (
   `regnskap_id` int(11) unsigned,
@@ -513,7 +485,6 @@ DROP TABLE IF EXISTS `kaffeflytting_regnskap_kaffelager_start`;
 -- Temporary table structure for view `kaffeflytting_regnskap_lagertype_innut`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_regnskap_lagertype_innut`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_regnskap_lagertype_innut`*/;
 /*!50001 CREATE TABLE `kaffeflytting_regnskap_lagertype_innut` (
   `regnskap_id` int(11) unsigned,
@@ -526,7 +497,6 @@ DROP TABLE IF EXISTS `kaffeflytting_regnskap_lagertype_innut`;
 -- Temporary table structure for view `kaffeflytting_regnskap_lagertype_slutt`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_regnskap_lagertype_slutt`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_regnskap_lagertype_slutt`*/;
 /*!50001 CREATE TABLE `kaffeflytting_regnskap_lagertype_slutt` (
   `regnskap_id` int(11) unsigned,
@@ -539,7 +509,6 @@ DROP TABLE IF EXISTS `kaffeflytting_regnskap_lagertype_slutt`;
 -- Temporary table structure for view `kaffeflytting_regnskap_lagertype_start`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_regnskap_lagertype_start`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_regnskap_lagertype_start`*/;
 /*!50001 CREATE TABLE `kaffeflytting_regnskap_lagertype_start` (
   `regnskap_id` int(11) unsigned,
@@ -552,7 +521,6 @@ DROP TABLE IF EXISTS `kaffeflytting_regnskap_lagertype_start`;
 -- Temporary table structure for view `kaffeflytting_sum`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_sum`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_sum`*/;
 /*!50001 CREATE TABLE `kaffeflytting_sum` (
   `antall` decimal(34,0),
@@ -565,7 +533,6 @@ DROP TABLE IF EXISTS `kaffeflytting_sum`;
 -- Temporary table structure for view `kaffeflytting_varetelling`
 --
 
-DROP TABLE IF EXISTS `kaffeflytting_varetelling`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflytting_varetelling`*/;
 /*!50001 CREATE TABLE `kaffeflytting_varetelling` (
   `id` int(11) unsigned,
@@ -576,7 +543,6 @@ DROP TABLE IF EXISTS `kaffeflytting_varetelling`;
 -- Temporary table structure for view `kaffeflyttingvekt`
 --
 
-DROP TABLE IF EXISTS `kaffeflyttingvekt`;
 /*!50001 DROP VIEW IF EXISTS `kaffeflyttingvekt`*/;
 /*!50001 CREATE TABLE `kaffeflyttingvekt` (
   `kaffeflytting_id` int(10) unsigned,
@@ -589,7 +555,6 @@ DROP TABLE IF EXISTS `kaffeflyttingvekt`;
 -- Temporary table structure for view `kaffelagerbeholdninger`
 --
 
-DROP TABLE IF EXISTS `kaffelagerbeholdninger`;
 /*!50001 DROP VIEW IF EXISTS `kaffelagerbeholdninger`*/;
 /*!50001 CREATE TABLE `kaffelagerbeholdninger` (
   `antall` decimal(56,0),
@@ -602,7 +567,6 @@ DROP TABLE IF EXISTS `kaffelagerbeholdninger`;
 -- Table structure for table `kaffelagre`
 --
 
-DROP TABLE IF EXISTS `kaffelagre`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffelagre` (
@@ -624,7 +588,6 @@ CREATE TABLE `kaffelagre` (
 -- Table structure for table `kaffepengekopling`
 --
 
-DROP TABLE IF EXISTS `kaffepengekopling`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffepengekopling` (
@@ -643,7 +606,6 @@ CREATE TABLE `kaffepengekopling` (
 -- Table structure for table `kaffepris`
 --
 
-DROP TABLE IF EXISTS `kaffepris`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffepris` (
@@ -668,7 +630,6 @@ CREATE TABLE `kaffepris` (
 -- Table structure for table `kaffesalg`
 --
 
-DROP TABLE IF EXISTS `kaffesalg`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffesalg` (
@@ -697,7 +658,6 @@ CREATE TABLE `kaffesalg` (
 -- Temporary table structure for view `kaffesalgvekt`
 --
 
-DROP TABLE IF EXISTS `kaffesalgvekt`;
 /*!50001 DROP VIEW IF EXISTS `kaffesalgvekt`*/;
 /*!50001 CREATE TABLE `kaffesalgvekt` (
   `kaffesalg_id` int(10) unsigned,
@@ -709,7 +669,6 @@ DROP TABLE IF EXISTS `kaffesalgvekt`;
 -- Table structure for table `kaffibrenning`
 --
 
-DROP TABLE IF EXISTS `kaffibrenning`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffibrenning` (
@@ -733,7 +692,6 @@ CREATE TABLE `kaffibrenning` (
 -- Temporary table structure for view `kaffibrenning_budsjett`
 --
 
-DROP TABLE IF EXISTS `kaffibrenning_budsjett`;
 /*!50001 DROP VIEW IF EXISTS `kaffibrenning_budsjett`*/;
 /*!50001 CREATE TABLE `kaffibrenning_budsjett` (
   `id` int(10) unsigned,
@@ -744,7 +702,6 @@ DROP TABLE IF EXISTS `kaffibrenning_budsjett`;
 -- Temporary table structure for view `kaffibrenningbonneverdi`
 --
 
-DROP TABLE IF EXISTS `kaffibrenningbonneverdi`;
 /*!50001 DROP VIEW IF EXISTS `kaffibrenningbonneverdi`*/;
 /*!50001 CREATE TABLE `kaffibrenningbonneverdi` (
   `kaffibrenning_id` int(10) unsigned,
@@ -755,7 +712,6 @@ DROP TABLE IF EXISTS `kaffibrenningbonneverdi`;
 -- Temporary table structure for view `kaffibrenningferdigvekt`
 --
 
-DROP TABLE IF EXISTS `kaffibrenningferdigvekt`;
 /*!50001 DROP VIEW IF EXISTS `kaffibrenningferdigvekt`*/;
 /*!50001 CREATE TABLE `kaffibrenningferdigvekt` (
   `gram` decimal(44,0),
@@ -766,7 +722,6 @@ DROP TABLE IF EXISTS `kaffibrenningferdigvekt`;
 -- Temporary table structure for view `kaffibrenningutgiftar`
 --
 
-DROP TABLE IF EXISTS `kaffibrenningutgiftar`;
 /*!50001 DROP VIEW IF EXISTS `kaffibrenningutgiftar`*/;
 /*!50001 CREATE TABLE `kaffibrenningutgiftar` (
   `kaffibrenning_id` int(11) unsigned,
@@ -777,7 +732,6 @@ DROP TABLE IF EXISTS `kaffibrenningutgiftar`;
 -- Temporary table structure for view `kaffibrenningutgiftarsum`
 --
 
-DROP TABLE IF EXISTS `kaffibrenningutgiftarsum`;
 /*!50001 DROP VIEW IF EXISTS `kaffibrenningutgiftarsum`*/;
 /*!50001 CREATE TABLE `kaffibrenningutgiftarsum` (
   `kaffibrenning_id` int(11) unsigned,
@@ -788,7 +742,6 @@ DROP TABLE IF EXISTS `kaffibrenningutgiftarsum`;
 -- Table structure for table `kaffiimport`
 --
 
-DROP TABLE IF EXISTS `kaffiimport`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffiimport` (
@@ -818,7 +771,6 @@ CREATE TABLE `kaffiimport` (
 -- Temporary table structure for view `kaffiimport_budsjett`
 --
 
-DROP TABLE IF EXISTS `kaffiimport_budsjett`;
 /*!50001 DROP VIEW IF EXISTS `kaffiimport_budsjett`*/;
 /*!50001 CREATE TABLE `kaffiimport_budsjett` (
   `id` int(10) unsigned,
@@ -831,7 +783,6 @@ DROP TABLE IF EXISTS `kaffiimport_budsjett`;
 -- Temporary table structure for view `kaffiimport_info`
 --
 
-DROP TABLE IF EXISTS `kaffiimport_info`;
 /*!50001 DROP VIEW IF EXISTS `kaffiimport_info`*/;
 /*!50001 CREATE TABLE `kaffiimport_info` (
   `kaffiimport_id` int(11) unsigned,
@@ -843,7 +794,6 @@ DROP TABLE IF EXISTS `kaffiimport_info`;
 -- Temporary table structure for view `kaffiimportutgiftar`
 --
 
-DROP TABLE IF EXISTS `kaffiimportutgiftar`;
 /*!50001 DROP VIEW IF EXISTS `kaffiimportutgiftar`*/;
 /*!50001 CREATE TABLE `kaffiimportutgiftar` (
   `kaffiimport_id` int(11) unsigned,
@@ -854,7 +804,6 @@ DROP TABLE IF EXISTS `kaffiimportutgiftar`;
 -- Temporary table structure for view `kaffiimportutgiftarsum`
 --
 
-DROP TABLE IF EXISTS `kaffiimportutgiftarsum`;
 /*!50001 DROP VIEW IF EXISTS `kaffiimportutgiftarsum`*/;
 /*!50001 CREATE TABLE `kaffiimportutgiftarsum` (
   `kaffiimport_id` int(11) unsigned,
@@ -865,7 +814,6 @@ DROP TABLE IF EXISTS `kaffiimportutgiftarsum`;
 -- Table structure for table `kaffiinnkjop`
 --
 
-DROP TABLE IF EXISTS `kaffiinnkjop`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffiinnkjop` (
@@ -895,7 +843,6 @@ CREATE TABLE `kaffiinnkjop` (
 -- Table structure for table `kaffityper`
 --
 
-DROP TABLE IF EXISTS `kaffityper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kaffityper` (
@@ -910,7 +857,6 @@ CREATE TABLE `kaffityper` (
 -- Temporary table structure for view `kontobalanser`
 --
 
-DROP TABLE IF EXISTS `kontobalanser`;
 /*!50001 DROP VIEW IF EXISTS `kontobalanser`*/;
 /*!50001 CREATE TABLE `kontobalanser` (
   `kroner` decimal(57,0),
@@ -922,7 +868,6 @@ DROP TABLE IF EXISTS `kontobalanser`;
 -- Table structure for table `kontoer`
 --
 
-DROP TABLE IF EXISTS `kontoer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kontoer` (
@@ -947,7 +892,6 @@ CREATE TABLE `kontoer` (
 -- Table structure for table `kontotyper`
 --
 
-DROP TABLE IF EXISTS `kontotyper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kontotyper` (
@@ -961,7 +905,6 @@ CREATE TABLE `kontotyper` (
 -- Table structure for table `kontoutskrift`
 --
 
-DROP TABLE IF EXISTS `kontoutskrift`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kontoutskrift` (
@@ -989,7 +932,6 @@ CREATE TABLE `kontoutskrift` (
 -- Temporary table structure for view `kundebestillinger`
 --
 
-DROP TABLE IF EXISTS `kundebestillinger`;
 /*!50001 DROP VIEW IF EXISTS `kundebestillinger`*/;
 /*!50001 CREATE TABLE `kundebestillinger` (
   `nummer` int(10) unsigned,
@@ -1009,7 +951,6 @@ DROP TABLE IF EXISTS `kundebestillinger`;
 -- Table structure for table `kunder`
 --
 
-DROP TABLE IF EXISTS `kunder`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `kunder` (
@@ -1036,7 +977,6 @@ CREATE TABLE `kunder` (
 -- Temporary table structure for view `lagerselger`
 --
 
-DROP TABLE IF EXISTS `lagerselger`;
 /*!50001 DROP VIEW IF EXISTS `lagerselger`*/;
 /*!50001 CREATE TABLE `lagerselger` (
   `selger` int(10) unsigned,
@@ -1051,7 +991,6 @@ DROP TABLE IF EXISTS `lagerselger`;
 -- Table structure for table `lagertyper`
 --
 
-DROP TABLE IF EXISTS `lagertyper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lagertyper` (
@@ -1065,7 +1004,6 @@ CREATE TABLE `lagertyper` (
 -- Table structure for table `lagerverdiflyttinger`
 --
 
-DROP TABLE IF EXISTS `lagerverdiflyttinger`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lagerverdiflyttinger` (
@@ -1100,7 +1038,6 @@ CREATE TABLE `lagerverdiflyttinger` (
 -- Table structure for table `lagerverdikontoer`
 --
 
-DROP TABLE IF EXISTS `lagerverdikontoer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lagerverdikontoer` (
@@ -1117,7 +1054,6 @@ CREATE TABLE `lagerverdikontoer` (
 -- Table structure for table `lagerverdityper`
 --
 
-DROP TABLE IF EXISTS `lagerverdityper`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lagerverdityper` (
@@ -1131,7 +1067,6 @@ CREATE TABLE `lagerverdityper` (
 -- Table structure for table `logg`
 --
 
-DROP TABLE IF EXISTS `logg`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `logg` (
@@ -1146,7 +1081,6 @@ CREATE TABLE `logg` (
 -- Table structure for table `pengeflytting`
 --
 
-DROP TABLE IF EXISTS `pengeflytting`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pengeflytting` (
@@ -1187,7 +1121,6 @@ CREATE TABLE `pengeflytting` (
 -- Temporary table structure for view `pengeflytting_bilag`
 --
 
-DROP TABLE IF EXISTS `pengeflytting_bilag`;
 /*!50001 DROP VIEW IF EXISTS `pengeflytting_bilag`*/;
 /*!50001 CREATE TABLE `pengeflytting_bilag` (
   `pengeflytting_id` int(10) unsigned,
@@ -1198,7 +1131,6 @@ DROP TABLE IF EXISTS `pengeflytting_bilag`;
 -- Temporary table structure for view `pengeflytting_pengetelling`
 --
 
-DROP TABLE IF EXISTS `pengeflytting_pengetelling`;
 /*!50001 DROP VIEW IF EXISTS `pengeflytting_pengetelling`*/;
 /*!50001 CREATE TABLE `pengeflytting_pengetelling` (
   `id` int(11) unsigned,
@@ -1210,7 +1142,6 @@ DROP TABLE IF EXISTS `pengeflytting_pengetelling`;
 -- Temporary table structure for view `pengeflytting_regnskap_slutt_balanser_sum`
 --
 
-DROP TABLE IF EXISTS `pengeflytting_regnskap_slutt_balanser_sum`;
 /*!50001 DROP VIEW IF EXISTS `pengeflytting_regnskap_slutt_balanser_sum`*/;
 /*!50001 CREATE TABLE `pengeflytting_regnskap_slutt_balanser_sum` (
   `regnskap_id` int(11) unsigned,
@@ -1224,7 +1155,6 @@ DROP TABLE IF EXISTS `pengeflytting_regnskap_slutt_balanser_sum`;
 -- Temporary table structure for view `pengeflytting_regnskap_slutt_kontotyper_sum`
 --
 
-DROP TABLE IF EXISTS `pengeflytting_regnskap_slutt_kontotyper_sum`;
 /*!50001 DROP VIEW IF EXISTS `pengeflytting_regnskap_slutt_kontotyper_sum`*/;
 /*!50001 CREATE TABLE `pengeflytting_regnskap_slutt_kontotyper_sum` (
   `regnskap_id` int(11) unsigned,
@@ -1237,7 +1167,6 @@ DROP TABLE IF EXISTS `pengeflytting_regnskap_slutt_kontotyper_sum`;
 -- Temporary table structure for view `pengeflytting_regnskap_slutt_start`
 --
 
-DROP TABLE IF EXISTS `pengeflytting_regnskap_slutt_start`;
 /*!50001 DROP VIEW IF EXISTS `pengeflytting_regnskap_slutt_start`*/;
 /*!50001 CREATE TABLE `pengeflytting_regnskap_slutt_start` (
   `regnskap_id` int(11) unsigned,
@@ -1251,7 +1180,6 @@ DROP TABLE IF EXISTS `pengeflytting_regnskap_slutt_start`;
 -- Temporary table structure for view `pengeflytting_regnskap_start_balanser_sum`
 --
 
-DROP TABLE IF EXISTS `pengeflytting_regnskap_start_balanser_sum`;
 /*!50001 DROP VIEW IF EXISTS `pengeflytting_regnskap_start_balanser_sum`*/;
 /*!50001 CREATE TABLE `pengeflytting_regnskap_start_balanser_sum` (
   `regnskap_id` int(11) unsigned,
@@ -1265,7 +1193,6 @@ DROP TABLE IF EXISTS `pengeflytting_regnskap_start_balanser_sum`;
 -- Temporary table structure for view `pengeflytting_regnskap_start_kontotyper_sum`
 --
 
-DROP TABLE IF EXISTS `pengeflytting_regnskap_start_kontotyper_sum`;
 /*!50001 DROP VIEW IF EXISTS `pengeflytting_regnskap_start_kontotyper_sum`*/;
 /*!50001 CREATE TABLE `pengeflytting_regnskap_start_kontotyper_sum` (
   `regnskap_id` int(11) unsigned,
@@ -1278,7 +1205,6 @@ DROP TABLE IF EXISTS `pengeflytting_regnskap_start_kontotyper_sum`;
 -- Temporary table structure for view `pengeflytting_sum`
 --
 
-DROP TABLE IF EXISTS `pengeflytting_sum`;
 /*!50001 DROP VIEW IF EXISTS `pengeflytting_sum`*/;
 /*!50001 CREATE TABLE `pengeflytting_sum` (
   `kroner` decimal(34,0),
@@ -1290,7 +1216,6 @@ DROP TABLE IF EXISTS `pengeflytting_sum`;
 -- Temporary table structure for view `pengerinn`
 --
 
-DROP TABLE IF EXISTS `pengerinn`;
 /*!50001 DROP VIEW IF EXISTS `pengerinn`*/;
 /*!50001 CREATE TABLE `pengerinn` (
   `kroner` decimal(34,0),
@@ -1303,7 +1228,6 @@ DROP TABLE IF EXISTS `pengerinn`;
 -- Temporary table structure for view `pengerut`
 --
 
-DROP TABLE IF EXISTS `pengerut`;
 /*!50001 DROP VIEW IF EXISTS `pengerut`*/;
 /*!50001 CREATE TABLE `pengerut` (
   `kroner` decimal(34,0),
@@ -1316,7 +1240,6 @@ DROP TABLE IF EXISTS `pengerut`;
 -- Table structure for table `pengetellingar`
 --
 
-DROP TABLE IF EXISTS `pengetellingar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pengetellingar` (
@@ -1340,7 +1263,6 @@ CREATE TABLE `pengetellingar` (
 -- Temporary table structure for view `pengetellingsjekk`
 --
 
-DROP TABLE IF EXISTS `pengetellingsjekk`;
 /*!50001 DROP VIEW IF EXISTS `pengetellingsjekk`*/;
 /*!50001 CREATE TABLE `pengetellingsjekk` (
   `id` int(11) unsigned,
@@ -1353,7 +1275,6 @@ DROP TABLE IF EXISTS `pengetellingsjekk`;
 -- Table structure for table `postsendingar`
 --
 
-DROP TABLE IF EXISTS `postsendingar`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `postsendingar` (
@@ -1378,7 +1299,6 @@ CREATE TABLE `postsendingar` (
 -- Table structure for table `purringer`
 --
 
-DROP TABLE IF EXISTS `purringer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `purringer` (
@@ -1398,7 +1318,6 @@ CREATE TABLE `purringer` (
 -- Table structure for table `rabatter`
 --
 
-DROP TABLE IF EXISTS `rabatter`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `rabatter` (
@@ -1416,7 +1335,6 @@ CREATE TABLE `rabatter` (
 -- Table structure for table `registrering`
 --
 
-DROP TABLE IF EXISTS `registrering`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `registrering` (
@@ -1431,7 +1349,6 @@ CREATE TABLE `registrering` (
 -- Table structure for table `regnskap`
 --
 
-DROP TABLE IF EXISTS `regnskap`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `regnskap` (
@@ -1447,7 +1364,6 @@ CREATE TABLE `regnskap` (
 -- Temporary table structure for view `regnskap_balanser`
 --
 
-DROP TABLE IF EXISTS `regnskap_balanser`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_balanser`*/;
 /*!50001 CREATE TABLE `regnskap_balanser` (
   `kontotype_id` int(11) unsigned,
@@ -1463,7 +1379,6 @@ DROP TABLE IF EXISTS `regnskap_balanser`;
 -- Temporary table structure for view `regnskap_balanser_kontotype_sum`
 --
 
-DROP TABLE IF EXISTS `regnskap_balanser_kontotype_sum`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_balanser_kontotype_sum`*/;
 /*!50001 CREATE TABLE `regnskap_balanser_kontotype_sum` (
   `konto_id` int(2),
@@ -1479,7 +1394,6 @@ DROP TABLE IF EXISTS `regnskap_balanser_kontotype_sum`;
 -- Temporary table structure for view `regnskap_balanser_sum`
 --
 
-DROP TABLE IF EXISTS `regnskap_balanser_sum`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_balanser_sum`*/;
 /*!50001 CREATE TABLE `regnskap_balanser_sum` (
   `regnskap_id` int(11) unsigned,
@@ -1493,7 +1407,6 @@ DROP TABLE IF EXISTS `regnskap_balanser_sum`;
 -- Temporary table structure for view `regnskap_balanser_visning`
 --
 
-DROP TABLE IF EXISTS `regnskap_balanser_visning`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_balanser_visning`*/;
 /*!50001 CREATE TABLE `regnskap_balanser_visning` (
   `regnskap_id` int(11) unsigned,
@@ -1509,7 +1422,6 @@ DROP TABLE IF EXISTS `regnskap_balanser_visning`;
 -- Temporary table structure for view `regnskap_gronne_bonner_verdi_slutt`
 --
 
-DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_slutt`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_gronne_bonner_verdi_slutt`*/;
 /*!50001 CREATE TABLE `regnskap_gronne_bonner_verdi_slutt` (
   `regnskap_id` int(11) unsigned,
@@ -1521,7 +1433,6 @@ DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_slutt`;
 -- Temporary table structure for view `regnskap_gronne_bonner_verdi_slutt_sum`
 --
 
-DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_slutt_sum`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_gronne_bonner_verdi_slutt_sum`*/;
 /*!50001 CREATE TABLE `regnskap_gronne_bonner_verdi_slutt_sum` (
   `regnskap_id` int(11) unsigned,
@@ -1533,7 +1444,6 @@ DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_slutt_sum`;
 -- Temporary table structure for view `regnskap_gronne_bonner_verdi_slutt_total`
 --
 
-DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_slutt_total`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_gronne_bonner_verdi_slutt_total`*/;
 /*!50001 CREATE TABLE `regnskap_gronne_bonner_verdi_slutt_total` (
   `regnskap_id` int(11) unsigned,
@@ -1544,7 +1454,6 @@ DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_slutt_total`;
 -- Temporary table structure for view `regnskap_gronne_bonner_verdi_start`
 --
 
-DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_start`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_gronne_bonner_verdi_start`*/;
 /*!50001 CREATE TABLE `regnskap_gronne_bonner_verdi_start` (
   `regnskap_id` int(11) unsigned,
@@ -1556,7 +1465,6 @@ DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_start`;
 -- Temporary table structure for view `regnskap_gronne_bonner_verdi_start_sum`
 --
 
-DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_start_sum`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_gronne_bonner_verdi_start_sum`*/;
 /*!50001 CREATE TABLE `regnskap_gronne_bonner_verdi_start_sum` (
   `regnskap_id` int(11) unsigned,
@@ -1568,7 +1476,6 @@ DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_start_sum`;
 -- Temporary table structure for view `regnskap_gronne_bonner_verdi_start_total`
 --
 
-DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_start_total`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_gronne_bonner_verdi_start_total`*/;
 /*!50001 CREATE TABLE `regnskap_gronne_bonner_verdi_start_total` (
   `regnskap_id` int(11) unsigned,
@@ -1579,7 +1486,6 @@ DROP TABLE IF EXISTS `regnskap_gronne_bonner_verdi_start_total`;
 -- Temporary table structure for view `regnskap_inntekter`
 --
 
-DROP TABLE IF EXISTS `regnskap_inntekter`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_inntekter`*/;
 /*!50001 CREATE TABLE `regnskap_inntekter` (
   `kroner` decimal(57,0),
@@ -1593,7 +1499,6 @@ DROP TABLE IF EXISTS `regnskap_inntekter`;
 -- Temporary table structure for view `regnskap_inntekter_kaffesalg_sum`
 --
 
-DROP TABLE IF EXISTS `regnskap_inntekter_kaffesalg_sum`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_inntekter_kaffesalg_sum`*/;
 /*!50001 CREATE TABLE `regnskap_inntekter_kaffesalg_sum` (
   `regnskap_id` int(11) unsigned,
@@ -1605,7 +1510,6 @@ DROP TABLE IF EXISTS `regnskap_inntekter_kaffesalg_sum`;
 -- Temporary table structure for view `regnskap_innut`
 --
 
-DROP TABLE IF EXISTS `regnskap_innut`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_innut`*/;
 /*!50001 CREATE TABLE `regnskap_innut` (
   `konto_id` int(11) unsigned,
@@ -1619,7 +1523,6 @@ DROP TABLE IF EXISTS `regnskap_innut`;
 -- Temporary table structure for view `regnskap_innut_sum`
 --
 
-DROP TABLE IF EXISTS `regnskap_innut_sum`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_innut_sum`*/;
 /*!50001 CREATE TABLE `regnskap_innut_sum` (
   `kontotype_id` int(11) unsigned,
@@ -1632,7 +1535,6 @@ DROP TABLE IF EXISTS `regnskap_innut_sum`;
 -- Temporary table structure for view `regnskap_kaffelager_lagertype_innut`
 --
 
-DROP TABLE IF EXISTS `regnskap_kaffelager_lagertype_innut`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_kaffelager_lagertype_innut`*/;
 /*!50001 CREATE TABLE `regnskap_kaffelager_lagertype_innut` (
   `regnskap_id` int(11) unsigned,
@@ -1646,7 +1548,6 @@ DROP TABLE IF EXISTS `regnskap_kaffelager_lagertype_innut`;
 -- Temporary table structure for view `regnskap_kaffelager_lagertype_slutt`
 --
 
-DROP TABLE IF EXISTS `regnskap_kaffelager_lagertype_slutt`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_kaffelager_lagertype_slutt`*/;
 /*!50001 CREATE TABLE `regnskap_kaffelager_lagertype_slutt` (
   `regnskap_id` int(11) unsigned,
@@ -1660,7 +1561,6 @@ DROP TABLE IF EXISTS `regnskap_kaffelager_lagertype_slutt`;
 -- Temporary table structure for view `regnskap_kaffelager_lagertype_start`
 --
 
-DROP TABLE IF EXISTS `regnskap_kaffelager_lagertype_start`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_kaffelager_lagertype_start`*/;
 /*!50001 CREATE TABLE `regnskap_kaffelager_lagertype_start` (
   `regnskap_id` int(11) unsigned,
@@ -1674,7 +1574,6 @@ DROP TABLE IF EXISTS `regnskap_kaffelager_lagertype_start`;
 -- Temporary table structure for view `regnskap_kaffelager_lagertype_start_slutt`
 --
 
-DROP TABLE IF EXISTS `regnskap_kaffelager_lagertype_start_slutt`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_kaffelager_lagertype_start_slutt`*/;
 /*!50001 CREATE TABLE `regnskap_kaffelager_lagertype_start_slutt` (
   `regnskap_id` int(11) unsigned,
@@ -1689,7 +1588,6 @@ DROP TABLE IF EXISTS `regnskap_kaffelager_lagertype_start_slutt`;
 -- Temporary table structure for view `regnskap_lagertype_innut`
 --
 
-DROP TABLE IF EXISTS `regnskap_lagertype_innut`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_lagertype_innut`*/;
 /*!50001 CREATE TABLE `regnskap_lagertype_innut` (
   `regnskap_id` int(11) unsigned,
@@ -1702,7 +1600,6 @@ DROP TABLE IF EXISTS `regnskap_lagertype_innut`;
 -- Temporary table structure for view `regnskap_lagertype_slutt`
 --
 
-DROP TABLE IF EXISTS `regnskap_lagertype_slutt`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_lagertype_slutt`*/;
 /*!50001 CREATE TABLE `regnskap_lagertype_slutt` (
   `regnskap_id` int(11) unsigned,
@@ -1715,7 +1612,6 @@ DROP TABLE IF EXISTS `regnskap_lagertype_slutt`;
 -- Temporary table structure for view `regnskap_lagertype_start`
 --
 
-DROP TABLE IF EXISTS `regnskap_lagertype_start`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_lagertype_start`*/;
 /*!50001 CREATE TABLE `regnskap_lagertype_start` (
   `regnskap_id` int(11) unsigned,
@@ -1728,7 +1624,6 @@ DROP TABLE IF EXISTS `regnskap_lagertype_start`;
 -- Temporary table structure for view `regnskap_slutt_balanser`
 --
 
-DROP TABLE IF EXISTS `regnskap_slutt_balanser`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_slutt_balanser`*/;
 /*!50001 CREATE TABLE `regnskap_slutt_balanser` (
   `kontotype_id` int(11) unsigned,
@@ -1742,7 +1637,6 @@ DROP TABLE IF EXISTS `regnskap_slutt_balanser`;
 -- Temporary table structure for view `regnskap_slutt_kontotyper`
 --
 
-DROP TABLE IF EXISTS `regnskap_slutt_kontotyper`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_slutt_kontotyper`*/;
 /*!50001 CREATE TABLE `regnskap_slutt_kontotyper` (
   `regnskap_id` int(11) unsigned,
@@ -1755,7 +1649,6 @@ DROP TABLE IF EXISTS `regnskap_slutt_kontotyper`;
 -- Temporary table structure for view `regnskap_start_balanser`
 --
 
-DROP TABLE IF EXISTS `regnskap_start_balanser`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_start_balanser`*/;
 /*!50001 CREATE TABLE `regnskap_start_balanser` (
   `kroner` decimal(56,0),
@@ -1769,7 +1662,6 @@ DROP TABLE IF EXISTS `regnskap_start_balanser`;
 -- Temporary table structure for view `regnskap_start_kontotyper`
 --
 
-DROP TABLE IF EXISTS `regnskap_start_kontotyper`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_start_kontotyper`*/;
 /*!50001 CREATE TABLE `regnskap_start_kontotyper` (
   `regnskap_id` int(11) unsigned,
@@ -1782,7 +1674,6 @@ DROP TABLE IF EXISTS `regnskap_start_kontotyper`;
 -- Temporary table structure for view `regnskap_utgifter`
 --
 
-DROP TABLE IF EXISTS `regnskap_utgifter`;
 /*!50001 DROP VIEW IF EXISTS `regnskap_utgifter`*/;
 /*!50001 CREATE TABLE `regnskap_utgifter` (
   `kroner` decimal(56,0),
@@ -1796,7 +1687,6 @@ DROP TABLE IF EXISTS `regnskap_utgifter`;
 -- Table structure for table `roller`
 --
 
-DROP TABLE IF EXISTS `roller`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `roller` (
@@ -1810,7 +1700,6 @@ CREATE TABLE `roller` (
 -- Temporary table structure for view `sal_per_12mnd`
 --
 
-DROP TABLE IF EXISTS `sal_per_12mnd`;
 /*!50001 DROP VIEW IF EXISTS `sal_per_12mnd`*/;
 /*!50001 CREATE TABLE `sal_per_12mnd` (
   `start` varbinary(29),
@@ -1822,7 +1711,6 @@ DROP TABLE IF EXISTS `sal_per_12mnd`;
 -- Temporary table structure for view `sal_per_maanad`
 --
 
-DROP TABLE IF EXISTS `sal_per_maanad`;
 /*!50001 DROP VIEW IF EXISTS `sal_per_maanad`*/;
 /*!50001 CREATE TABLE `sal_per_maanad` (
   `year` int(4),
@@ -1835,7 +1723,6 @@ DROP TABLE IF EXISTS `sal_per_maanad`;
 -- Temporary table structure for view `selgerbalanser`
 --
 
-DROP TABLE IF EXISTS `selgerbalanser`;
 /*!50001 DROP VIEW IF EXISTS `selgerbalanser`*/;
 /*!50001 CREATE TABLE `selgerbalanser` (
   `konto_id` int(10) unsigned,
@@ -1849,7 +1736,6 @@ DROP TABLE IF EXISTS `selgerbalanser`;
 -- Table structure for table `selgere`
 --
 
-DROP TABLE IF EXISTS `selgere`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `selgere` (
@@ -1870,7 +1756,6 @@ CREATE TABLE `selgere` (
 -- Temporary table structure for view `selgerlager`
 --
 
-DROP TABLE IF EXISTS `selgerlager`;
 /*!50001 DROP VIEW IF EXISTS `selgerlager`*/;
 /*!50001 CREATE TABLE `selgerlager` (
   `selger` int(10) unsigned,
@@ -1883,7 +1768,6 @@ DROP TABLE IF EXISTS `selgerlager`;
 -- Table structure for table `selgerroller`
 --
 
-DROP TABLE IF EXISTS `selgerroller`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `selgerroller` (
@@ -1900,7 +1784,6 @@ CREATE TABLE `selgerroller` (
 -- Table structure for table `sessionValues`
 --
 
-DROP TABLE IF EXISTS `sessionValues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `sessionValues` (
@@ -1916,7 +1799,6 @@ CREATE TABLE `sessionValues` (
 -- Temporary table structure for view `solgt`
 --
 
-DROP TABLE IF EXISTS `solgt`;
 /*!50001 DROP VIEW IF EXISTS `solgt`*/;
 /*!50001 CREATE TABLE `solgt` (
   `lagertypenavn` varchar(30),
@@ -1930,7 +1812,6 @@ DROP TABLE IF EXISTS `solgt`;
 -- Table structure for table `splitt_transaksjoner`
 --
 
-DROP TABLE IF EXISTS `splitt_transaksjoner`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `splitt_transaksjoner` (
@@ -1952,7 +1833,6 @@ CREATE TABLE `splitt_transaksjoner` (
 -- Temporary table structure for view `sumbestilt`
 --
 
-DROP TABLE IF EXISTS `sumbestilt`;
 /*!50001 DROP VIEW IF EXISTS `sumbestilt`*/;
 /*!50001 CREATE TABLE `sumbestilt` (
   `bestilt` decimal(33,0),
@@ -1966,7 +1846,6 @@ DROP TABLE IF EXISTS `sumbestilt`;
 -- Temporary table structure for view `sumbetalt`
 --
 
-DROP TABLE IF EXISTS `sumbetalt`;
 /*!50001 DROP VIEW IF EXISTS `sumbetalt`*/;
 /*!50001 CREATE TABLE `sumbetalt` (
   `kroner` decimal(34,0),
@@ -1982,7 +1861,6 @@ DROP TABLE IF EXISTS `sumbetalt`;
 -- Temporary table structure for view `suminn`
 --
 
-DROP TABLE IF EXISTS `suminn`;
 /*!50001 DROP VIEW IF EXISTS `suminn`*/;
 /*!50001 CREATE TABLE `suminn` (
   `antall` decimal(33,0),
@@ -1995,7 +1873,6 @@ DROP TABLE IF EXISTS `suminn`;
 -- Temporary table structure for view `sumut`
 --
 
-DROP TABLE IF EXISTS `sumut`;
 /*!50001 DROP VIEW IF EXISTS `sumut`*/;
 /*!50001 CREATE TABLE `sumut` (
   `antall` decimal(33,0),
@@ -2008,7 +1885,6 @@ DROP TABLE IF EXISTS `sumut`;
 -- Table structure for table `varetelling`
 --
 
-DROP TABLE IF EXISTS `varetelling`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `varetelling` (
@@ -2034,7 +1910,6 @@ CREATE TABLE `varetelling` (
 -- Temporary table structure for view `varetellingsjekk`
 --
 
-DROP TABLE IF EXISTS `varetellingsjekk`;
 /*!50001 DROP VIEW IF EXISTS `varetellingsjekk`*/;
 /*!50001 CREATE TABLE `varetellingsjekk` (
   `varetelling_id` int(11) unsigned,
