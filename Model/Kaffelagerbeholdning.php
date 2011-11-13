@@ -1,10 +1,7 @@
 <?php
 class Kaffelagerbeholdning extends AppModel {
-
-	var $name = 'Kaffelagerbeholdning';
-	var $useTable = 'kaffelagerbeholdninger';
-
-	var $belongsTo = array('Kaffelager', 'Lagertype', 'Kaffepris'); 
-	
+  public $name = 'Kaffelagerbeholdning';
+  public $useTable = 'kaffelagerbeholdninger';
+  public $belongsTo = array('Kaffelager', 'Lagertype', 'Kaffepris'); 
 }
 ?>

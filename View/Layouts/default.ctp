@@ -52,6 +52,7 @@
 					} else {
 						echo " Du er ikkje logga inn!";
 					}
+					echo $userid;
 				?>
 			</h1>
 			 <select onChange = "window.location = this.options[this.selectedIndex].value">
@@ -109,6 +110,7 @@
 			
 
 			<?php $this->Session->flash(); ?>
+			<?php $this->Session->flash('auth'); ?>
 
 
 			<?php echo $content_for_layout; ?>

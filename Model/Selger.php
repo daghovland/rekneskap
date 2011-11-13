@@ -1,9 +1,9 @@
 <?php
 class Selger extends AppModel {
-  var $name = 'Selger';
-  var $primaryKey = 'nummer';
-  var $table = 'selgere';
-  var $actsAs = array('Acl' => 'requester');
+  public $name = 'Selger';
+  public $primaryKey = 'nummer';
+  public $useTable = 'selgere';
+  public $actsAs = array('Acl' => 'requester');
 
   function hashPasswords($data) {
     if (isset($data['Selger']['passord'])) {
