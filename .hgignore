@@ -2,8 +2,8 @@ syntax:glob
 *~
 .*.swp
 .*.swo
-config/core.php
-config/database.php
+Config/core.php
+Config/database.php
 tmp
 vendors
 .svn
