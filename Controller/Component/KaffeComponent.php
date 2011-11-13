@@ -1,5 +1,5 @@
 <?php
-class KaffeComponent extends Object {
+class KaffeComponent extends Component {
   function dateToSql($dato){
     if(is_numeric($dato['year']) && is_numeric($dato['month']) && is_numeric($dato['day']))
 	    return $dato['year'] . '-' . $dato['month'] . '-' . $dato['day'];
