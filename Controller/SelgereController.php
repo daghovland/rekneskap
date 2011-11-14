@@ -48,10 +48,10 @@ class SelgereController extends AppController {
     if(is_numeric($userid) && isset($tmp_key)){
       if($this->Selger->riktig_tmp_key($userid, $tmp_key)){
 	$this->Auth->login($userid);
-	$this->endre_passord($userid);
+	$this->redirect(array('action' => 'endre_passord', $userid));
       }
-    } else 
-      $this->Session->setFlash("Feil i kode.");
+    }
+    $this->Session->setFlash("Feil i koden. Lenka kan ikkje brukes meir enn ein gong.");
   }
 
   function index() {
@@ -127,7 +127,7 @@ class SelgereController extends AppController {
     if($id == $brukerInfo['nummer']){
       if (!$id && empty($this->data)) {
 	$this->Session->setFlash(__('Ugyldig Selger', true));
-	$this->redirect(array('action'=>'index'));
+	$this->redirect(array('action'=>'oversikt'));
       }
       if (!empty($this->data)) {
 	$hashed_pwd = AuthComponent::password($this->data['Selger']['passord']);
@@ -135,7 +135,7 @@ class SelgereController extends AppController {
 					      'passord' => $hashed_pwd));
 	if ($this->Selger->save($endretData)) {
 	  $this->Session->setFlash(__('Passordet er endra', true));
-	  $this->redirect(array('action'=>'index'));
+	  $this->redirect(array('action'=>'oversikt'));
 	} else {
 	  $this->Session->setFlash(__('Kunne ikkje lagre passordet. Prøv igjen.', true));
 	}
@@ -155,11 +155,11 @@ class SelgereController extends AppController {
   function delete($id = null) {
     if (!$id) {
       $this->Session->setFlash(__('Invalid id for Selger', true));
-      $this->redirect(array('action'=>'index'));
+      $this->redirect(array('action'=>'oversikt'));
     }
     if ($this->Selger->del($id)) {
       $this->Session->setFlash(__('Selger deleted', true));
-      $this->redirect(array('action'=>'index'));
+      $this->redirect(array('action'=>'oversikt'));
     }
   }
   

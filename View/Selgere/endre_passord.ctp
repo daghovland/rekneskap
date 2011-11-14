@@ -3,7 +3,7 @@
   <fieldset>
     <legend><?php echo __('Endre passord for '); echo $this->data['Selger']['navn'];?></legend>
     <?php
-      echo $this->Form->input('passord', array('value' => ''));
+      echo $this->Form->password('passord', array('value' => ''));
     ?>
   </fieldset>
   <?php echo $this->Form->end('Submit');?>

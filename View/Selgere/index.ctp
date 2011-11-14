@@ -7,18 +7,18 @@
   </p>
   <table cellpadding="0" cellspacing="0">
     <tr>
-      <th><?php echo $this->Paginator->sort('navn');?></th>
-      <th><?php echo $this->Paginator->sort('epost');?></th>
-      <th><?php echo $this->Paginator->sort('telefon');?></th>
-      <th><?php echo $this->Paginator->sort('rolle_id');?></th>
-      <th><?php echo $this->Paginator->sort('Kaffelager');?></th>
+      <th><?php echo __('Navn');?></th>
+      <th><?php echo __('Epost');?></th>
+      <th><?php echo __('Telefon');?></th>
+      <th><?php echo __('rolle_id');?></th>
+      <th><?php echo __('Kaffelager');?></th>
       <?php //debug($beholdninger, true);
-	foreach ($beholdninger[0] as $kaffetype){
-	  echo "<th>" . $kaffetype['Kaffetype']['Kaffepris']['type'] . "</th>";
+	foreach ($beholdninger as $kaffetype){
+	  echo "<th>" . $kaffetype['Kaffepris']['type'] . "</th>";
 	}
       ?>
-      <th><?php echo $this->Paginator->sort('SelgerKonto');?></th>
-      <th><?php echo $this->Paginator->sort('SalgsKonto');?></th>
+      <th><?php echo __('SelgerKonto');?></th>
+      <th><?php echo __('SalgsKonto');?></th>
       <th><?php echo __('Gjeld');?></th>
       <th class="actions"><?php echo __('Actions');?></th>
     </tr>
@@ -47,8 +47,11 @@
 		<td>
 			<?php echo $this->Html->link($selger['Kaffelager']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $selger['Kaffelager']['nummer'])); ?>
 		</td>
-		<?php foreach($beholdninger[$selger['Kaffelager']['nummer']] as $beholdning)
-			 echo "<td>" . $beholdning['antall'] . "</td>";
+		<?php 
+		  foreach($beholdninger as $beholdning){
+		    if($beholdning['Kaffelager']['selger'] == $selger['Selger']['nummer'])
+			 echo "<td>" . $beholdning['Kaffelagerbeholdning']['antall'] . "</td>";
+		  }
 		?>
 		<td>
 			<?php echo $this->Html->link($selger['SelgerKonto']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $selger['SelgerKonto']['nummer'])); ?>
@@ -58,8 +61,8 @@
 		</td>
 		<td>
 			<?php 
-				if(array_key_exists($selger['SelgerKonto']['nummer'], $balanser))
-					echo $balanser[$selger['SelgerKonto']['nummer']]['kroner']; 
+			  if(isset($balanser) && array_key_exists($selger['SelgerKonto']['nummer'], $balanser))
+			    echo $balanser[$selger['SelgerKonto']['nummer']]['kroner']; 
 			?>
 		</td>
 		<td class="actions">

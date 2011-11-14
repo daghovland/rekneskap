@@ -1,7 +1,7 @@
-<p>Hei!</p>
+<p>Hei <?php echo $navn; ?></p>
 <?php echo $content_for_layout; ?>
 <p>
 Mvh,
 <br />
-Dag, 
+Dag, <br/>
 Zapatistgruppa i Bergen

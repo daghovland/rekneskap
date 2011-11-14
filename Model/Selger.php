@@ -104,7 +104,7 @@ class Selger extends AppModel {
   function glemt_passord($username){
     if(!is_string($username))
       return false;
-    $userData = $this->find('first', array('condition' => array('navn' => $username)));
+    $userData = $this->find('first', array('conditions' => array('Selger.navn' => $username)));
     if(!isset($userData['Selger']))
       return false;
     if(!isset($userData['Selger']['epost']))
@@ -114,6 +114,16 @@ class Selger extends AppModel {
     $userData['Selger']['tmp_key'] = $tmp_key;
     $this->save($userData);
     return $userData;
+  }
+
+
+  function riktig_tmp_key($userid, $tmp_key){
+    $userData = $this->find('first', array('conditions' => array('Selger.nummer' => $userid, 'Selger.tmp_key' => $tmp_key)));
+    if(!$userData || !isset($userData['Selger']))
+      return false;
+    $userData['Selger']['tmp_key'] = "";
+    $this->save($userData);
+    return true;
   }
 }
 ?>
