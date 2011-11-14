@@ -6,13 +6,16 @@ class SelgereController extends AppController {
       if ($this->Auth->login()) {
 	return $this->redirect($this->Auth->redirect());
       } else {
-	$this->Session->setFlash(__('Username or password is incorrect'), 'default', array(), 'auth');
+	$this->Session->setFlash("Ugyldig passord eller brukarnamn");
       }
-    }
+    } else
+      echo "Fant ikke noe data";
+    $this->set('info', $this->request->data);
   }
-  
+
   function oversikt(){
     $this->index();
+    $this->set('authUser', $this->Auth->user());
     $this->Session->write('forrigeSide', array('controller' => 'selgere', 'action' => 'oversikt'));
   }
   
@@ -57,7 +60,8 @@ class SelgereController extends AppController {
   }
   
   function edit($id = null) {
-    if($id == $this->Session->read('Auth.Selger.nummer')){
+    $brukerInfo = $this->Auth->user();
+    if($id == $brukerInfo['nummer']){
       if (!$id && empty($this->data)) {
 	$this->Session->setFlash(__('Invalid Selger', true));
 	$this->redirect(array('action'=>'index'));
@@ -83,15 +87,23 @@ class SelgereController extends AppController {
       }
   }
   
-  
+  function beforeSave($options = array()) {
+    $this->data['Selger']['passord'] = AuthComponent::password($this->data['Selger']['passord']);
+    return true;
+  }
+
   function endre_passord($id = null) {
-    if($id == $this->Session->read('Auth.Selger.nummer')){
+    $brukerInfo = $this->Auth->user();
+    if($id == $brukerInfo['nummer']){
       if (!$id && empty($this->data)) {
 	$this->Session->setFlash(__('Ugyldig Selger', true));
 	$this->redirect(array('action'=>'index'));
       }
       if (!empty($this->data)) {
-	if ($this->Selger->save($this->data)) {
+	$hashed_pwd = AuthComponent::password($this->data['Selger']['passord']);
+	$endretData = array('Selger' => array('nummer' => $id,
+					      'passord' => $hashed_pwd));
+	if ($this->Selger->save($endretData)) {
 	  $this->Session->setFlash(__('Passordet er endra', true));
 	  $this->redirect(array('action'=>'index'));
 	} else {

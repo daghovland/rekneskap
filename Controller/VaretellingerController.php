@@ -23,7 +23,7 @@ class VaretellingerController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
-			$selgerInfo = $this->Session->read('Auth.Selger');
+		  $selgerInfo = $this->Auth->user();
 			$this->data['Varetelling']['selger_id'] = $selgerInfo['nummer'];
 			$this->Varetelling->create();
 			if ($this->Varetelling->save($this->data)) {
@@ -33,7 +33,7 @@ class VaretellingerController extends AppController {
 				$this->Session->setFlash(__('The Varetelling could not be saved. Please, try again.', true));
 			}
 		}
-		$selgerData = $this->Session->read('Auth.Selger');
+		$selgerData = $this->Auth->user();
                 $selgerInfo = $this->Varetelling->Selger->findAllByNummer($selgerData['nummer']);
 		$kaffepriser = $this->Varetelling->Kaffepris->find('list');
 		$kaffelagre = $this->Varetelling->Kaffelager->find('list');

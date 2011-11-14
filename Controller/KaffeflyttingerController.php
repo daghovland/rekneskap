@@ -8,11 +8,6 @@ class KaffeflyttingerController extends AppController {
 			      'hent_kaffi/'  => 48000
 			      );
   
-  function beforeFilter() {
-    parent::beforeFilter(); 
-    $this->Auth->allow('*');
-  }
-  
   function index() {
     $this->Kaffeflytting->recursive = 0;
     $this->set('kaffeflyttinger', $this->paginate());
@@ -41,7 +36,7 @@ class KaffeflyttingerController extends AppController {
       $this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list'));
       $this->set('kaffetypenavn', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('intern_navn'))));
       $this->set('kaffetypebeskrivelse', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('beskrivelse'))));
-      $selgerData = $this->Session->read('Auth.Selger');
+      $selgerData = $this->Auth->user();
       $this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
     }
   }
@@ -65,10 +60,8 @@ class KaffeflyttingerController extends AppController {
     $this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list', array('order' => array('nummer ASC'))));
     $this->set('kaffetypenavn', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('intern_navn'))));
     $this->set('kaffetypebeskrivelse', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('beskrivelse'))));
-    /*    $selgerData = $this->Session->read('Auth.Selger');
-    $this->Auth->user();
-    $this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));*/
-    $this->set('selgerInfo', $this->Auth->user());
+    $selgerData = $this->Auth->user();
+    $this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
   }
   
   

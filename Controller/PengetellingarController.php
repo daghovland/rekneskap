@@ -24,7 +24,7 @@ class PengetellingarController extends AppController {
 
 	function add() {
 		if (!empty($this->data)) {
-			$selgerInfo = $this->Session->read('Auth.Selger');
+		  $selgerInfo = $this->Auth->user();
 			$this->data['Pengetelling']['selger_id'] = $selgerInfo['nummer'];
 			$this->Pengetelling->create();
 			if ($this->Pengetelling->save($this->data)) {

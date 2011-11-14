@@ -1,6 +1,6 @@
 <?php
-$this->Session->flash('auth');
-$this->Session->flash('acl');
+echo $this->Session->flash('auth');
+echo $this->Session->flash('acl');
 echo $this->Form->create('Selger', array('url' => array('controller' => 'selgere', 'action' =>'login')));
 ?>
 <fieldset>

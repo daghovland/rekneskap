@@ -45,7 +45,7 @@ class KaffesalgController extends AppController {
 
 
   function kontantsal(){
-    $selgerData = $this->Session->read('Auth.Selger');
+    $selgerData = $this->Auth->user();
     if(!empty($this->data)){
       if($this->Kaffesalg->lag_kontant_salg($selgerData['nummer'], $this->data['Kaffesalg'])){
 	$this->Session->setFlash(__('Registrerte kaffisal'));
@@ -102,7 +102,7 @@ class KaffesalgController extends AppController {
     $this->set('fralagernavn', $this->Kaffesalg->Kaffeflytting->Fra->find('list', array('fields' => array('beskrivelse'))));
     $this->set('kaffetyper', $this->Kaffesalg->Kaffeflytting->Kaffepris->find('all', array('order' => 'nummer DESC')));
     $this->set('kaffetypenavn', $this->Kaffesalg->Kaffeflytting->Kaffepris->find('list', array('fields' => array('type'))));
-    $selgerData = $this->Session->read('Auth.Selger');
+    $selgerData = $this->Auth->user();
     $this->set('selgerInfo', $this->Kaffesalg->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
     $this->set('selgerListe', $this->Kaffesalg->Kaffeflytting->Fra->Selger->find('list', array('fields' => array('navn'))));
   }

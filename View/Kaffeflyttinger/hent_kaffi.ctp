@@ -1,5 +1,3 @@
-<?php
-?>
 <div class="kaffeflyttinger form">
   <?php echo $this->Form->create('Kaffeflytting', array('action' => 'add'));?>
   <fieldset>

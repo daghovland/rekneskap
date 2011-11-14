@@ -22,7 +22,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php The MIT License
  */
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php echo $this->Html->docType('xhtml-trans'); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <?php echo $this->Html->charset(); ?>
@@ -47,12 +47,6 @@
 	    echo $this->Html->image("Zapatista-banner-mh.jpg");
 	    echo "<br />";
 	    echo $this->Html->link("Zapatistgruppa i Bergen", 'http://www.zapatista.no');
-	    if($this->Session->check('Auth.Selger')){
-	      $selgerInfo = $this->Session->read('Auth.Selger');
-	      echo " - " . $selgerInfo['navn']; 
-	    } else {
-	      echo " Du er ikkje logga inn!";
-	    }
 	  ?>
 	</h1>
 	<select onChange = "window.location = this.options[this.selectedIndex].value">
@@ -109,8 +103,8 @@
       <div id="content">
 	
 	
-	<?php $this->Session->flash(); ?>
-	<?php $this->Session->flash('auth'); ?>
+	<?php echo $this->Session->flash(); ?>
+	<?php echo $this->Session->flash('auth'); ?>
 	
 	
 	<?php echo $content_for_layout; ?>
