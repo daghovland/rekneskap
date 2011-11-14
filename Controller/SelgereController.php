@@ -8,8 +8,7 @@ class SelgereController extends AppController {
       } else {
 	$this->Session->setFlash("Ugyldig passord eller brukarnamn");
       }
-    } else
-      echo "Fant ikke noe data";
+    }
     $this->set('info', $this->request->data);
   }
 
