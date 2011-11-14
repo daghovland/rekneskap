@@ -35,16 +35,16 @@ class PengeflyttingerController extends AppController {
 	}
 
 	function liste_alle(){
-		$fradato = $this->Kaffe->dateToSql($this->data['fra']['fra']);
-		$tildato = $this->Kaffe->dateToSql($this->data['til']['til']);
+		$fradato = $this->Kaffe->dateToSql($this->request->data['fra']['fra']);
+		$tildato = $this->Kaffe->dateToSql($this->request->data['til']['til']);
 		$this->set('pengeflyttinger', $this->Pengeflytting->find('all', array('conditions' => 'Pengeflytting.dato BETWEEN \'' . $fradato . '\' AND \'' . $tildato . '\'')));
 	}
 
 
 	function liste(){
-		$fradato = $this->Kaffe->dateToSql($this->data['fra']);
-		$tildato = $this->Kaffe->dateToSql($this->data['til']);
-		$konto = $this->data['Pengeflytting']['konto'];
+		$fradato = $this->Kaffe->dateToSql($this->request->data['fra']);
+		$tildato = $this->Kaffe->dateToSql($this->request->data['til']);
+		$konto = $this->request->data['Pengeflytting']['konto'];
 		if(!is_numeric($konto))
 			$this->Session->setFlash(__('Feil i kontonummer', true));
 		else {	
@@ -58,9 +58,9 @@ class PengeflyttingerController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Pengeflytting->create();
-			if ($this->Pengeflytting->save($this->data)) {
+			if ($this->Pengeflytting->save($this->request->data)) {
 				$this->Session->setFlash(__('The Pengeflytting has been saved', true));
 
 				$this->redirect(array('action'=>'view', $this->Pengeflytting->id));
@@ -91,12 +91,12 @@ class PengeflyttingerController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Pengeflytting', true));
 			$this->redirect(array('action'=>'index', '/page:1/sort:dato/direction:desc'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Pengeflytting->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Pengeflytting->save($this->request->data)) {
 				$this->Session->setFlash(__('The Pengeflytting has been saved', true));
 				if($this->Session->check('forrigeSide')){
 					$this->redirect($this->Session->read('forrigeSide'));
@@ -107,8 +107,8 @@ class PengeflyttingerController extends AppController {
 				$this->Session->setFlash(__('The Pengeflytting could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Pengeflytting->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Pengeflytting->read(null, $id);
 		}
 		$frakontoer = $this->Pengeflytting->Fra->find('list', array('fields' => array('nummer', 'beskrivelse')));
 		$tilkontoer = $this->Pengeflytting->Til->find('list');
@@ -140,14 +140,14 @@ class PengeflyttingerController extends AppController {
 			    $this->redirect(array('controller' => 'fakturaer', 'action'=>'ubetalte'));
 			  }
 		}
-		if (!empty($this->data)) {
-			$faktura_id = $this->data['Pengeflytting']['dekningsFaktura'];
+		if (!empty($this->request->data)) {
+			$faktura_id = $this->request->data['Pengeflytting']['dekningsFaktura'];
 			$this->Pengeflytting->create();
-			if($this->data['Pengeflytting']['kroner'] >= $this->Pengeflytting->Faktura->utestaende($faktura_id)){
-			  $this->data['Pengeflytting']['dekningsFaktura'] = $faktura_id;
+			if($this->request->data['Pengeflytting']['kroner'] >= $this->Pengeflytting->Faktura->utestaende($faktura_id)){
+			  $this->request->data['Pengeflytting']['dekningsFaktura'] = $faktura_id;
 			}
 			
-			if ($this->Pengeflytting->saveAll($this->data)) {
+			if ($this->Pengeflytting->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('The Pengeflytting has been saved', true));
 				
 				$this->redirect(array('action'=>'index', '/page:1/sort:dato/direction:desc'));
@@ -159,16 +159,16 @@ class PengeflyttingerController extends AppController {
 		$tilkontoer = $this->Pengeflytting->Til->find('list', array('field' => 'beskrivelse'));
 		$fakturaer = $this->Pengeflytting->Faktura->find('list');
 		$utestaende = $this->Pengeflytting->Faktura->utestaende($faktura_id);
-		$this->data['Pengeflytting']['dekningsFaktura'] = $faktura_id;
-		$this->data['Pengeflytting']['kroner'] = $this->Pengeflytting->Faktura->utestaende($faktura_id);
+		$this->request->data['Pengeflytting']['dekningsFaktura'] = $faktura_id;
+		$this->request->data['Pengeflytting']['kroner'] = $this->Pengeflytting->Faktura->utestaende($faktura_id);
 		$this->set('dekningsFakturaer', $this->Pengeflytting->Faktura->find('list', array('betalt' => 0)));
 		$this->set(compact('utestaende', 'faktura', 'frakontoer', 'tilkontoer', 'fakturaer'));
 	}
 
 
 	function lastopp(){
-	  if(!empty($this->data)){
-	    $filinfo = $this->data['Pengeflytting']['submittedfile'];
+	  if(!empty($this->request->data)){
+	    $filinfo = $this->request->data['Pengeflytting']['submittedfile'];
 	    $csvfile = $filinfo['tmp_name'];
 	    
 	    if(!$filinfo['size']){
