@@ -1,52 +1,52 @@
 <div class="kaffepriser view">
 <h2><?php  __('Kaffepris');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Brenningsgrad'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Brenningsgrad'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['brennings_grad']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Malt'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Malt'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['malt']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Salsnamn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Salsnamn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['salsnamn']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Internt namn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Internt namn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['intern_navn']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Type'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Type'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['type']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Beskrivelse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['beskrivelse']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Haldbar til'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Haldbar til'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['haldbar']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Pris'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Pris'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['pris']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['nummer']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gram'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Gram'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffepris['Kaffepris']['gram']; ?>
 			&nbsp;
@@ -64,23 +64,23 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Related Kaffeflyttinger');?></h3>
+	<h3><?php echo __('Related Kaffeflyttinger');?></h3>
 	<?php if (!empty($kaffepris['KaffeTypeFlyttinger'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Type'); ?></th>
-		<th><?php __('Antall'); ?></th>
-		<th><?php __('Fra'); ?></th>
-		<th><?php __('Beskrivelse'); ?></th>
-		<th><?php __('Til'); ?></th>
-		<th><?php __('Dato'); ?></th>
-		<th><?php __('Pengeflytting'); ?></th>
-		<th><?php __('Fralagertype'); ?></th>
-		<th><?php __('Tillagertype'); ?></th>
-		<th><?php __('Ansvarlig'); ?></th>
-		<th><?php __('Faktura'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Type'); ?></th>
+		<th><?php echo __('Antall'); ?></th>
+		<th><?php echo __('Fra'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
+		<th><?php echo __('Til'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
+		<th><?php echo __('Pengeflytting'); ?></th>
+		<th><?php echo __('Fralagertype'); ?></th>
+		<th><?php echo __('Tillagertype'); ?></th>
+		<th><?php echo __('Ansvarlig'); ?></th>
+		<th><?php echo __('Faktura'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;

@@ -1,5 +1,5 @@
 <div class="kaffiimportar index">
-<h2><?php __('Kaffiimportar');?></h2>
+<h2><?php echo __('Kaffiimportar');?></h2>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo __('id');?></th>
@@ -15,7 +15,7 @@
 	<th><?php echo __('sekker');?></th>
 	<th><?php echo __('kontrakt');?></th>
 	<th><?php echo __('kommentar');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

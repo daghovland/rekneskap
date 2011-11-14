@@ -1,5 +1,5 @@
 <div class="postsendingar index">
-<h2><?php __('Postsendingar');?></h2>
+<h2><?php echo __('Postsendingar');?></h2>
 <p>
 <?php
 echo $this->Paginator->counter(array(
@@ -15,7 +15,7 @@ echo $this->Paginator->counter(array(
 	<th><?php echo $this->Paginator->sort('sendingsnummer');?></th>
 	<th><?php echo $this->Paginator->sort('transporter');?></th>
 	<th><?php echo $this->Paginator->sort('kommentar');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

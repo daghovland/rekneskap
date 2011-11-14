@@ -1,7 +1,7 @@
 <div class="varetellinger form">
 <?php echo $this->Form->create('Varetelling');?>
 	<fieldset>
- 		<legend><?php __('Ny Varetelling');?></legend>
+ 		<legend><?php echo __('Ny Varetelling');?></legend>
 	<?php
 		echo $this->Form->input('kaffelager_id', array('selected' => $selgerInfo[0]['Kaffelager']['nummer']));
 		echo $this->Form->input('kaffepris_id', array('selected' => count($kaffepriser)));

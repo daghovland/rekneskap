@@ -1,7 +1,7 @@
 <div class="kaffesalg form">
 <?php echo $this->Form->create('Kaffesalg');?>
 	<fieldset>
- 		<legend><?php __('Edit Kaffesalg');?></legend>
+ 		<legend><?php echo __('Edit Kaffesalg');?></legend>
 	<?php
 		echo $this->Form->input('nummer');
 		echo $this->Form->input('total');

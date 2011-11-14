@@ -5,7 +5,7 @@
     <p id="fakturatekst" />
   </div>
   <fieldset>
-    <legend><?php __('Selg kaffi');?></legend>
+    <legend><?php echo __('Selg kaffi');?></legend>
     <?php
       echo $this->Form->input('fra', array('options' => $fralagernavn, 
 					   'label' => 'Frå lager', 
@@ -98,19 +98,31 @@
       ;
     $Js->get("#" . $observerFeltId)->event('change', $Js->request($ajaxUrl, $requestOpts), true);
   }
-
+  function lagAjaxAntall($observerFeltId, $kaffetypeid, $Js){ 
+    $requestOpts = array('method' => 'post',
+			 'evalScripts' => true,
+			 'dataExpression' => true,
+			 'data' => '"lager=" + $("KaffeSalgFra").value + "&type=' . $kaffetypeid . '"', 
+			 'update' => "KaffeSalg" . $kaffetypeid
+			 )
+      ;
+    $antallUrl = array('controller' => 'kaffelagre', 'action' => 'lager_type_beholdning');
+    $Js->get("#" . $observerFeltId)->event('change', $Js->request($antallUrl, $requestOpts), true);
+  }
+  
   $frakt_pris_url = array('controller' => 'kaffesalg', 'action' => 'frakt_pris');
   lagAjaxFraktFaktura("KaffeSalgKunde", "fraktanslag", $frakt_pris_url, $this->Js, $fraktPrisData);
   lagAjaxFraktFaktura("KaffeSalgPostSending", "fraktanslag", $frakt_pris_url, $this->Js, $fraktPrisData);
-
+  
   $faktura_tekst_url = array('controller' => 'kaffesalg', 'action' => 'faktura_tekst');
   lagAjaxFraktFaktura("KaffeSalgKunde", "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
   lagAjaxFraktFaktura("KaffesalgFrakt", "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
-
+  
   foreach ($kaffetyper as $kaffetype){
     $kaffeid = $kaffetype['Kaffepris']['nummer'];
     lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fraktanslag", $frakt_pris_url, $this->Js, $fraktPrisData);
     lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
+    lagAjaxAntall("KaffeSalgFra", $kaffeid, $this->Js);
   }
 
   function lagAjaxAdresser($observerFeltId, $Js){ 
@@ -127,121 +139,6 @@
   lagAjaxAdresser("KaffeSalgKunde", $this->Js);
   lagAjaxAdresser("KaffeSalgPostSending", $this->Js);
   lagAjaxAdresser("KaffesalgBetalingEpost", $this->Js);
-  /*
-	$updater = "";
-      foreach ($kaffetyper as $kaffetype){
-	$kaffeid = $kaffetype['Kaffepris']['nummer'];
-	$updater = $updater . 'new Ajax.Updater(\'KaffeSalg' . $kaffeid . '\',\'' . 
-	$this->Html->url(array(
-			       'controller' => 'kaffelagre', 
-					'action' => 'lager_type_beholdning'
-			       )) . '\', {asynchronous:false, 
-                                           evalScripts:true, 
-                                           parameters:hentLager("KaffeSalgFra", "' . $kaffeid . '"), requestHeaders:[\'X-Update\', \'KaffeSalg' . $kaffeid . '\']});
-					   ';
-    }
-    $script = 'function lastetSideSalg(){
-              ' . $updater . '
-           };'
-      ;
-      echo $this->Html->script($script, array('inline' => false));
-      
-      $script = 'new Form.Element.EventObserver(\'KaffeSalgFra\', function(element, value) {' . $updater . '})';
-      echo $this->Html->script($script);
-
-	   
-	   
-	  
-	     $ajaxArgument = "{";
-	     
-	     foreach($kaffetyper as $kaffetype){
-	       $kaffeid = $kaffetype['Kaffepris']['nummer'];
-	       $ajaxArgument .= 'antall' . $kaffeid . ' : $(\'KaffeSalg' . $kaffeid . '\').value, ';
-	       $ajaxArgument .= 'rabatt' . $kaffeid . ' : $(\'KaffesalgRabatt' . $kaffeid . '\').value, ';
-	     }
-	     $ajaxArgument .= 'frakt: $(\'KaffesalgFrakt\').getValue(), ';
-	     $ajaxArgument .= 'postSending: $(\'KaffeSalgPostSending\').getValue(), ';
-	     $ajaxArgument .= 'kunde: $(\'KaffeSalgKunde\').getValue()}';
-	     
-	     
-	     $updater = 'new Ajax.Request(\'' . $faktura_tekst_url . '\'
-                               , {   asynchronous:false
-                                  ,  evalScripts:true
-                                  ,  parameters : ' . $ajaxArgument . '
-                                  ,  onSuccess: function(transport) {
-                                                                 Element.update(\'fakturatekst\', 
-                                                                transport.responseText);
-                                                }
-                                  , requestHeaders:[\'X-Update\', \'fakturatekst\']
-                                 }
-                              )'
-	       ;
-			      
-			      
-				$frakt_updater = 'new Ajax.Request(\'' . $frakt_pris_url . '\'
-                               , {   asynchronous:false
-                                  ,  evalScripts:true
-                                  ,  parameters : ' . $ajaxArgument . '
-                                  ,  onSuccess: function(transport) {
-                                                                 Element.update(\'fraktanslag\', 
-                                                                transport.responseText);
-                                                }
-                                  , requestHeaders:[\'X-Update\', \'fraktanslag\']
-                                 }
-                              )'
-				  ;
-			      
-			      foreach ($kaffetyper as $kaffetype){
-				$kaffeid = $kaffetype['Kaffepris']['nummer'];
-				$script = 'new Form.Element.EventObserver(\'KaffeSalg' . $kaffeid . '\', function(element, value) {' . $updater . '; ' . $frakt_updater . '})';
-				echo $this->Html->script($script, array('inline' => true));
-				$script = 'new Form.Element.EventObserver(\'KaffesalgRabatt' . $kaffeid . '\', function(element, value) {' . $updater . '})';
-				echo $this->Html->script($script, array('inline' => true));
-			      }
-			      
-			      
-			      $script = 'new Form.Element.EventObserver(\'KaffesalgFrakt\', function(element, value) {' . $updater . '})';
-			      echo $this->Html->script($script, array('inline' => true));
-			      
-			      $script = 'new Form.Element.EventObserver(\'KaffeSalgPostSending\', function(element, value) {'
-				. 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\'); '
-				. $frakt_updater 
-				. '})';
-				
-				echo $this->Html->script($script, array('inline' => true));
-				
-				$script = 'new Form.Element.EventObserver(\'KaffeSalgKunde\', function(element, value) {'
-				  . 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\'); '
-				  . $frakt_updater . '})';
-				  echo $this->Html->script($script, array('inline' => true));
-				  
-				  $script = 'new Form.Element.EventObserver(\'fakturatekst\', function(element, value) {' . $frakt_updater . '})';
-				  echo $this->Html->script($script, array('inline' => true));
-				  
-				  
-				  $script = 'new Form.Element.EventObserver(\'KaffesalgBetalingPost\', function(element, value) {' 
-				    . 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\'); '
-				    . '})';
-				    echo $this->Html->script($script, array('inline' => true));
-				    
-
-$script = 'new Form.Element.EventObserver(\'KaffesalgBetalingEpost\', function(element, value) {' 
-	. 'visAdresser(\'' . $this->Html->url(array('controller' => 'kunder'))  . '\'); '
-	. '})';
-echo $this->Html->script($script, array('inline' => true));
-
-$script = 'document.onLoad = document.getElementById(\'KaffesalgBetalingPost\').checked = true;visAdresser(\'' . $this->Html->url(array('controller' => 'kunder')). '\'); lastetSideSalg()';
-echo $this->Html->script($script);
-      */
-// Lager settFakturaTekst
-//$script = "function settFakturaTekst(skjema){";
-//$script .= 'new Ajax.Updater(\'fakturatekst\', \'';
-//$script .= $this->Html->url(array('controller' => 'kaffesalg',
-//			    'action' => 'faktura_tekst'));
-//$script .= '\', {asynchronous:false, evalScripts:true, parameters: {  }, requestHeaders:[\'X-Update\', \'fakturatekst\']});';
-//$script .= '}';
-
-
 ?>
 
 </div>

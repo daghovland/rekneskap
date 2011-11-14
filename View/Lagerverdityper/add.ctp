@@ -1,7 +1,7 @@
 <div class="lagerverdityper form">
 <?php echo $this->Form->create('Lagerverditype');?>
 	<fieldset>
- 		<legend><?php __('Add Lagerverditype');?></legend>
+ 		<legend><?php echo __('Add Lagerverditype');?></legend>
 	<?php
 		echo $this->Form->input('navn');
 	?>

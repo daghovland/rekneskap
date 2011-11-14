@@ -1,7 +1,7 @@
 <div class="kontotyper form">
 <?php echo $this->Form->create('Kontotype');?>
 	<fieldset>
- 		<legend><?php __('Add Kontotype');?></legend>
+ 		<legend><?php echo __('Add Kontotype');?></legend>
 	<?php
 		echo $this->Form->input('beskrivelse');
 	?>

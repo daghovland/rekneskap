@@ -1,7 +1,7 @@
 <div class="kaffiimportar form">
 <?php echo $this->Form->create('Kaffiimport');?>
 	<fieldset>
- 		<legend><?php __('Add Kaffiimport');?></legend>
+ 		<legend><?php echo __('Add Kaffiimport');?></legend>
 	<?php
 		echo $this->Form->input('navn');
 		echo $this->Form->input('kooperativ');

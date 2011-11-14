@@ -1,5 +1,5 @@
 <div class="selgere index">
-  <h2><?php __('Oversikt');?></h2>
+  <h2><?php echo __('Oversikt');?></h2>
   <p>
     <table cellpadding="0" cellspacing="0">
       <tr>
@@ -9,7 +9,7 @@
 	echo "<th>" . $kaffetype['Kaffepris']['intern_navn'] . " haldbar til " . $kaffetype['Kaffepris']['haldbar'] . "</th>";
 	?>
 	<th><?php echo __('Gjeld');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
       </tr>
       <?php
 	$i = 0;

@@ -1,7 +1,7 @@
 <div class="postsendingar form">
 <?php echo $this->Form->create('Postsending');?>
 	<fieldset>
- 		<legend><?php __('Add Postsending');?></legend>
+ 		<legend><?php echo __('Add Postsending');?></legend>
 	<?php
 		if(isset($kaffesalg_id) && is_numeric($kaffesalg_id))
 			echo $this->Form->hidden('kaffesalg_id', array('value' => $kaffesalg_id));

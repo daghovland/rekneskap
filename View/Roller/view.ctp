@@ -1,12 +1,12 @@
 <div class="roller view">
 <h2><?php  __('Rolle');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $rolle['Rolle']['nummer']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Navn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Navn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $rolle['Rolle']['navn']; ?>
 			&nbsp;

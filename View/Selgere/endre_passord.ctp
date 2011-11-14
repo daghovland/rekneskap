@@ -1,7 +1,7 @@
 <div class="selgere form">
 <?php echo $this->Form->create('Selger');?>
 	<fieldset>
- 		<legend><?php __('Endre passord for '); echo $this->data['Selger']['navn'];?></legend>
+ 		<legend><?php echo __('Endre passord for '); echo $this->data['Selger']['navn'];?></legend>
 	<?php
 		echo $this->Form->input('passord', array('value' => ''));
 	?>

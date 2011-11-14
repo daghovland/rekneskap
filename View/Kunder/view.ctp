@@ -1,47 +1,47 @@
 <div class="kunder view">
 <h2><?php  __('Kunde');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['nummer']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Navn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Navn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['navn']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Epost'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Epost'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['epost']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Telefon'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Telefon'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['telefon']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Slettes'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Slettes'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['slettes']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Registrert'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Registrert'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['registrert']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontaktperson'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kontaktperson'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['kontaktperson']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kunde['Kunde']['modified']; ?>
 			&nbsp;
@@ -57,31 +57,31 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Leveringsadresse'); ?> </h3>
+	<h3><?php echo __('Leveringsadresse'); ?> </h3>
 	<?php echo $this->element("adresseliste", array('adresse' => $kunde['LeveringsAdresse'])); ?>
 </div>
 <?php if(is_numeric($kunde['FakturaAdresse']['nummer'])): ?>
 <div class="related">
-	<h3><?php __('Fakturaadresse'); ?> </h3>
+	<h3><?php echo __('Fakturaadresse'); ?> </h3>
 	<?php echo $this->element("adresseliste", array('adresse' => $kunde['FakturaAdresse'])); ?>
 </div>
 <?php endif; ?>
 <div class="related">
-	<h3><?php __('Related Fakturaer');?></h3>
+	<h3><?php echo __('Related Fakturaer');?></h3>
 	<?php if (!empty($kunde['Faktura'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Kunde'); ?></th>
-		<th><?php __('Faktura Dato'); ?></th>
-		<th><?php __('Betalings Frist'); ?></th>
-		<th><?php __('Melding'); ?></th>
-		<th><?php __('Kroner'); ?></th>
-		<th><?php __('Adresse'); ?></th>
-		<th><?php __('Mva'); ?></th>
-		<th><?php __('Totalpris'); ?></th>
-		<th><?php __('Kaffesalg Id'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Kunde'); ?></th>
+		<th><?php echo __('Faktura Dato'); ?></th>
+		<th><?php echo __('Betalings Frist'); ?></th>
+		<th><?php echo __('Melding'); ?></th>
+		<th><?php echo __('Kroner'); ?></th>
+		<th><?php echo __('Adresse'); ?></th>
+		<th><?php echo __('Mva'); ?></th>
+		<th><?php echo __('Totalpris'); ?></th>
+		<th><?php echo __('Kaffesalg Id'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;

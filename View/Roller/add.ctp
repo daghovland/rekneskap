@@ -1,7 +1,7 @@
 <div class="roller form">
 <?php echo $this->Form->create('Rolle');?>
 	<fieldset>
- 		<legend><?php __('Add Rolle');?></legend>
+ 		<legend><?php echo __('Add Rolle');?></legend>
 	<?php
 		echo $this->Form->input('navn');
 	?>

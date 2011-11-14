@@ -1,7 +1,7 @@
 <div class="bilag form">
 <?php echo $this->Form->create('Bilag');?>
 	<fieldset>
- 		<legend><?php __('Endre vedlegg');?></legend>
+ 		<legend><?php echo __('Endre vedlegg');?></legend>
 	<?php
 		echo $this->Form->input('filnavn');
 		echo $this->Form->input('pengeflytting_id');

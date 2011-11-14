@@ -1,7 +1,7 @@
 <div class="pengeflyttinger form">
 <?php echo $this->Form->create('Pengeflytting');?>
 	<fieldset>
- 		<legend><?php __('Endre Pengeflytting');?></legend>
+ 		<legend><?php echo __('Endre Pengeflytting');?></legend>
 	<?php
 		echo $this->Form->input('nummer');
 		echo $this->Form->input('fra', array('options' => $frakontoer, 'label' => 'Frå'));

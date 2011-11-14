@@ -2,7 +2,7 @@
 <?php echo $this->Form->create('Kaffeflytting');?>
 <p>Det er vanlegvis betre å bruke <?php echo $this->Html->link('eit anna skjema', array('action' => 'hent_kaffi')); ?> </p>
 	<fieldset>
- 		<legend><?php __('Legg til ein kaffeflytting');?></legend>
+ 		<legend><?php echo __('Legg til ein kaffeflytting');?></legend>
 	<?php
 		echo $this->Form->input('type', array('options' => $kaffetyper));
 		echo $this->Form->input('antall');

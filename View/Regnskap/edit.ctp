@@ -1,7 +1,7 @@
 <div class="regnskap form">
 <?php echo $this->Form->create('Regnskap');?>
 	<fieldset>
- 		<legend><?php __('Edit Regnskap');?></legend>
+ 		<legend><?php echo __('Edit Regnskap');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('start');

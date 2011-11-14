@@ -2,8 +2,8 @@
         if (!empty($saldoer)):?>
         <table cellpadding = "0" cellspacing = "0">
         <tr>
-                <th><?php __('Sum'); ?></th>
-                <th><?php __('Konto'); ?></th>
+                <th><?php echo __('Sum'); ?></th>
+                <th><?php echo __('Konto'); ?></th>
         </tr>
         <?php
                 $i = 0;

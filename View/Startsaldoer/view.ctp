@@ -1,27 +1,27 @@
 <div class="startsaldo view">
 <h2><?php  __('Startsaldo');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $startsaldo['Startsaldo']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Regnskap'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Regnskap'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($startsaldo['Regnskap']['beskrivelse'], array('controller'=> 'regnskap', 'action'=>'view', $startsaldo['Regnskap']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kroner'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kroner'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $startsaldo['Startsaldo']['kroner']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Oere'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Oere'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $startsaldo['Startsaldo']['oere']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Konto'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Konto'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($startsaldo['Konto']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $startsaldo['Konto']['nummer'])); ?>
 			&nbsp;

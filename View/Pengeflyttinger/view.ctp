@@ -1,47 +1,47 @@
 <div class="pengeflyttinger view">
 <h2><?php  __('Pengeflytting');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengeflytting['Pengeflytting']['nummer']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Frå konto'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Frå konto'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($pengeflytting['Fra']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $pengeflytting['Fra']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Til konto'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Til konto'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($pengeflytting['Til']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $pengeflytting['Til']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kroner'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kroner'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengeflytting['Pengeflytting']['kroner']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Øre'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Øre'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengeflytting['Pengeflytting']['oere']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Dato'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Dato'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengeflytting['Pengeflytting']['dato']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Beskrivelse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengeflytting['Pengeflytting']['beskrivelse']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Faktura'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Faktura'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($pengeflytting['Faktura']['nummer'], array('controller'=> 'fakturaer', 'action'=>'view', $pengeflytting['Faktura']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Del av kaffisal'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Del av kaffisal'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($pengeflytting['Kaffesalg']['nummer'], array('controller'=> 'kaffesalg', 'action'=>'view', $pengeflytting['Kaffesalg']['nummer'])); ?>
 			&nbsp;
@@ -92,7 +92,7 @@
 
 <?php if($pengeflytting['Kaffeflytting']) : ?>
 <div class="related">
-<h3><?php __('Kaffeflyttingar'); ?></h3>
+<h3><?php echo __('Kaffeflyttingar'); ?></h3>
 <?php echo $this->element('kaffeflyttinger_enkel', array('kaffeflyttinger' => $pengeflytting['Kaffeflytting'])); ?>
 </div>
 <?php endif; ?>

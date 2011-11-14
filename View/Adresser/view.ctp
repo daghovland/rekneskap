@@ -12,40 +12,40 @@
 		<h3><?php  __('Kunde');?></h3>
 	<?php if (!empty($adresse['leveringsadressekunde'])):?>
 		<dl>	<?php $i = 0; $class = ' class="altrow"';?>
-			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer');?></dt>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $this->Html->link(__($adresse['leveringsadressekunde']['nummer'], true), array('controller' => 'kunder', 'action' => 'view', $adresse['leveringsadressekunde']['nummer']));
 	?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Navn');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Navn');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['leveringsadressekunde']['navn'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Epost');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Epost');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['leveringsadressekunde']['epost'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Telefon');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Telefon');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['leveringsadressekunde']['telefon'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Slettes');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Slettes');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['leveringsadressekunde']['slettes'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Registrert');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Registrert');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['leveringsadressekunde']['registrert'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontaktperson');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kontaktperson');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['leveringsadressekunde']['kontaktperson'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fakturaadresse');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Fakturaadresse');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['leveringsadressekunde']['fakturaadresse'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Leveringsadresse');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Leveringsadresse');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['leveringsadressekunde']['leveringsadresse'];?>
 &nbsp;</dd>
@@ -61,39 +61,39 @@
 		<h3><?php  __('Related Kunder');?></h3>
 	<?php if (!empty($adresse['fakturaadressekunde'])):?>
 		<dl>	<?php $i = 0; $class = ' class="altrow"';?>
-			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer');?></dt>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $this->Html->link($adresse['fakturaadressekunde']['nummer'], array('controller' => 'kunder', 'action' => 'view', $adresse['fakturaadressekunde']['nummer']));?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Navn');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Navn');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['fakturaadressekunde']['navn'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Epost');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Epost');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['fakturaadressekunde']['epost'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Telefon');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Telefon');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['fakturaadressekunde']['telefon'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Slettes');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Slettes');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['fakturaadressekunde']['slettes'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Registrert');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Registrert');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['fakturaadressekunde']['registrert'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontaktperson');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kontaktperson');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['fakturaadressekunde']['kontaktperson'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fakturaadresse');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Fakturaadresse');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['fakturaadressekunde']['fakturaadresse'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Leveringsadresse');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Leveringsadresse');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $adresse['fakturaadressekunde']['leveringsadresse'];?>
 &nbsp;</dd>
@@ -107,21 +107,21 @@
 	</div>
 -->
 	<div class="related">
-	<h3><?php __('Related Fakturaer');?></h3>
+	<h3><?php echo __('Related Fakturaer');?></h3>
 	<?php if (!empty($adresse['adressefakturaer'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Kunde'); ?></th>
-		<th><?php __('Faktura Dato'); ?></th>
-		<th><?php __('Betaling'); ?></th>
-		<th><?php __('Betalings Frist'); ?></th>
-		<th><?php __('Melding'); ?></th>
-		<th><?php __('Kroner'); ?></th>
-		<th><?php __('Adresse'); ?></th>
-		<th><?php __('Mva'); ?></th>
-		<th><?php __('Totalpris'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Kunde'); ?></th>
+		<th><?php echo __('Faktura Dato'); ?></th>
+		<th><?php echo __('Betaling'); ?></th>
+		<th><?php echo __('Betalings Frist'); ?></th>
+		<th><?php echo __('Melding'); ?></th>
+		<th><?php echo __('Kroner'); ?></th>
+		<th><?php echo __('Adresse'); ?></th>
+		<th><?php echo __('Mva'); ?></th>
+		<th><?php echo __('Totalpris'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;

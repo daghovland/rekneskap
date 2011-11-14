@@ -1,7 +1,7 @@
 <div class="pengeflyttingBilag form">
    <?php echo $this->Form->create('PengeflyttingBilag', array('type' => 'file'));?>
 	<fieldset>
- 		<legend><?php __('Last opp vedlegg');?></legend>
+ 		<legend><?php echo __('Last opp vedlegg');?></legend>
 	<?php
 		if(isset($pengeflytting_id) && is_numeric($pengeflytting_id) && $pengeflytting_id > 0)
 		  echo $this->Form->hidden('pengeflytting_id', array('value' => $pengeflytting_id));

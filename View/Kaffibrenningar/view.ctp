@@ -1,52 +1,52 @@
 <div class="kaffibrenningar view">
 <h2><?php  __('Kaffibrenning');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffibrenning['Kaffibrenning']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Namn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Namn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffibrenning['Kaffibrenning']['navn']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Brenneri'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Brenneri'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffibrenning['Kaffibrenning']['brenneri']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Brent'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Brent'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffibrenning['Kaffibrenning']['brent']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kilo'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kilo'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffibrenning['Kaffibrenning']['kilo']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Bønneverdi'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Bønneverdi'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 		<?php echo sprintf("%.2f kr", $kaffibrenning['Kaffibrenningbonneverdi']['bonneverdi']); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Brenneutgiftar'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Brenneutgiftar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 		<?php echo sprintf("%.2f kr", $kaffibrenning['Kaffibrenningutgiftarsum']['utgiftar']); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kaffiimport'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kaffiimport'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($kaffibrenning['Kaffiimport']['navn'], array('controller'=> 'kaffiimportar', 'action'=>'view', $kaffibrenning['Kaffiimport']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffibrenning['Kaffibrenning']['modified']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffibrenning['Kaffibrenning']['created']; ?>
 			&nbsp;
@@ -64,7 +64,7 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Kaffeflyttinger');?></h3>
+	<h3><?php echo __('Kaffeflyttinger');?></h3>
 <table cellpadding="0" cellspacing="0">
 <tr>
         <th><?php echo __('nummer');?></th>
@@ -104,7 +104,7 @@
 </table>
 </div>
 <div class="related">
-	<h3><?php __('Kaffetyper');?></h3>
+	<h3><?php echo __('Kaffetyper');?></h3>
 <table cellpadding="0" cellspacing="0">
 <tr>
         <th><?php echo __('nummer');?></th>
@@ -140,16 +140,16 @@
 </table>
 </div>
 <div class="related">
-	<h3><?php __('Utgiftar');?></h3>
+	<h3><?php echo __('Utgiftar');?></h3>
 	<?php if (!empty($kaffibrenning['Pengeflytting'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Fra'); ?></th>
-		<th><?php __('Til'); ?></th>
-		<th><?php __('Beløp'); ?></th>
-		<th><?php __('Beskrivelse'); ?></th>
-		<th><?php __('Dato'); ?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Fra'); ?></th>
+		<th><?php echo __('Til'); ?></th>
+		<th><?php echo __('Beløp'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
 	</tr>
 	<?php
 		$i = 0;

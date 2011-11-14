@@ -3,9 +3,9 @@
         if (!empty($saldoer)):?>
         <table cellpadding = "5" cellspacing = "10">
         <tr>
-                <th style="width: 100px"><?php __('Sum'); ?></th>
+                <th style="width: 100px"><?php echo __('Sum'); ?></th>
 			<td style="width: 20px"></td>
-                <th><?php __('Konto'); ?></th>
+                <th><?php echo __('Konto'); ?></th>
         </tr>
         <?php
                 $i = 0;

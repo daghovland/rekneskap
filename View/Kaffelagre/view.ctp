@@ -1,27 +1,27 @@
 <div class="kaffelagre view">
 <h2><?php  __('Kaffelager');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffelager['Kaffelager']['nummer']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Lageransvarlig'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Lageransvarlig'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($kaffelager['Selger']['navn'], array('controller'=> 'selgere', 'action'=>'view', $kaffelager['Selger']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Beskrivelse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffelager['Kaffelager']['beskrivelse']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Lagertypenavn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Lagertypenavn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($kaffelager['lagertypenavn']['navn'], array('controller'=> 'lagertyper', 'action'=>'view', $kaffelager['lagertypenavn']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Lagerkonto'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Lagerkonto'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($kaffelager['lagerkonto']['nummer'], array('controller'=> 'kontoer', 'action'=>'view', $kaffelager['lagerkonto']['nummer'])); ?>
 			&nbsp;
@@ -45,7 +45,7 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Kaffeflyttinger');?></h3>
+	<h3><?php echo __('Kaffeflyttinger');?></h3>
 	<?php 
 		//$kaffeflyttinger = array_merge($kaffelager['lagerfraflytting'], $kaffelager['lagertilflytting']);
 		//arsort($kaffeflyttinger);
@@ -70,7 +70,7 @@
         <th><?php echo $this->Paginator->sort('ansvarlig');?></th>
         <th><?php echo $this->Paginator->sort('faktura');?></th>
         <th><?php echo $this->Paginator->sort('kaffesalg_id');?></th>
-        <th class="actions"><?php __('Actions');?></th>
+        <th class="actions"><?php echo __('Actions');?></th>
 </tr>
 
 <?php echo $this->element("kaffeflyttinger", array('kaffeflyttinger' => $lagerflyttinger, 'array_key' => 'lagerfraflytting')); ?>

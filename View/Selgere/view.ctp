@@ -1,33 +1,33 @@
 <div class="selgere view">
   <h2><?php  __('Selger');?></h2>
   <dl><?php $i = 0; $class = ' class="altrow"';?>
-  <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Navn'); ?></dt>
+  <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Navn'); ?></dt>
   <dd<?php if ($i++ % 2 == 0) echo $class;?>>
   <?php echo $selger['Selger']['navn']; ?>
   &nbsp;
 </dd>
-<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Epost'); ?></dt>
+<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Epost'); ?></dt>
 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
 <?php echo $selger['Selger']['epost']; ?>
 &nbsp;
 </dd>
-<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Telefon'); ?></dt>
+<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Telefon'); ?></dt>
 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
 <?php echo $selger['Selger']['telefon']; ?>
 &nbsp;
 </dd>
-<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Rolle'); ?></dt>
+<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Rolle'); ?></dt>
 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
 <?php echo $this->Html->link($selger['Rolle']['navn'], array('controller'=> 'roller', 'action'=>'view', $selger['Rolle']['nummer'])); ?>
 &nbsp;
 </dd>
-<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kaffelager'); ?></dt>
+<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kaffelager'); ?></dt>
 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
 <?php echo $this->Html->link($selger['Kaffelager']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $selger['Kaffelager']['nummer'])); ?>
 &nbsp;
 </dd>
 <?php echo $this->element("kaffebeholdninger", array("beholdninger" => $beholdninger)); ?>
-<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Regnskapskonto'); ?></dt>
+<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Regnskapskonto'); ?></dt>
 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
 <?php echo $this->Html->link($selger['SelgerKonto']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $selger['SelgerKonto']['nummer'])); ?>
 &nbsp;
@@ -47,16 +47,16 @@
   </ul>
 </div>
 <div class="related">
-  <h3><?php __('Related Kaffelagre');?></h3>
+  <h3><?php echo __('Related Kaffelagre');?></h3>
   <?php if (!empty($selger['SelgerLagre'])):?>
   <table cellpadding = "0" cellspacing = "0">
     <tr>
-      <th><?php __('Nummer'); ?></th>
-      <th><?php __('Selger'); ?></th>
-      <th><?php __('Beskrivelse'); ?></th>
-      <th><?php __('Lagertype'); ?></th>
-      <th><?php __('Konto'); ?></th>
-      <th class="actions"><?php __('Actions');?></th>
+      <th><?php echo __('Nummer'); ?></th>
+      <th><?php echo __('Selger'); ?></th>
+      <th><?php echo __('Beskrivelse'); ?></th>
+      <th><?php echo __('Lagertype'); ?></th>
+      <th><?php echo __('Konto'); ?></th>
+      <th class="actions"><?php echo __('Actions');?></th>
     </tr>
     <?php
       $i = 0;

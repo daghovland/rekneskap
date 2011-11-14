@@ -1,7 +1,7 @@
 <div class="pengetellinger form">
 <?php echo $this->Form->create('Pengetelling');?>
 	<fieldset>
- 		<legend><?php __('Edit pengetelling');?></legend>
+ 		<legend><?php echo __('Edit pengetelling');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('konto_id');

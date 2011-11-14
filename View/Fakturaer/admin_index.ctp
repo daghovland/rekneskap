@@ -1,5 +1,5 @@
 <div class="fakturaer index">
-<h2><?php __('Fakturaer');?></h2>
+<h2><?php echo __('Fakturaer');?></h2>
 <p>
 <?php
 echo $this->Paginator->counter(array(
@@ -18,7 +18,7 @@ echo $this->Paginator->counter(array(
 	<th><?php echo $this->Paginator->sort('adresse');?></th>
 	<th><?php echo $this->Paginator->sort('mva');?></th>
 	<th><?php echo $this->Paginator->sort('totalpris');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

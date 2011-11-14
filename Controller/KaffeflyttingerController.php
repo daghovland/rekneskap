@@ -24,6 +24,18 @@ class KaffeflyttingerController extends AppController {
       $this->data['Kaffeflytting']['til'] = $this->data['Kaffeflytting']['fra'];
       $this->add();
     }  else {
+      $standardLager = '8';
+      $this->set('standardLager', $standardLager);
+      $this->set('standardBeholdninger', 
+		 $this->Kaffeflytting->Fra->Kaffelagerbeholdning->find('list', 
+								       array('conditions' => array('kaffelager_id' => $standardLager,
+												   'lagertype_id' => '3'),
+									     'order' => 'kaffepris_id DESC',
+									     'fields' => array('kaffepris_id', 'antall')
+									     )
+								       )
+		 )
+	;
       $this->set('fralagre', $this->Kaffeflytting->Fra->find('list'));
       $this->set('fralagernavn', $this->Kaffeflytting->Fra->find('list', array('fields' => array('beskrivelse'))));
       $this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list'));
@@ -36,6 +48,18 @@ class KaffeflyttingerController extends AppController {
   
   
   function hent_kaffi(){
+    $standardLager = '8';
+    $this->set('standardLager', $standardLager);
+    $this->set('standardBeholdninger', 
+	       $this->Kaffeflytting->Fra->Kaffelagerbeholdning->find('list', 
+								     array('conditions' => array('kaffelager_id' => $standardLager,
+												 'lagertype_id' => '3'),
+									   'order' => 'kaffepris_id DESC',
+									   'fields' => array('kaffepris_id', 'antall')
+									   )
+								     )
+	       )
+      ;
     $this->set('fralagre', $this->Kaffeflytting->Fra->find('list'));
     $this->set('fralagernavn', $this->Kaffeflytting->Fra->find('list', array('fields' => array('beskrivelse'))));
     $this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list', array('order' => array('nummer ASC'))));

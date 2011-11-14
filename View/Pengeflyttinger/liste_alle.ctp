@@ -7,7 +7,7 @@
         <th><?php echo __('Dato');?></th>
         <th><?php echo __('Beskrivelse');?></th>
         <th><?php echo __('Faktura');?></th>
-        <th class="actions"><?php __('Actions');?></th>
+        <th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php echo $this->element("pengeflytting", array('pengeflyttinger' => $pengeflyttinger, 'key' => 'Pengeflytting')); ?>
 </table>

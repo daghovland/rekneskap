@@ -1,7 +1,7 @@
 <div class="kontoutskrifter form">
 <?php echo $this->Form->create('Kontoutskrift');?>
 	<fieldset>
- 		<legend><?php __('Add Kontoutskrift');?></legend>
+ 		<legend><?php echo __('Add Kontoutskrift');?></legend>
 	<?php
 		echo $this->Form->input('filnavn');
 		echo $this->Form->input('filtype');

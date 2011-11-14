@@ -6,7 +6,7 @@ $this->Js->link('scriptaculous', false);
 <div class="kunder form">
 <?php echo $this->Form->create('Kunde');?>
 	<fieldset>
- 		<legend><?php __('Edit Kunde');?></legend>
+ 		<legend><?php echo __('Edit Kunde');?></legend>
 	<?php
 		echo $this->Form->input('nummer');
 		echo $this->Form->input('navn');

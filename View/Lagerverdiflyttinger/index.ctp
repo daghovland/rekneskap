@@ -1,5 +1,5 @@
 <div class="lagerverdiflyttinger index">
-<h2><?php __('Lagerverdiflyttinger');?></h2>
+<h2><?php echo __('Lagerverdiflyttinger');?></h2>
 <p>
 <?php
 echo $this->Paginator->counter(array(
@@ -21,7 +21,7 @@ echo $this->Paginator->counter(array(
 	<th><?php echo $this->Paginator->sort('kaffeflytting_id');?></th>
 	<th><?php echo $this->Paginator->sort('kaffiimport_id');?></th>
 	<th><?php echo $this->Paginator->sort('kaffesalg_id');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

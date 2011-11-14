@@ -1,7 +1,7 @@
 <div class="lagerverdikontoer form">
 <?php echo $this->Form->create('Lagerverdikonto');?>
 	<fieldset>
- 		<legend><?php __('Edit Lagerverdikonto');?></legend>
+ 		<legend><?php echo __('Edit Lagerverdikonto');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('navn');

@@ -1,5 +1,5 @@
 <div class="roller index">
-<h2><?php __('Roller');?></h2>
+<h2><?php echo __('Roller');?></h2>
 <p>
 <?php
 echo $this->Paginator->counter(array(
@@ -10,7 +10,7 @@ echo $this->Paginator->counter(array(
 <tr>
 	<th><?php echo $this->Paginator->sort('nummer');?></th>
 	<th><?php echo $this->Paginator->sort('navn');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

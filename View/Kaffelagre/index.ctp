@@ -1,5 +1,5 @@
 <div class="kaffelagre index">
-<h2><?php __('Kaffelagre');?></h2>
+<h2><?php echo __('Kaffelagre');?></h2>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo __('Beskrivelse');?></th>
@@ -9,7 +9,7 @@
 	?>
 	<th><?php echo __('Lager-ansvarleg');?></th>
 	<th><?php echo __('Lagertype');?></th>
-	<th class="actions"><?php __('Handlingar');?></th>
+	<th class="actions"><?php echo __('Handlingar');?></th>
 </tr>
 <?php
 $i = 0;

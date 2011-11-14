@@ -1,7 +1,7 @@
 <div class="fakturaer form">
 <?php echo $this->Form->create('Faktura');?>
 	<fieldset>
- 		<legend><?php __('Edit Faktura');?></legend>
+ 		<legend><?php echo __('Edit Faktura');?></legend>
 	<?php
 		echo $this->Form->input('nummer');
 		echo $this->Form->input('kunde');

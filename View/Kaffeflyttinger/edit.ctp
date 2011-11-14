@@ -1,7 +1,7 @@
 <div class="kaffeflyttinger form">
 <?php echo $this->Form->create('Kaffeflytting');?>
 	<fieldset>
- 		<legend><?php __('Edit Kaffeflytting');?></legend>
+ 		<legend><?php echo __('Edit Kaffeflytting');?></legend>
 	<?php
 		echo $this->Form->input('nummer');
 		echo $this->Form->input('type', array('options' => $kaffetyper));

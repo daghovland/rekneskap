@@ -1,7 +1,7 @@
 <div class="internfiler form">
 <?php echo $this->Form->create('Internfil');?>
 	<fieldset>
- 		<legend><?php __('Endre opplsyningar om fila');?></legend>
+ 		<legend><?php echo __('Endre opplsyningar om fila');?></legend>
 	<?php
 		echo $this->Form->input('filnavn');
 		echo $this->Form->input('kommentar');

@@ -1,7 +1,7 @@
 <div class="adresser form">
 <?php echo $this->Form->create('Adresse');?>
 	<fieldset>
- 		<legend><?php __('Add Adresse');?></legend>
+ 		<legend><?php echo __('Add Adresse');?></legend>
 	<?php
 		echo $this->Form->input('linje1');
 		echo $this->Form->input('linje2');

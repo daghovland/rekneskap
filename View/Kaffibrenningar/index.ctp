@@ -1,5 +1,5 @@
 <div class="kaffibrenningar index">
-<h2><?php __('Kaffibrenningar');?></h2>
+<h2><?php echo __('Kaffibrenningar');?></h2>
 <p>
 <?php
 echo $this->Paginator->counter(array(
@@ -17,7 +17,7 @@ echo $this->Paginator->counter(array(
 	<th><?php echo __('Brennekostnad');?></th>
 	<th><?php echo __('Verdi per kg. ferdig');?></th>
 	<th><?php echo $this->Paginator->sort('kaffiimport_id');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

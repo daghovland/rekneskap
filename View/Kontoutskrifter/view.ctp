@@ -1,72 +1,72 @@
 <div class="kontoutskrifter view">
 <h2><?php  __('Kontoutskrift');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Filnavn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Filnavn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['filnavn']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Filtype'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Filtype'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['filtype']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Size'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Size'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['size']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Innhold'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Innhold'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['innhold']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['modified']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Konto'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Konto'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($kontoutskrift['Konto']['beskrivelse'], array('controller' => 'kontoer', 'action' => 'view', $kontoutskrift['Konto']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mnd'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Mnd'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['mnd']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Aar'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Aar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['aar']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Inn Kroner'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Inn Kroner'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['inn_kroner']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ut Kroner'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Ut Kroner'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['ut_kroner']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ut Oere'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Ut Oere'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['ut_oere']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Inn Oere'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Inn Oere'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kontoutskrift['Kontoutskrift']['inn_oere']; ?>
 			&nbsp;

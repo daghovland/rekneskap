@@ -1,7 +1,7 @@
 <div class="kaffityper form">
 <?php echo $this->Form->create('Kaffitype');?>
 	<fieldset>
- 		<legend><?php __('Edit Kaffitype');?></legend>
+ 		<legend><?php echo __('Edit Kaffitype');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('nettogram');

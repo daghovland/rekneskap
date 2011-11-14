@@ -1,7 +1,7 @@
 <div class="postsendingar form">
 <?php echo $this->Form->create('Postsending');?>
 	<fieldset>
- 		<legend><?php __('Edit Postsending');?></legend>
+ 		<legend><?php echo __('Edit Postsending');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('kaffesalg_id');

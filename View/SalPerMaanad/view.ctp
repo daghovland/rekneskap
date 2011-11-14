@@ -1,22 +1,22 @@
 <div class="salPerMaanad view">
 <h2><?php  __('SalPerMaanad');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Year'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Year'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $salPerMaanad['SalPerMaanad']['year']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Month'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Month'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $salPerMaanad['SalPerMaanad']['month']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Solgt'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Solgt'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $salPerMaanad['SalPerMaanad']['solgt']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kaffepris'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kaffepris'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($salPerMaanad['Kaffepris']['intern_navn'], array('controller'=> 'kaffepriser', 'action'=>'view', $salPerMaanad['Kaffepris']['nummer'])); ?>
 			&nbsp;

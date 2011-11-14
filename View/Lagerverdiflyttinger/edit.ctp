@@ -1,7 +1,7 @@
 <div class="lagerverdiflyttinger form">
 <?php echo $this->Form->create('Lagerverdiflytting');?>
 	<fieldset>
- 		<legend><?php __('Edit Lagerverdiflytting');?></legend>
+ 		<legend><?php echo __('Edit Lagerverdiflytting');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('fra', array('options' => $lagerverdikontoer, 'label' =>'Frå'));

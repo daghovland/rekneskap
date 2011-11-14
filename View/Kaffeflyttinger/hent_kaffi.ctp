@@ -3,29 +3,28 @@
 <div class="kaffeflyttinger form">
   <?php echo $this->Form->create('Kaffeflytting', array('action' => 'add'));?>
   <fieldset>
-    <legend><?php __('Hent kaffi');?></legend>
+    <legend><?php echo __('Hent kaffi');?></legend>
     <?php
       echo $this->Form->input('fra', array('options' => $fralagernavn, 
 					   'label' => 'Frå',
-					   'selected' => '8', 
-					   'id' => 'KaffeflyttingFralagerId'));
-					   echo $this->Form->input('til', array('options' => $fralagernavn,
-										'label' => 'Til',
-										'selected' => $selgerInfo[0]['Kaffelager']['nummer'],
-										'id' => 'KaffeflyttingTillagerId'));
-										
-										
-		
-		echo $this->Form->input('type', array('options' => $kaffetypenavn, 
-						      'label' => 'Kaffitype',
-						      'selected' => count($kaffetypenavn),
-						      'id' => 'KaffeflyttingKaffetypeId',))
-		;
-		echo $this->Form->input('antall', 
-					array('options' => range(1,1000), 
-					      'id' => 'KaffeflyttingAntall')
-					)
-		;
+					   'selected' => $standardLager, 
+					   'id' => 'KaffeflyttingFralagerId'))
+    ;
+    echo $this->Form->input('til', array('options' => $fralagernavn,
+					 'label' => 'Til',
+					 'selected' => $selgerInfo[0]['Kaffelager']['nummer'],
+					 'id' => 'KaffeflyttingTillagerId'))
+    ;
+    echo $this->Form->input('type', array('options' => $kaffetypenavn, 
+					  'label' => 'Kaffitype',
+					  'selected' => count($kaffetypenavn),
+					  'id' => 'KaffeflyttingKaffetypeId',))
+    ;
+    echo $this->Form->input('antall', 
+			    array('options' => range(0,$standardBeholdninger[count($kaffetypenavn)]), 
+				  'id' => 'KaffeflyttingAntall')
+			    )
+    ;
 		echo $this->Form->input('beskrivelse', array('label' => 'Kommentar'));
 		echo $this->Form->input('dato', array('minYear' => 2007, 'maxYear' => date('Y')));
 		echo $this->Form->hidden('fralagertype', array('value' => 3));

@@ -1,22 +1,22 @@
 <div class="regnskap view">
 <h2><?php  __('Rekneskap');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $regnskap['Regnskap']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Start'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Start'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $regnskap['Regnskap']['start']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Slutt'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Slutt'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $regnskap['Regnskap']['slutt']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Beskrivelse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $regnskap['Regnskap']['beskrivelse']; ?>
 			&nbsp;
@@ -34,12 +34,12 @@
 </div>
 
 <div class="related">
-<h3><?php __('Utgifter'); ?></h3>
+<h3><?php echo __('Utgifter'); ?></h3>
 <?php echo $this->element("regnskapkonto", array("saldoer" => $utgifter, "feltnavn" => "RegnskapUtgifter")); ?> 
 </div>
 
 <div class="related">
-<h3><?php __('Inntekter'); ?></h3>
+<h3><?php echo __('Inntekter'); ?></h3>
 <?php echo $this->element("regnskapkonto", array("saldoer" => $inntekter, "feltnavn" => "RegnskapInntekter")); ?> 
 </div>
 
@@ -48,13 +48,13 @@
 </div>
 
 <div class="related">
-<h3><?php __('Kaffeflytting'); ?></h3>
+<h3><?php echo __('Kaffeflytting'); ?></h3>
 <table cellpadding = "0" cellspacing = "0">
         <tr>
 	        <?php foreach($kaffepriser as $typeid => $navn):?>
 			    <th><?php echo $navn; ?></th>
                 <?php endforeach; ?>
-                <th><?php __('Konto'); ?></th>
+                <th><?php echo __('Konto'); ?></th>
         </tr>
         <?php
                 $i = 0;
@@ -75,14 +75,14 @@
 </div>
 
 <div class="related">
-<h3><?php __('Penger / kontoer / gjeld'); ?></h3>
+<h3><?php echo __('Penger / kontoer / gjeld'); ?></h3>
 <?php
         if (!empty($pengebalanser)):?>
         <table cellpadding = "0" cellspacing = "0">
         <tr>
-                <th><?php __('Start'); ?></th>
-                <th><?php __('Slutt'); ?></th>
-                <th><?php __('Konto'); ?></th>
+                <th><?php echo __('Start'); ?></th>
+                <th><?php echo __('Slutt'); ?></th>
+                <th><?php echo __('Konto'); ?></th>
         </tr>
         <?php
                 $i = 0;
@@ -106,12 +106,12 @@
 
 
 <div class="related">
-<h3><?php __('Kaffilagre'); ?></h3>
+<h3><?php echo __('Kaffilagre'); ?></h3>
 <?php
 	if (!empty($kaffe_start_slutt_beholdninger)):?>
         <table cellpadding = "0" cellspacing = "0">
         <tr>
-                <th><?php __('Lager'); ?></th>
+                <th><?php echo __('Lager'); ?></th>
 		<?php foreach($kaffepriser as $typeid => $navn):?>
 
 		                <th><?php echo $navn . ' - start'; ?></th>
@@ -146,7 +146,7 @@
 </div>
 <!--
 <div class="related">
-<h3><?php __('Kaffesalg'); ?></h3>
+<h3><?php echo __('Kaffesalg'); ?></h3>
 <?php echo $this->element("regnskapkonto", array("saldoer" => $kaffesalg)); ?> 
 </div>
 -->

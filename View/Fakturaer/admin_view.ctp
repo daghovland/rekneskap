@@ -1,52 +1,52 @@
 <div class="fakturaer view">
 <h2><?php  __('Faktura');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['nummer']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fakturakunde'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Fakturakunde'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($faktura['fakturakunde']['nummer'], array('controller'=> 'kunder', 'action'=>'view', $faktura['fakturakunde']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Faktura Dato'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Faktura Dato'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['faktura_dato']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Betaling'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Betaling'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['betaling']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Betalings Frist'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Betalings Frist'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['betalings_frist']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Melding'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Melding'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['melding']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kroner'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kroner'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['kroner']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fakturaadresse'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Fakturaadresse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($faktura['fakturaadresse']['nummer'], array('controller'=> 'adresser', 'action'=>'view', $faktura['fakturaadresse']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mva'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Mva'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['mva']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Totalpris'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Totalpris'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['totalpris']; ?>
 			&nbsp;
@@ -73,39 +73,39 @@
 		<h3><?php  __('Related Pengeflyttinger');?></h3>
 	<?php if (!empty($faktura['fakturainnbetaling'])):?>
 		<dl>	<?php $i = 0; $class = ' class="altrow"';?>
-			<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer');?></dt>
+			<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['nummer'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fra');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Fra');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['fra'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Til');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Til');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['til'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kroner');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kroner');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['kroner'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ã¸re');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Ã¸re');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['Ã¸re'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Dato');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Dato');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['dato'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Beskrivelse');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['beskrivelse'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('DekningsFaktura');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('DekningsFaktura');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['dekningsFaktura'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Oere');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Oere');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $faktura['fakturainnbetaling']['oere'];?>
 &nbsp;</dd>
@@ -118,23 +118,23 @@
 		</div>
 	</div>
 	<div class="related">
-	<h3><?php __('Related Kaffeflyttinger');?></h3>
+	<h3><?php echo __('Related Kaffeflyttinger');?></h3>
 	<?php if (!empty($faktura['fakturakaffeflyttinger'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Type'); ?></th>
-		<th><?php __('Antall'); ?></th>
-		<th><?php __('Fra'); ?></th>
-		<th><?php __('Beskrivelse'); ?></th>
-		<th><?php __('Til'); ?></th>
-		<th><?php __('Dato'); ?></th>
-		<th><?php __('Pengeflytting'); ?></th>
-		<th><?php __('Fralagertype'); ?></th>
-		<th><?php __('Tillagertype'); ?></th>
-		<th><?php __('Ansvarlig'); ?></th>
-		<th><?php __('Faktura'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Type'); ?></th>
+		<th><?php echo __('Antall'); ?></th>
+		<th><?php echo __('Fra'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
+		<th><?php echo __('Til'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
+		<th><?php echo __('Pengeflytting'); ?></th>
+		<th><?php echo __('Fralagertype'); ?></th>
+		<th><?php echo __('Tillagertype'); ?></th>
+		<th><?php echo __('Ansvarlig'); ?></th>
+		<th><?php echo __('Faktura'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;

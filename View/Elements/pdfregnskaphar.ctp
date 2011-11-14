@@ -1,12 +1,12 @@
-<h3><?php __('Penger / kontoer / gjeld'); ?></h3>
+<h3><?php echo __('Penger / kontoer / gjeld'); ?></h3>
 <?php
         if (!empty($beholdninger)):?>
         <table cellpadding = "5" cellspacing = "10">
         <tr>
-                <th style="width: 100px"><?php __('Start'); ?></th>
-                <th style="width: 100px"><?php __('Slutt'); ?></th>
+                <th style="width: 100px"><?php echo __('Start'); ?></th>
+                <th style="width: 100px"><?php echo __('Slutt'); ?></th>
 		<td style="width: 40px"></td>
-                <th><?php __('Konto'); ?></th>
+                <th><?php echo __('Konto'); ?></th>
         </tr>
         <?php
                 $i = 0;

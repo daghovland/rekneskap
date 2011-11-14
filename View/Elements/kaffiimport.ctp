@@ -1,27 +1,27 @@
 <div class="kaffiimportar view">
 <h2><?php  __('Kaffiimport');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Namn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Namn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['navn']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kooperativ'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kooperativ'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['kooperativ']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kilo'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kilo'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['kilo']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Pris per kilo'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Pris per kilo'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['pris'] . ' ' . $kaffiimport['Kaffiimport']['valuta'] . ' (' . $kaffiimport['Kaffiimport']['pris'] * $kaffiimport['Kaffiimport']['kurs'] / 100 . ' kr)'; ?>
 			&nbsp;
@@ -31,43 +31,43 @@
                         <?php echo $kaffiimport['Kaffiimport']['kurs']; ?>
                         &nbsp;
                 </dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Totalpris'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Totalpris'); ?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
                         <?php echo $kaffiimport['Kaffiimport']['pris'] * $kaffiimport['Kaffiimport']['kilo'] . ' ' . $kaffiimport['Kaffiimport']['valuta'] . ' ( ' . $kaffiimport['Kaffiimport']['pris'] * $kaffiimport['Kaffiimport']['kilo'] * $kaffiimport['Kaffiimport']['kurs'] / 100 . ' kr)'; ?>
                         &nbsp;
                 </dd>
 
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Sekker'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Sekker'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['sekker']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Totale utgiftar'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Totale utgiftar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo sprintf("%.2f kr", $kaffiimport['KaffiimportInfo']['utgiftar']); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Verdi på lager no'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Verdi på lager no'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo sprintf("%.2f kr", $kaffiimport['KaffiimportInfo']['verdi']); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontrakt'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kontrakt'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['kontrakt']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['modified']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kommentar'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kommentar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffiimport['Kaffiimport']['kommentar']; ?>
 			&nbsp;
@@ -75,19 +75,19 @@
 	</dl>
 </div>
 <div class="related">
-	<h3><?php __('Brenningar av kaffi frå denne importen');?></h3>
+	<h3><?php echo __('Brenningar av kaffi frå denne importen');?></h3>
 	<?php if (!empty($kaffiimport['Kaffibrenning'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Id'); ?></th>
-		<th><?php __('Navn'); ?></th>
-		<th><?php __('Brenneri'); ?></th>
-		<th><?php __('Brent'); ?></th>
-		<th><?php __('Kilo'); ?></th>
-		<th><?php __('Kaffiimport Id'); ?></th>
-		<th><?php __('Modified'); ?></th>
-		<th><?php __('Created'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Navn'); ?></th>
+		<th><?php echo __('Brenneri'); ?></th>
+		<th><?php echo __('Brent'); ?></th>
+		<th><?php echo __('Kilo'); ?></th>
+		<th><?php echo __('Kaffiimport Id'); ?></th>
+		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;
@@ -118,16 +118,16 @@
 
 </div>
 <div class="related">
-	<h3><?php __('Utgiftar');?></h3>
+	<h3><?php echo __('Utgiftar');?></h3>
 	<?php if (!empty($kaffiimport['Pengeflytting'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Fra'); ?></th>
-		<th><?php __('Til'); ?></th>
-		<th><?php __('Beløp'); ?></th>
-		<th><?php __('Beskrivelse'); ?></th>
-		<th><?php __('Dato'); ?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Fra'); ?></th>
+		<th><?php echo __('Til'); ?></th>
+		<th><?php echo __('Beløp'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
@@ -157,16 +157,16 @@
 
 </div>
 <div class="related">
-        <h3><?php __('Budsjetterte Utgiftar');?></h3>
+        <h3><?php echo __('Budsjetterte Utgiftar');?></h3>
         <?php if (!empty($kaffiimport['BudsjettPengeflytting'])):?>
         <table cellpadding = "0" cellspacing = "0">
         <tr>
-                <th><?php __('Id'); ?></th>
-                <th><?php __('Fra'); ?></th>
-                <th><?php __('Til'); ?></th>
-                <th><?php __('Beløp'); ?></th>
-                <th><?php __('Beskrivelse'); ?></th>
-                <th><?php __('Dato'); ?></th>
+                <th><?php echo __('Id'); ?></th>
+                <th><?php echo __('Fra'); ?></th>
+                <th><?php echo __('Til'); ?></th>
+                <th><?php echo __('Beløp'); ?></th>
+                <th><?php echo __('Beskrivelse'); ?></th>
+                <th><?php echo __('Dato'); ?></th>
         </tr>
         <?php
                 $i = 0;

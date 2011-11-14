@@ -1,5 +1,5 @@
 <div class="selgere index">
-  <h2><?php __('Selgere');?></h2>
+  <h2><?php echo __('Selgere');?></h2>
   <p>
     <?php
 			      //      echo $this->Paginator->counter(array('format' => 'pages'));
@@ -20,7 +20,7 @@
       <th><?php echo $this->Paginator->sort('SelgerKonto');?></th>
       <th><?php echo $this->Paginator->sort('SalgsKonto');?></th>
       <th><?php echo __('Gjeld');?></th>
-      <th class="actions"><?php __('Actions');?></th>
+      <th class="actions"><?php echo __('Actions');?></th>
     </tr>
     <?php
       //debug($beholdninger, true);

@@ -1,9 +1,9 @@
-<h3><?php __('Kaffilagre'); ?></h3>
+<h3><?php echo __('Kaffilagre'); ?></h3>
 <?php
         if (!empty($kaffe_start_slutt_beholdninger)):?>
         <table cellpadding = "0" cellspacing = "0">
         <tr>
-                <th><?php __('Lager'); ?></th>
+                <th><?php echo __('Lager'); ?></th>
                 <?php foreach($kaffepriser as $typeid => $navn):?>
 
                                 <th><?php echo $navn . ' - start'; ?></th>

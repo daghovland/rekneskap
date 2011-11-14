@@ -1,7 +1,7 @@
 <div class="selgere form">
 <?php echo $this->Form->create('Selger');?>
 	<fieldset>
- 		<legend><?php __('Add Selger');?></legend>
+ 		<legend><?php echo __('Add Selger');?></legend>
 	<?php
 		echo $this->Form->input('navn');
 		echo $this->Form->input('epost');

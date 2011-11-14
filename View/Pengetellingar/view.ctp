@@ -1,38 +1,38 @@
 <div class="varetellinger view">
 <h2><?php  __('Pengetelling');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengetelling['Pengetelling']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Konto'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Konto'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($pengetelling['Konto']['beskrivelse'], array('controller'=> 'kontoer', 'action'=>'view', $pengetelling['Konto']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Pengar'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Pengar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengetelling['Pengetelling']['kroner']; ?>,
 			<?php echo $pengetelling['Pengetelling']['oere']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Dato'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Dato'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengetelling['Pengetelling']['dato']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Oppretta'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Oppretta'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengetelling['Pengetelling']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Sist endra'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Sist endra'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $pengetelling['Pengetelling']['modified']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Ansvarlig'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Ansvarlig'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($pengetelling['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $pengetelling['Selger']['nummer'])); ?>
 			&nbsp;

@@ -1,7 +1,7 @@
 <div class="internfiler form">
 <?php echo $this->Form->create('Internfil', array('action' => 'add', 'type' => 'file'));?>
 	<fieldset>
- 		<legend><?php __('Last opp fil');?></legend>
+ 		<legend><?php echo __('Last opp fil');?></legend>
 	<?php
 		echo $this->Form->file('Internfil.submittedfile');
 	?>

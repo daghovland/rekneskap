@@ -1,7 +1,7 @@
 <div class="varetellinger form">
 <?php echo $this->Form->create('Varetelling');?>
 	<fieldset>
- 		<legend><?php __('Edit Varetelling');?></legend>
+ 		<legend><?php echo __('Edit Varetelling');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('kaffelager_id');

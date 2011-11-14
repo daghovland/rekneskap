@@ -1,42 +1,42 @@
 <div class="splitttransaksjoner view">
 <h2><?php  __('Splitttransaksjon');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $splitttransaksjon['Splitttransaksjon']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Dato'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Dato'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $splitttransaksjon['Splitttransaksjon']['dato']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Created'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $splitttransaksjon['Splitttransaksjon']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Modified'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $splitttransaksjon['Splitttransaksjon']['modified']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Selger'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Selger'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($splitttransaksjon['Selger']['nummer'], array('controller' => 'selgere', 'action' => 'view', $splitttransaksjon['Selger']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kroner'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kroner'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $splitttransaksjon['Splitttransaksjon']['kroner']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Oere'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Oere'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $splitttransaksjon['Splitttransaksjon']['oere']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kommentar'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kommentar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $splitttransaksjon['Splitttransaksjon']['kommentar']; ?>
 			&nbsp;
@@ -44,7 +44,7 @@
 	</dl>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('Edit Splitttransaksjon', true), array('action' => 'edit', $splitttransaksjon['Splitttransaksjon']['id'])); ?> </li>
 		<li><?php echo $this->Html->link(__('Delete Splitttransaksjon', true), array('action' => 'delete', $splitttransaksjon['Splitttransaksjon']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $splitttransaksjon['Splitttransaksjon']['id'])); ?> </li>
@@ -57,25 +57,25 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Related Pengeflyttinger');?></h3>
+	<h3><?php echo __('Related Pengeflyttinger');?></h3>
 	<?php if (!empty($splitttransaksjon['Pengeflytting'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Fra'); ?></th>
-		<th><?php __('Til'); ?></th>
-		<th><?php __('Kroner'); ?></th>
-		<th><?php __('Dato'); ?></th>
-		<th><?php __('Beskrivelse'); ?></th>
-		<th><?php __('DekningsFaktura'); ?></th>
-		<th><?php __('Oere'); ?></th>
-		<th><?php __('Kaffesalg Id'); ?></th>
-		<th><?php __('Modified'); ?></th>
-		<th><?php __('Created'); ?></th>
-		<th><?php __('Splitt Transaksjon Id'); ?></th>
-		<th><?php __('Kaffiimport Id'); ?></th>
-		<th><?php __('Kaffibrenning Id'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Fra'); ?></th>
+		<th><?php echo __('Til'); ?></th>
+		<th><?php echo __('Kroner'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
+		<th><?php echo __('DekningsFaktura'); ?></th>
+		<th><?php echo __('Oere'); ?></th>
+		<th><?php echo __('Kaffesalg Id'); ?></th>
+		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th><?php echo __('Splitt Transaksjon Id'); ?></th>
+		<th><?php echo __('Kaffiimport Id'); ?></th>
+		<th><?php echo __('Kaffibrenning Id'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;

@@ -1,7 +1,7 @@
 <div class="budsjettPengeflyttinger form">
 <?php echo $this->Form->create('BudsjettPengeflytting');?>
 	<fieldset>
- 		<legend><?php __('Budsjetter Pengeflytting'); ?></legend>
+ 		<legend><?php echo __('Budsjetter Pengeflytting'); ?></legend>
 	<?php
 		echo $this->Form->input('fra', array('options' => $frakontoer, 'label' => 'Frå', 'selected' => 56));
                 echo $this->Form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));
@@ -16,7 +16,7 @@
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Budsjett Pengeflyttinger', true), array('action' => 'index'));?></li>

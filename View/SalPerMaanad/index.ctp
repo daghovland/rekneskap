@@ -1,5 +1,5 @@
 <div class="salPerMaanad index">
-<h2><?php __('Salsoversikt per månad og kaffitype');?></h2>
+<h2><?php echo __('Salsoversikt per månad og kaffitype');?></h2>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo __('År');?></th>

@@ -4,7 +4,7 @@
         $this->Js->link('scriptaculous', false);
 ?>
 <div class="pengeflyttinger index">
-<h2><?php __('Pengeflyttinger');?></h2>
+<h2><?php echo __('Pengeflyttinger');?></h2>
 <p>Siste året (365 dagar) har vi seld kaffi for til saman <?php echo $sumSalg; ?> kr.</p>
 <p>
 <label for="bevegelserDatoFraAar">Frå</label>
@@ -70,7 +70,7 @@ echo $this->Paginator->counter(array(
 	<th><?php echo $this->Paginator->sort('kaffibrenning_id');?></th>
 	<th><?php echo $this->Paginator->sort('Kaffisal', 'kaffesalg');?></th>
 	<th><?php echo __('Vedlegg'); ?> </th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php echo $this->element("pengeflytting", array('pengeflyttinger' => $pengeflyttinger, 'key' => 'Pengeflytting', 'vedlegg' => $vedlegg)); ?>
 </table>

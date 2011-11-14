@@ -5,7 +5,7 @@
 <p id="fakturatekst" />
 </div>
   <fieldset>
-    <legend><?php __('Sel kaffi');?></legend>
+    <legend><?php echo __('Sel kaffi');?></legend>
     <?php
        echo $this->Form->input('fra', array('options' => $fralagernavn, 
 				      'label' => 'Frå lager', 

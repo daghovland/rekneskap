@@ -1,5 +1,5 @@
 <div class="kontoutskrifter index">
-<h2><?php __('Kontoutskrifter');?></h2>
+<h2><?php echo __('Kontoutskrifter');?></h2>
 <p>
 <?php
 echo $this->Paginator->counter(array(
@@ -22,7 +22,7 @@ echo $this->Paginator->counter(array(
 	<th><?php echo $this->Paginator->sort('ut_kroner');?></th>
 	<th><?php echo $this->Paginator->sort('ut_oere');?></th>
 	<th><?php echo $this->Paginator->sort('inn_oere');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

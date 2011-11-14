@@ -1,16 +1,16 @@
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Type'); ?></th>
-		<th><?php __('Antall'); ?></th>
-		<th><?php __('Fra'); ?></th>
-		<th><?php __('Beskrivelse'); ?></th>
-		<th><?php __('Til'); ?></th>
-		<th><?php __('Dato'); ?></th>
-		<th><?php __('Pengeflytting'); ?></th>
-		<th><?php __('Ansvarlig'); ?></th>
-		<th><?php __('Faktura'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Type'); ?></th>
+		<th><?php echo __('Antall'); ?></th>
+		<th><?php echo __('Fra'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
+		<th><?php echo __('Til'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
+		<th><?php echo __('Pengeflytting'); ?></th>
+		<th><?php echo __('Ansvarlig'); ?></th>
+		<th><?php echo __('Faktura'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;

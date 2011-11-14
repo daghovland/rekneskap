@@ -1,22 +1,22 @@
 <div class="rabatter view">
 <h2><?php  __('Rabatt');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $rabatt['Rabatt']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Type'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Type'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $rabatt['Rabatt']['kaffepris_id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Pris'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Pris'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $rabatt['Rabatt']['pris']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Beskrivelse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $rabatt['Rabatt']['beskrivelse']; ?>
 			&nbsp;
@@ -36,21 +36,21 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Related Kaffesalg');?></h3>
+	<h3><?php echo __('Related Kaffesalg');?></h3>
 	<?php if (!empty($rabatt['Kaffesalg'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Total'); ?></th>
-		<th><?php __('Frakt'); ?></th>
-		<th><?php __('Mva'); ?></th>
-		<th><?php __('Kontant'); ?></th>
-		<th><?php __('Sending'); ?></th>
-		<th><?php __('Dato'); ?></th>
-		<th><?php __('Modified'); ?></th>
-		<th><?php __('Created'); ?></th>
-		<th><?php __('Selger Id'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Total'); ?></th>
+		<th><?php echo __('Frakt'); ?></th>
+		<th><?php echo __('Mva'); ?></th>
+		<th><?php echo __('Kontant'); ?></th>
+		<th><?php echo __('Sending'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
+		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th><?php echo __('Selger Id'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;

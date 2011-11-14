@@ -1,7 +1,7 @@
 <div class="pengeflyttinger form">
 <?php echo $this->Form->create('Pengeflytting');?>
 	<fieldset>
- 		<legend><?php __('Registrer Fakturainnbetaling');?></legend>
+ 		<legend><?php echo __('Registrer Fakturainnbetaling');?></legend>
 	<?php
 		echo $this->Form->hidden('fra', array('value' => 51));
 		echo $this->Form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));

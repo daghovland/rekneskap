@@ -19,35 +19,35 @@
 	<?php foreach($faktura['Pengeflytting'] as $flytting):?>
 		<dl>	<?php $i = 0; $class = ' class="altrow"';?>
 			<dt<?php if ($i % 2 == 0) echo $class;?>>
-		<?php __('Nummer');?></dt>
+		<?php echo __('Nummer');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $this->Html->link($flytting['nummer'], array('controller' => 'pengeflyttinger','action' => 'view', $flytting['nummer']));?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fra');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Fra');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $flytting['fra'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Til');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Til');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $flytting['til'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kroner');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kroner');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $flytting['kroner'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Øre');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Øre');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $flytting['oere'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Dato');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Dato');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $flytting['dato'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Beskrivelse');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $flytting['beskrivelse'];?>
 &nbsp;</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('DekningsFaktura');?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('DekningsFaktura');?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 	<?php echo $flytting['dekningsFaktura'];?>
 &nbsp;</dd>
@@ -56,14 +56,14 @@
 
 	</div>
 	<div class="related">
-	<h3><?php __('Del av kaffisal');?></h3>
+	<h3><?php echo __('Del av kaffisal');?></h3>
 	<?php if (!empty($faktura['Kaffesalg'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Total'); ?></th>
-		<th><?php __('Frakt'); ?></th>
-		<th><?php __('Mva'); ?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Total'); ?></th>
+		<th><?php echo __('Frakt'); ?></th>
+		<th><?php echo __('Mva'); ?></th>
 	</tr>
 	<?php
 		$i = 0;

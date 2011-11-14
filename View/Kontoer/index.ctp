@@ -1,13 +1,13 @@
 <div class="kontoer index">
-<h2><?php __('Kontoar');?></h2>
+<h2><?php echo __('Kontoar');?></h2>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo 'nummer';?></th>
 	<th><?php echo 'beskrivelse';?></th>
 	<th><?php echo 'type';?></th>
 	<th><?php echo 'ansvarlig';?></th>
-	<th><?php __('Balanse');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th><?php echo __('Balanse');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

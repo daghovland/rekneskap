@@ -7,27 +7,27 @@
 <div class="kontoer view">
 <h2><?php  __('Konto');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $konto['Konto']['nummer']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Beskrivelse'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Beskrivelse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $konto['Konto']['beskrivelse']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontotypenavn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kontotypenavn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($konto['Kontotype']['beskrivelse'], array('controller'=> 'kontotyper', 'action'=>'view', $konto['Kontotype']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontoansvarlig'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kontoansvarlig'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($konto['Selger']['navn'], array('controller'=> 'selgere', 'action'=>'view', $konto['Selger']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Balanse'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Balanse'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $balanse['kroner']; ?>,
 			<?php 
@@ -50,7 +50,7 @@
 	</ul>
 </div>
 <div class="related">
-<h3><?php __('Kontorørsler');?></h3>
+<h3><?php echo __('Kontorørsler');?></h3>
 <label for="bevegelserDatoFraAar">Frå</label>
 <?php
 echo $ajax->form(array(
@@ -120,7 +120,7 @@ echo $this->Js->codeBlock($script);
         <th><?php echo $this->Paginator->sort('kaffibrenning_id');?></th>
         <th><?php echo $this->Paginator->sort('kaffesalg_id');?></th>
 	<th><?php echo __('Vedlegg'); ?>
-        <th class="actions"><?php __('Actions');?></th>
+        <th class="actions"><?php echo __('Actions');?></th>
 </tr>
 
 <?php echo $this->element("pengeflytting", array('pengeflyttinger' => $pengeflyttinger, 'key' => 'kontoInnskudd', 'vedlegg' => $vedlegg)); ?>

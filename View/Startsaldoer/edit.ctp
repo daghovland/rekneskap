@@ -1,7 +1,7 @@
 <div class="startsaldo form">
 <?php echo $this->Form->create('Startsaldoer');?>
 	<fieldset>
- 		<legend><?php __('Edit Startsaldo');?></legend>
+ 		<legend><?php echo __('Edit Startsaldo');?></legend>
 	<?php
 		echo $this->Form->hidden('id');
 		echo $this->Form->input('regnskap_id');

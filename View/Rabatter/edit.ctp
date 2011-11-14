@@ -1,7 +1,7 @@
 <div class="rabatter form">
 <?php echo $this->Form->create('Rabatt');?>
 	<fieldset>
- 		<legend><?php __('Edit Rabatt');?></legend>
+ 		<legend><?php echo __('Edit Rabatt');?></legend>
 	<?php
 		echo $this->Form->input('id');
 		echo $this->Form->input('kaffepris_id');

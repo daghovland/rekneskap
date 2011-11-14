@@ -27,7 +27,7 @@
   <head>
     <?php echo $this->Html->charset(); ?>
     <title>
-      <?php __('Zapatistgruppa i Bergen:'); ?>
+      <?php echo __('Zapatistgruppa i Bergen:'); ?>
       <?php echo $title_for_layout; ?>
     </title>
     <?php

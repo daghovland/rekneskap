@@ -1,7 +1,7 @@
 <div class="kaffepriser form">
 <?php echo $this->Form->create('Kaffepris');?>
 	<fieldset>
- 		<legend><?php __('Edit Kaffepris');?></legend>
+ 		<legend><?php echo __('Edit Kaffepris');?></legend>
 	<?php
 		echo $this->Form->input('brennings_grad', array('label' => 'Brenningsgrad'));
 		echo $this->Form->input('salsnamn');

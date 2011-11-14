@@ -1,7 +1,7 @@
 <div class="pengeflyttingBilag form">
 <?php echo $this->Form->create('PengeflyttingBilag');?>
 	<fieldset>
- 		<legend><?php __('Edit PengeflyttingBilag');?></legend>
+ 		<legend><?php echo __('Edit PengeflyttingBilag');?></legend>
 	<?php
 		echo $this->Form->input('filnavn');
 		echo $this->Form->input('pengeflytting_id');

@@ -35,7 +35,7 @@
 <?php echo $kaffeflytting['Kaffeflytting']['dato']; ?>
 &nbsp;
 </dd>
-<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontantbetaling'); ?></dt>
+<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kontantbetaling'); ?></dt>
 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
 <?php echo $this->Html->link($kaffeflytting['Kontantbetaling']['nummer'], array('controller'=> 'pengeflyttinger', 'action'=>'view', $kaffeflytting['Kontantbetaling']['nummer'])); ?>
 &nbsp;

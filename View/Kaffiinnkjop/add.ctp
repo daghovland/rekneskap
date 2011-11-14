@@ -1,7 +1,7 @@
 <div class="kaffiinnkjop form">
 <?php echo $this->Form->create('Kaffiinnkjop');?>
 	<fieldset>
- 		<legend><?php __('Add Kaffiinnkjop');?></legend>
+ 		<legend><?php echo __('Add Kaffiinnkjop');?></legend>
 	<?php
 		echo $this->Form->input('kaffibrenning_id');
 		echo $this->Form->input('kaffitype_id');

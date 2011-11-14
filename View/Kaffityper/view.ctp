@@ -1,17 +1,17 @@
 <div class="kaffityper view">
 <h2><?php  __('Kaffitype');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffitype['Kaffitype']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nettogram'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nettogram'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffitype['Kaffitype']['nettogram']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Namn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Namn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffitype['Kaffitype']['namn']; ?>
 			&nbsp;
@@ -29,20 +29,20 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Related Kaffiinnkjop');?></h3>
+	<h3><?php echo __('Related Kaffiinnkjop');?></h3>
 	<?php if (!empty($kaffitype['Kaffiinnkjop'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Id'); ?></th>
-		<th><?php __('Kaffibrenning Id'); ?></th>
-		<th><?php __('Kaffitype Id'); ?></th>
-		<th><?php __('Kommentar'); ?></th>
-		<th><?php __('Dato'); ?></th>
-		<th><?php __('Created'); ?></th>
-		<th><?php __('Modified'); ?></th>
-		<th><?php __('Pengeflytting Id'); ?></th>
-		<th><?php __('Kaffeflytting Id'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Id'); ?></th>
+		<th><?php echo __('Kaffibrenning Id'); ?></th>
+		<th><?php echo __('Kaffitype Id'); ?></th>
+		<th><?php echo __('Kommentar'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
+		<th><?php echo __('Created'); ?></th>
+		<th><?php echo __('Modified'); ?></th>
+		<th><?php echo __('Pengeflytting Id'); ?></th>
+		<th><?php echo __('Kaffeflytting Id'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
 		$i = 0;

@@ -1,7 +1,7 @@
 <div class="splitttransaksjoner form">
 <?php echo $this->Form->create('Splitttransaksjon');?>
 	<fieldset>
- 		<legend><?php __('Add Splitttransaksjon'); ?></legend>
+ 		<legend><?php echo __('Add Splitttransaksjon'); ?></legend>
 	<?php
 		echo $this->Form->input('dato');
 		echo $this->Form->input('selger_id');
@@ -13,7 +13,7 @@
 <?php echo $this->Form->end(__('Submit', true));?>
 </div>
 <div class="actions">
-	<h3><?php __('Actions'); ?></h3>
+	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Splitttransaksjoner', true), array('action' => 'index'));?></li>

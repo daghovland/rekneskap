@@ -1,5 +1,5 @@
 <div class="fakturaer index">
-<h2><?php __('Fakturaer');?></h2>
+<h2><?php echo __('Fakturaer');?></h2>
 <p>
 <table cellpadding="0" cellspacing="0">
 <tr>
@@ -11,7 +11,7 @@
 	<th><?php echo __('kroner');?></th>
 	<th><?php echo __('mva');?></th>
 	<th><?php echo __('totalpris');?></th>
-	<th class="actions"><?php __('Actions');?></th>
+	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
 $i = 0;

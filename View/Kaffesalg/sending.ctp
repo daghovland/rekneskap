@@ -7,7 +7,7 @@ $this->Js->link('scriptaculous', false);
 <div class="kaffeflyttinger form">
   <?php echo $this->Form->create('Kaffesalg', array('action' => 'add'));?>
   <fieldset>
-    <legend><?php __('Sel kaffi på rekning');?></legend>
+    <legend><?php echo __('Sel kaffi på rekning');?></legend>
     <?php
        echo $this->Form->input('fra', array('options' => $fralagernavn, 
 					'empty' => 'Vel lager',

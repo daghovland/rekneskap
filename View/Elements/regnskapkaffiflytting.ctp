@@ -1,10 +1,10 @@
-<h3><?php __('Kaffeflytting'); ?></h3>
+<h3><?php echo __('Kaffeflytting'); ?></h3>
 <table cellpadding = "0" cellspacing = "0">
         <tr>
                 <?php foreach($kaffepriser as $typeid => $navn):?>
                             <th><?php echo $navn; ?></th>
                 <?php endforeach; ?>
-                <th><?php __('Konto'); ?></th>
+                <th><?php echo __('Konto'); ?></th>
         </tr>
         <?php
                 $i = 0;
