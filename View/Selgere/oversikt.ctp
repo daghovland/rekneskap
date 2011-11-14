@@ -5,8 +5,9 @@
       <tr>
 	<th><?php echo __('Navn');?></th>
 	<?php 
-	  foreach ($kaffetyper as $kaffetype)
-	echo "<th>" . $kaffetype['Kaffepris']['intern_navn'] . " haldbar til " . $kaffetype['Kaffepris']['haldbar'] . "</th>";
+	  foreach ($kaffetyper as $kaffetype){
+	    echo "<th>" . $kaffetype['Kaffepris']['intern_navn'] . " haldbar til " . $kaffetype['Kaffepris']['haldbar'] . "</th>";
+	  }
 	?>
 	<th><?php echo __('Gjeld');?></th>
 	<th class="actions"><?php echo __('Actions');?></th>
@@ -15,6 +16,7 @@
 	$i = 0;
 	$beholdning_index = 0;
 	foreach ($kaffelagre as $array_key => $selger):
+	if($selger['Kaffelager']['lagertype'] == "3"):
 	$class = null;
 	if ($i++ % 2 == 0) {
 	  $class = ' class="altrow"';
@@ -27,15 +29,15 @@
       <?php 
 	foreach($kaffetyper as $kaffetype){
 	  echo "<td>";
-	  if(array_key_exists($beholdning_index, $beholdninger)){
-	    $beholdning = $beholdninger[$beholdning_index];
+	  foreach($beholdninger as $beholdning){
 	    if($kaffetype['Kaffepris']['nummer'] == $beholdning['Kaffepris']['nummer'] &&
 	       $selger['Kaffelager']['nummer'] == $beholdning['Kaffelager']['nummer']){
 	      $antall = $beholdning['Kaffelagerbeholdning']['antall'];
 	      if($antall != 0)
 		echo $antall;
 	      $beholdning_index++;
-	    } 
+	      break;
+	    }
 	  }
 	  echo "</td>";
 	}
@@ -54,7 +56,7 @@
 	<?php echo $this->Html->link(__('Endre passord', true), array('action'=>'endre_passord', $selger['Selger']['nummer'])); ?>
       </td>
     </tr>
-    <?php endforeach; ?>
+	  <?php endif; endforeach;  ?>
   </table>
 </div>
 <div class="actions">
