@@ -1,3 +1,4 @@
+<p style="color:red">Etter oppgradering er alle passord dessverre ødelagt. Gå til <?php echo $this->Html->link("glømt passord", array('controller'=>'selgere', 'action' => 'glemt_passord')); ?> for å lage nytt passord.</p>	
 <?php
 echo $this->Form->create();
 ?>

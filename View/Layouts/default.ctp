@@ -101,7 +101,6 @@
 	</p>
       </div>
       <div id="content">
-<p style="color:red">Sida er nede i kveld pga. oppdatering. Sorry. <em>Dag</em>.</p>	
 	
 	<?php echo $this->Session->flash(); ?>
 	<?php echo $this->Session->flash('auth'); ?>

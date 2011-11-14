@@ -8,3 +8,4 @@ tmp
 vendors
 .svn
 schemas/oppdater.sh
+Config/email.php
