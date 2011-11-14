@@ -24,7 +24,7 @@ Class AppController extends Controller {
   
   public $paginate = array('limit' => '1000');  
   function beforeFilter() {
-    $this->Auth->allow('index', 'view');
+    $this->Auth->allow('index', 'view', 'lager_type_beholdning');
   }
 
 }

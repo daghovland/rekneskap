@@ -29,24 +29,20 @@
     ?>
   </fieldset>
   <?php echo $this->Form->end('Hentet kaffi');?>
-  <?php 
-    $options = array(
-		     'url' => array( 'controller' => 'kaffelagre', 'action' => 'lager_type_beholdning'), 
-		     'update' => 'KaffeflyttingAntall',
-		     'frequency' => 0.2,
-		     'with' => 'hentLagerType("KaffeflyttingFralagerId", "KaffeflyttingKaffetypeId")'
-		     ); 
-		     echo $this->Js->get( 'KaffeflyttingFralagerId')->event('change', 
-									    $this->Js->request( array( 'controller' => 'kaffelagre', 
-												       'action' => 'lager_type_beholdning',
-												       'hentLagerType("KaffeflyttingFralagerId", "KaffeflyttingKaffetypeId")'),
-												array('update' => 'KaffeflyttingAntall',
-												      'dataExpression' => 'hentLagerType("KaffeflyttingFralagerId", "KaffeflyttingKaffetypeId")')
-												)
-									    );
-		     echo $this->Js->get( 'KaffeflyttingKaffetypeId')->event('change', 'hentLagerType("KaffeflyttingFralagerId", "KaffeflyttingKaffetypeId")');
-		     $script = 'document.onLoad = lastetSide(\'' . $this->Html->url(array('controller' => 'kaffelagre', 'action' => 'lager_type_beholdning')) . '\', "KaffeflyttingAntall", "KaffeflyttingFralagerId", "KaffeflyttingKaffetypeId")';
-		     echo $this->Js->codeBlock($script);
+  <?php
+  function lagKaffeAntallAjax($element, $eventName, $Js, $Html){
+    $requestUrl = array( 'controller' => 'kaffelagre', 'action' => 'lager_type_beholdning');
+    $requestOpts = array('update' => 'KaffeflyttingAntall',
+			 'method' => 'post',
+			 'evalScripts' => true,
+			 'dataExpression' => true,
+			 'data' =>  '"lager=" + $("KaffeflyttingFralagerId").value + "&type=" + $("KaffeflyttingKaffetypeId").value'
+			 );
+    $Js->get($element)->event($eventName, $Js->request($requestUrl, $requestOpts) , true);
+  }
+lagKaffeAntallAjax('#sidekropp', 'load', $this->Js, $this->Html);
+lagKaffeAntallAjax('#KaffeflyttingKaffetypeId', 'change', $this->Js, $this->Html);
+lagKaffeAntallAjax('#KaffeflyttingFralagerId', 'change', $this->Js, $this->Html);
   ?>
   
 </div>

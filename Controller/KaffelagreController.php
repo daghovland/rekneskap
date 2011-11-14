@@ -3,7 +3,7 @@ App::import('Sanitize');
 class KaffelagreController extends AppController {
 
 	var $name = 'Kaffelagre';
-	var $helpers = array('Html', 'Form', 'Ajax', 'Javascript', 'Cache');
+	var $helpers = array('Js' => array('Prototype'),'Html', 'Form',   'Cache');
 	var $cacheAction = array(
 		'view/' => 21600
 	);
@@ -38,17 +38,17 @@ class KaffelagreController extends AppController {
 		Kalles som ajax fra hent_kaffi i kaffeflyttinger
 	*/
 	function lager_type_beholdning(){
-		$this->layout = 'ajax';
-		$lager_id = $this->params['form']['lager'];
-		$type_id = $this->params['form']['type'];
-		if(is_numeric($lager_id) && is_numeric($type_id)){
-		  $beholdning = $this->Kaffelager->Kaffelagerbeholdning->find('first', array('conditions' => array(
-														   'kaffelager_id' => $lager_id,
-														   'kaffepris_id' => $type_id,
-														   'lagertype_id' => 3)));
-		    //		$beholdning = $this->Kaffelager->lager_type_beholdning($this->params['form']['lager'], $this->params['form']['type']);
-		    $this->set('beholdning', $beholdning['Kaffelagerbeholdning']['antall']);
-		  }
+	  $this->layout = 'ajax';
+	  $lager_id = $this->request->data['lager'];
+	  $type_id = $this->request->data['type'];
+	  if(is_numeric($lager_id) && is_numeric($type_id)){
+	    $beholdning = $this->Kaffelager->Kaffelagerbeholdning->find('first', array('conditions' => array(
+													     'kaffelager_id' => $lager_id,
+													     'kaffepris_id' => $type_id,
+													     'lagertype_id' => 3)));
+	    //		$beholdning = $this->Kaffelager->lager_type_beholdning($this->params['form']['lager'], $this->params['form']['type']);
+	    $this->set('beholdning', $beholdning['Kaffelagerbeholdning']['antall']);
+	  }
 	}
 
 	function view($id = null, $sort = 'dato') {

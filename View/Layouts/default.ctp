@@ -39,7 +39,7 @@
       echo $scripts_for_layout;
     ?>
   </head>
-  <body>
+  <body id="sidekropp">
     <div id="container">
       <div id="header">
 	<h1>
@@ -120,6 +120,6 @@
       </div>
     </div>
     <?php //echo $cakeDebug; ?>
-    <?php echo $this->Js->writeBuffer(); ?>
+    <?php echo $this->Js->writeBuffer(array('safe' => true)); ?>
   </body>
 </html>

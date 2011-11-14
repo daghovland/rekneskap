@@ -1,7 +1,7 @@
 <?php
 class KaffeflyttingerController extends AppController {
 
-  public $helpers = array('Html', 'Form', 'Js', 'Cache');
+  public $helpers = array('Js' => array('Prototype'), 'Html', 'Form', 'Cache');
   public $cacheAction = array(
 			      'view/' => 36000,
 			      'index/' => 36000,
