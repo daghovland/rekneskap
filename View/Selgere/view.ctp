@@ -36,14 +36,10 @@
 </div>
 <div class="actions">
   <ul>
-    <li><?php echo $this->Html->link(__('Edit Selger', true), array('action'=>'edit', $selger['Selger']['nummer'])); ?> </li>
-    <li><?php echo $this->Html->link(__('Delete Selger', true), array('action'=>'delete', $selger['Selger']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $selger['Selger']['nummer'])); ?> </li>
+    <li><?php echo $this->Html->link(__('Rediger Selger', true), array('action'=>'edit', $selger['Selger']['nummer'])); ?> </li>
     <li><?php echo $this->Html->link(__('List Selgere', true), array('action'=>'index')); ?> </li>
-    <li><?php echo $this->Html->link(__('New Selger', true), array('action'=>'add')); ?> </li>
+    <li><?php echo $this->Html->link(__('Ny Selger', true), array('action'=>'add')); ?> </li>
     <li><?php echo $this->Html->link(__('List Roller', true), array('controller'=> 'roller', 'action'=>'index')); ?> </li>
-    <li><?php echo $this->Html->link(__('New Rolle', true), array('controller'=> 'roller', 'action'=>'add')); ?> </li>
-    <li><?php echo $this->Html->link(__('List Kaffelagre', true), array('controller'=> 'kaffelagre', 'action'=>'index')); ?> </li>
-    <li><?php echo $this->Html->link(__('New Selger Lager', true), array('controller'=> 'kaffelagre', 'action'=>'add')); ?> </li>
   </ul>
 </div>
 <div class="related">

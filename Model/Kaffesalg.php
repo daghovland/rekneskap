@@ -1,12 +1,12 @@
 <?php
 class Kaffesalg extends AppModel {
 
-  var $name = 'Kaffesalg';
-  var $useTable = 'kaffesalg';
-  var $primaryKey = 'nummer';
-  var $validate = array(
-			'nummer' => array('numeric')
-			);
+  public $name = 'Kaffesalg';
+  public $useTable = 'kaffesalg';
+  public $primaryKey = 'nummer';
+  public $validate = array(
+			   'nummer' => array('numeric')
+			   );
 
   //The Associations below have been created with all possible keys, those that are not needed can be removed
   var $hasOne = array(
@@ -29,28 +29,10 @@ class Kaffesalg extends AppModel {
 		       'Kaffeflytting' => array(
 						'className' => 'Kaffeflytting',
 						'foreignKey' => 'kaffesalg_id',
-						'dependent' => true,
-						'conditions' => '',
-						'fields' => '',
-						'order' => '',
-						'limit' => '',
-						'offset' => '',
-						'exclusive' => '',
-						'finderQuery' => '',
-						'counterQuery' => ''
 						),
 		       'Pengeflytting' => array(
 						'className' => 'Pengeflytting',
 						'foreignKey' => 'kaffesalg_id',
-						'dependent' => true,
-						'conditions' => '',
-						'fields' => '',
-						'order' => '',
-						'limit' => '',
-						'offset' => '',
-						'exclusive' => '',
-						'finderQuery' => '',
-						'counterQuery' => ''
 						)
 		       );
 
@@ -212,6 +194,7 @@ class Kaffesalg extends AppModel {
     $kaffesalg['Kaffesalg']['selger_id'] = $data['selger'];
     $kaffesalg['Kaffesalg']['internmelding'] = $data['beskrivelse'];
     $sum = 0;
+    $med_kaffi = false;
     $kaffetyper = $this->Kaffeflytting->Kaffepris->find('all') ;
     foreach($kaffetyper as $kaffetype){	
       if(array_key_exists('antall' . $kaffetype['Kaffepris']['nummer'], $data)){
@@ -233,10 +216,15 @@ class Kaffesalg extends AppModel {
 	  $sum += $antall * $rabatter[$rabatt_id];	
 	else
 	  $sum += $antall * $kaffetype['Kaffepris']['pris'];	
-	if($antall > 0)	
+	if($antall > 0){	
 	  $kaffesalg['Kaffeflytting'][] = $kaffeFlytting;
+	  $med_kaffi = true;
+	}
       }
     }
+    if(!$med_kaffi)
+      return false;
+
     $fraktUtgift = array();	
     $frakt = $data['frakt'];
     $kaffesalg['Kaffesalg']['total'] = $sum + $frakt;
@@ -285,7 +273,6 @@ class Kaffesalg extends AppModel {
     $kaffesalg['Pengeflytting'][] = $pengeflytting;
     if($frakt > 0)
       $kaffesalg['Pengeflytting'][] = $fraktUtgift;
-	  
     return $this->saveAll($kaffesalg);
   }
 

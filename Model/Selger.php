@@ -5,6 +5,7 @@ class Selger extends AppModel {
   public $useTable = 'selgere';
   public $actsAs = array('Acl' => 'requester');
 
+
   function hashPasswords($data) {
     if (isset($data['Selger']['passord'])) {
       $data['Selger']['passord'] = md5($data['Selger']['passord']);
@@ -44,41 +45,43 @@ class Selger extends AppModel {
 					  'fields' => '',
 					  'order' => ''
 					  )
-			 );
+			 )
+    ;
+  
+  
+  var $hasOne = array(
+		      'Kaffelager' => array(
+					    'className' => 'Kaffelager',
+					    'foreignKey' => 'selger',
+					    'conditions' => 'Kaffelager.beskrivelse = Selger.navn'
+					    ),
+		      'SelgerKonto' => array(
+					     'className' => 'Konto',
+					     'foreignKey' => 'ansvarlig',
+					     'conditions' => array('SelgerKonto.type' => 7)
 
+					     ),
+		      'SalgsKonto' => array(
+					    'className' => 'Konto',
+					    'foreignKey' => 'ansvarlig',
+					    'conditions' => array('SalgsKonto.type' => 6)
 
-	var $hasOne = array(
-		     'Kaffelager' => array(
-			    'className' => 'Kaffelager',
- 			    'foreignKey' => 'selger',
-			    'conditions' => 'Kaffelager.beskrivelse = Selger.navn'
-				),
-			'SelgerKonto' => array(
-				'className' => 'Konto',
-				'foreignKey' => 'ansvarlig',
-				'conditions' => array('SelgerKonto.type' => 7)
-
-					       ),
-			'SalgsKonto' => array(
-				'className' => 'Konto',
-				'foreignKey' => 'ansvarlig',
-				'conditions' => array('SalgsKonto.type' => 6)
-
-				),
-			'Selgerbalanse' => array(
-					'className' => 'Selgerbalanse',
-					'foreignKey' => 'selger_id'	
-				)
-			);
+					    ),
+		      'Selgerbalanse' => array(
+					       'className' => 'Selgerbalanse',
+					       'foreignKey' => 'selger_id'	
+					       )
+		      )
+    ;
 						    
-	var $hasMany = array(
-			     'SelgerLagre' => array(
-						    'className' => 'Kaffelager',
- 						    'foreignKey' => 'selger'
-						    ),
-			     'Kaffesalg'
-			);
-
+  var $hasMany = array(
+		       'SelgerLagre' => array(
+					      'className' => 'Kaffelager',
+					      'foreignKey' => 'selger'
+					      ),
+		       'Kaffesalg'
+		       );
+  
   /**    
    * After save callback
    *
@@ -98,6 +101,19 @@ class Selger extends AppModel {
     }
   }
   
-  
+  function glemt_passord($username){
+    if(!is_string($username))
+      return false;
+    $userData = $this->find('first', array('condition' => array('navn' => $username)));
+    if(!isset($userData['Selger']))
+      return false;
+    if(!isset($userData['Selger']['epost']))
+      return false;
+    $epostAdr = $userData['Selger']['epost'];
+    $tmp_key = Security::generateAuthKey();
+    $userData['Selger']['tmp_key'] = $tmp_key;
+    $this->save($userData);
+    return $userData;
   }
+}
 ?>
