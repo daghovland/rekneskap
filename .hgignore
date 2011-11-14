@@ -7,3 +7,4 @@ Config/database.php
 tmp
 vendors
 .svn
+schemas/oppdater.sh
