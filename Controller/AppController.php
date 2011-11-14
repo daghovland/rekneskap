@@ -1,6 +1,7 @@
 <?php
 Class AppController extends Controller {
-  public $components = array('Acl','Session', 'Paginator', 'RequestHandler', 
+  public $helpers = array('Js' => array('Prototype'), 'Html', 'Form', 'Session', 'Paginator');
+  public $components = array('Acl','Session', 'Paginator', 'RequestHandler', 'Kaffe', 
 			     'Auth' => array('authenticate' => array('all' => array('userModel' => 'Selger',
 										    'fields' => array('username' => 'navn', 
 												      'password' => 'passord')
@@ -24,7 +25,7 @@ Class AppController extends Controller {
   
   public $paginate = array('limit' => '1000');  
   function beforeFilter() {
-    $this->Auth->allow('index', 'view', 'lager_type_beholdning');
+    $this->Auth->allow('index', 'view', 'lager_type_beholdning', 'faktura_tekst', 'add', 'kontantsal');
   }
 
 }

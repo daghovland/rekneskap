@@ -1,8 +1,6 @@
 <?php
 class SelgereController extends AppController {
   
-  public $helpers = array('Html', 'Form', 'Session', 'Paginator');
-  
   function login() {
     if ($this->request->is('post')) {
       if ($this->Auth->login()) {
@@ -20,11 +18,6 @@ class SelgereController extends AppController {
   
   function logout() {
     $this->redirect($this->Auth->logout());
-  }
-  
-  function beforeFilter() {
-    parent::beforeFilter(); 
-    $this->Auth->allow('*');
   }
   
   

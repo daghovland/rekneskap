@@ -1,14 +1,6 @@
 <?php
 class KaffesalgController extends AppController {
 
-	var $name = 'Kaffesalg';
-	var $helpers = array('Html', 'Form', 'Ajax', 'Javascript', 'Session');
-	var $components = array('Acl', 'Session', 'Kaffe', 'RequestHandler');
-
-	var $paginate = array(
-		'limit' => 200
-	);
-
 	function index() {
 		$this->Kaffesalg->recursive = 0;
 		$this->set('kaffesalg', $this->paginate());
