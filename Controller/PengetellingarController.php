@@ -23,11 +23,11 @@ class PengetellingarController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 		  $selgerInfo = $this->Auth->user();
-			$this->data['Pengetelling']['selger_id'] = $selgerInfo['nummer'];
+			$this->request->data['Pengetelling']['selger_id'] = $selgerInfo['nummer'];
 			$this->Pengetelling->create();
-			if ($this->Pengetelling->save($this->data)) {
+			if ($this->Pengetelling->save($this->request->data)) {
 				$this->Session->setFlash(__('Pengetellinga er lagra', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -39,20 +39,20 @@ class PengetellingarController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Ugyldig pengetelling', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Pengetelling->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Pengetelling->save($this->request->data)) {
 				$this->Session->setFlash(__('Pengetellinga er lagra', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Pengetelling could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Pengetelling->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Pengetelling->read(null, $id);
 		}
 		$kontoer = $this->Pengetelling->Konto->find('list');
 		$this->set(compact('kontoer'));

@@ -21,8 +21,8 @@ class PengeflyttingBilagController extends AppController {
 	}
 
 	function add($id = null) {
-		if (!empty($this->data)) {
-			$filinfo = $this->data['PengeflyttingBilag']['vedleggsfil'];
+		if (!empty($this->request->data)) {
+			$filinfo = $this->request->data['PengeflyttingBilag']['vedleggsfil'];
 		            $csvfile = $filinfo['tmp_name'];
 
 		            if(!$filinfo['size']){
@@ -49,20 +49,20 @@ class PengeflyttingBilagController extends AppController {
 		              return;
 		            }
 
-			$this->data['PengeflyttingBilag']['size'] = $size;
-			$this->data['PengeflyttingBilag']['innhold'] = file_get_contents($filinfo['tmp_name']);
-			$this->data['PengeflyttingBilag']['filtype'] = $filinfo['type'];
-			$this->data['PengeflyttingBilag']['filnavn'] = $filinfo['name'];
+			$this->request->data['PengeflyttingBilag']['size'] = $size;
+			$this->request->data['PengeflyttingBilag']['innhold'] = file_get_contents($filinfo['tmp_name']);
+			$this->request->data['PengeflyttingBilag']['filtype'] = $filinfo['type'];
+			$this->request->data['PengeflyttingBilag']['filnavn'] = $filinfo['name'];
 	
 
-				$this->data['PengeflyttingBilag']['selger_id'] = $this->Session->read('Auth.selger');
+				$this->request->data['PengeflyttingBilag']['selger_id'] = $this->Session->read('Auth.selger');
 			$this->PengeflyttingBilag->create();
-			if ($this->PengeflyttingBilag->save($this->data)) {
+			if ($this->PengeflyttingBilag->save($this->request->data)) {
 				$this->Session->setFlash(__('Vedlegget er lagra', true));
 				$this->redirect(array(
 						      'controller' => 'pengeflyttinger', 
 						      'action' => 'view',
-						      $this->data['PengeflyttingBilag']['pengeflytting_id']));
+						      $this->request->data['PengeflyttingBilag']['pengeflytting_id']));
 			} else {
 				$this->Session->setFlash(__('Kunne ikkje lagre bilaget.', true));
 			}
@@ -74,20 +74,20 @@ class PengeflyttingBilagController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid PengeflyttingBilag', true));
 			$this->redirect($this->Session->read('forrigeSide'));
 		}
-		if (!empty($this->data)) {
-			if ($this->PengeflyttingBilag->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->PengeflyttingBilag->save($this->request->data)) {
 				$this->Session->setFlash(__('The PengeflyttingBilag has been saved', true));
 				$this->redirect($this->Session->read('forrigeSide'));
 			} else {
 				$this->Session->setFlash(__('The PengeflyttingBilag could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->PengeflyttingBilag->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->PengeflyttingBilag->read(null, $id);
 		}
 		$selgere = $this->PengeflyttingBilag->Selger->find('list');
 		$pengeflyttinger = $this->PengeflyttingBilag->Pengeflytting->find('list');

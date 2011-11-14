@@ -25,9 +25,9 @@ class AdresserController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Adresse->create();
-			if ($this->Adresse->save($this->data)) {
+			if ($this->Adresse->save($this->request->data)) {
 				$this->Session->setFlash(__('Den nye adressa er lagra', true));
 				if($this->Session->check('forrigeSide')){
 					$side = $this->Session->read('forrigeSide');
@@ -43,12 +43,12 @@ class AdresserController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Ugyldig adresse', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Adresse->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Adresse->save($this->request->data)) {
 				$this->Session->setFlash(__('Adressa er lagra', true));
 				if($this->Session->check('forrigeSide')){
                                         $side = $this->Session->read('forrigeSide');
@@ -61,8 +61,8 @@ class AdresserController extends AppController {
 				$this->Session->setFlash(__('Kunne ikkje lagre adressa. Prøv igjen.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Adresse->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Adresse->read(null, $id);
 		}
 	}
 
@@ -92,9 +92,9 @@ class AdresserController extends AppController {
 	}
 
 	function admin_add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Adresse->create();
-			if ($this->Adresse->save($this->data)) {
+			if ($this->Adresse->save($this->request->data)) {
 				$this->Session->setFlash(__('The Adresse has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -104,20 +104,20 @@ class AdresserController extends AppController {
 	}
 
 	function admin_edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Adresse', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Adresse->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Adresse->save($this->request->data)) {
 				$this->Session->setFlash(__('The Adresse has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Adresse could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Adresse->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Adresse->read(null, $id);
 		}
 	}
 

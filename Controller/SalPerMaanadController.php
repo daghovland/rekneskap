@@ -19,9 +19,9 @@ class SalPerMaanadController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->SalPerMaanad->create();
-			if ($this->SalPerMaanad->save($this->data)) {
+			if ($this->SalPerMaanad->save($this->request->data)) {
 				$this->Session->setFlash(__('The SalPerMaanad has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -33,20 +33,20 @@ class SalPerMaanadController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid SalPerMaanad', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->SalPerMaanad->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->SalPerMaanad->save($this->request->data)) {
 				$this->Session->setFlash(__('The SalPerMaanad has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The SalPerMaanad could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->SalPerMaanad->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->SalPerMaanad->read(null, $id);
 		}
 		$kaffepriser = $this->SalPerMaanad->Kaffepri->find('list');
 		$this->set(compact('kaffepriser'));

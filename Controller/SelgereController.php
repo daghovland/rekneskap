@@ -82,9 +82,9 @@ class SelgereController extends AppController {
   }
   
   function add() {
-    if (!empty($this->data)) {
+    if (!empty($this->request->data)) {
       $this->Selger->create();
-      if ($this->Selger->save($this->data)) {
+      if ($this->Selger->save($this->request->data)) {
 	$this->Session->setFlash(__('The Selger has been saved', true));
 	$this->redirect(array('action'=>'index'));
       } else {
@@ -98,20 +98,20 @@ class SelgereController extends AppController {
   function edit($id = null) {
     $brukerInfo = $this->Auth->user();
     if($id == $brukerInfo['nummer']){
-      if (!$id && empty($this->data)) {
+      if (!$id && empty($this->request->data)) {
 	$this->Session->setFlash(__('Invalid Selger', true));
 	$this->redirect(array('action'=>'index'));
       }
-      if (!empty($this->data)) {
-	if ($this->Selger->save($this->data)) {
+      if (!empty($this->request->data)) {
+	if ($this->Selger->save($this->request->data)) {
 	  $this->Session->setFlash(__('The Selger has been saved', true));
 	  $this->redirect($this->Session->read('forrigeSide'));
 	} else {
 	  $this->Session->setFlash(__('The Selger could not be saved. Please, try again.', true));
 	}
       }
-      if (empty($this->data)) {
-	$this->data = $this->Selger->read(null, $id);
+      if (empty($this->request->data)) {
+	$this->request->data = $this->Selger->read(null, $id);
       }
       $roller = $this->Selger->Rolle->find('list');
       $this->set(compact('roller'));
@@ -124,19 +124,19 @@ class SelgereController extends AppController {
   }
   
   function beforeSave($options = array()) {
-    $this->data['Selger']['passord'] = AuthComponent::password($this->data['Selger']['passord']);
+    $this->request->data['Selger']['passord'] = AuthComponent::password($this->data['Selger']['passord']);
     return true;
   }
 
   function endre_passord($id = null) {
     $brukerInfo = $this->Auth->user();
     if($id == $brukerInfo['nummer']){
-      if (!$id && empty($this->data)) {
+      if (!$id && empty($this->request->data)) {
 	$this->Session->setFlash(__('Ugyldig Selger', true));
 	$this->redirect(array('action'=>'oversikt'));
       }
-      if (!empty($this->data)) {
-	$hashed_pwd = AuthComponent::password($this->data['Selger']['passord']);
+      if (!empty($this->request->data)) {
+	$hashed_pwd = AuthComponent::password($this->request->data['Selger']['passord']);
 	$endretData = array('Selger' => array('nummer' => $id,
 					      'passord' => $hashed_pwd));
 	if ($this->Selger->save($endretData)) {
@@ -146,8 +146,8 @@ class SelgereController extends AppController {
 	  $this->Session->setFlash(__('Kunne ikkje lagre passordet. Prøv igjen.', true));
 	}
       }
-      if (empty($this->data)) {
-	$this->data = $this->Selger->read(null, $id);
+      if (empty($this->request->data)) {
+	$this->request->data = $this->Selger->read(null, $id);
       }
       $roller = $this->Selger->Rolle->find('list');
       $this->set(compact('roller'));

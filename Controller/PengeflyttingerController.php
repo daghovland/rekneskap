@@ -25,7 +25,7 @@ class PengeflyttingerController extends AppController {
 	function view($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid Pengeflytting.', true));
-			$this->redirect(array('action'=>'index', '/page:1/sort:dato/direction:desc'));
+			$this->redirect(array('action'=>'index'));
 		}
 		$this->set('pengeflytting', $this->Pengeflytting->read(null, $id));
 		$this->set('kaffetyper', $this->Pengeflytting->Kaffeflytting->Kaffepris->find('list'));
@@ -93,7 +93,7 @@ class PengeflyttingerController extends AppController {
 	function edit($id = null) {
 		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Pengeflytting', true));
-			$this->redirect(array('action'=>'index', '/page:1/sort:dato/direction:desc'));
+			$this->redirect(array('action'=>'index'));
 		}
 		if (!empty($this->request->data)) {
 			if ($this->Pengeflytting->save($this->request->data)) {
@@ -102,7 +102,7 @@ class PengeflyttingerController extends AppController {
 					$this->redirect($this->Session->read('forrigeSide'));
 					$this->Session->delete('forrigeSide');
 				} else 
-					$this->redirect(array('action'=>'index', '/page:1/sort:dato/direction:desc'));
+					$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Pengeflytting could not be saved. Please, try again.', true));
 			}
@@ -122,11 +122,11 @@ class PengeflyttingerController extends AppController {
 	function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Pengeflytting', true));
-			$this->redirect(array('action'=>'index', '/page:1/sort:dato/direction:desc'));
+			$this->redirect(array('action'=>'index'));
 		}
 		if ($this->Pengeflytting->del($id)) {
 			$this->Session->setFlash(__('Pengeflytting deleted', true));
-			$this->redirect(array('action'=>'index', '/page:1/sort:dato/direction:desc'));
+			$this->redirect(array('action'=>'index'));
 		}
 	}
 
@@ -149,8 +149,7 @@ class PengeflyttingerController extends AppController {
 			
 			if ($this->Pengeflytting->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('The Pengeflytting has been saved', true));
-				
-				$this->redirect(array('action'=>'index', '/page:1/sort:dato/direction:desc'));
+				$this->redirect(array('action'=>'view', $this->Pengeflytting->id));
 			} else {
 				$this->Session->setFlash(__('The Pengeflytting could not be saved. Please, try again.', true));
 			}

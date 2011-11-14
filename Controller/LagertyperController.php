@@ -25,9 +25,9 @@ class LagertyperController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Lagertype->create();
-			if ($this->Lagertype->save($this->data)) {
+			if ($this->Lagertype->save($this->request->data)) {
 				$this->Session->setFlash(__('The Lagertype has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -37,20 +37,20 @@ class LagertyperController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Lagertype', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Lagertype->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Lagertype->save($this->request->data)) {
 				$this->Session->setFlash(__('The Lagertype has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Lagertype could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Lagertype->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Lagertype->read(null, $id);
 		}
 	}
 

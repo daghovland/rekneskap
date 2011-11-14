@@ -34,9 +34,9 @@ class KontoerController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Konto->create();
-			if ($this->Konto->save($this->data)) {
+			if ($this->Konto->save($this->request->data)) {
 				$this->Session->setFlash(__('The Konto has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -49,20 +49,20 @@ class KontoerController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Konto', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Konto->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Konto->save($this->request->data)) {
 				$this->Session->setFlash(__('The Konto has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Konto could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Konto->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Konto->read(null, $id);
 		}
 		$typer = $this->Konto->Kontotype->find('list', array('fields' => array('beskrivelse')));
 		$ansvarlige = $this->Konto->Selger->find('list', array('fields' => array('navn')));

@@ -22,11 +22,11 @@ class VaretellingerController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 		  $selgerInfo = $this->Auth->user();
-			$this->data['Varetelling']['selger_id'] = $selgerInfo['nummer'];
+			$this->request->data['Varetelling']['selger_id'] = $selgerInfo['nummer'];
 			$this->Varetelling->create();
-			if ($this->Varetelling->save($this->data)) {
+			if ($this->Varetelling->save($this->request->data)) {
 				$this->Session->setFlash(__('The Varetelling has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -41,20 +41,20 @@ class VaretellingerController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Varetelling', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Varetelling->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Varetelling->save($this->request->data)) {
 				$this->Session->setFlash(__('The Varetelling has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Varetelling could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Varetelling->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Varetelling->read(null, $id);
 		}
 		$kaffepriser = $this->Varetelling->Kaffepris->find('list');
 		$kaffelagre = $this->Varetelling->Kaffelager->find('list');

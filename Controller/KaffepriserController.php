@@ -19,9 +19,9 @@ class KaffepriserController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Kaffepris->create();
-			if ($this->Kaffepris->save($this->data)) {
+			if ($this->Kaffepris->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffepris has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -32,20 +32,20 @@ class KaffepriserController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Kaffepris', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Kaffepris->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Kaffepris->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffepris has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Kaffepris could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Kaffepris->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Kaffepris->read(null, $id);
 			$this->set('kaffibrenningar', $this->Kaffepris->Kaffibrenning->find('list'));
 		}
 	}

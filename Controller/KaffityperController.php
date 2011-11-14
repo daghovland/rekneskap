@@ -15,9 +15,9 @@ class KaffityperController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Kaffitype->create();
-			if ($this->Kaffitype->save($this->data)) {
+			if ($this->Kaffitype->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffitype has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -27,20 +27,20 @@ class KaffityperController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Kaffitype', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Kaffitype->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Kaffitype->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffitype has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Kaffitype could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Kaffitype->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Kaffitype->read(null, $id);
 		}
 	}
 

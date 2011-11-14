@@ -19,9 +19,9 @@ class StartsaldoerController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Startsaldo->create();
-			if ($this->Startsaldo->save($this->data)) {
+			if ($this->Startsaldo->save($this->request->data)) {
 				$this->Session->setFlash(__('The Startsaldo has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -34,20 +34,20 @@ class StartsaldoerController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Startsaldo', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Startsaldo->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Startsaldo->save($this->request->data)) {
 				$this->Session->setFlash(__('The Startsaldo has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Startsaldo could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Startsaldo->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Startsaldo->read(null, $id);
 		}
 		$regnskap = $this->Startsaldo->Regnskap->find('list');
 		$kontoer = $this->Startsaldo->Konto->find('list');

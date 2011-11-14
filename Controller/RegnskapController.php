@@ -73,9 +73,9 @@ class RegnskapController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Regnskap->create();
-			if ($this->Regnskap->save($this->data)) {
+			if ($this->Regnskap->save($this->request->data)) {
 				$this->Session->setFlash(__('The Regnskap has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -85,20 +85,20 @@ class RegnskapController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Regnskap', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Regnskap->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Regnskap->save($this->request->data)) {
 				$this->Session->setFlash(__('The Regnskap has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Regnskap could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Regnskap->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Regnskap->read(null, $id);
 		}
 	}
 

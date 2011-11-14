@@ -68,9 +68,9 @@ class KaffelagreController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Kaffelager->create();
-			if ($this->Kaffelager->save($this->data)) {
+			if ($this->Kaffelager->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffelager has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -82,20 +82,20 @@ class KaffelagreController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Kaffelager', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Kaffelager->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Kaffelager->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffelager has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Kaffelager could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Kaffelager->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Kaffelager->read(null, $id);
 		}
 		$selgere = $this->Kaffelager->Selger->find('list');
 		$this->set(compact('selgere'));

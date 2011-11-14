@@ -46,8 +46,8 @@ class KaffesalgController extends AppController {
 
   function kontantsal(){
     $selgerData = $this->Auth->user();
-    if(!empty($this->data)){
-      if($this->Kaffesalg->lag_kontant_salg($selgerData['nummer'], $this->data['Kaffesalg'])){
+    if(!empty($this->request->data)){
+      if($this->Kaffesalg->lag_kontant_salg($selgerData['nummer'], $this->request->data['Kaffesalg'])){
 	$this->Session->setFlash(__('Registrerte kaffisal'));
 	$this->redirect(array('action' => 'view', $this->Kaffesalg->id));
       } else {
@@ -72,9 +72,9 @@ class KaffesalgController extends AppController {
     $this->Session->write('forrigeSide', 
 			  array('controller' => 'kaffesalg', 
 				'action' => 'add'));
-    if(!empty($this->data)){
-      if(!$this->Kaffesalg->lag_salg($this->Kaffe->dateToSql($this->data['Kaffesalg']['dato']), 
-				     $this->data['Kaffesalg']))
+    if(!empty($this->request->data)){
+      if(!$this->Kaffesalg->lag_salg($this->Kaffe->dateToSql($this->request->data['Kaffesalg']['dato']), 
+				     $this->request->data['Kaffesalg']))
 	{
 	  $this->Session->setFlash(__('Kunne ikkje lagre kaffisalet. Prøv igjen',   true));
 	  $this->redirect(array('action' => 'add'));
@@ -108,20 +108,20 @@ class KaffesalgController extends AppController {
   }
 	
   function edit($id = null) {
-    if (!$id && empty($this->data)) {
+    if (!$id && empty($this->request->data)) {
       $this->Session->setFlash(__('Invalid Kaffesalg', true));
       $this->redirect(array('action'=>'index'));
     }
-    if (!empty($this->data)) {
-      if ($this->Kaffesalg->save($this->data)) {
+    if (!empty($this->request->data)) {
+      if ($this->Kaffesalg->save($this->request->data)) {
 	$this->Session->setFlash(__('Kaffisalet er lagra', true));
 	$this->redirect(array('action'=>'index'));
       } else {
 	$this->Session->setFlash(__('Kunne ikkje lagre kaffisalet. Prøv igjen.', true));
       }
     }
-    if (empty($this->data)) {
-      $this->data = $this->Kaffesalg->read(null, $id);
+    if (empty($this->request->data)) {
+      $this->request->data = $this->Kaffesalg->read(null, $id);
     }
   }
 
@@ -138,8 +138,8 @@ class KaffesalgController extends AppController {
 
 
   function lastopp(){
-    if(!empty($this->data)){
-      $filinfo = $this->data['Kaffesalg']['submittedfile'];
+    if(!empty($this->request->data)){
+      $filinfo = $this->request->data['Kaffesalg']['submittedfile'];
       $csvfile = $filinfo['tmp_name'];
 	    
       if(!$filinfo['size']){

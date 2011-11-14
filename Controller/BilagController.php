@@ -21,8 +21,8 @@ class BilagController extends AppController {
 	}
 
 	function add($id = null) {
-		if (!empty($this->data)) {
-			$filinfo = $this->data['Bilag']['vedleggsfil'];
+		if (!empty($this->request->data)) {
+			$filinfo = $this->request->data['Bilag']['vedleggsfil'];
 		            $csvfile = $filinfo['tmp_name'];
 
 		            if(!$filinfo['size']){
@@ -49,20 +49,20 @@ class BilagController extends AppController {
 		              return;
 		            }
 
-			$this->data['Bilag']['size'] = $size;
-			$this->data['Bilag']['innhold'] = file_get_contents($filinfo['tmp_name']);
-			$this->data['Bilag']['filtype'] = $filinfo['type'];
-			$this->data['Bilag']['filnavn'] = $filinfo['name'];
+			$this->request->data['Bilag']['size'] = $size;
+			$this->request->data['Bilag']['innhold'] = file_get_contents($filinfo['tmp_name']);
+			$this->request->data['Bilag']['filtype'] = $filinfo['type'];
+			$this->request->data['Bilag']['filnavn'] = $filinfo['name'];
 	
 
-				$this->data['Bilag']['selger_id'] = $this->Session->read('Auth.selger');
+				$this->request->data['Bilag']['selger_id'] = $this->Session->read('Auth.selger');
 			$this->Bilag->create();
-			if ($this->Bilag->save($this->data)) {
+			if ($this->Bilag->save($this->request->data)) {
 				$this->Session->setFlash(__('Vedlegget er lagra', true));
 				$this->redirect(array(
 						      'controller' => 'pengeflyttinger', 
 						      'action' => 'view',
-						      $this->data['Bilag']['pengeflytting_id']));
+						      $this->request->data['Bilag']['pengeflytting_id']));
 			} else {
 				$this->Session->setFlash(__('Kunne ikkje lagre bilaget.', true));
 			}
@@ -74,20 +74,20 @@ class BilagController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Ugyldi bilag', true));
 			$this->redirect($this->Session->read('forrigeSide'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Bilag->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Bilag->save($this->request->data)) {
 				$this->Session->setFlash(__('The Bilag has been saved', true));
 				$this->redirect($this->Session->read('forrigeSide'));
 			} else {
 				$this->Session->setFlash(__('The Bilag could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Bilag->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Bilag->read(null, $id);
 		}
 		$selgere = $this->Bilag->Selger->find('list');
 		$pengeflyttinger = $this->Bilag->Pengeflytting->find('list');

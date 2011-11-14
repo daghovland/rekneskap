@@ -22,8 +22,8 @@ class InternfilerController extends AppController {
 	}
 
 	function add() {
-			if(!empty($this->data)){
-		            $filinfo = $this->data['Internfil']['submittedfile'];
+			if(!empty($this->request->data)){
+		            $filinfo = $this->request->data['Internfil']['submittedfile'];
 		            $csvfile = $filinfo['tmp_name'];
 
 		            if(!$filinfo['size']){
@@ -50,15 +50,15 @@ class InternfilerController extends AppController {
 		              return;
 		            }
 
-			$this->data['Internfil']['size'] = $size;
-			$this->data['Internfil']['innhold'] = file_get_contents($filinfo['tmp_name']);
-			$this->data['Internfil']['filtype'] = $filinfo['type'];
-			$this->data['Internfil']['filnavn'] = $filinfo['name'];
+			$this->request->data['Internfil']['size'] = $size;
+			$this->request->data['Internfil']['innhold'] = file_get_contents($filinfo['tmp_name']);
+			$this->request->data['Internfil']['filtype'] = $filinfo['type'];
+			$this->request->data['Internfil']['filnavn'] = $filinfo['name'];
 	
 
-				$this->data['Internfil']['selger_id'] = $this->Session->read('Auth.selger');
+				$this->request->data['Internfil']['selger_id'] = $this->Session->read('Auth.selger');
 			$this->Internfil->create();
-			if ($this->Internfil->save($this->data)) {
+			if ($this->Internfil->save($this->request->data)) {
 				$this->Session->setFlash(__('Fila er lagra', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -68,20 +68,20 @@ class InternfilerController extends AppController {
 	}
 
 	function edit($id = null) {
-		if ((!$id || !is_numeric($id)) && empty($this->data)) {
+		if ((!$id || !is_numeric($id)) && empty($this->request->data)) {
 			$this->Session->setFlash(__('Ugyldig Internfil', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Internfil->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Internfil->save($this->request->data)) {
 				$this->Session->setFlash(__('Fila er lagra', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('Kunne ikkje lagre fila.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Internfil->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Internfil->read(null, $id);
 		}
 	}
 

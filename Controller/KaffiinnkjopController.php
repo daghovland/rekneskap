@@ -18,9 +18,9 @@ class KaffiinnkjopController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Kaffiinnkjop->create();
-			if ($this->Kaffiinnkjop->save($this->data)) {
+			if ($this->Kaffiinnkjop->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffiinnkjop has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -35,20 +35,20 @@ class KaffiinnkjopController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Kaffiinnkjop', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Kaffiinnkjop->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Kaffiinnkjop->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffiinnkjop has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Kaffiinnkjop could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Kaffiinnkjop->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Kaffiinnkjop->read(null, $id);
 		}
 		$kaffibrenningar = $this->Kaffiinnkjop->Kaffibrenning->find('list');
 		$kaffityper = $this->Kaffiinnkjop->Kaffitype->find('list');

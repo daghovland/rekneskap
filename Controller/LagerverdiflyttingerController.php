@@ -18,9 +18,9 @@ class LagerverdiflyttingerController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Lagerverdiflytting->create();
-			if ($this->Lagerverdiflytting->save($this->data)) {
+			if ($this->Lagerverdiflytting->save($this->request->data)) {
 				$this->Session->setFlash(__('The Lagerverdiflytting has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -36,20 +36,20 @@ class LagerverdiflyttingerController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Lagerverdiflytting', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Lagerverdiflytting->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Lagerverdiflytting->save($this->request->data)) {
 				$this->Session->setFlash(__('The Lagerverdiflytting has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Lagerverdiflytting could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Lagerverdiflytting->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Lagerverdiflytting->read(null, $id);
 		}
 		$pengeflyttinger = $this->Lagerverdiflytting->Pengeflytting->find('list');
 		$kaffeflyttinger = $this->Lagerverdiflytting->Kaffeflytting->find('list');

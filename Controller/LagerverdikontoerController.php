@@ -18,9 +18,9 @@ class LagerverdikontoerController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Lagerverdikonto->create();
-			if ($this->Lagerverdikonto->save($this->data)) {
+			if ($this->Lagerverdikonto->save($this->request->data)) {
 				$this->Session->setFlash(__('The Lagerverdikonto has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -32,20 +32,20 @@ class LagerverdikontoerController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Lagerverdikonto', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Lagerverdikonto->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Lagerverdikonto->save($this->request->data)) {
 				$this->Session->setFlash(__('The Lagerverdikonto has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Lagerverdikonto could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Lagerverdikonto->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Lagerverdikonto->read(null, $id);
 		}
 		$lagerverdityper = $this->Lagerverdikonto->Lagerverditype->find('list');
 		$this->set(compact('lagerverdityper'));

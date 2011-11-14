@@ -19,9 +19,9 @@ class RabatterController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Rabatt->create();
-			if ($this->Rabatt->save($this->data)) {
+			if ($this->Rabatt->save($this->request->data)) {
 				$this->Session->setFlash(__('The Rabatt has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -33,20 +33,20 @@ class RabatterController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Rabatt', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Rabatt->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Rabatt->save($this->request->data)) {
 				$this->Session->setFlash(__('The Rabatt has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Rabatt could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Rabatt->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Rabatt->read(null, $id);
 		}
 		$kaffepriser = $this->Rabatt->Kaffepris->find('list');
 		$this->set(compact('kaffepriser'));

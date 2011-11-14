@@ -17,9 +17,9 @@ class BudsjettPengeflyttingerController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->BudsjettPengeflytting->create();
-			if ($this->BudsjettPengeflytting->save($this->data)) {
+			if ($this->BudsjettPengeflytting->save($this->request->data)) {
 				$this->Session->setFlash(__('The budsjett pengeflytting has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
@@ -42,20 +42,20 @@ class BudsjettPengeflyttingerController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid budsjett pengeflytting', true));
 			$this->redirect(array('action' => 'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->BudsjettPengeflytting->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->BudsjettPengeflytting->save($this->request->data)) {
 				$this->Session->setFlash(__('The budsjett pengeflytting has been saved', true));
 				$this->redirect(array('action' => 'index'));
 			} else {
 				$this->Session->setFlash(__('The budsjett pengeflytting could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->BudsjettPengeflytting->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->BudsjettPengeflytting->read(null, $id);
 		}
 		$kaffiimportar = $this->BudsjettPengeflytting->Kaffiimport->find('list');
 		$kaffibrenningar = $this->BudsjettPengeflytting->Kaffibrenning->find('list');

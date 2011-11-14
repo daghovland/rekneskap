@@ -15,8 +15,8 @@ class KaffeflyttingerController extends AppController {
   }
   
   function svinn(){
-    if(!empty($this->data)){
-      $this->data['Kaffeflytting']['til'] = $this->data['Kaffeflytting']['fra'];
+    if(!empty($this->request->data)){
+      $this->request->data['Kaffeflytting']['til'] = $this->data['Kaffeflytting']['fra'];
       $this->add();
     }  else {
       $standardLager = '8';
@@ -77,9 +77,9 @@ class KaffeflyttingerController extends AppController {
   
   
   function add() {
-    if (!empty($this->data)) {
+    if (!empty($this->request->data)) {
       $this->Kaffeflytting->create();
-      if ($this->Kaffeflytting->save($this->data)) {
+      if ($this->Kaffeflytting->save($this->request->data)) {
 	$this->Session->setFlash(__('Kaffeflyttinga er lagra', true));
 	$this->redirect(array('action' => 'view', $this->Kaffeflytting->id));
       } else {
@@ -102,20 +102,20 @@ class KaffeflyttingerController extends AppController {
   }
   
   function edit($id = null) {
-    if (!$id && empty($this->data)) {
+    if (!$id && empty($this->request->data)) {
       $this->Session->setFlash(__('Ugylidg Kaffeflytting', true));
       $this->redirect($this->Session->read('forrigeSide'));
     }
-    if (!empty($this->data)) {
-      if ($this->Kaffeflytting->save($this->data)) {
+    if (!empty($this->request->data)) {
+      if ($this->Kaffeflytting->save($this->request->data)) {
 	$this->Session->setFlash(__('Kaffeflyttinga er lagra', true));
 	$this->redirect($this->Session->read('forrigeSide'));
       } else {
 	$this->Session->setFlash(__('Kunne ikkje lagre kaffeflyttinga. Prøv igjen.', true));
       }
     }
-    if (empty($this->data)) {
-      $this->data = $this->Kaffeflytting->read(null, $id);
+    if (empty($this->request->data)) {
+      $this->request->data = $this->Kaffeflytting->read(null, $id);
     }
     $pengeflyttinger = $this->Kaffeflytting->Kontantbetaling->find('list');
     $kaffibrenningar = $this->Kaffeflytting->Kaffibrenning->find('list');

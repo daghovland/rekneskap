@@ -18,9 +18,9 @@ class PostsendingarController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Postsending->create();
-			if ($this->Postsending->save($this->data)) {
+			if ($this->Postsending->save($this->request->data)) {
 				$this->Session->setFlash(__('The Postsending has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -38,20 +38,20 @@ class PostsendingarController extends AppController {
 
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Postsending', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Postsending->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Postsending->save($this->request->data)) {
 				$this->Session->setFlash(__('The Postsending has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Postsending could not be saved. Please, try again.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Postsending->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Postsending->read(null, $id);
 		}
 		$kaffesalg = $this->Postsending->Kaffesalg->find('list');
 		$kundeBetalings = $this->Postsending->KundeBetaling->find('list');

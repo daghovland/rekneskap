@@ -30,9 +30,9 @@ class KaffiimportarController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Kaffiimport->create();
-			if ($this->Kaffiimport->save($this->data)) {
+			if ($this->Kaffiimport->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffiimport has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
@@ -42,19 +42,19 @@ class KaffiimportarController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Kaffiimport', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-			if ($this->Kaffiimport->save($this->data)) {
+		if (!empty($this->request->data)) {
+			if ($this->Kaffiimport->save($this->request->data)) {
 				$this->Session->setFlash(__('The Kaffiimport has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
 				$this->Session->setFlash(__('The Kaffiimport could not be saved. Please, try again.', true));
 			}
 		}
-		$this->data = $this->Kaffiimport->read(null, $id);
+		$this->request->data = $this->Kaffiimport->read(null, $id);
 	}
 
 	function delete($id = null) {

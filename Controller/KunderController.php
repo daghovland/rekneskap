@@ -17,8 +17,8 @@ class KunderController extends AppController {
 	}
 
 	function lastopp(){
-	  if(!empty($this->data)){
-	    $filinfo = $this->data['Kunde']['submittedfile'];
+	  if(!empty($this->request->data)){
+	    $filinfo = $this->request->data['Kunde']['submittedfile'];
 	    if($filinfo['type'] != 'text/csv'){
 	      $this->Session->setFlash(__('Ikke gyldig csv-fil.', true));
 	      $this->redirect(array('action'=>'lastopp'));
@@ -120,17 +120,17 @@ class KunderController extends AppController {
 	}
 
 	function add() {
-		if (!empty($this->data)) {
+		if (!empty($this->request->data)) {
 			$this->Kunde->create();
-			if(!$this->data['Kunde']['separat_faktura'])
-			  unset($this->data['FakturaAdresse']);
+			if(!$this->request->data['Kunde']['separat_faktura'])
+			  unset($this->request->data['FakturaAdresse']);
 			else
-			  unset($this->data['FakturaAdresse']['nummer']);
-			$this->data['Kunde']['registrert'] = $this->Kaffe->dateToSql($this->data['Kunde']['registrert']);
-			unset($this->data['Kunde']['separat_faktura']);
-			unset($this->data['Kunde']['nummer']);
-			unset($this->data['LeveringsAdresse']['nummer']);
-			if ($this->Kunde->saveAll($this->data)) {
+			  unset($this->request->data['FakturaAdresse']['nummer']);
+			$this->request->data['Kunde']['registrert'] = $this->Kaffe->dateToSql($this->data['Kunde']['registrert']);
+			unset($this->request->data['Kunde']['separat_faktura']);
+			unset($this->request->data['Kunde']['nummer']);
+			unset($this->request->data['LeveringsAdresse']['nummer']);
+			if ($this->Kunde->saveAll($this->request->data)) {
 			  $this->Session->setFlash(__('Lagra kunde-opplysningar.', true));
 			  $this->redirect(array('action'=>'index'));
 			} else {
@@ -143,33 +143,33 @@ class KunderController extends AppController {
 	}
 
 	function edit($id = null) {
-		if (!$id && empty($this->data)) {
+		if (!$id && empty($this->request->data)) {
 			$this->Session->setFlash(__('Invalid Kunde', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if (!empty($this->data)) {
-		  if(!$this->data['Kunde']['separat_faktura']){
-		    unset($this->data['FakturaAdresse']);
-		    $this->data['Kunde']['fakturaadresse'] = NULL;
-		  } else if (!is_numeric($this->data['FakturaAdresse']['nummer']))
-		    unset($this->data['FakturaAdresse']['nummer']);
-		  $this->data['Kunde']['registrert'] = $this->Kaffe->dateToSql($this->data['Kunde']['registrert']);
-		  	  unset($this->data['Kunde']['separat_faktura']);
-		  //		  debug($this->data, true);
-		  if ($this->Kunde->saveAll($this->data)) {
+		if (!empty($this->request->data)) {
+		  if(!$this->request->data['Kunde']['separat_faktura']){
+		    unset($this->request->data['FakturaAdresse']);
+		    $this->request->data['Kunde']['fakturaadresse'] = NULL;
+		  } else if (!is_numeric($this->request->data['FakturaAdresse']['nummer']))
+		    unset($this->request->data['FakturaAdresse']['nummer']);
+		  $this->request->data['Kunde']['registrert'] = $this->Kaffe->dateToSql($this->data['Kunde']['registrert']);
+		  	  unset($this->request->data['Kunde']['separat_faktura']);
+		  //		  debug($this->request->data, true);
+		  if ($this->Kunde->saveAll($this->request->data)) {
 		    $this->Session->setFlash(__('The Kunde has been saved', true));
 				$this->redirect(array('action'=>'index'));
 			} else {
-		    debug($this->data, true);
+		    debug($this->request->data, true);
 				$this->Session->setFlash(__('Kunne ikkje lagre nye kunde-opplysningar. Prøv igjen.', true));
 			}
 		}
-		if (empty($this->data)) {
-			$this->data = $this->Kunde->read(null, $id);
+		if (empty($this->request->data)) {
+			$this->request->data = $this->Kunde->read(null, $id);
 		}
 	        $levering_adresse = $this->Kunde->LeveringsAdresse->find('list');
 		$faktura_adresse = $this->Kunde->FakturaAdresse->find('list');
-		$this->data['Kunde']['separat_faktura'] = isset($this->data['Kunde']['fakturaadresse']);
+		$this->request->data['Kunde']['separat_faktura'] = isset($this->data['Kunde']['fakturaadresse']);
 		$this->set(compact('leverings_adresse','faktura_adresse'));
 	}
 
