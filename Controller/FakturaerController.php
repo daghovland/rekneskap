@@ -1,24 +1,27 @@
 <?php
 class FakturaerController extends AppController {
-
-	var $name = 'Fakturaer';
-	var $helpers = array('Html', 'Form', 'Cache');
-/*	var $cacheAction = array(
-		'view/' => 21600,
-		'index' => 36000,
-		'ubetalte'  => 48000
+  
+  public $helpers = array('Html', 'Form', 'Cache', 'Paginator', 'Session');
+  /*	var $cacheAction = array(
+	'view/' => 21600,
+	'index' => 36000,
+	'ubetalte'  => 48000
 	);
-*/
-	var $components = array('Acl');
-
-	var $paginate = array('limit' => '200');
-
-	function index() {
-		$this->Faktura->recursive = 0;
-		$this->set('fakturaer', $this->paginate());
-	}
-
-
+  */
+  
+  function beforeFilter() {
+    parent::beforeFilter(); 
+    $this->Auth->allow('*');
+  }
+  
+  
+  
+  function index() {
+    $this->Faktura->recursive = 0;
+    $this->set('fakturaer', $this->paginate());
+  }
+  
+  
 	function ubetalte() {
 	  $this->set('fakturaer', $this->Faktura->FakturaUbetalt->find('all', array('conditions' => array('mangler > 0'))));
 	  $this->set('kunder', $this->Faktura->Kunde->find('list', array('fields' => array('navn'))));

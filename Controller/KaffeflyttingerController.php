@@ -1,111 +1,114 @@
 <?php
 class KaffeflyttingerController extends AppController {
 
-	var $name = 'Kaffeflyttinger';
-	var $helpers = array('Html', 'Form', 'Javascript', 'Ajax', 'Cache');
-	var $cacheAction = array(
-		'view/' => 36000,
-		'index/' => 36000,
-		'hent_kaffi/'  => 48000
-	);
-	var $paginate = array('limit' => 200);
-	var $components = array('Acl', 'RequestHandler');
-
-	function index() {
-		$this->Kaffeflytting->recursive = 0;
-		$this->set('kaffeflyttinger', $this->paginate());
-		$this->Session->write('forrigeSide', array('controller' => 'kaffeflyttinger', 'action' => 'index', '/page:1/sort:dato/direction:desc'));
-	}
-
-	function svinn(){
-		if(!empty($this->data)){
-			$this->data['Kaffeflytting']['til'] = $this->data['Kaffeflytting']['fra'];
-			$this->add();
-		}  else {
-			$this->set('fralagre', $this->Kaffeflytting->Fra->find('list'));
-			$this->set('fralagernavn', $this->Kaffeflytting->Fra->find('list', array('fields' => array('beskrivelse'))));
-			$this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list'));
-			$this->set('kaffetypenavn', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('intern_navn'))));
-			$this->set('kaffetypebeskrivelse', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('beskrivelse'))));
-			$selgerData = $this->Session->read('Auth.Selger');
-			$this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
-		}
-	}
-
-
-	function hent_kaffi(){
-		$this->set('fralagre', $this->Kaffeflytting->Fra->find('list'));
-		$this->set('fralagernavn', $this->Kaffeflytting->Fra->find('list', array('fields' => array('beskrivelse'))));
-		$this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list', array('order' => array('nummer ASC'))));
-		$this->set('kaffetypenavn', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('intern_navn'))));
-		$this->set('kaffetypebeskrivelse', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('beskrivelse'))));
-		$selgerData = $this->Session->read('Auth.Selger');
-		$this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
-	}
-
-
-	function view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid Kaffeflytting.', true));
-			$this->redirect(array('action'=>'index', '/page:1/sort:nummer/direction:desc'));
-		}
-		$this->set('kaffeflytting', $this->Kaffeflytting->read(null, $id));
-		$this->Session->write('forrigeSide', array('controller' => 'kaffeflyttinger', 'action' => 'view', $id));
-	}
-
-	
-	function add() {
-		if (!empty($this->data)) {
-			$this->Kaffeflytting->create();
-			if ($this->Kaffeflytting->save($this->data)) {
-				$this->Session->setFlash(__('Kaffeflyttinga er lagra', true));
-				$this->redirect(array('action' => 'view', $this->Kaffeflytting->id));
-			} else {
-				$this->Session->setFlash(__('Kunne ikkje lagre kaffeflyttinga. Prøv igjen.', true));
-			}
-		}
-		if(isset($this->params['named']['kaffesalg']) && is_numeric($this->params['named']['kaffesalg']))
-		  $this->set('kaffesalg_nummer', $this->params['named']['kaffesalg']);
-		if(isset($this->params['named']['dato']) && preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/", $this->params['named']['dato']))
-		  $this->set('kaffesalg_dato', $this->params['named']['dato']);
-		$kaffesalg = $this->Kaffeflytting->Kaffesalg->find('list');
-		$fra = $this->Kaffeflytting->Fra->find('list');
-		$til = $fra;
-		$kaffetyper = $this->Kaffeflytting->Kaffepris->find('list');
-		$typer = $kaffetyper;
-		$lagertypenavn = $this->Kaffeflytting->Fralagertypenavn->find('list');
-		$fralagertyper = $lagertypenavn;
-		$tillagertyper = $lagertypenavn;
-		$this->set(compact('kaffesalg', 'fra', 'til', 'typer', 'kaffetyper', 'fralagertyper', 'tillagertyper'));
-	}
-
-	function edit($id = null) {
-		if (!$id && empty($this->data)) {
-			$this->Session->setFlash(__('Ugylidg Kaffeflytting', true));
-			$this->redirect($this->Session->read('forrigeSide'));
-		}
-		if (!empty($this->data)) {
-			if ($this->Kaffeflytting->save($this->data)) {
-				$this->Session->setFlash(__('Kaffeflyttinga er lagra', true));
-				$this->redirect($this->Session->read('forrigeSide'));
-			} else {
-				$this->Session->setFlash(__('Kunne ikkje lagre kaffeflyttinga. Prøv igjen.', true));
-			}
-		}
-		if (empty($this->data)) {
-			$this->data = $this->Kaffeflytting->read(null, $id);
-		}
-		$pengeflyttinger = $this->Kaffeflytting->Kontantbetaling->find('list');
-		$kaffibrenningar = $this->Kaffeflytting->Kaffibrenning->find('list');
-		$fralagre = $this->Kaffeflytting->Fra->find('list');
-		$tillagre = $this->Kaffeflytting->Til->find('list');
-		$kaffetyper = $this->Kaffeflytting->Kaffepris->find('list');
-		$lagertyper = $this->Kaffeflytting->Tillagertypenavn->find('list');
-		$kaffesalg = $this->Kaffeflytting->Kaffesalg->find('list');
-		$this->set(compact('pengeflyttinger','fralagre','kaffibrenningar', 'tillagre','kaffetyper','lagertyper', 'kaffesalg'));
-	}
-
-	function delete($id = null) {
+  public $helpers = array('Html', 'Form', 'Js', 'Cache');
+  public $cacheAction = array(
+			      'view/' => 36000,
+			      'index/' => 36000,
+			      'hent_kaffi/'  => 48000
+			      );
+  
+  function beforeFilter() {
+    parent::beforeFilter(); 
+    $this->Auth->allow('*');
+  }
+  
+  function index() {
+    $this->Kaffeflytting->recursive = 0;
+    $this->set('kaffeflyttinger', $this->paginate());
+    $this->Session->write('forrigeSide', array('controller' => 'kaffeflyttinger', 'action' => 'index', '/page:1/sort:dato/direction:desc'));
+  }
+  
+  function svinn(){
+    if(!empty($this->data)){
+      $this->data['Kaffeflytting']['til'] = $this->data['Kaffeflytting']['fra'];
+      $this->add();
+    }  else {
+      $this->set('fralagre', $this->Kaffeflytting->Fra->find('list'));
+      $this->set('fralagernavn', $this->Kaffeflytting->Fra->find('list', array('fields' => array('beskrivelse'))));
+      $this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list'));
+      $this->set('kaffetypenavn', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('intern_navn'))));
+      $this->set('kaffetypebeskrivelse', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('beskrivelse'))));
+      $selgerData = $this->Session->read('Auth.Selger');
+      $this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
+    }
+  }
+  
+  
+  function hent_kaffi(){
+    $this->set('fralagre', $this->Kaffeflytting->Fra->find('list'));
+    $this->set('fralagernavn', $this->Kaffeflytting->Fra->find('list', array('fields' => array('beskrivelse'))));
+    $this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list', array('order' => array('nummer ASC'))));
+    $this->set('kaffetypenavn', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('intern_navn'))));
+    $this->set('kaffetypebeskrivelse', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('beskrivelse'))));
+    $selgerData = $this->Session->read('Auth.Selger');
+    $this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
+  }
+  
+  
+  function view($id = null) {
+    if (!$id) {
+      $this->Session->setFlash(__('Invalid Kaffeflytting.', true));
+      $this->redirect(array('action'=>'index', '/page:1/sort:nummer/direction:desc'));
+    }
+    $kaffeflytting = $this->Kaffeflytting->findAllById($id);
+    $this->set('kaffeflytting', $kaffeflytting);
+    $this->Session->write('forrigeSide', array('controller' => 'kaffeflyttinger', 'action' => 'view', $id));
+  }
+  
+  
+  function add() {
+    if (!empty($this->data)) {
+      $this->Kaffeflytting->create();
+      if ($this->Kaffeflytting->save($this->data)) {
+	$this->Session->setFlash(__('Kaffeflyttinga er lagra', true));
+	$this->redirect(array('action' => 'view', $this->Kaffeflytting->id));
+      } else {
+	$this->Session->setFlash(__('Kunne ikkje lagre kaffeflyttinga. Prøv igjen.', true));
+      }
+    }
+    if(isset($this->params['named']['kaffesalg']) && is_numeric($this->params['named']['kaffesalg']))
+      $this->set('kaffesalg_nummer', $this->params['named']['kaffesalg']);
+    if(isset($this->params['named']['dato']) && preg_match("/[0-9]{4}-[0-9]{2}-[0-9]{2}/", $this->params['named']['dato']))
+      $this->set('kaffesalg_dato', $this->params['named']['dato']);
+    $kaffesalg = $this->Kaffeflytting->Kaffesalg->find('list');
+    $fra = $this->Kaffeflytting->Fra->find('list');
+    $til = $fra;
+    $kaffetyper = $this->Kaffeflytting->Kaffepris->find('list');
+    $typer = $kaffetyper;
+    $lagertypenavn = $this->Kaffeflytting->Fralagertypenavn->find('list');
+    $fralagertyper = $lagertypenavn;
+    $tillagertyper = $lagertypenavn;
+    $this->set(compact('kaffesalg', 'fra', 'til', 'typer', 'kaffetyper', 'fralagertyper', 'tillagertyper'));
+  }
+  
+  function edit($id = null) {
+    if (!$id && empty($this->data)) {
+      $this->Session->setFlash(__('Ugylidg Kaffeflytting', true));
+      $this->redirect($this->Session->read('forrigeSide'));
+    }
+    if (!empty($this->data)) {
+      if ($this->Kaffeflytting->save($this->data)) {
+	$this->Session->setFlash(__('Kaffeflyttinga er lagra', true));
+	$this->redirect($this->Session->read('forrigeSide'));
+      } else {
+	$this->Session->setFlash(__('Kunne ikkje lagre kaffeflyttinga. Prøv igjen.', true));
+      }
+    }
+    if (empty($this->data)) {
+      $this->data = $this->Kaffeflytting->read(null, $id);
+    }
+    $pengeflyttinger = $this->Kaffeflytting->Kontantbetaling->find('list');
+    $kaffibrenningar = $this->Kaffeflytting->Kaffibrenning->find('list');
+    $fralagre = $this->Kaffeflytting->Fra->find('list');
+    $tillagre = $this->Kaffeflytting->Til->find('list');
+    $kaffetyper = $this->Kaffeflytting->Kaffepris->find('list');
+    $lagertyper = $this->Kaffeflytting->Tillagertypenavn->find('list');
+    $kaffesalg = $this->Kaffeflytting->Kaffesalg->find('list');
+    $this->set(compact('pengeflyttinger','fralagre','kaffibrenningar', 'tillagre','kaffetyper','lagertyper', 'kaffesalg'));
+  }
+  
+  function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Kaffeflytting', true));
 			$this->redirect($this->Session->read('forrigeSide'));

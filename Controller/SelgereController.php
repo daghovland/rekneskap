@@ -24,7 +24,7 @@ class SelgereController extends AppController {
   
   function beforeFilter() {
     parent::beforeFilter(); 
-    //$this->Auth->allow('*');
+    $this->Auth->allow('*');
   }
   
   
@@ -37,14 +37,15 @@ class SelgereController extends AppController {
     $this->Session->write('forrigeSide', array('controller' => 'selgere', 'action' => 'index'));
   }
   
-  function view($id = null) {
+  function view($id) {
     if (!$id) {
       $this->Session->setFlash(__('Invalid Selger.', true));
       $this->redirect(array('action'=>'index'));
     }
-    $selgerInfo = $this->Selger->read(null, $id);
-    $this->set('selger', $selgerInfo);
-    $this->set('beholdninger', $this->Selger->Kaffelager->lagerbeholdning($selgerInfo['Kaffelager']['nummer'], false));
+    $selgerInfo = $this->Selger->findAllByNummer($id);
+    $this->set('selger', $selgerInfo[0]);
+    $beholdninger =  $this->Selger->Kaffelager->Kaffelagerbeholdning->findAllByKaffelagerId($selgerInfo[0]['Kaffelager']['nummer']);
+    $this->set('beholdninger', $beholdninger);
     
   }
   
