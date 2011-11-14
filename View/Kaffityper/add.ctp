@@ -1,13 +1,13 @@
 <div class="kaffityper form">
-<?php echo $form->create('Kaffitype');?>
+<?php echo $this->Form->create('Kaffitype');?>
 	<fieldset>
  		<legend><?php __('Add Kaffitype');?></legend>
 	<?php
-		echo $form->input('nettogram');
-		echo $form->input('namn');
+		echo $this->Form->input('nettogram');
+		echo $this->Form->input('namn');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

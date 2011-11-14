@@ -1,17 +1,17 @@
 <div class="kaffiinnkjop form">
-<?php echo $form->create('Kaffiinnkjop');?>
+<?php echo $this->Form->create('Kaffiinnkjop');?>
 	<fieldset>
  		<legend><?php __('Add Kaffiinnkjop');?></legend>
 	<?php
-		echo $form->input('kaffibrenning_id');
-		echo $form->input('kaffitype_id');
-		echo $form->input('kommentar');
-		echo $form->input('dato');
-		echo $form->input('pengeflytting_id', array('empty' => 'inga'));
-		echo $form->input('kaffeflytting_id', array('empty' => 'inga'));
+		echo $this->Form->input('kaffibrenning_id');
+		echo $this->Form->input('kaffitype_id');
+		echo $this->Form->input('kommentar');
+		echo $this->Form->input('dato');
+		echo $this->Form->input('pengeflytting_id', array('empty' => 'inga'));
+		echo $this->Form->input('kaffeflytting_id', array('empty' => 'inga'));
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

@@ -1,7 +1,7 @@
 <?php
-        $javascript->link('pengeflyttinger', false);
-        $javascript->link('prototype', false);
-        $javascript->link('scriptaculous', false);
+        $this->Js->link('pengeflyttinger', false);
+        $this->Js->link('prototype', false);
+        $this->Js->link('scriptaculous', false);
 ?>
 <div class="pengeflyttinger index">
 <h2><?php __('Pengeflyttinger');?></h2>
@@ -20,17 +20,17 @@ echo $ajax->form(array(
 							'action' => 'liste')
 					)
 		));
-echo $form->year('fra', 2007, date('Y')+1, 2007, array('id' => 'bevegelserDatoFraAar'), false);
-echo $form->month('fra', 1, array('id' => 'bevegelserDatoFraMnd'), false);
-echo $form->hidden('fra.day', array('value' => 1));
+echo $this->Form->year('fra', 2007, date('Y')+1, 2007, array('id' => 'bevegelserDatoFraAar'), false);
+echo $this->Form->month('fra', 1, array('id' => 'bevegelserDatoFraMnd'), false);
+echo $this->Form->hidden('fra.day', array('value' => 1));
 ?>
 <label for="bevegelserDatoTilAar">Til</label>
 <?php
-echo $form->year('til', '2007', date('Y')+1, date('Y'), array('id' => 'bevegelserDatoTilAar'), false);
-echo $form->month('til', date('M'), array('id' => 'bevegelserDatoTilMnd'), false);
-echo $form->hidden('til.day', array('value' => 31));
-echo $form->input('konto');
-echo $form->end("Endre intervall");
+echo $this->Form->year('til', '2007', date('Y')+1, date('Y'), array('id' => 'bevegelserDatoTilAar'), false);
+echo $this->Form->month('til', date('M'), array('id' => 'bevegelserDatoTilMnd'), false);
+echo $this->Form->hidden('til.day', array('value' => 31));
+echo $this->Form->input('konto');
+echo $this->Form->end("Endre intervall");
 
 $options = array(
         'url' => array( 'controller' => 'pengeflyttinger', 'action' => 'liste'),
@@ -48,7 +48,7 @@ $script = 'function oppdaterBevegelser(event) {
 						requestHeaders:[\'X-Update\', \'kontobevegelser\']
 						}
 				) }';
-echo $javascript->codeBlock($script);
+echo $this->Js->codeBlock($script);
 
 ?>
 

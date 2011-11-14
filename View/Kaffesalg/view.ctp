@@ -1,18 +1,18 @@
 <div class="kaffesalg view">
-<h2><?php  __('Kaffesalg');?></h2>
+<h2><?php  echo __('Kaffesalg');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['nummer']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Dato'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Dato'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['dato']; ?>
 			&nbsp;
 		</dd>
 		<?php if($kaffesalg['Kaffeflytting']): ?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kaffi'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kaffi'); ?></dt>
 		<dd>
 		<?php
 		foreach($kaffesalg['Kaffeflytting'] as $kaffeflytting){
@@ -23,61 +23,61 @@
 		<?php endif; ?>
 
 
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nettovekt'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nettovekt'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo sprintf("%.2f kg", $kaffesalg['Kaffesalgvekt']['netto_kilo']); ?>
 			&nbsp;
 		</dd>
 
 
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Seljar'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Seljar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($kaffesalg['Selger']['navn'], array('controller' => 'selgere', 'action' => 'view', $kaffesalg['Selger']['nummer'])); ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Total'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Total'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['total']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Frakt'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Frakt'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['frakt']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mva'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Mva'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['mva']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kommentar'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kommentar'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['internmelding']; ?>
 			&nbsp;
 		</dd>
 		<?php if ($kaffesalg['Kaffesalg']['fakturatekst'] != null) :?>
-		    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Fakturatekst'); ?></dt>
+		    <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Fakturatekst'); ?></dt>
 		    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
 		     <?php echo $kaffesalg['Kaffesalg']['fakturatekst']; ?>
 		     &nbsp;
                     </dd>
 		    <?php endif; ?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kontant'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kontant'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['kontant']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Sending'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Sending'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['sending']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Sist endra'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Sist endra'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['modified']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Oppretta'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Oppretta'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['created']; ?>
 			&nbsp;
@@ -96,12 +96,12 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php __('Postsendingar');?></h3>
+	<h3><?php echo __('Postsendingar');?></h3>
 	<?php if (!empty($kaffesalg['Postsending'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Sendingsnummer'); ?></th>
-		<th><?php __('Kommentar'); ?></th>
+		<th><?php echo __('Sendingsnummer'); ?></th>
+		<th><?php echo __('Kommentar'); ?></th>
 	</tr>
 		<?php foreach($kaffesalg['Postsending'] as $sending):?>
 		<tr>
@@ -123,22 +123,22 @@
 	</div>
 </div>
 <div class="related">
-	<h3><?php __('Kaffeflyttinger');?></h3>
+	<h3><?php echo __('Kaffeflyttinger');?></h3>
 	<?php if (!empty($kaffesalg['Kaffeflytting'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Type'); ?></th>
-		<th><?php __('Antall'); ?></th>
-		<th><?php __('Fra'); ?></th>
-		<th><?php __('Beskrivelse'); ?></th>
-		<th><?php __('Til'); ?></th>
-		<th><?php __('Dato'); ?></th>
-		<th><?php __('Pengeflytting'); ?></th>
-		<th><?php __('Ansvarlig'); ?></th>
-		<th><?php __('Faktura'); ?></th>
-		<th><?php __('Kaffesalg Id'); ?></th>
-		<th class="actions"><?php __('Actions');?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Type'); ?></th>
+		<th><?php echo __('Antall'); ?></th>
+		<th><?php echo __('Fra'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
+		<th><?php echo __('Til'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
+		<th><?php echo __('Pengeflytting'); ?></th>
+		<th><?php echo __('Ansvarlig'); ?></th>
+		<th><?php echo __('Faktura'); ?></th>
+		<th><?php echo __('Kaffesalg Id'); ?></th>
+		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php echo $this->element("kaffeflyttinger", array("kaffeflyttinger" => $kaffeflyttinger, 'array_key' => 'Kaffeflytting')); ?>
 	</table>
@@ -155,18 +155,18 @@
 	</div>
 </div>
 <div class="related">
-	<h3><?php __('Pengeflyttinger');?></h3>
+	<h3><?php echo __('Pengeflyttinger');?></h3>
 	<?php if (!empty($kaffesalg['Pengeflytting'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-		<th><?php __('Nummer'); ?></th>
-		<th><?php __('Fra'); ?></th>
-		<th><?php __('Til'); ?></th>
-		<th><?php __('Kroner'); ?></th>
-		<th><?php __('Øre'); ?></th>
-		<th><?php __('Dato'); ?></th>
-		<th><?php __('Beskrivelse'); ?></th>
-		<th><?php __('DekningsFaktura'); ?></th>
+		<th><?php echo __('Nummer'); ?></th>
+		<th><?php echo __('Fra'); ?></th>
+		<th><?php echo __('Til'); ?></th>
+		<th><?php echo __('Kroner'); ?></th>
+		<th><?php echo __('Øre'); ?></th>
+		<th><?php echo __('Dato'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
+		<th><?php echo __('DekningsFaktura'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
@@ -200,49 +200,49 @@
 </div>
 <?php if($kaffesalg['Faktura']['nummer']): ?>
 <div class="related">
-                <h3><?php  __('Faktura');?></h3>
+                <h3><?php  echo __('Faktura');?></h3>
         <?php if (!empty($kaffesalg['Faktura'])):?>
                 <dl>    <?php $i = 0; $class = ' class="altrow"';?>
-                        <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Nummer');?></dt>
+                        <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($kaffesalg['Faktura']['nummer'],
 					       array('controller' => 'fakturaer', 
 						     'action' => 'view',
 						     $kaffesalg['Faktura']['nummer']));?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kunde');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kunde');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $this->Html->link($kunder[$kaffesalg['Faktura']['kunde']], array('controller' => 'kunder', 'action' => 'view', $kaffesalg['Faktura']['kunde']));?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Faktura Dato');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Faktura Dato');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $kaffesalg['Faktura']['faktura_dato'];?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Betalings Frist');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Betalings Frist');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $kaffesalg['Faktura']['betalings_frist'];?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Melding');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Melding');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $kaffesalg['Faktura']['melding'];?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kroner');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kroner');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $kaffesalg['Faktura']['kroner'];?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Adresse');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Adresse');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $kaffesalg['Faktura']['adresse'];?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Mva');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Mva');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $kaffesalg['Faktura']['mva'];?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Totalpris');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Totalpris');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $kaffesalg['Faktura']['totalpris'];?>
 &nbsp;</dd>
-                <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Kaffesalg Id');?></dt>
+                <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Kaffesalg Id');?></dt>
                 <dd<?php if ($i++ % 2 == 0) echo $class;?>>
         <?php echo $kaffesalg['Faktura']['kaffesalg_id'];?>
 &nbsp;</dd>

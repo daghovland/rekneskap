@@ -1,22 +1,22 @@
 <div class="kaffesalg form">
-<?php echo $form->create('Kaffesalg');?>
+<?php echo $this->Form->create('Kaffesalg');?>
 	<fieldset>
  		<legend><?php __('Edit Kaffesalg');?></legend>
 	<?php
-		echo $form->input('nummer');
-		echo $form->input('total');
-		echo $form->input('frakt');
-		echo $form->input('fakturatekst');
-		echo $form->input('mva');
-		echo $form->input('kontant');
-		echo $form->input('sending');
+		echo $this->Form->input('nummer');
+		echo $this->Form->input('total');
+		echo $this->Form->input('frakt');
+		echo $this->Form->input('fakturatekst');
+		echo $this->Form->input('mva');
+		echo $this->Form->input('kontant');
+		echo $this->Form->input('sending');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $form->value('Kaffesalg.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kaffesalg.nummer'))); ?></li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Kaffesalg.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kaffesalg.nummer'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Kaffesalg', true), array('action'=>'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('controller'=> 'fakturaer', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Faktura', true), array('controller'=> 'fakturaer', 'action'=>'add')); ?> </li>

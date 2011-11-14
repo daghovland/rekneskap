@@ -41,8 +41,10 @@ class KaffeflyttingerController extends AppController {
     $this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list', array('order' => array('nummer ASC'))));
     $this->set('kaffetypenavn', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('intern_navn'))));
     $this->set('kaffetypebeskrivelse', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('beskrivelse'))));
-    $selgerData = $this->Session->read('Auth.Selger');
-    $this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
+    /*    $selgerData = $this->Session->read('Auth.Selger');
+    $this->Auth->user();
+    $this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));*/
+    $this->set('selgerInfo', $this->Auth->user());
   }
   
   
@@ -51,9 +53,9 @@ class KaffeflyttingerController extends AppController {
       $this->Session->setFlash(__('Invalid Kaffeflytting.', true));
       $this->redirect(array('action'=>'index', '/page:1/sort:nummer/direction:desc'));
     }
-    $kaffeflytting = $this->Kaffeflytting->findAllById($id);
-    $this->set('kaffeflytting', $kaffeflytting);
-    $this->Session->write('forrigeSide', array('controller' => 'kaffeflyttinger', 'action' => 'view', $id));
+    $kaffeflytting = $this->Kaffeflytting->findAllByNummer($id);
+    $this->set('kaffeflytting', $kaffeflytting[0]);
+    //    $this->Session->write('forrigeSide', array('controller' => 'kaffeflyttinger', 'action' => 'view', $id));
   }
   
   

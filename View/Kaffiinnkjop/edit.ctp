@@ -1,22 +1,22 @@
 <div class="kaffiinnkjop form">
-<?php echo $form->create('Kaffiinnkjop');?>
+<?php echo $this->Form->create('Kaffiinnkjop');?>
 	<fieldset>
  		<legend><?php __('Edit Kaffiinnkjop');?></legend>
 	<?php
-		echo $form->input('id');
-		echo $form->input('kaffibrenning_id');
-		echo $form->input('kaffitype_id');
-		echo $form->input('kommentar');
-		echo $form->input('dato');
-		echo $form->input('pengeflytting_id');
-		echo $form->input('kaffeflytting_id');
+		echo $this->Form->input('id');
+		echo $this->Form->input('kaffibrenning_id');
+		echo $this->Form->input('kaffitype_id');
+		echo $this->Form->input('kommentar');
+		echo $this->Form->input('dato');
+		echo $this->Form->input('pengeflytting_id');
+		echo $this->Form->input('kaffeflytting_id');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $form->value('Kaffiinnkjop.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kaffiinnkjop.id'))); ?></li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $this->Form->value('Kaffiinnkjop.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kaffiinnkjop.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Kaffiinnkjop', true), array('action' => 'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Kaffibrenningar', true), array('controller' => 'kaffibrenningar', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Kaffibrenning', true), array('controller' => 'kaffibrenningar', 'action' => 'add')); ?> </li>

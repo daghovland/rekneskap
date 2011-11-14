@@ -1,19 +1,19 @@
 <div class="kaffiimportar form">
-<?php echo $form->create('Kaffiimport');?>
+<?php echo $this->Form->create('Kaffiimport');?>
 	<fieldset>
  		<legend><?php __('Add Kaffiimport');?></legend>
 	<?php
-		echo $form->input('navn');
-		echo $form->input('kooperativ');
-		echo $form->input('kilo');
-		echo $form->input('sekker');
-		echo $form->input('pris', array('label' => 'Pris per kg i MXN'));
-		echo $form->input('kurs', array('label' => 'Antatt pris i kr per 100 MXN'));
-		echo $form->input('kontrakt');
-		echo $form->input('kommentar');
+		echo $this->Form->input('navn');
+		echo $this->Form->input('kooperativ');
+		echo $this->Form->input('kilo');
+		echo $this->Form->input('sekker');
+		echo $this->Form->input('pris', array('label' => 'Pris per kg i MXN'));
+		echo $this->Form->input('kurs', array('label' => 'Antatt pris i kr per 100 MXN'));
+		echo $this->Form->input('kontrakt');
+		echo $this->Form->input('kommentar');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

@@ -1,15 +1,15 @@
 <div class="kaffibrenningar form">
-<?php echo $form->create('Kaffibrenning');?>
+<?php echo $this->Form->create('Kaffibrenning');?>
 	<fieldset>
  		<legend><?php __('Registrer Kaffibrenning');?></legend>
 	<?php
-		echo $form->input('navn');
-		echo $form->input('brenneri');
-		echo $form->input('kilo');
-		echo $form->input('kaffiimport_id', array('empty' => '', 'default' => $kaffiimport_id));
+		echo $this->Form->input('navn');
+		echo $this->Form->input('brenneri');
+		echo $this->Form->input('kilo');
+		echo $this->Form->input('kaffiimport_id', array('empty' => '', 'default' => $kaffiimport_id));
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

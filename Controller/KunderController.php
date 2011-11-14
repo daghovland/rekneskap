@@ -1,9 +1,7 @@
 <?php
 class KunderController extends AppController {
 
-	var $name = 'Kunder';
-	var $helpers = array('Html', 'Form', 'Javascript', 'Ajax', 'Adresser');
-	var $components = array('Acl', 'Session', 'Kaffe', 'RequestHandler');
+	public $helpers = array('Adresser');
 
 	var $paginate = array(
 		'limit' => '200',
@@ -108,10 +106,9 @@ class KunderController extends AppController {
 	  $this->view($id);
 	}
 
-	function adresser($id){
-	  if ( $this->RequestHandler->isAjax() ) {
-	    Configure::write('debug',0);
-	  }
+	function adresser(){
+	  $this->layout = 'ajax';
+	  $id = $this->request->data['kunde_id'];
 	  $this->view($id);
 	}
 

@@ -1,22 +1,22 @@
 <div class="kontoutskrifter form">
-<?php echo $form->create('Kontoutskrift');?>
+<?php echo $this->Form->create('Kontoutskrift');?>
 	<fieldset>
  		<legend><?php __('Add Kontoutskrift');?></legend>
 	<?php
-		echo $form->input('filnavn');
-		echo $form->input('filtype');
-		echo $form->input('size');
-		echo $form->input('innhold');
-		echo $form->input('konto_id');
-		echo $form->input('mnd');
-		echo $form->input('aar');
-		echo $form->input('inn_kroner');
-		echo $form->input('ut_kroner');
-		echo $form->input('ut_oere');
-		echo $form->input('inn_oere');
+		echo $this->Form->input('filnavn');
+		echo $this->Form->input('filtype');
+		echo $this->Form->input('size');
+		echo $this->Form->input('innhold');
+		echo $this->Form->input('konto_id');
+		echo $this->Form->input('mnd');
+		echo $this->Form->input('aar');
+		echo $this->Form->input('inn_kroner');
+		echo $this->Form->input('ut_kroner');
+		echo $this->Form->input('ut_oere');
+		echo $this->Form->input('inn_oere');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

@@ -1,14 +1,14 @@
 <div class="rabatter form">
-<?php echo $form->create('Rabatt');?>
+<?php echo $this->Form->create('Rabatt');?>
 	<fieldset>
  		<legend><?php __('Add Rabatt');?></legend>
 	<?php
-		echo $form->input('kaffepris_id', array('label' => 'Type kaffi'));
-		echo $form->input('pris');
-		echo $form->input('beskrivelse');
+		echo $this->Form->input('kaffepris_id', array('label' => 'Type kaffi'));
+		echo $this->Form->input('pris');
+		echo $this->Form->input('beskrivelse');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

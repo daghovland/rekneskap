@@ -39,7 +39,7 @@
       echo $scripts_for_layout;
     ?>
   </head>
-  <body id="sidekropp">
+  <body>
     <div id="container">
       <div id="header">
 	<h1>

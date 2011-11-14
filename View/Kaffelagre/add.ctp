@@ -1,15 +1,15 @@
 <div class="kaffelagre form">
-<?php echo $form->create('Kaffelager');?>
+<?php echo $this->Form->create('Kaffelager');?>
 	<fieldset>
  		<legend><?php __('Add Kaffelager');?></legend>
 	<?php
-		echo $form->input('selger');
-		echo $form->input('beskrivelse');
-		echo $form->input('lagertype');
-		echo $form->input('konto');
+		echo $this->Form->input('selger');
+		echo $this->Form->input('beskrivelse');
+		echo $this->Form->input('lagertype');
+		echo $this->Form->input('konto');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

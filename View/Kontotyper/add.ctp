@@ -1,12 +1,12 @@
 <div class="kontotyper form">
-<?php echo $form->create('Kontotype');?>
+<?php echo $this->Form->create('Kontotype');?>
 	<fieldset>
  		<legend><?php __('Add Kontotype');?></legend>
 	<?php
-		echo $form->input('beskrivelse');
+		echo $this->Form->input('beskrivelse');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

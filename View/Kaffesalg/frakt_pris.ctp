@@ -1,4 +1,4 @@
 <p id="fraktanslag">
-Fraktanslag servicepakke:
-   <?php echo $frakt; ?>
+  Fraktanslag servicepakke:
+  <?php echo $frakt; ?>
 </p>

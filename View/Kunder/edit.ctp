@@ -1,22 +1,22 @@
 <?php
-   $javascript->link('kaffeflyttinger', false);
-$javascript->link('prototype', false);
-$javascript->link('scriptaculous', false); 
+   $this->Js->link('kaffeflyttinger', false);
+$this->Js->link('prototype', false);
+$this->Js->link('scriptaculous', false); 
 ?>
 <div class="kunder form">
-<?php echo $form->create('Kunde');?>
+<?php echo $this->Form->create('Kunde');?>
 	<fieldset>
  		<legend><?php __('Edit Kunde');?></legend>
 	<?php
-		echo $form->input('nummer');
-		echo $form->input('navn');
-		echo $form->input('epost');
-		echo $form->input('telefon');
-		echo $form->input('slettes');
-		echo $form->input('registrert');
-		echo $form->input('kontaktperson');
+		echo $this->Form->input('nummer');
+		echo $this->Form->input('navn');
+		echo $this->Form->input('epost');
+		echo $this->Form->input('telefon');
+		echo $this->Form->input('slettes');
+		echo $this->Form->input('registrert');
+		echo $this->Form->input('kontaktperson');
 		echo $adresser->adresseSkjema("leveringsadresse", 'Leveringsadresse', 'LeveringsAdresse' ); 
-		  echo $form->checkbox('separat_faktura', array('id' => 'separat_faktura', 'onChange' => 'skjulVisFakturaAdresse(this)'));
+		  echo $this->Form->checkbox('separat_faktura', array('id' => 'separat_faktura', 'onChange' => 'skjulVisFakturaAdresse(this)'));
 
 
 ?>
@@ -26,15 +26,15 @@ $javascript->link('scriptaculous', false);
 		    echo $adresser->adresseSkjema("fakturaAdresse", 'Fakturaadresse', 'FakturaAdresse' );
 ?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 <?php
 $script = 'document.onLoad = skjulVisFakturaAdresse(document.getElementById("separat_faktura"))';
-echo $javascript->codeBlock($script);
+echo $this->Js->codeBlock($script);
 ?>
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $form->value('Kunde.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kunde.id'))); ?></li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Kunde.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kunde.id'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Kunder', true), array('action'=>'index'));?></li>
 	</ul>
 </div>

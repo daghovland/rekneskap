@@ -1,20 +1,20 @@
 <div class="pengeflyttinger form">
-<?php echo $form->create('Pengeflytting');?>
+<?php echo $this->Form->create('Pengeflytting');?>
 	<fieldset>
  		<legend><?php __('Registrer Fakturainnbetaling');?></legend>
 	<?php
-		echo $form->hidden('fra', array('value' => 51));
-		echo $form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));
-		echo $form->input('kroner');
-		echo $form->input('oere', array('label' => 'Øre', 'value' => 0));
-		echo $form->input('dato');
-		echo $form->input('beskrivelse');
-		echo $form->hidden('dekningsFaktura', array('label' => 'Fakturanummer'));
+		echo $this->Form->hidden('fra', array('value' => 51));
+		echo $this->Form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));
+		echo $this->Form->input('kroner');
+		echo $this->Form->input('oere', array('label' => 'Øre', 'value' => 0));
+		echo $this->Form->input('dato');
+		echo $this->Form->input('beskrivelse');
+		echo $this->Form->hidden('dekningsFaktura', array('label' => 'Fakturanummer'));
 		echo $this->element('faktura', array('faktura' => $faktura));
 	?>
 	
 	</fieldset>
-<?php echo $form->end('Send inn');?>
+<?php echo $this->Form->end('Send inn');?>
 </div>
 <div class="actions">
 	<ul>

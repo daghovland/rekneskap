@@ -8,8 +8,8 @@ if(isset($lagret)){
   foreach($feil as $kunde)
     print_r($kunde);
 }
-echo $form->create('Kunde', array('action' => 'lastopp', 'enctype' => 'multipart/form-data') );
+echo $this->Form->create('Kunde', array('action' => 'lastopp', 'enctype' => 'multipart/form-data') );
 
-echo $form->input('Kunde.submittedfile', array('between'=>'<br />','label' => 'CSV-formatert fil', 'type'=>'file'));
-echo $form->end("Last opp");
+echo $this->Form->input('Kunde.submittedfile', array('between'=>'<br />','label' => 'CSV-formatert fil', 'type'=>'file'));
+echo $this->Form->end("Last opp");
 ?>

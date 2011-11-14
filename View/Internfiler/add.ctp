@@ -1,12 +1,12 @@
 <div class="internfiler form">
-<?php echo $form->create('Internfil', array('action' => 'add', 'type' => 'file'));?>
+<?php echo $this->Form->create('Internfil', array('action' => 'add', 'type' => 'file'));?>
 	<fieldset>
  		<legend><?php __('Last opp fil');?></legend>
 	<?php
-		echo $form->file('Internfil.submittedfile');
+		echo $this->Form->file('Internfil.submittedfile');
 	?>
 	</fieldset>
-<?php echo $form->end('Last opp');?>
+<?php echo $this->Form->end('Last opp');?>
 </div>
 <div class="actions">
 	<ul>

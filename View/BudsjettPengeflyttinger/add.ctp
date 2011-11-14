@@ -3,8 +3,8 @@
 	<fieldset>
  		<legend><?php __('Budsjetter Pengeflytting'); ?></legend>
 	<?php
-		echo $form->input('fra', array('options' => $frakontoer, 'label' => 'Frå', 'selected' => 56));
-                echo $form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));
+		echo $this->Form->input('fra', array('options' => $frakontoer, 'label' => 'Frå', 'selected' => 56));
+                echo $this->Form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));
 		echo $this->Form->input('kroner');
 		echo $this->Form->input('dato');
 		echo $this->Form->input('beskrivelse');

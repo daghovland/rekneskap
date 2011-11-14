@@ -1,26 +1,26 @@
 <?php
-   $javascript->link('kaffeflyttinger', false);
-$javascript->link('prototype', false);
-$javascript->link('scriptaculous', false); 
+   $this->Js->link('kaffeflyttinger', false);
+$this->Js->link('prototype', false);
+$this->Js->link('scriptaculous', false); 
 ?>
 <div class="kunder form">
-<?php echo $form->create('Kunde');?>
+<?php echo $this->Form->create('Kunde');?>
 	<fieldset>
  		<legend><?php __('Legg til ny Kunde');?></legend>
 	<?php
-		echo $form->input('nummer');
-		echo $form->input('navn');
-		echo $form->input('epost');
-		echo $form->input('telefon');
-		echo $form->input('registrert');
-		echo $form->input('kontaktperson');
+		echo $this->Form->input('nummer');
+		echo $this->Form->input('navn');
+		echo $this->Form->input('epost');
+		echo $this->Form->input('telefon');
+		echo $this->Form->input('registrert');
+		echo $this->Form->input('kontaktperson');
 ?>
 
 
 		  <?php echo $adresser->adresseSkjema("leveringsadresse", 'Leveringsadresse', 'LeveringsAdresse' ); ?>
 
 <?php
-		  echo $form->checkbox('separat_faktura', array('id' => 'separat_faktura', 'onChange' => 'skjulVisFakturaAdresse(this)'));
+		  echo $this->Form->checkbox('separat_faktura', array('id' => 'separat_faktura', 'onChange' => 'skjulVisFakturaAdresse(this)'));
 ?>
 <label for="separat_faktura">Eigen faktura-adresse</label>
 <br />
@@ -29,10 +29,10 @@ $javascript->link('scriptaculous', false);
 echo $adresser->adresseSkjema("fakturaAdresse", 'Fakturaadresse', 'FakturaAdresse', "hidden" ); 
 
 $script = 'document.onLoad = skjulVisFakturaAdresse(document.getElementById(\'separat_faktura\'))';
-echo $javascript->codeBlock($script);
+echo $this->Js->codeBlock($script);
 ?>
 </fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

@@ -1,12 +1,12 @@
 <div class="lagerverdityper form">
-<?php echo $form->create('Lagerverditype');?>
+<?php echo $this->Form->create('Lagerverditype');?>
 	<fieldset>
  		<legend><?php __('Add Lagerverditype');?></legend>
 	<?php
-		echo $form->input('navn');
+		echo $this->Form->input('navn');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

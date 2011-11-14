@@ -1,25 +1,25 @@
 <div class="fakturaer form">
-<?php echo $form->create('Faktura');?>
+<?php echo $this->Form->create('Faktura');?>
 	<fieldset>
  		<legend><?php __('Edit Faktura');?></legend>
 	<?php
-		echo $form->input('nummer');
-		echo $form->input('kunde');
-		echo $form->input('faktura_dato');
-		echo $form->input('betaling');
-		echo $form->input('betalings_frist');
-		echo $form->input('melding');
-		echo $form->input('kroner');
-		echo $form->input('adresse');
-		echo $form->input('mva');
-		echo $form->input('totalpris');
+		echo $this->Form->input('nummer');
+		echo $this->Form->input('kunde');
+		echo $this->Form->input('faktura_dato');
+		echo $this->Form->input('betaling');
+		echo $this->Form->input('betalings_frist');
+		echo $this->Form->input('melding');
+		echo $this->Form->input('kroner');
+		echo $this->Form->input('adresse');
+		echo $this->Form->input('mva');
+		echo $this->Form->input('totalpris');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $form->value('Faktura.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Faktura.nummer'))); ?></li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Faktura.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Faktura.nummer'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('action'=>'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Fakturakunde', true), array('controller'=> 'kunder', 'action'=>'add')); ?> </li>

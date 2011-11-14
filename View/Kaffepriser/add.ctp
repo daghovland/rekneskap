@@ -1,17 +1,17 @@
 <div class="kaffepriser form">
-<?php echo $form->create('Kaffepris');?>
+<?php echo $this->Form->create('Kaffepris');?>
 	<fieldset>
  		<legend><?php __('Add Kaffepris');?></legend>
 	<?php
-		echo $form->input('type');
-		echo $form->input('beskrivelse');
-		echo $form->input('haldbar');
-		echo $form->input('brent');
-		echo $form->input('pris');
-		echo $form->input('gram');
+		echo $this->Form->input('type');
+		echo $this->Form->input('beskrivelse');
+		echo $this->Form->input('haldbar');
+		echo $this->Form->input('brent');
+		echo $this->Form->input('pris');
+		echo $this->Form->input('gram');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

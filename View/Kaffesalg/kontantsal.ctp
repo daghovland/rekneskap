@@ -1,11 +1,11 @@
 <?php
-   $javascript->link('kaffeflyttinger', false);
-$javascript->link('prototype', false);
-$javascript->link('scriptaculous', false); 
+   $this->Js->link('kaffeflyttinger', false);
+$this->Js->link('prototype', false);
+$this->Js->link('scriptaculous', false); 
 ?>
 <p>Dette skjemaet bruker du for å registrere at du har selt kaffi. Om du sel frå eit anna lager enn ditt eige, t.d. sentrallageret, kan du skrive dette inn i skjemaet.</p> 
 <div class="kaffeflyttinger form">
-  <?php echo $form->create('Kaffesalg', array('action' => 'kontantsal'));?>
+  <?php echo $this->Form->create('Kaffesalg', array('action' => 'kontantsal'));?>
 <div class="fakturatekst">
 <p id="fakturatekst" />
 </div>
@@ -22,14 +22,14 @@ foreach($kaffetyper as $kaffetype){
 	for($i = 0; $i <= $lagerAntall; $i++){
 		$options[$i] = $i;
 	}
-         echo $form->input('antall' . $kaffetype['Kaffepris']['nummer'], 
+         echo $this->Form->input('antall' . $kaffetype['Kaffepris']['nummer'], 
                                        array('options' => $options, 
                                              'id' => 'KaffeSalg' . $kaffetype['Kaffepris']['nummer'], 
                                              'label' => $kaffetype['Kaffepris']['type'] . " (" . $kaffetype['Kaffepris']['beskrivelse'] . ') - ' . $kaffetype['Kaffepris']['intern_navn']
 					     //, 'onChange' => 'settFakturaTekst(this.form)'
                                           )
                                     );
-	echo $form->input('rabatt' . $kaffetype['Kaffepris']['nummer'], array('label' => 'Pris', 'options' => $rabatter[$kaffetype['Kaffepris']['nummer']]));
+	echo $this->Form->input('rabatt' . $kaffetype['Kaffepris']['nummer'], array('label' => 'Pris', 'options' => $rabatter[$kaffetype['Kaffepris']['nummer']]));
 	echo "</fieldset>";
 		} 
 	   }
@@ -38,7 +38,7 @@ foreach($kaffetyper as $kaffetype){
 //	debug($selgerInfo);
 	$selgerLagerInfo = $selgerInfo[0]['Kaffelager'];
 	$selgerLagerId = $selgerLagerInfo['nummer'];
-                echo $form->input('beskrivelse', array('label' => 'Kommentar'));
+                echo $this->Form->input('beskrivelse', array('label' => 'Kommentar'));
         ?>
 		</fieldset>
-<?php echo $form->end('Selt kaffi');?>
+<?php echo $this->Form->end('Selt kaffi');?>

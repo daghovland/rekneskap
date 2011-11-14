@@ -1,14 +1,14 @@
 <div class="regnskap form">
-<?php echo $form->create('Regnskap');?>
+<?php echo $this->Form->create('Regnskap');?>
 	<fieldset>
  		<legend><?php __('Add Regnskap');?></legend>
 	<?php
-		echo $form->input('start');
-		echo $form->input('slutt');
-		echo $form->input('beskrivelse');
+		echo $this->Form->input('start');
+		echo $this->Form->input('slutt');
+		echo $this->Form->input('beskrivelse');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

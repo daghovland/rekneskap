@@ -1,15 +1,15 @@
 <div class="startsaldo form">
-<?php echo $form->create('Startsaldo');?>
+<?php echo $this->Form->create('Startsaldo');?>
 	<fieldset>
  		<legend><?php __('Add Startsaldo');?></legend>
 	<?php
-		echo $form->input('regnskap_id');
-		echo $form->input('kroner');
-		echo $form->input('oere', array('label' => 'Øre'));
-		echo $form->input('konto_id');
+		echo $this->Form->input('regnskap_id');
+		echo $this->Form->input('kroner');
+		echo $this->Form->input('oere', array('label' => 'Øre'));
+		echo $this->Form->input('konto_id');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

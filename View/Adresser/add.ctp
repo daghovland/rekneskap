@@ -1,17 +1,17 @@
 <div class="adresser form">
-<?php echo $form->create('Adresse');?>
+<?php echo $this->Form->create('Adresse');?>
 	<fieldset>
  		<legend><?php __('Add Adresse');?></legend>
 	<?php
-		echo $form->input('linje1');
-		echo $form->input('linje2');
-		echo $form->input('linje3');
-		echo $form->input('merkes');
-		echo $form->input('postnummer');
-		echo $form->input('poststad');
+		echo $this->Form->input('linje1');
+		echo $this->Form->input('linje2');
+		echo $this->Form->input('linje3');
+		echo $this->Form->input('merkes');
+		echo $this->Form->input('postnummer');
+		echo $this->Form->input('poststad');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

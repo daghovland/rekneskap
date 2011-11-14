@@ -1,13 +1,13 @@
 <div class="lagertyper form">
-<?php echo $form->create('Lagertype');?>
+<?php echo $this->Form->create('Lagertype');?>
 	<fieldset>
  		<legend><?php __('Add Lagertype');?></legend>
 	<?php
-		echo $form->input('nummer');
-		echo $form->input('navn');
+		echo $this->Form->input('nummer');
+		echo $this->Form->input('navn');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

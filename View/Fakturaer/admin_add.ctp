@@ -1,20 +1,20 @@
 <div class="fakturaer form">
-<?php echo $form->create('Faktura');?>
+<?php echo $this->Form->create('Faktura');?>
 	<fieldset>
  		<legend><?php __('Add Faktura');?></legend>
 	<?php
-		echo $form->input('kunde');
-		echo $form->input('faktura_dato');
-		echo $form->input('betaling');
-		echo $form->input('betalings_frist');
-		echo $form->input('melding');
-		echo $form->input('kroner');
-		echo $form->input('adresse');
-		echo $form->input('mva');
-		echo $form->input('totalpris');
+		echo $this->Form->input('kunde');
+		echo $this->Form->input('faktura_dato');
+		echo $this->Form->input('betaling');
+		echo $this->Form->input('betalings_frist');
+		echo $this->Form->input('melding');
+		echo $this->Form->input('kroner');
+		echo $this->Form->input('adresse');
+		echo $this->Form->input('mva');
+		echo $this->Form->input('totalpris');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

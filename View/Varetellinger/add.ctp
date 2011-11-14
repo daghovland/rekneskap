@@ -1,15 +1,15 @@
 <div class="varetellinger form">
-<?php echo $form->create('Varetelling');?>
+<?php echo $this->Form->create('Varetelling');?>
 	<fieldset>
  		<legend><?php __('Ny Varetelling');?></legend>
 	<?php
-		echo $form->input('kaffelager_id', array('selected' => $selgerInfo[0]['Kaffelager']['nummer']));
-		echo $form->input('kaffepris_id', array('selected' => count($kaffepriser)));
-		echo $form->input('antall');
-		echo $form->input('dato');
+		echo $this->Form->input('kaffelager_id', array('selected' => $selgerInfo[0]['Kaffelager']['nummer']));
+		echo $this->Form->input('kaffepris_id', array('selected' => count($kaffepriser)));
+		echo $this->Form->input('antall');
+		echo $this->Form->input('dato');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

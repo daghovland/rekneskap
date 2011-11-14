@@ -1,36 +1,36 @@
 <?php
-	$javascript->link('kaffeflyttinger', false);
-	$javascript->link('prototype', false);
-	$javascript->link('scriptaculous', false); 
+	$this->Js->link('kaffeflyttinger', false);
+	$this->Js->link('prototype', false);
+	$this->Js->link('scriptaculous', false); 
 ?>
 <div class="kaffeflyttinger form">
-<?php echo $form->create('Kaffeflytting', array('action' => 'add'));?>
+<?php echo $this->Form->create('Kaffeflytting', array('action' => 'add'));?>
 	<fieldset>
  		<legend><?php __('Svinn kaffi');?></legend>
 	<?php
-		echo $form->input('fra', array('options' => $fralagernavn, 
+		echo $this->Form->input('fra', array('options' => $fralagernavn, 
 							'label' => 'Frå', 
 							'selected' => '8', 
 							'id' => 'KaffeflyttingFralagerId'));
-/*                echo $form->input('til', array('options' => $fralagernavn,
+/*                echo $this->Form->input('til', array('options' => $fralagernavn,
                                                         'label' => 'Til',
                                                         'selected' => $selgerInfo[0]['Kaffelager']['nummer'],
                                                         'id' => 'KaffeflyttingTillagerId'));
 */
 
 		
-		echo $form->input('type', array('options' => $kaffetypenavn, 
+		echo $this->Form->input('type', array('options' => $kaffetypenavn, 
 							'label' => 'Kaffitype',
 							'selected' => count($kaffetypenavn), 
 							'id' => 'KaffeflyttingKaffetypeId',));
-		echo $form->input('antall', array('options' => array(), 'id' => 'KaffeflyttingAntall'));
-		echo $form->input('beskrivelse', array('label' => 'Kommentar'));
-		echo $form->input('dato', array('minYear' => 2007, 'maxYear' => date('Y')));
-		echo $form->hidden('fralagertype', array('value' => 3));
-		echo $form->hidden('tillagertype', array('value' => 4));
+		echo $this->Form->input('antall', array('options' => array(), 'id' => 'KaffeflyttingAntall'));
+		echo $this->Form->input('beskrivelse', array('label' => 'Kommentar'));
+		echo $this->Form->input('dato', array('minYear' => 2007, 'maxYear' => date('Y')));
+		echo $this->Form->hidden('fralagertype', array('value' => 3));
+		echo $this->Form->hidden('tillagertype', array('value' => 4));
 	?>
 	</fieldset>
-<?php echo $form->end('Registrer svinn av kaffi');?>
+<?php echo $this->Form->end('Registrer svinn av kaffi');?>
 <?php 
 $options = array(
         'url' => array( 'controller' => 'kaffelagre', 'action' => 'lager_type_beholdning'), 
@@ -41,7 +41,7 @@ $options = array(
 echo $ajax->observeField( 'KaffeflyttingFralagerId', $options); 
 echo $ajax->observeField( 'KaffeflyttingKaffetypeId', $options); 
 $script = 'document.onLoad = lastetSide(\'' . $this->Html->url(array('controller' => 'kaffelagre', 'action' => 'lager_type_beholdning')) . '\', "KaffeflyttingAntall", "KaffeflyttingFralagerId", "KaffeflyttingKaffetypeId")';
-echo $javascript->codeBlock($script);
+echo $this->Js->codeBlock($script);
 ?>
 
 </div>

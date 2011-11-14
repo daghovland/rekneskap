@@ -1,16 +1,16 @@
 <div class="pengeflyttingBilag form">
-   <?php echo $form->create('PengeflyttingBilag', array('type' => 'file'));?>
+   <?php echo $this->Form->create('PengeflyttingBilag', array('type' => 'file'));?>
 	<fieldset>
  		<legend><?php __('Last opp vedlegg');?></legend>
 	<?php
 		if(isset($pengeflytting_id) && is_numeric($pengeflytting_id) && $pengeflytting_id > 0)
-		  echo $form->hidden('pengeflytting_id', array('value' => $pengeflytting_id));
+		  echo $this->Form->hidden('pengeflytting_id', array('value' => $pengeflytting_id));
 		else
-		  echo $form->input('pengeflytting_id');
-		echo $form->file('vedleggsfil');
+		  echo $this->Form->input('pengeflytting_id');
+		echo $this->Form->file('vedleggsfil');
 	?>
 	</fieldset>
-<?php echo $form->end('Last opp');?>
+<?php echo $this->Form->end('Last opp');?>
 </div>
 <div class="actions">
 	<ul>

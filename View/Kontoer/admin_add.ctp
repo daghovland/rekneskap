@@ -1,16 +1,16 @@
 <div class="kontoer form">
-<?php echo $form->create('Konto');?>
+<?php echo $this->Form->create('Konto');?>
 	<fieldset>
  		<legend><?php __('Add Konto');?></legend>
 	<?php
-		echo $form->input('nummer');
-		echo $form->input('beskrivelse');
-		echo $form->input('type');
-		echo $form->input('ansvarlig');
-		echo $form->input('delav');
+		echo $this->Form->input('nummer');
+		echo $this->Form->input('beskrivelse');
+		echo $this->Form->input('type');
+		echo $this->Form->input('ansvarlig');
+		echo $this->Form->input('delav');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

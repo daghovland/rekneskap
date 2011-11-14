@@ -1,13 +1,13 @@
 <div class="lagerverdikontoer form">
-<?php echo $form->create('Lagerverdikonto');?>
+<?php echo $this->Form->create('Lagerverdikonto');?>
 	<fieldset>
  		<legend><?php __('Add Lagerverdikonto');?></legend>
 	<?php
-		echo $form->input('navn');
-		echo $form->input('lagerverditype_id');
+		echo $this->Form->input('navn');
+		echo $this->Form->input('lagerverditype_id');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

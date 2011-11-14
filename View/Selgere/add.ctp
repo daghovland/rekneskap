@@ -1,16 +1,16 @@
 <div class="selgere form">
-<?php echo $form->create('Selger');?>
+<?php echo $this->Form->create('Selger');?>
 	<fieldset>
  		<legend><?php __('Add Selger');?></legend>
 	<?php
-		echo $form->input('navn');
-		echo $form->input('epost');
-		echo $form->input('telefon');
-		echo $form->input('passord');
-		echo $form->input('rolle_id');
+		echo $this->Form->input('navn');
+		echo $this->Form->input('epost');
+		echo $this->Form->input('telefon');
+		echo $this->Form->input('passord');
+		echo $this->Form->input('rolle_id');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

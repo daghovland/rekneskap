@@ -1,31 +1,31 @@
 <div class="pengeflyttinger form">
-<?php echo $form->create('Pengeflytting');?>
+<?php echo $this->Form->create('Pengeflytting');?>
 	<fieldset>
  		<legend><?php __('Registrer Pengeflytting');?></legend>
 	<?php
-		echo $form->input('fra', array('options' => $frakontoer, 'label' => 'Frå', 'selected' => 56));
-		echo $form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));
-		echo $form->input('kroner');
-		echo $form->input('oere', array('label' => 'Øre', 'value' => 0));
+		echo $this->Form->input('fra', array('options' => $frakontoer, 'label' => 'Frå', 'selected' => 56));
+		echo $this->Form->input('til', array('options' => $frakontoer, 'label' => 'Til', 'selected' => 56));
+		echo $this->Form->input('kroner');
+		echo $this->Form->input('oere', array('label' => 'Øre', 'value' => 0));
 		if(isset($kaffesalg_dato))
-		  echo $form->hidden('dato', array('value' => $kaffesalg_dato));
+		  echo $this->Form->hidden('dato', array('value' => $kaffesalg_dato));
 		else
-		  echo $form->input('dato', array('minYear' => 2007, 'maxYear' => date('Y')+1));
-                echo $form->input('beskrivelse');
-		echo $form->input('kaffiimport_id', array('label' => 'Utgift for import', 'empty' => '', 'selected' => $kaffiimport_id));
-                echo $form->input('kaffibrenning_id', array('label' => 'Utgift for brenning', 'empty' => '', 'selected' => $kaffibrenning_id));
-		echo $form->input('dekningsFaktura', array('options' => $dekningsFakturaer, 'label' => 'Dekkjer faktura nummer', 'empty' => 'Ikkje betaling for ein rekning'));
+		  echo $this->Form->input('dato', array('minYear' => 2007, 'maxYear' => date('Y')+1));
+                echo $this->Form->input('beskrivelse');
+		echo $this->Form->input('kaffiimport_id', array('label' => 'Utgift for import', 'empty' => '', 'selected' => $kaffiimport_id));
+                echo $this->Form->input('kaffibrenning_id', array('label' => 'Utgift for brenning', 'empty' => '', 'selected' => $kaffibrenning_id));
+		echo $this->Form->input('dekningsFaktura', array('options' => $dekningsFakturaer, 'label' => 'Dekkjer faktura nummer', 'empty' => 'Ikkje betaling for ein rekning'));
                 if(isset($kaffesalg_nummer))
-		  echo $form->hidden('kaffesalg_id', array('value' => $kaffesalg_nummer));
+		  echo $this->Form->hidden('kaffesalg_id', array('value' => $kaffesalg_nummer));
 		else
-		  echo $form->input('kaffesalg_id', array('empty' => 'Ikkje del av eit kaffisal'
+		  echo $this->Form->input('kaffesalg_id', array('empty' => 'Ikkje del av eit kaffisal'
 							  , 'label' => 'Kaffisal'
 							  )
 				    );
 
 	?>
 	</fieldset>
-<?php echo $form->end('Send inn');?>
+<?php echo $this->Form->end('Send inn');?>
 </div>
 <div class="actions">
 	<ul>

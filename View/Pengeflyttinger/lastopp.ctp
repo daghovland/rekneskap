@@ -12,8 +12,8 @@ if(isset($lagret)){
     }
   }
 }
-echo $form->create('Pengeflytting', array('action' => 'lastopp', 'enctype' => 'multipart/form-data') );
+echo $this->Form->create('Pengeflytting', array('action' => 'lastopp', 'enctype' => 'multipart/form-data') );
 
-echo $form->input('Pengeflytting.submittedfile', array('between'=>'<br />','label' => 'CSV-formatert fil', 'type'=>'file'));
-echo $form->end("Last opp");
+echo $this->Form->input('Pengeflytting.submittedfile', array('between'=>'<br />','label' => 'CSV-formatert fil', 'type'=>'file'));
+echo $this->Form->end("Last opp");
 ?>

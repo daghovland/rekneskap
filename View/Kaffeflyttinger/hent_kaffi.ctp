@@ -5,9 +5,8 @@
   <fieldset>
     <legend><?php __('Hent kaffi');?></legend>
     <?php
-      debug($selgerInfo);
       echo $this->Form->input('fra', array('options' => $fralagernavn, 
-					   'label' => 'Frå', 
+					   'label' => 'Frå',
 					   'selected' => '8', 
 					   'id' => 'KaffeflyttingFralagerId'));
 					   echo $this->Form->input('til', array('options' => $fralagernavn,
@@ -20,8 +19,13 @@
 		echo $this->Form->input('type', array('options' => $kaffetypenavn, 
 						      'label' => 'Kaffitype',
 						      'selected' => count($kaffetypenavn),
-						      'id' => 'KaffeflyttingKaffetypeId',));
-						      echo $this->Form->input('antall', array('options' => array(), 'id' => 'KaffeflyttingAntall'));
+						      'id' => 'KaffeflyttingKaffetypeId',))
+		;
+		echo $this->Form->input('antall', 
+					array('options' => range(1,1000), 
+					      'id' => 'KaffeflyttingAntall')
+					)
+		;
 		echo $this->Form->input('beskrivelse', array('label' => 'Kommentar'));
 		echo $this->Form->input('dato', array('minYear' => 2007, 'maxYear' => date('Y')));
 		echo $this->Form->hidden('fralagertype', array('value' => 3));
@@ -40,9 +44,8 @@
 			 );
     $Js->get($element)->event($eventName, $Js->request($requestUrl, $requestOpts) , true);
   }
-lagKaffeAntallAjax('#sidekropp', 'load', $this->Js, $this->Html);
-lagKaffeAntallAjax('#KaffeflyttingKaffetypeId', 'change', $this->Js, $this->Html);
-lagKaffeAntallAjax('#KaffeflyttingFralagerId', 'change', $this->Js, $this->Html);
+  lagKaffeAntallAjax('#KaffeflyttingKaffetypeId', 'change', $this->Js, $this->Html);
+  lagKaffeAntallAjax('#KaffeflyttingFralagerId', 'change', $this->Js, $this->Html);
   ?>
   
 </div>

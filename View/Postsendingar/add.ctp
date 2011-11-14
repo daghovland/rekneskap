@@ -1,17 +1,17 @@
 <div class="postsendingar form">
-<?php echo $form->create('Postsending');?>
+<?php echo $this->Form->create('Postsending');?>
 	<fieldset>
  		<legend><?php __('Add Postsending');?></legend>
 	<?php
 		if(isset($kaffesalg_id) && is_numeric($kaffesalg_id))
-			echo $form->hidden('kaffesalg_id', array('value' => $kaffesalg_id));
+			echo $this->Form->hidden('kaffesalg_id', array('value' => $kaffesalg_id));
 		else
-			echo $form->input('kaffesalg_id');
-		echo $form->input('sendingsnummer');
-		echo $form->input('kommentar');
+			echo $this->Form->input('kaffesalg_id');
+		echo $this->Form->input('sendingsnummer');
+		echo $this->Form->input('kommentar');
 	?>
 	</fieldset>
-<?php echo $form->end('Submit');?>
+<?php echo $this->Form->end('Submit');?>
 </div>
 <div class="actions">
 	<ul>

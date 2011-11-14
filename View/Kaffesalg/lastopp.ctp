@@ -12,8 +12,8 @@ if(isset($lagret)){
     }
   }
 }
-echo $form->create('Kaffesalg', array('action' => 'lastopp', 'enctype' => 'multipart/form-data') );
+echo $this->Form->create('Kaffesalg', array('action' => 'lastopp', 'enctype' => 'multipart/form-data') );
 
-echo $form->input('Kaffesalg.submittedfile', array('between'=>'<br />','label' => 'CSV-formatert fil', 'type'=>'file'));
-echo $form->end("Last opp");
+echo $this->Form->input('Kaffesalg.submittedfile', array('between'=>'<br />','label' => 'CSV-formatert fil', 'type'=>'file'));
+echo $this->Form->end("Last opp");
 ?>
