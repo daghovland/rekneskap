@@ -1,9 +1,6 @@
 <?php
 class KaffityperController extends AppController {
 
-	var $name = 'Kaffityper';
-	var $helpers = array('Html', 'Form');
-
 	function index() {
 		$this->Kaffitype->recursive = 0;
 		$this->set('kaffityper', $this->paginate());

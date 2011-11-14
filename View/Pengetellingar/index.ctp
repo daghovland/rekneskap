@@ -3,7 +3,7 @@
 <p>
 <?php
 echo $this->Paginator->counter(array(
-'format' => __('Side %page% av %pages%, viser %current% postar av %count%, startar med %start%, sluttar med %end%', true)
+'format' => __('Side {:page} av {:pages}, viser {:current} filar av i alt  {:count}, startar på fil {:start}, sluttar med {:end}', true)
 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">

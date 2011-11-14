@@ -1,8 +1,6 @@
 <?php
 class PengeflyttingerController extends AppController {
 
-	var $name = 'Pengeflyttinger';
-	var $helpers = array('Html', 'Form', 'Ajax', 'Javascript', 'Cache');
 	var $cacheAction = array(
 		'view/' => 36000,
 		'index/' => 36000,
@@ -10,7 +8,6 @@ class PengeflyttingerController extends AppController {
 		'liste/'  => 36000,
 		'liste_alle/'  => 36000
 	);
-	var $components = array('Acl', 'RequestHandler', 'Kaffe');
 
 	function index() {
 		$this->Pengeflytting->recursive = 0;

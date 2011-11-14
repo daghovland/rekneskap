@@ -81,7 +81,7 @@
 	<select onChange = "window.location = this.options[this.selectedIndex].value">
 	  <option>Rekneskaps-val:</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'pengetellingar')); ?>">Pengetellinger</option>
-	  <option value="<?php echo $this->Html->url(array('controller' => 'pengeflyttinger', 'action' => 'index', '/page:1/sort:dato/direction:desc')); ?>">Pengeflyttinger</option>
+	  <option value="<?php echo $this->Html->url(array('controller' => 'pengeflyttinger', 'action' => 'index')); ?>">Pengeflyttinger</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'budsjettPengeflyttinger')); ?>">Budsjett-posteringar</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'fakturaer', 'action' => 'ubetalte')); ?>">Ubetalte fakturaer</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'fakturaer', 'action' => 'index')); ?>">Alle fakturaer</option>

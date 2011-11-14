@@ -31,7 +31,7 @@
 <?php
         $this->Paginator->options(array('url' => array('controller' => 'lagertyper', 'action' => 'view', $lagertype['Lagertype']['nummer'])));
         echo $this->Paginator->counter(array(
-                                'format' => __('Side %page% av %pages%. Viser %current% postar av totalt %count%. Startar med post %start%, sluttar med %end%', true)
+'format' => __('Side {:page} av {:pages}, viser {:current} filar av i alt  {:count}, startar på fil {:start}, sluttar med {:end}', true)   
                 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">
