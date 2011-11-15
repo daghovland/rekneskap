@@ -1,9 +1,3 @@
-<?php
-        $this->Js->link('pengeflyttinger', false);
-        $this->Js->link('prototype', false);
-        $this->Js->link('scriptaculous', false);
-?>
-
 <div class="kontoer view">
 <h2><?php  __('Konto');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
@@ -52,58 +46,13 @@
 <div class="related">
 <h3><?php echo __('Kontorørsler');?></h3>
 <label for="bevegelserDatoFraAar">Frå</label>
-<?php
-echo $ajax->form(array(
-			'type' => 'post', 
-			'options' => array(
-					'model' => 'Pengeflytting',
-					'id' => 'bevegelserIntervallForm',
-					'update' => 'kontobevegelser',
-					'url' => array(
-							'controller' => 'pengeflyttinger',
-							'action' => 'liste')
-					)
-		));
-echo $this->Form->year('fra', 2007, date('Y'), 2007, array('id' => 'bevegelserDatoFraAar'), false);
-echo $this->Form->month('fra', 1, array('id' => 'bevegelserDatoFraMnd'), false);
-echo $this->Form->hidden('fra.day', array('value' => 1));
-?>
-<label for="bevegelserDatoTilAar">Til</label>
-<?php
-echo $this->Form->year('til', '2007', date('Y'), date('Y'), array('id' => 'bevegelserDatoTilAar'), false);
-echo $this->Form->month('til', date('M'), array('id' => 'bevegelserDatoTilMnd'), false);
-echo $this->Form->hidden('til.day', array('value' => 31));
-echo $this->Form->hidden('konto', array('value' => $konto['Konto']['nummer']));
-echo $this->Form->end("Endre intervall");
 
-$options = array(
-        'url' => array( 'controller' => 'pengeflyttinger', 'action' => 'liste'),
-        'update' => 'kontobevegelser',
-        'frequency' => 0.2,
-        'with' => 'hentDatoer(\'bevegelserDatoFra\', \'bevegelserDatoTil\')'
-    );
-//echo $ajax->observeField( 'bevegelserDatoFra', $options);
-//echo $ajax->observeField( 'bevegelserDatoTil', $options);
-						
-
-$script = 'function oppdaterBevegelser(event) { 
-			new Ajax.Updater(\'kontobevegelser\','
-					. $this->Html->url(array('controller' =>'kontoer', 'action' => 'view'))
-					. ', {asynchronous:true, 
-						evalScripts:true, 
-						parameters:Form.serialize(\'bevegelserIntervallForm\'), 
-						requestHeaders:[\'X-Update\', \'kontobevegelser\']
-						}
-				) }';
-echo $this->Js->codeBlock($script);
-
-?>
 
 <div class="related">
 <?php
         $this->Paginator->options(array('url' => array('controller' => 'kontoer', 'action' => 'view', $konto['Konto']['nummer'])));
         echo $this->Paginator->counter(array(
-                                'format' => __('Side %page% av %pages%. Viser %current% postar av totalt %count%. Startar med post %start%, sluttar med %end%', true)
+                                'format' => __('Side {:page} av {:pages}. Viser {:current} postar av totalt {:count}. Startar med post {:start}, sluttar med {:end}', true)
                 ));
 ?></p>
 <table cellpadding="0" cellspacing="0">

@@ -1,9 +1,8 @@
 <?php
 class Kontoutskrift extends AppModel {
 
-	var $name = 'Kontoutskrift';
-	var $useTable = 'kontoutskrift';
-
-	var $belongsTo = array('Konto');
+  public $name = 'Kontoutskrift';
+  public $useTable = 'kontoutskrift';
+  public $belongsTo = array('Konto');
 }
 ?>

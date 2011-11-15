@@ -112,6 +112,7 @@ class Selger extends AppModel {
     $epostAdr = $userData['Selger']['epost'];
     $tmp_key = Security::generateAuthKey();
     $userData['Selger']['tmp_key'] = $tmp_key;
+    $userData['Selger']['tmp_key_created'] = date('c');
     $this->save($userData);
     return $userData;
   }

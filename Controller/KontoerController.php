@@ -1,15 +1,7 @@
 <?php
 class KontoerController extends AppController {
 
-	var $name = 'Kontoer';
-	var $helpers = array('Html', 'Form', 'Ajax', 'Javascript', 'Cache');
-/*	var $cacheAction = array(
-		'view/' => 21600,
-		'index' => 36000,
-	);*/
-
 	var $paginate = array('limit' => 200);
-	var $components = array('Acl');
 
 	function index() {
 		$this->Konto->recursive = 0;

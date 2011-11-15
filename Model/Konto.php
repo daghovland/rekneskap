@@ -37,7 +37,9 @@ class Konto extends AppModel {
  						     'className' => 'Pengeflytting',
  						     'foreignKey' => 'fra'
  						     ),
-		             'kontoutskrift'
+		             'kontoutskrift' => array('className' => 'Kontoutskrift',
+						      'foreignKey' => 'konto_id',
+						      )
  			     );
  
 
