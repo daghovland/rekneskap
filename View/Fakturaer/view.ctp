@@ -5,6 +5,7 @@
 <div class="actions">
 	<ul>
 		<li><?php echo $this->Html->link(__('Vis pdf Faktura', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Registrer purring av faktura', true), array('controller' => 'purringer', 'action'=>'add', $faktura['Faktura']['nummer'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Fakturaer', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Kunder', true), array('controller'=> 'kunder', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>

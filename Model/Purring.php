@@ -2,6 +2,7 @@
 class Purring extends AppModel {
 
   var $name = 'Purring';
+  public $primaryKey = 'nummer';
   var $displayField = 'faktura';
   var $belongsTo = array('Faktura' => array('className' => 'Faktura', 'foreignKey' => 'faktura'));
 
@@ -10,13 +11,15 @@ class Purring extends AppModel {
      $type er navnet på en email template "purring" eller "faktura_melding"
   **/
   function epostPurring($faktura_id, $type){
-    $faktura = $this->Faktura->findAllByNummer($faktura_id);
-    $kunde = $faktura[0]['Kunde'];
+    $faktura = $this->Faktura->findByNummer($faktura_id);
+    $kunde = $faktura['Kunde'];
+    $selger = $this->Faktura->Kaffesalg->Selger->findByNummer($faktura['Kaffesalg']['selger_id']);
     if(isset($kunde['epost'])){
       $email = new CakeEmail();
       $email->viewVars(array('navn' => $kunde['navn'],
-			     'selgerNavn' => $faktura['Selger']['navn'],
+			     'selgerNavn' => $selger['Selger']['navn'],
 			     'fakturaDato'=> $faktura['Faktura']['faktura_dato'],
+			     'fakturaNr'=> $faktura['Faktura']['nummer'],
 			     'fakturaTekst' => $faktura['Faktura']['tekst'],
 			     'betalingsFrist' => $faktura['Faktura']['betalings_frist']
 			     ));
@@ -28,7 +31,7 @@ class Purring extends AppModel {
 	->subject("Purring frå zapatistgruppa")
 	->send();   
       $purring = array('Purring'=>array('faktura'=>$faktura_id, 
-					'tekst'=>'Automatisk epost-purring', 
+					'tekst'=>'Automatisk epost-purring: ' . $type, 
 					'sendt'=>date('c')));
       $this->create($purring);
       $this->save($this->data);

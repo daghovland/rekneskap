@@ -17,7 +17,7 @@ $this->Js->link('scriptaculous', false);
 ?>
 
 
-		  <?php echo $adresser->adresseSkjema("leveringsadresse", 'Leveringsadresse', 'LeveringsAdresse' ); ?>
+		  <?php echo $this->Adresser->adresseSkjema("leveringsadresse", 'Leveringsadresse', 'LeveringsAdresse' ); ?>
 
 <?php
 		  echo $this->Form->checkbox('separat_faktura', array('id' => 'separat_faktura', 'onChange' => 'skjulVisFakturaAdresse(this)'));
@@ -26,10 +26,10 @@ $this->Js->link('scriptaculous', false);
 <br />
 
 <?php 
-echo $adresser->adresseSkjema("fakturaAdresse", 'Fakturaadresse', 'FakturaAdresse', "hidden" ); 
+echo $this->Adresser->adresseSkjema("fakturaAdresse", 'Fakturaadresse', 'FakturaAdresse', "hidden" ); 
 
 $script = 'document.onLoad = skjulVisFakturaAdresse(document.getElementById(\'separat_faktura\'))';
-echo $this->Js->codeBlock($script);
+echo $this->Html->scriptBlock($script);
 ?>
 </fieldset>
 <?php echo $this->Form->end('Submit');?>

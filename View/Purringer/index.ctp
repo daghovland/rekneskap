@@ -23,9 +23,7 @@
 		<td><?php echo h($purring['Purring']['created']); ?>&nbsp;</td>
 		<td><?php echo h($purring['Purring']['modified']); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $purring['Purring']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $purring['Purring']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $purring['Purring']['id']), null, __('Are you sure you want to delete # %s?', $purring['Purring']['id'])); ?>
+			<?php echo $this->Html->link(__('View'), array('action' => 'view', $purring['Purring']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
@@ -48,8 +46,6 @@
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('New Purring'), array('action' => 'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Fakturaer'), array('controller' => 'fakturaer', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Faktura'), array('controller' => 'fakturaer', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Ny Purring'), array('action' => 'add')); ?></li>
 	</ul>
 </div>

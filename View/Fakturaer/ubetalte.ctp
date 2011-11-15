@@ -1,5 +1,5 @@
 <div class="fakturaer index">
-<h2><?php echo __('Fakturaer');?></h2>
+  <h2><?php echo __('Fakturaer');?></h2>
 <p>
 <table cellpadding="0" cellspacing="0">
 <tr>
@@ -7,6 +7,7 @@
 	<th><?php echo __('kunde');?></th>
 	<th><?php echo __('faktura_dato');?></th>
 	<th><?php echo __('betalings_frist');?></th>
+	<th><?php echo __('sist_purret');?></th>
 	<th><?php echo __('melding');?></th>
 	<th><?php echo __('kroner');?></th>
 	<th><?php echo __('mva');?></th>
@@ -33,6 +34,15 @@ foreach ($fakturaer as $faktura):
 		</td>
 		<td>
 			<?php echo $faktura['Faktura']['betalings_frist']; ?>
+		</td>
+		<td>
+		  <?php 
+		    echo $this->Html->link($faktura['SistPurretFaktura']['sist_purret'],
+					   array('controller' => 'purringer', 
+						 'action' => 'view',
+						 $faktura['SistPurretFaktura']['purring_id']
+						 ));
+		  ?>
 		</td>
 		<td>
 			<?php echo $faktura['Faktura']['melding']; ?>

@@ -37,7 +37,7 @@ class PurringerController extends AppController {
  *
  * @return void
  */
-	public function add() {
+	public function add($faktura_id) {
 		if ($this->request->is('post')) {
 			$this->Purring->create();
 			if ($this->Purring->save($this->request->data)) {
@@ -47,6 +47,11 @@ class PurringerController extends AppController {
 				$this->Session->setFlash(__('The purring could not be saved. Please, try again.'));
 			}
 		}
+		if(!is_numeric($faktura_id)){
+		  $this->Session->setFlash("Ugyldig fakturanummer. Kan ikkje fortsetje.");
+		  $this->redirect(array('controller' => 'fakturaer', 'action' => 'ubetalte'));
+		}
+		$this->set('faktura_id', $faktura_id);
 		$fakturaer = $this->Purring->Faktura->find('list');
 		$this->set(compact('fakturaer'));
 	}

@@ -1,21 +1,13 @@
 <?php
 class FakturaerController extends AppController {
   
-  public $helpers = array('Html', 'Form', 'Cache', 'Paginator', 'Session');
-  /*	var $cacheAction = array(
-	'view/' => 21600,
-	'index' => 36000,
-	'ubetalte'  => 48000
-	);
-  */
-  
   function index() {
     $this->Faktura->recursive = 0;
     $this->set('fakturaer', $this->paginate());
   }
   
   function autopurr(){
-    $this->autopurr();
+    $this->Faktura->autopurr();
   }
   
   function ubetalte() {

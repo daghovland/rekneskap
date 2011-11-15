@@ -15,7 +15,16 @@ class KunderController extends AppController {
 		$this->set('kunder', $this->paginate());
 		$this->Session->write('forrigeSide', array('controller' => 'kunder', 'action' => 'index'));
 	}
-
+	
+	function ordne_navn($kunde_id){
+	  if(is_numeric($kunde_id)){
+	      if($this->Kunde->ordneNavn($kunde_id))
+		$this->redirect(array('action' => 'view', $kunde_id));
+	    }
+	    $this->Session->setFlash("Ugyldig kundenummer");
+	    $this->redirect(array('action' => 'index'));
+	}
+	
 	function lastopp(){
 	  if(!empty($this->request->data)){
 	    $filinfo = $this->request->data['Kunde']['submittedfile'];

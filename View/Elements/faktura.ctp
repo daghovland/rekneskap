@@ -34,6 +34,16 @@
 			<?php echo $faktura['Faktura']['betalings_frist']; ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Sist purret'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php 
+			  echo $this->Html->link($faktura['SistPurretFaktura']['sist_purret'],
+						 array('controller' => 'purringer',
+						       'action' => 'view',
+						       $faktura['SistPurretFaktura']['purring_id']))
+			; ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Melding'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $faktura['Faktura']['melding']; ?>

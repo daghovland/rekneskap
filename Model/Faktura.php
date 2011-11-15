@@ -1,8 +1,10 @@
 <?php
+App::uses('CakeEmail', 'Network/Email');
+
 class Faktura extends AppModel {
 
   var $name = 'Faktura';
-  var $primaryKey = 'nummer';
+  public $primaryKey = 'nummer';
   var $validate = array(
 			'nummer' => array('numeric'),
 			'kunde' => array('numeric'),
@@ -34,7 +36,7 @@ class Faktura extends AppModel {
 					      'className' => 'Kaffesalg',
 					      'foreignKey' => 'kaffesalg_id',
 					      'dependent' => 'true'
-					      )
+					      ),
 			 );
 
 
@@ -63,8 +65,7 @@ class Faktura extends AppModel {
 		       'Purring' => array('className' => 'Purring', 
 					  'foreignKey' => 'faktura')
 		       );
-
-  var $hasOne = array('FakturaUbetalt', 'PurreFaktura');
+  var $hasOne = array('FakturaUbetalt', 'PurreFaktura', 'MeldeFaktura', 'SistPurretFaktura');
 
   function utestaende($faktura_id){
     $innbetalinger = $this->Pengeflytting->find('all', array('conditions' => array('dekningsFaktura' => $faktura_id)));
@@ -92,11 +93,10 @@ class Faktura extends AppModel {
      Sender melding til alle som har vært forfalt i mindre enn to uker, og ikke allerede har fått melding
   **/
   function autopurr(){
-    foreach($this->PurreFaktura->findAll() as $faktura)
-      $this->Purring->epostPurring($faktura['Faktura']['nummer'], 'purring');
-    foreach($this->MeldeFaktura->findAll() as $faktura)
-      $this->Purring->epostPurring($faktura['Faktura']['nummer'], 'faktura_melding');
-    
+    foreach($this->PurreFaktura->find('list', array('fields'=>'faktura_id')) as $faktura)
+      $this->Purring->epostPurring($faktura, 'purring');
+    foreach($this->MeldeFaktura->find('list', array('fields'=>'faktura_id')) as $faktura)
+      $this->Purring->epostPurring($faktura, 'faktura_melding');
   }
 
 }

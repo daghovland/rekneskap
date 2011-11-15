@@ -50,6 +50,8 @@ foreach ($kunder as $kunde):
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $kunde['Kunde']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Endre', true), array('action'=>'edit', $kunde['Kunde']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Ordne Navn', true), array('action'=>'ordne_navn', $kunde['Kunde']['nummer'])); ?>
 			<?php echo $this->Html->link(__('Sel kaffi til', true), array('controller' => 'kaffesalg', 'action'=>'add', 'kundenummer' => $kunde['Kunde']['nummer'])); ?>
 		</td>
 	</tr>

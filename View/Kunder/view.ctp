@@ -51,7 +51,7 @@
 <div class="actions">
 	<ul>
 		<li><?php echo $this->Html->link(__('Sel kaffi til', true), array('controller' => 'kaffesalg', 'action'=>'add', 'kundenummer' => $kunde['Kunde']['nummer'])); ?> </li>
-		<li><?php echo $this->Html->link(__('Endre leveringsadresse', true), array('controller' => 'adresser', 'action'=>'edit', $kunde['LeveringsAdresse']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Endre kundeinfo', true), array('action'=>'edit', $kunde['Kunde']['nummer'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List alle Kunder', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Ny Kunde', true), array('action'=>'add')); ?> </li>
 	</ul>
