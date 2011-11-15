@@ -1,9 +1,12 @@
 <?php
 class FakturaerController extends AppController {
-  
+
+  public $paginate = array('limit' => 200,
+			   'order' => array('Faktura.nummer' => 'asc'));
+
   function index() {
-    $this->Faktura->recursive = 0;
-    $this->set('fakturaer', $this->paginate());
+    $data = $this->paginate('Faktura');
+    $this->set('fakturaer', $data);
   }
   
   function autopurr(){

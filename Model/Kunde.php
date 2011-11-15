@@ -29,18 +29,14 @@ class Kunde extends AppModel {
     $kundeData = $this->findByNummer($kunde_id);
     if(!isset($kundeData['Kunde']))
       return false;
-    $navnArr = explode(" ", $kundeData['Kunde']['navn']);
-    $navn = "";
-    foreach($navnArr as $navneBit){
-      $bokstaver = str_split($navneBit);
-      $navn .= " ";
-      $navn .= $bokstaver[0];
-      foreach($bokstaver as $i => $bokstav){
-	if($i > 0)
-	  $navn .= strtolower($bokstav);
-      }
-    }
-    $kundeData['Kunde']['navn'] = $navn;
+    $kundeData['Kunde']['navn'] = ucwords(strtr(strtolower($kundeData['Kunde']['navn']),
+						array('Å' => 'å',
+						      'Æ' => 'æ',
+						      'Ø' => 'ø',
+						      'È' => 'è',
+						      'É' => 'é',
+						      'Á' => 'á',
+						      'À' => 'à')));
     $this->save($kundeData);
     return true;
   }

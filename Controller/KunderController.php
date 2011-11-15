@@ -3,13 +3,13 @@ class KunderController extends AppController {
 
 	public $helpers = array('Adresser');
 
-	var $paginate = array(
-		'limit' => '200',
-		'order' => array(
-				'Kunde.navn' => 'asc'
-				)
-	);
-
+	public $paginate = array(
+				 'limit' => 200,
+				 'order' => array(
+						  'Kunde.navn' => 'asc'
+						  )
+				 );
+	
 	function index() {
 		$this->Kunde->recursive = 0;
 		$this->set('kunder', $this->paginate());
