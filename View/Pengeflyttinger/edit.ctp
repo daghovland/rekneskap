@@ -20,7 +20,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Pengeflytting.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Pengeflytting.nummer'))); ?></li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Pengeflytting.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Pengeflytting.nummer'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('action'=>'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Frakonto', true), array('controller'=> 'kontoer', 'action'=>'add')); ?> </li>
