@@ -4,12 +4,6 @@ class RollerController extends AppController {
 	var $name = 'Roller';
 	var $helpers = array('Html', 'Form');
 
-	function beforeFilter() {
-	  parent::beforeFilter(); 
-	  $this->Auth->allowedActions = array('*');
-	}
-	
-
 	function index() {
 		$this->Rolle->recursive = 0;
 		$this->set('roller', $this->paginate());

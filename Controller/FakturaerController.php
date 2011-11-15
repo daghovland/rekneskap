@@ -9,13 +9,6 @@ class FakturaerController extends AppController {
 	);
   */
   
-  function beforeFilter() {
-    parent::beforeFilter(); 
-    $this->Auth->allow('*');
-  }
-  
-  
-  
   function index() {
     $this->Faktura->recursive = 0;
     $this->set('fakturaer', $this->paginate());
