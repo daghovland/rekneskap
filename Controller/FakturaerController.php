@@ -14,6 +14,9 @@ class FakturaerController extends AppController {
     $this->set('fakturaer', $this->paginate());
   }
   
+  function autopurr(){
+    $this->autopurr();
+  }
   
   function ubetalte() {
     $this->set('fakturaer', $this->Faktura->FakturaUbetalt->find('all', array('conditions' => array('mangler > 0'))));
