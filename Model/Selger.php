@@ -1,10 +1,15 @@
 <?php
+App::uses('CakeEmail', 'Network/Email');
 class Selger extends AppModel {
   public $name = 'Selger';
   public $primaryKey = 'nummer';
   public $useTable = 'selgere';
   public $actsAs = array('Acl' => 'requester');
 
+  // Values returned from glemtPassord
+  public $OK = 0;
+  public $FEIL_BRUKERNAVN = 1;
+  public $INGEN_EPOST = 2;
 
   function hashPasswords($data) {
     if (isset($data['Selger']['passord'])) {
@@ -103,18 +108,29 @@ class Selger extends AppModel {
   
   function glemt_passord($username){
     if(!is_string($username))
-      return false;
+      return $this->FEIL_BRUKERNAVN;
     $userData = $this->find('first', array('conditions' => array('Selger.navn' => $username)));
     if(!isset($userData['Selger']))
-      return false;
+      return $this->FEIL_BRUKERNAVN;
     if(!isset($userData['Selger']['epost']))
-      return false;
+      return $this->INGEN_EPOST;
     $epostAdr = $userData['Selger']['epost'];
     $tmp_key = Security::generateAuthKey();
     $userData['Selger']['tmp_key'] = $tmp_key;
     $userData['Selger']['tmp_key_created'] = date('c');
     $this->save($userData);
-    return $userData;
+    $email = new CakeEmail('default');
+    $email->viewVars(array('tmp_key' => $userData['Selger']['tmp_key'],
+			   'user_id' => $userData['Selger']['nummer'],
+			   'epost' => $userData['Selger']['epost'],
+			   'navn' => $userData['Selger']['navn']));
+    $email->template('nytt_passord', 'vanlig')
+      ->emailFormat('html')
+      ->to($userData['Selger']['epost'])
+      ->from("dag@zapatista.no")
+      ->subject("Passord tilbakestilling")
+      ->send();
+    return $this->OK;
   }
 
 

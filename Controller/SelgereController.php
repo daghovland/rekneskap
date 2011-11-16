@@ -1,5 +1,4 @@
 <?php
-App::uses('CakeEmail', 'Network/Email');
 class SelgereController extends AppController {
   
   function login() {
@@ -26,22 +25,19 @@ class SelgereController extends AppController {
   function glemt_passord(){
     if(!empty($this->request->data)){
       $userData = $this->Selger->glemt_passord($this->request->data['Selger']['navn']);
-      if(!$userData)
-	$this->Session->setFlash("Kunne ikkje sende epost. Kanskje navnet er skrive feil? Det kan også vere at det ikkje er registret noko epost på deg.");
-      else {
-	$email = new CakeEmail();
-	$email->viewVars(array('tmp_key' => $userData['Selger']['tmp_key'],
-			       'user_id' => $userData['Selger']['nummer'],
-			       'epost' => $userData['Selger']['epost'],
-			       'navn' => $userData['Selger']['navn']));
-	
-	$email->template('nytt_passord', 'vanlig')
-	  ->emailFormat('html')
-	  ->to($userData['Selger']['epost'])
-	  ->from("dag@zapatista.no")
-	  ->subject("Passord tilbakestilling")
-	  ->send();
+      switch($userData){
+      case $this->Selger->FEIL_BRUKERNAVN:
+	$this->Session->setFlash("Feil i brukernavn. Prøv igjen.");
+	break;
+      case $this->Selger->INGEN_EPOST:
+	$this->Session->setFlash("Det er ikkje registrert noko epost-adresse på denne brukeren. Ta kontakt med Dag for å få ordna dette.");
+	break;
+      case $this->Selger->OK:
 	$this->Session->setFlash("Ein epost med informasjon om innlogging er sendt til adressa di.");
+	break;
+      default:
+	error();
+	break;
       }
     }
   }

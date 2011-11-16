@@ -9,11 +9,4 @@ Salet har rekning nr. <?php echo $fakturaNr; ?>  og skulle ha vore betalt <?php 
 <br />
 <p>Vennlegst betal til kontoen v&aring;r: 1254.05.61786 snarast r&aring;d. Gje oss ei melding om du treng ein ny kopi av rekninga, eller om du noko er feil eller uforst&aringeleg.</p>
 <p>Orsak at denne purringa vert so upersonleg, men det tok litt mykje tid &aring; gjere dette for hand.</p>
-
-<p>
-Mvh
-<br />
-Dag Hovland <br/>
-Zapatistgruppa i Bergen
-</p>
 	

@@ -1,4 +1,9 @@
 <?php
+App::import('Vendor','xtcpdf'); 
+App::import('Vendor','fpdi'); 
+App::uses('CakeEmail', 'Network/Email');
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 class Purring extends AppModel {
 
   var $name = 'Purring';
@@ -15,7 +20,18 @@ class Purring extends AppModel {
     $kunde = $faktura['Kunde'];
     $selger = $this->Faktura->Kaffesalg->Selger->findByNummer($faktura['Kaffesalg']['selger_id']);
     $kaffesalg = $this->Faktura->Kaffesalg->findByNummer($faktura['Faktura']['nummer']);
-    if(isset($kunde['epost'])){
+    if(is_string($kunde['epost']) && strlen($kunde['epost'] > 3) && strpos("@", $kunde['epost'])){
+      $tcpdf = $this->Faktura->lagFakturaTcpdf($faktura, $kaffesalg);
+      $filnavn = "faktura" . $faktura['Faktura']['nummer'] . ".pdf";
+      $mappe = new Folder();
+      $mappesti = $mappe->pwd();
+      $absolutt_filnavn =$mappesti . "/" . $filnavn;
+      $tcpdf->Output($absolutt_filnavn, "F");
+      $pdf_fil = new File($absolutt_filnavn);
+      if(!$pdf_fil->exists()){
+	echo "Kunne ikkje lage pdf faktura!";
+	return false;
+      }
       $email = new CakeEmail('default');
       $email->viewVars(array('navn' => $kunde['navn'],
 			     'faktura' => $faktura,
@@ -28,17 +44,18 @@ class Purring extends AppModel {
 			     'epost' => $kunde['epost']
 			     ));
       $email->template($type, 'vanlig')
-	->emailFormat('text')
-	//      ->to($kunde['epost'])
-	->to("dag")
+	->emailFormat('both')
+	// Remember to also uncomment the save below      ->to($kunde['epost'])
+	->to("hovlanddag@gmail.com")
 	->subject("Purring frå zapatistgruppa")
-	->attachments('tmp/1.pdf')
+	->attachments($absolutt_filnavn)
 	->send();   
+      $pdf_fil->delete();
       $purring = array('Purring'=>array('faktura'=>$faktura_id, 
 					'tekst'=>'Automatisk epost-purring: ' . $type, 
 					'sendt'=>date('c')));
       $this->create($purring);
-      $this->save($this->data);
+      // $this->save($this->data);
       return true;
     } else 
       return false;
