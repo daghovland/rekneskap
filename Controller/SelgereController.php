@@ -32,7 +32,9 @@ class SelgereController extends AppController {
 	$email = new CakeEmail();
 	$email->viewVars(array('tmp_key' => $userData['Selger']['tmp_key'],
 			       'user_id' => $userData['Selger']['nummer'],
+			       'epost' => $userData['Selger']['epost'],
 			       'navn' => $userData['Selger']['navn']));
+	
 	$email->template('nytt_passord', 'vanlig')
 	  ->emailFormat('html')
 	  ->to($userData['Selger']['epost'])

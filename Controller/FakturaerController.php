@@ -36,7 +36,7 @@ class FakturaerController extends AppController {
 	$this->Session->setFlash('Sorry, there was no property ID submitted.');
 	$this->redirect(array('action'=>'index'), null, true);
       }
-    Configure::write('debug',0); // Otherwise we cannot use this method while developing
+    //    Configure::write('debug',0); // Otherwise we cannot use this method while developing
 
     $id = intval($id);
 
@@ -50,9 +50,10 @@ class FakturaerController extends AppController {
 	$this->Session->setFlash('Sorry, there is no property with the submitted ID.');
 	$this->redirect(array('action'=>'index'), null, true);
       }
-
+    $tcpdf = $this->Faktura->lagFakturaTcpdf($faktura, $kaffesalg);
+    $filnavn = "faktura"  . $faktura['Faktura']['nummer'] . ".pdf";
     $this->layout = 'pdf'; //this will use the pdf.ctp layout
-    $this->set(compact('faktura', 'kaffesalg', 'kaffepriser', 'kaffenavn'));
+    $this->set(compact('tcpdf', 'filnavn'));
     $this->render();
   }
 

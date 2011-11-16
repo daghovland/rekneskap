@@ -14,21 +14,25 @@ class Purring extends AppModel {
     $faktura = $this->Faktura->findByNummer($faktura_id);
     $kunde = $faktura['Kunde'];
     $selger = $this->Faktura->Kaffesalg->Selger->findByNummer($faktura['Kaffesalg']['selger_id']);
+    $kaffesalg = $this->Faktura->Kaffesalg->findByNummer($faktura['Faktura']['nummer']);
     if(isset($kunde['epost'])){
-      $email = new CakeEmail();
+      $email = new CakeEmail('default');
       $email->viewVars(array('navn' => $kunde['navn'],
+			     'faktura' => $faktura,
+			     'kaffesalg' => $kaffesalg,
 			     'selgerNavn' => $selger['Selger']['navn'],
 			     'fakturaDato'=> $faktura['Faktura']['faktura_dato'],
 			     'fakturaNr'=> $faktura['Faktura']['nummer'],
 			     'fakturaTekst' => $faktura['Faktura']['tekst'],
-			     'betalingsFrist' => $faktura['Faktura']['betalings_frist']
+			     'betalingsFrist' => $faktura['Faktura']['betalings_frist'],
+			     'epost' => $kunde['epost']
 			     ));
       $email->template($type, 'vanlig')
-	->emailFormat('html')
-	//      ->to($userData['Selger']['epost'])
-	->to("hovlanddag@gmail.com")
-	->from("dag@zapatista.no")
+	->emailFormat('text')
+	//      ->to($kunde['epost'])
+	->to("dag")
 	->subject("Purring frå zapatistgruppa")
+	->attachments('tmp/1.pdf')
 	->send();   
       $purring = array('Purring'=>array('faktura'=>$faktura_id, 
 					'tekst'=>'Automatisk epost-purring: ' . $type, 

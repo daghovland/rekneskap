@@ -123,12 +123,13 @@ $tcpdf->Image(ROOT . DS . WEBROOT_DIR . DS . 'img' . DS . 'regninglogo.jpg', 0, 
 
 
 
-
-//if($send_to_browser)
-$tcpdf->Output("faktura"  . $faktura['Faktura']['nummer'] . ".pdf" , 'D');
-//else
-//  echo $tcpdf->Output("", S);
-
-
+$filnavn = "faktura"  . $faktura['Faktura']['nummer'] . ".pdf";
+// At the moment, only syn_pdf calls this with $send_to_browser
+// The file saving does not yet work, but
+// should be used by autopurr
+if($send_to_browser)
+  $tcpdf->Output($filnavn , 'D');
+else
+  echo $tcpdf->Output($filnavn, 'E');
 
 ?>
