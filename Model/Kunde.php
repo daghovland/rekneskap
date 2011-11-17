@@ -29,14 +29,14 @@ class Kunde extends AppModel {
     $kundeData = $this->findByNummer($kunde_id);
     if(!isset($kundeData['Kunde']))
       return false;
-    $kundeData['Kunde']['navn'] = ucwords(strtr(strtolower($kundeData['Kunde']['navn']),
-						array('Å' => 'å',
-						      'Æ' => 'æ',
-						      'Ø' => 'ø',
-						      'È' => 'è',
-						      'É' => 'é',
-						      'Á' => 'á',
-						      'À' => 'à')));
+    $kundeData['Kunde']['navn'] = trim(ucwords(strtr(strtolower($kundeData['Kunde']['navn']),
+						     array('Å' => 'å',
+							   'Æ' => 'æ',
+							   'Ø' => 'ø',
+							   'È' => 'è',
+							   'É' => 'é',
+							   'Á' => 'á',
+							   'À' => 'à'))));
     $this->save($kundeData);
     return true;
   }

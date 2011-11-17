@@ -59,7 +59,6 @@ foreach ($fakturaer as $faktura):
 			<?php echo $this->Html->link(__('Vis meir', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
 			<?php echo $this->Html->link(__('Vis pdf', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
 			<?php echo $this->Html->link(__('Rediger', true), array('action'=>'edit', $faktura['Faktura']['nummer'])); ?>
-			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $faktura['Faktura']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $faktura['Faktura']['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

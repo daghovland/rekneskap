@@ -1,18 +1,16 @@
 <?php
 class KunderController extends AppController {
-
-	public $helpers = array('Adresser');
-
-	public $paginate = array(
-				 'limit' => 200,
-				 'order' => array(
-						  'Kunde.navn' => 'asc'
-						  )
-				 );
-	
+  
+  public $paginate = array(
+			   'limit' => 200,
+			   'order' => array(
+					    'Kunde.navn' => 'asc'
+					    )
+			   );
+  
 	function index() {
 		$this->Kunde->recursive = 0;
-		$this->set('kunder', $this->paginate());
+		$this->set('kunder', $this->Kunde->find('all', array('order' => array('navn' => 'asc'))));
 		$this->Session->write('forrigeSide', array('controller' => 'kunder', 'action' => 'index'));
 	}
 	

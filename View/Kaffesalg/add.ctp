@@ -13,7 +13,7 @@
 					   'selected' => $standardLager // Sentrallager
 					   )); 
        echo $this->Form->radio("Betaling", 
-			       array("Kontant" => "Kontant", "Post" => "Rekning i posten", "Epost" => "Rekning på epost"),
+			       array("Kontant" => "Kontant", "Post" => "Rekning"),
 			       array('value' => 'Post')
 			       )
        ;

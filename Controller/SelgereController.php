@@ -1,5 +1,10 @@
 <?php
 class SelgereController extends AppController {
+
+  function beforeFilter(){
+    parent::beforeFilter();
+    $this->Auth->allow('login', 'glemt_passord', 'nytt_passord');
+  }
   
   function login() {
     if ($this->request->is('post')) {

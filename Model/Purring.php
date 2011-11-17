@@ -20,7 +20,7 @@ class Purring extends AppModel {
     $kunde = $faktura['Kunde'];
     $selger = $this->Faktura->Kaffesalg->Selger->findByNummer($faktura['Kaffesalg']['selger_id']);
     $kaffesalg = $this->Faktura->Kaffesalg->findByNummer($faktura['Faktura']['nummer']);
-    if(is_string($kunde['epost']) && strlen($kunde['epost'] > 3) && strpos("@", $kunde['epost'])){
+    if(is_string($kunde['epost']) && strlen($kunde['epost']) > 3){
       $tcpdf = $this->Faktura->lagFakturaTcpdf($faktura, $kaffesalg);
       $filnavn = "faktura" . $faktura['Faktura']['nummer'] . ".pdf";
       $mappe = new Folder();
@@ -46,9 +46,12 @@ class Purring extends AppModel {
       $email->template($type, 'vanlig')
 	->emailFormat('both')
 	// Remember to also uncomment the save below      ->to($kunde['epost'])
-	->to("hovlanddag@gmail.com")
-	->subject("Purring frå zapatistgruppa")
-	->attachments($absolutt_filnavn)
+	->to("hovlanddag@gmail.com");
+      if($type == "purring")
+	$email->subject("Purring frå zapatistgruppa");
+      else      
+	$email->subject("Om kaffien frå zapatistgruppa");
+      $email->attachments($absolutt_filnavn)
 	->send();   
       $pdf_fil->delete();
       $purring = array('Purring'=>array('faktura'=>$faktura_id, 

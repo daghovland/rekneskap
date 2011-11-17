@@ -10,7 +10,10 @@ class FakturaerController extends AppController {
   }
   
   function autopurr(){
-    $this->Faktura->autopurr();
+    $resultat = $this->Faktura->autopurr();
+    $this->set('feil', $resultat['feil']);
+    $this->set('purret', $resultat['purret']);
+    $this->set('meldt', $resultat['meldt']);
   }
   
   function ubetalte() {

@@ -57,9 +57,10 @@ foreach ($fakturaer as $faktura):
 			<?php echo $faktura['Faktura']['totalpris']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('Syn meir', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
-			<?php echo $this->Html->link(__('Syn pdf', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
-		<?php echo $this->Html->link(__('Registrer betaling', true), array('controller' => 'pengeflyttinger', 'action'=>'faktura_innbetaling', $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Pdf', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
+		<?php echo $this->Html->link(__('Betalt', true), array('controller' => 'pengeflyttinger', 'action'=>'faktura_innbetaling', $faktura['Faktura']['nummer'])); ?>
+		<?php echo $this->Html->link(__('Purra', true), array('controller' => 'purringer', 'action'=>'add', $faktura['Faktura']['nummer'])); ?>
 		</td>
 	</tr>
 		<?php  

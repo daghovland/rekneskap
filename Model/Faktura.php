@@ -95,10 +95,24 @@ class Faktura extends AppModel {
      Sender melding til alle som har vært forfalt i mindre enn to uker, og ikke allerede har fått melding
   **/
   function autopurr(){
-    foreach($this->PurreFaktura->find('list', array('fields'=>'faktura_id')) as $faktura)
-      $this->Purring->epostPurring($faktura, 'purring');
-    foreach($this->MeldeFaktura->find('list', array('fields'=>'faktura_id')) as $faktura)
-      $this->Purring->epostPurring($faktura, 'faktura_melding');
+    $purret = array();
+    $meldt = array();
+    $feil = array();
+    foreach($this->PurreFaktura->find('list', array('fields'=>'faktura_id')) as $faktura){
+      if($this->Purring->epostPurring($faktura, 'purring'))
+	$purret[] = $faktura;
+      else 
+	$feil[] = $faktura;
+    }
+    /*
+      foreach($this->MeldeFaktura->find('list', array('fields'=>'faktura_id')) as $faktura){
+      if($this->Purring->epostPurring($faktura, 'faktura_melding'))
+      $meldt[] = $faktura;
+      else
+      $feil[] = $faktura;
+      }
+    */
+    return array('purret' => $purret, 'meldt' => $meldt, 'feil' => $feil);
   }
 
   /**
