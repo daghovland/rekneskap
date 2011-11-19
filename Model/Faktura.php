@@ -112,7 +112,19 @@ class Faktura extends AppModel {
       $feil[] = $faktura;
       }
     */
-    return array('purret' => $purret, 'meldt' => $meldt, 'feil' => $feil);
+    $logg_mail = new CakeEmail('default');
+    $logg_mail->to("hovlanddag@gmail.com")
+      ->from("dag@zapatista.no")
+      ->sender("dag.hovland@uib.no")
+      ->subject("Automatisk utførte purringar")
+      ->template('autopurr_logg', 'vanlig')
+      ->emailFormat('html')
+      ->viewVars(array('purret' => $purret,
+		       'navn' => 'Purrere i Zapatistgruppa',
+		       'epost' => '',
+		       'feil' => $feil))
+      ->send();
+    return;
   }
 
   /**

@@ -51,9 +51,7 @@ class PurringerController extends AppController {
 		  $this->Session->setFlash("Ugyldig fakturanummer. Kan ikkje fortsetje.");
 		  $this->redirect(array('controller' => 'fakturaer', 'action' => 'ubetalte'));
 		}
-		$this->set('faktura_id', $faktura_id);
-		$fakturaer = $this->Purring->Faktura->find('list');
-		$this->set(compact('fakturaer'));
+		$this->set('faktura', $this->Purring->Faktura->findByNummer($faktura_id));
 	}
 
 /**

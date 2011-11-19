@@ -4,16 +4,20 @@ class FakturaerController extends AppController {
   public $paginate = array('limit' => 200,
 			   'order' => array('Faktura.nummer' => 'asc'));
 
+
+  function beforeFilter(){
+    parent::beforeFilter();
+    $this->Auth->allow('autopurr');
+  }
+  
+
   function index() {
     $data = $this->paginate('Faktura');
     $this->set('fakturaer', $data);
   }
   
   function autopurr(){
-    $resultat = $this->Faktura->autopurr();
-    $this->set('feil', $resultat['feil']);
-    $this->set('purret', $resultat['purret']);
-    $this->set('meldt', $resultat['meldt']);
+    $this->Faktura->autopurr();
   }
   
   function ubetalte() {

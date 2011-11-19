@@ -7,12 +7,10 @@ class SelgereController extends AppController {
   }
   
   function login() {
-    if ($this->request->is('post')) {
-      if ($this->Auth->login()) {
-	return $this->redirect($this->Auth->redirect());
-      } else {
-	$this->Session->setFlash("Ugyldig passord eller brukarnamn");
-      }
+    if ($this->Auth->login()) {
+      return $this->redirect($this->Auth->redirect());
+    } else if ($this->request->is('post')) {
+      $this->Session->setFlash("Ugyldig passord eller brukarnamn");
     }
     $this->set('info', $this->request->data);
   }

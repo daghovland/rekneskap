@@ -4,7 +4,6 @@ class Selger extends AppModel {
   public $name = 'Selger';
   public $primaryKey = 'nummer';
   public $useTable = 'selgere';
-  public $actsAs = array('Acl' => 'requester');
 
   // Values returned from glemtPassord
   public $OK = 0;
@@ -46,9 +45,6 @@ class Selger extends AppModel {
 			 'Rolle' => array(
 					  'className' => 'Rolle',
 					  'foreignKey' => 'rolle_id',
-					  'conditions' => '',
-					  'fields' => '',
-					  'order' => ''
 					  )
 			 )
     ;

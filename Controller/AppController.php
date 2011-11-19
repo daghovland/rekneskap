@@ -4,10 +4,11 @@ Class AppController extends Controller {
   public $components = array('Session',  'RequestHandler', 'Auth', 'Kaffe');  
   
   function beforeFilter() {
-    $this->Auth->authenticate = array('Form' => array('userModel' => 'Selger',
-						      'fields' => array('username' => 'navn', 
-									'password' => 'passord')
-						      )
+    $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'Selger',
+								  'fields' => array('username' => 'navn', 
+										    'password' => 'passord')
+								  ),
+				      'Form'
 				      );
     $this->Auth->authorize = array('Controller' => array('userModel' => 'Selger'));
     $this->Auth->loginAction = array('controller' => 'selgere',  'action' => 'login');
