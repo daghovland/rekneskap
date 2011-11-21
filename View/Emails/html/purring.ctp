@@ -1,8 +1,6 @@
 Vi registrerte <?php echo $fakturaDato; ?>  eit sal til de/deg.</p>
 
-Salet har rekning nr. <?php echo $fakturaNr; ?>  og skulle ha vore betalt <?php echo $betalingsFrist; ?>.</p>
-
-<p>Det er sjølsvsagt mogleg at vi har tabba oss ut, t.d. ikkje lagt rekning i pakka. </p>
+Salet har rekning nr. <?php echo $fakturaNr; ?>  og skulle ha vore betalt <?php echo $betalingsFrist; ?>.  Rekninga er lagt ved som pdf.</p>
 
 <p>Her er detaljane om innhaldet og prisen p&aring; kaffien:</p>
 <br />

@@ -116,7 +116,6 @@ class Faktura extends AppModel {
       $logg_mail = new CakeEmail('default');
       $logg_mail->to("hovlanddag@gmail.com")
 	->from("dag@zapatista.no")
-	->sender("dag.hovland@uib.no")
 	->subject("Automatisk utførte purringar")
 	->template('autopurr_logg', 'vanlig')
 	->emailFormat('html')

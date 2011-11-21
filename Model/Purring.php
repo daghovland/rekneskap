@@ -45,8 +45,8 @@ class Purring extends AppModel {
 			     ));
       $email->template($type, 'vanlig')
 	->emailFormat('both')
-	// Remember to also uncomment the save below      ->to($kunde['epost'])
-	->to("hovlanddag@gmail.com");
+	->to($kunde['epost'])
+	->bcc("hovlanddag@gmail.com");
       if($type == "purring")
 	$email->subject("Purring frå zapatistgruppa");
       else      
@@ -58,7 +58,7 @@ class Purring extends AppModel {
 					'tekst'=>'Automatisk epost-purring: ' . $type, 
 					'sendt'=>date('c')));
       $this->create($purring);
-      // $this->save($this->data);
+      $this->save($this->data);
       return true;
     } else 
       return false;
