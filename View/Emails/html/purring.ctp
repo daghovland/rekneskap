@@ -10,7 +10,7 @@ Salet har rekning nr. <?php echo $fakturaNr; ?>  og skulle ha vore betalt <?php 
 <?php echo $fakturaTekst; ?>
 <br />
 <br />
-<p>Vennlegst betal til kontoen v&aring;r: 1254.05.61786 snarast r&aring;d. Gje oss ei melding om noko av dette er feil eller uforst&aringeleg.</p>
+<p>Vennlegst betal til kontoen v&aring;r: 1254.05.61786 snarast r&aring;d. Gje oss ei melding dersom du meiner noko av dette er feil eller har spørsmål.</p>
 
 <p>Orsak at denne purringa vert so upersonleg, men det tok litt mykje tid &aring; gjere dette for hand.</p>
 	
