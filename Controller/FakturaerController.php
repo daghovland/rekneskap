@@ -18,7 +18,7 @@ class FakturaerController extends AppController {
   
   function autopurr(){
     $this->Faktura->autopurr();
-    $this->render("tom");
+    $this->layout = "tom";
   }
   
   function ubetalte() {
