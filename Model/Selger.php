@@ -90,7 +90,6 @@ class Selger extends AppModel {
    *
    * @access public
    * @return void
-   */
   function afterSave($created) {
     if (!$created) {
       $parent = $this->parentNode();
@@ -101,6 +100,7 @@ class Selger extends AppModel {
       $this->Aro->save($aro);
     }
   }
+   */
   
   function glemt_passord($username){
     if(!is_string($username))
