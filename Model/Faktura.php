@@ -115,7 +115,6 @@ class Faktura extends AppModel {
     if(count($purret) > 0){
       $logg_mail = new CakeEmail('default');
       $logg_mail->to("hovlanddag@gmail.com")
-	->from("dag@zapatista.no")
 	->subject("Automatisk utførte purringar")
 	->template('autopurr_logg', 'vanlig')
 	->emailFormat('html')
