@@ -14,7 +14,7 @@ Class AppController extends Controller {
     $this->Auth->loginAction = array('controller' => 'selgere',  'action' => 'login');
     $this->Auth->loginRedirect = array('controller' => 'selgere', 'action' => 'oversikt');
     $this->Auth->authError = "Du har ikkje tilgang til denne sida. Logg deg inn eller send ein epost og fortell kva du vil vite.";
-//    $this->Auth->allow('*');
+    //$this->Auth->allow('*');
 
     if(!setlocale(LC_ALL, "nb_NO.UTF-8", "nb.UTF-8", "no.UTF-8")){
       echo("could not set locale");

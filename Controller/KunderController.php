@@ -23,10 +23,9 @@ class KunderController extends AppController {
 	    $this->redirect(array('action' => 'index'));
 	}
 	
-	function send_jule_post($kunde_id){
-	  $this->Kunde->sendJuleEpost($kunde_id);
-	  $this->view($kunde_id);
-	  $this->render('view');
+	function send_jule_epost(){
+	  $this->Kunde->sendJuleEpost("julepost2011");
+	  $this->redirect(array('action' => 'index'));
 	}
 
 	function lastopp(){

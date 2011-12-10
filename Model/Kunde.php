@@ -43,21 +43,32 @@ class Kunde extends AppModel {
     $this->save($kundeData);
     return true;
   }
-  
   /**
      $faktura_id er nummer i tabellen faktura
      $type er navnet på en email template "purring" eller "faktura_melding"
   **/
-  function sendJuleEpost($kunde_id){
-    //$kunde = $this->findByNummer($kunde_id);
-    //  $epost = $kunde['epost'];
-    //$navn = $kunde['navn'];
+  function sendKundeEpost($kunde, $template){
+    $epost = $kunde['Kunde']['epost'];
+    $navn = $kunde['Kunde']['navn'];
     $email = new CakeEmail('default');
-    $email->template("julepost2011", "vanlig")
+    $email->viewVars(array('navn' => $navn,
+			   'epost' => $epost
+			   ));
+    $email->template("julepost2011", 'propaganda')
       ->emailFormat('both')
       ->to("hovlanddag@gmail.com")
-      ->subject("Café YaBasta")
+      ->from(array("tinging@zapatista.no" => "Café YaBasta"))
+      ->subject("Kaffi frå zapatistiske kooperativ til jol!")
       ->send();   
   }
+
+  
+  function sendJuleEpost($template){
+    $kunder = $this->find('all');
+    foreach($kunder as $kunde)
+      $this->sendKundeEpost($kunde, $template);
+  }
+  
+
 }
 ?>

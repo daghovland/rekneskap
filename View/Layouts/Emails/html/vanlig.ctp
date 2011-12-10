@@ -6,5 +6,5 @@
 Mvh
 <br />
 Dag Hovland <br/>
-Zapatistgruppa i Bergen
+Café YaBasta
 </p>
