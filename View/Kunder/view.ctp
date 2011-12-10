@@ -54,6 +54,7 @@
 		<li><?php echo $this->Html->link(__('Endre kundeinfo', true), array('action'=>'edit', $kunde['Kunde']['nummer'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List alle Kunder', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Ny Kunde', true), array('action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Send jule-epost', true), array('action'=>'send_jule_epost', $kunde['Kunde']['nummer'])); ?> </li>
 	</ul>
 </div>
 <div class="related">

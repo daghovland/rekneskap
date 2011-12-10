@@ -1,4 +1,7 @@
 <?php
+App::uses('CakeEmail', 'Network/Email');
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 class Kunde extends AppModel {
   
   var $name = 'Kunde';
@@ -39,6 +42,22 @@ class Kunde extends AppModel {
 							   'À' => 'à'))));
     $this->save($kundeData);
     return true;
+  }
+  
+  /**
+     $faktura_id er nummer i tabellen faktura
+     $type er navnet på en email template "purring" eller "faktura_melding"
+  **/
+  function send_jule_epost($kunde_id){
+    //$kunde = $this->findByNummer($kunde_id);
+    //  $epost = $kunde['epost'];
+    //$navn = $kunde['navn'];
+    $email = new CakeEmail('default');
+    $email->template("julepost2011", "vanlig")
+      ->emailFormat('both')
+      ->to("hovlanddag@gmail.com")
+      ->subject("Café YaBasta")
+      ->send();   
   }
 }
 ?>

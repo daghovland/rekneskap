@@ -23,6 +23,12 @@ class KunderController extends AppController {
 	    $this->redirect(array('action' => 'index'));
 	}
 	
+	function send_jule_epost($kunde_id){
+	  $this->Kunde->send_jule_epost($kunde_id);
+	  $this->view($kunde_id);
+	  $this->render('view');
+	}
+
 	function lastopp(){
 	  if(!empty($this->request->data)){
 	    $filinfo = $this->request->data['Kunde']['submittedfile'];

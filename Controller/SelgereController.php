@@ -3,7 +3,7 @@ class SelgereController extends AppController {
 
   function beforeFilter(){
     parent::beforeFilter();
-    $this->Auth->allow('login', 'glemt_passord', 'nytt_passord');
+    $this->Auth->allow('login', 'glemt_passord', 'nytt_passord', 'view', 'index', 'endre_passord');
   }
   
   function login() {
