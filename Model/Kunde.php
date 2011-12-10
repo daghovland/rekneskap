@@ -48,7 +48,7 @@ class Kunde extends AppModel {
      $faktura_id er nummer i tabellen faktura
      $type er navnet på en email template "purring" eller "faktura_melding"
   **/
-  function send_jule_epost($kunde_id){
+  function sendJuleEpost($kunde_id){
     //$kunde = $this->findByNummer($kunde_id);
     //  $epost = $kunde['epost'];
     //$navn = $kunde['navn'];
