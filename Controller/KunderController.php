@@ -22,12 +22,14 @@ class KunderController extends AppController {
 	    $this->Session->setFlash("Ugyldig kundenummer");
 	    $this->redirect(array('action' => 'index'));
 	}
-	
+	/**
+	   Uncommented for safety
 	function send_jule_epost(){
-	  $this->Kunde->sendJuleEpost("julepost2011");
-	  $this->redirect(array('action' => 'index'));
+	  $kunder = $this->Kunde->sendJuleEpost("julepost2011");
+	  $this->set('kunder', $kunder);
+	  $this->render('index');
 	}
-
+	**/
 	function lastopp(){
 	  if(!empty($this->request->data)){
 	    $filinfo = $this->request->data['Kunde']['submittedfile'];

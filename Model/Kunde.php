@@ -50,25 +50,34 @@ class Kunde extends AppModel {
   function sendKundeEpost($kunde, $template){
     $epost = $kunde['Kunde']['epost'];
     $navn = $kunde['Kunde']['navn'];
-    $email = new CakeEmail('default');
-    $email->viewVars(array('navn' => $navn,
-			   'epost' => $epost
-			   ));
-    $email->template("julepost2011", 'propaganda')
-      ->emailFormat('both')
-      ->to("hovlanddag@gmail.com")
-      ->from(array("tinging@zapatista.no" => "Café YaBasta"))
-      ->subject("Kaffi frå zapatistiske kooperativ til jol!")
-      ->send();   
+    if(is_string($epost) && strlen($epost) > 3){
+      $email = new CakeEmail('default');
+      $email->viewVars(array('navn' => $navn,
+			     'epost' => $epost
+			     ));
+      $email->template("julepost2011", 'propaganda')
+	->emailFormat('both')
+	->to($epost)
+	->bcc("hovlanddag@gmail.com")
+	->from(array("tinging@zapatista.no" => "Café YaBasta"))
+	->subject("Kaffi frå zapatistiske kooperativ til jol!")
+	->send();   
+      return true;
+    } else 
+      return false;
   }
-
   
+  /**
   function sendJuleEpost($template){
     $kunder = $this->find('all');
-    foreach($kunder as $kunde)
-      $this->sendKundeEpost($kunde, $template);
+    $sendtepost = array();
+    foreach($kunder as $kunde){
+      if($this->sendKundeEpost($kunde, $template))
+	$sendtepost[] = $kunde;
+    }
+    return $sendtepost;
   }
-  
+  **/
 
 }
 ?>
