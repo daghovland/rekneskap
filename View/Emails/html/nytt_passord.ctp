@@ -1,11 +1,5 @@
 <p>Følg denne lenken for å lage nytt passord: </p>
 <?php
-$link_adr = "http://rekneskap.zapatista.no/selgere/nytt_passord/" . $user_id . "/" . $tmp_key;
-echo $this->Html->link($link_adr, $link_adr);
+$full_lenke = Router::url(array('controller' => 'selgere', 'action' => 'nytt_passord', $user_id,  $tmp_key), true);
+echo $this->Html->link($full_lenke, $full_lenke);
 ?>
-<p>
-Mvh
-<br />
-Dag Hovland <br/>
-Zapatistgruppa i Bergen
-</p>

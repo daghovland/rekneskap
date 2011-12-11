@@ -102,6 +102,16 @@ class Selger extends AppModel {
   }
    */
   
+
+  /**
+     Brukes til å sende en epost med lenke til 
+     side for å få nytt passord
+     
+     Setter tmp_key i databasen, som sendes med i lenken
+
+     @param @base_url er urlen til action "nytt passord". Denne må finnes fra controlleren
+     @param $username er brukernavnet
+  **/
   function glemt_passord($username){
     if(!is_string($username))
       return $this->FEIL_BRUKERNAVN;
