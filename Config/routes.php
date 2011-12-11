@@ -42,3 +42,10 @@
  * the built-in default routes.
  */
 	require CAKE . 'Config' . DS . 'routes.php';
+
+/**
+   Laster REST for bestilliinger. 
+   Drupal / ubercart skal på sikt koples til dette
+**/
+Router::mapResources('recipes');
+Router::parseExtensions();
