@@ -15,10 +15,11 @@ class InternfilerController extends AppController {
 			$this->Session->setFlash(__('Invalid Internfil.', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		$this->layout = 'any'; //this will use the any.ctp layout
-
+		Configure::write('debug', 0);
+		$this->Bilag->recursive = -1;
+		//$this->layout = 'any'; //this will use the any.ctp layout
 		$this->set('internfil', $this->Internfil->read(null, $id));
-        	$this->render();
+        	$this->render(null);
 	}
 
 	function add() {

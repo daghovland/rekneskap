@@ -72,3 +72,4 @@ Inflector::rules('singular', array('rules' => array('/^(.+)er$/i' => '\1', '/^(.
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+?>

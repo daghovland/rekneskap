@@ -14,10 +14,11 @@ class BilagController extends AppController {
 			$this->Session->setFlash(__('Ikkje gyldig bilag.', true));
 			$this->redirect($this->Session->read('forrigeSide'));
 		}
-		$this->layout = 'any'; //this will use the any.ctp layout
+		Configure::write('debug', 0);
+		$this->Bilag->recursive = -1;
+		//		$this->layout = 'any'; //this will use the any.ctp layout
 		$this->set('bilag', $this->Bilag->read(null, $id));
         	$this->render();
-
 	}
 
 	function add($id = null) {

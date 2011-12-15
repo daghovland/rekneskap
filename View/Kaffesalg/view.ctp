@@ -1,7 +1,12 @@
 <div class="kaffesalg view">
-<h2><?php  echo __('Kaffesalg');?></h2>
-	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
+  <h2><?php  echo __('Kaffesalg');?></h2>
+  <dl><?php $i = 0; $class = ' class="altrow"';?>
+  <dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Faktura'); ?></dt>
+  <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+ <?php echo $this->Html->link("faktura" . $kaffesalg['Faktura']['nummer'] . ".pdf", array('controller' => 'fakturaer', 'action' => 'synPdf', $kaffesalg['Faktura']['nummer'])); ?>
+  &nbsp;
+</dd>
+<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nummer'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $kaffesalg['Kaffesalg']['nummer']; ?>
 			&nbsp;
