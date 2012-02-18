@@ -94,13 +94,6 @@
 	<?php echo $this->Html->link(__('Logg av', true), '/selgere/logout'); ?>
       </div>
       <div id="content">
-	<p>Last ned sertifikat frå <a href="https://www.cacert.org/index.php?id=3">cacert.org</a>. 
-	<?php if(isset($_SERVER['HTTPS']) &&$_SERVER['HTTPS'] != 'on'):?>
-	Då kan du bruke den <a href="https://regnskap.zapatista.no">sikre tilkoplinga</a>.
-	<?php endif; ?>
-	</p>
-      </div>
-      <div id="content">
 	
 	<?php echo $this->Session->flash(); ?>
 	<?php echo $this->Session->flash('auth'); ?>
