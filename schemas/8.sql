@@ -27,6 +27,7 @@ INSERT INTO `mva_klasse` (`prosent`, `navn`) VALUES (0, "Fritatt, ikkje mva");
 CREATE TABLE  IF NOT EXISTS `rekningar` (
        `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, 
        `fakturadato` datetime NOT NULL, 
+       `beskrivelse` VARCHAR(300),
        `betalingsfrist` datetime NOT NULL, 
        `mva_klasse_id` INT UNSIGNED,
        `leverandor_id` INT UNSIGNED,
