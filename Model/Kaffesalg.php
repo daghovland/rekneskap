@@ -94,7 +94,7 @@ class Kaffesalg extends AppModel {
 						   array('fields' => array('id', 
 									   'pris')));
     $vanlig_mva = 0.25;
-    $fratrekk = 0.11;
+    $fratrekk = 0.10;
     $kaffe_mva = $vanlig_mva - $fratrekk;
 	  
     $tekst = "<table><tr><th>Spesifikasjon</th><th>Pris u/mva</th><th>Mva</th><th>Pris inkl. mva</th></tr>";
