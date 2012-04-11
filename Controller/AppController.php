@@ -2,7 +2,7 @@
 Class AppController extends Controller {
   public $helpers = array('Js' => array('Prototype'), 'Html', 'Form', 'Session', 'Adresser');
   public $components = array('Session',  'RequestHandler', 'Auth', 'Kaffe');  
-  
+
   function beforeFilter() {
     $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'Selger',
 								  'fields' => array('username' => 'navn', 
