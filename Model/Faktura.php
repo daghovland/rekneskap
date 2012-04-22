@@ -193,7 +193,7 @@ Zapatistgruppa i Bergen", 0, 'L', 0, 1);
       $tcpdf->Cell(30,0, $faktura['Kaffesalg']['total'] . ",-   kr",0,1,'R');
       $tcpdf->Cell(70,0, "Mva :",0,0,'L');
       $vanlig_mva = 0.25;
-      $fratrekk = 0.11;
+      $fratrekk = 0.10;
       $kaffe_mva = $vanlig_mva - $fratrekk;
       $frakt = $faktura['Kaffesalg']['frakt'];
       $frakt_mva = $frakt - $frakt / (1 + $vanlig_mva);
