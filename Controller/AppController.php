@@ -1,7 +1,13 @@
 <?php
 Class AppController extends Controller {
-  public $helpers = array('Js' => array('Prototype'), 'Html', 'Form', 'Session', 'Adresser');
-  public $components = array('Session',  'RequestHandler', 'Auth', 'Kaffe');  
+  public $helpers = array('Js' => array('Prototype'), 'Html', 'Form', 'Session', 'Adresser', 'Paginator');
+  public $components = array('Session',  'RequestHandler', 'Auth', 'Kaffe', 'Paginator');  
+  public $paginate = array(
+        'limit' => 300,
+        'order' => array(
+            'Selger.navn' => 'asc'
+        )
+    );
 
   function beforeFilter() {
     $this->Auth->authenticate = array(AuthComponent::ALL => array('userModel' => 'Selger',

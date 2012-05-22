@@ -1,6 +1,5 @@
 <?php
 class SelgereController extends AppController {
-
   function beforeFilter(){
     parent::beforeFilter();
     $this->Auth->allow('login', 'glemt_passord', 'nytt_passord', 'view', 'index', 'endre_passord');
@@ -98,7 +97,7 @@ class SelgereController extends AppController {
   
   function edit($id = null) {
     $brukerInfo = $this->Auth->user();
-    if($id == $brukerInfo['nummer']){
+    if($id == $brukerInfo){
       if (!$id && empty($this->request->data)) {
 	$this->Session->setFlash(__('Invalid Selger', true));
 	$this->redirect(array('action'=>'index'));
@@ -131,7 +130,7 @@ class SelgereController extends AppController {
 
   function endre_passord($id = null) {
     $brukerInfo = $this->Auth->user();
-    if($id == $brukerInfo['nummer']){
+    if($id == $brukerInfo){
       if (!$id && empty($this->request->data)) {
 	$this->Session->setFlash(__('Ugyldig Selger', true));
 	$this->redirect(array('action'=>'oversikt'));
@@ -154,7 +153,7 @@ class SelgereController extends AppController {
       $this->set(compact('roller'));
     }
     else {
-      $this->Session->setFlash(__('Du kan berre endre ditt eige passord.', true));
+      $this->Session->setFlash(__('Bruker ' . $brukerInfo . ', Du kan berre endre ditt eige passord.', true));
       $this->redirect($this->Session->read('forrigeSide'));
     }
   }

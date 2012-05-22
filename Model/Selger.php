@@ -124,7 +124,7 @@ class Selger extends AppModel {
     $tmp_key = Security::generateAuthKey();
     $userData['Selger']['tmp_key'] = $tmp_key;
     $userData['Selger']['tmp_key_created'] = date('c');
-    $this->save($userData);
+    $this->save($userData, false, array('tmp_key', 'tmp_key_created'));
     $email = new CakeEmail('default');
     $email->viewVars(array('tmp_key' => $userData['Selger']['tmp_key'],
 			   'user_id' => $userData['Selger']['nummer'],
