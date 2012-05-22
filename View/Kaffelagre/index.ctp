@@ -55,8 +55,6 @@ foreach ($kaffelagre as $kaffelager):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('New Kaffelager', true), array('action'=>'add')); ?></li>
-		<li><?php echo $this->Html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Lageransvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('Nytt Kaffelager', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

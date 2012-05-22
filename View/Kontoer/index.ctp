@@ -51,10 +51,7 @@ foreach ($kontoer as $konto):
 </div>
 <div class = "actions">	
 	<ul>
-		<li><?php echo $this->Html->link(__('New Konto', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Ny Konto', true), array('action'=>'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Kontotyper', true), array('controller'=> 'kontotyper', 'action'=>'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Kontotypenavn', true), array('controller'=> 'kontotyper', 'action'=>'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Selgere', true), array('controller'=> 'selgere', 'action'=>'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Kontoansvarlig', true), array('controller'=> 'selgere', 'action'=>'add')); ?> </li>
 	</ul>
 </div>

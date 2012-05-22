@@ -2,14 +2,15 @@
 class LagertyperController extends AppController {
 
 	var $name = 'Lagertyper';
-	var $helpers = array('Html', 'Form');
-	var $components = array('Acl');
 
 	var $uses = array('Kaffeflytting', 'Lagertype', 'Kaffelager');
-
+ public $paginate = array(
+        'limit' => 300,
+	'sort' => array('Lagertype.nummer' => 'asc')
+    );
 	function index() {
 		$this->Lagertype->recursive = 0;
-		$this->set('lagertyper', $this->paginate());
+		$this->set('lagertyper', $this->Paginate('Lagertype'));
 	}
 
 	function view($id = null) {
