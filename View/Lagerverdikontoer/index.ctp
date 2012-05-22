@@ -47,6 +47,6 @@ foreach ($lagerverdikontoer as $lagerverdikonto):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('New Lagerverdikonto', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Ny Lagerverdikonto', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

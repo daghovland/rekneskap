@@ -3,7 +3,6 @@
 	<fieldset>
  		<legend><?php echo __('Add Lagertype');?></legend>
 	<?php
-		echo $this->Form->input('nummer');
 		echo $this->Form->input('navn');
 	?>
 	</fieldset>

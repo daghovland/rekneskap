@@ -1,11 +1,5 @@
 <div class="kontotyper index">
 <h2><?php echo __('Kontotyper');?></h2>
-<p>
-<?php
-echo $this->Paginator->counter(array(
-'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-));
-?></p>
 <table cellpadding="0" cellspacing="0">
 <tr>
 	<th><?php echo $this->Paginator->sort('nummer');?></th>
@@ -43,6 +37,6 @@ foreach ($kontotyper as $kontotype):
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('New Kontotype', true), array('action'=>'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Ny Kontotype', true), array('action'=>'add')); ?></li>
 	</ul>
 </div>

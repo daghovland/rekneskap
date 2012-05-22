@@ -85,6 +85,9 @@
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kontoer', 'action' => 'index')); ?>">Rekneskapskontoer</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffepriser', 'action' => 'index')); ?>">Alle kaffityper</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'lagerverdikontoer', 'action' => 'index')); ?>">Lagerverdikontoer</option>
+	  <option value="<?php echo $this->Html->url(array('controller' => 'lagerverdityper', 'action' => 'index')); ?>">Lagerverdityper</option>
+	  <option value="<?php echo $this->Html->url(array('controller' => 'kontotyper', 'action' => 'index')); ?>">Kontotyper</option>
+	  <option value="<?php echo $this->Html->url(array('controller' => 'lagertyper', 'action' => 'index')); ?>">Lagertyper</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'rabatter', 'action' => 'index')); ?>">Alle rabatter</option>
 	</select>
 	<br />

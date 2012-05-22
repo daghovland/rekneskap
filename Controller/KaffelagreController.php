@@ -10,7 +10,7 @@ class KaffelagreController extends AppController {
 
 	var $components = array('Acl', 'RequestHandler');
 
-	var $paginate = array(
+	public $paginate = array(
 		'lagerfraflytting' => array(
 			'limit' => 300,
 			'order' => array(
@@ -77,8 +77,9 @@ class KaffelagreController extends AppController {
 				$this->Session->setFlash(__('The Kaffelager could not be saved. Please, try again.', true));
 			}
 		}
-		$selgere = $this->Kaffelager->Selger->find('list');
-		$this->set(compact('selgere'));
+		$selgere = $this->Kaffelager->Selger->find('list', array('fields' => 'navn'));
+		$lagertyper = $this->Kaffelager->lagertypenavn->find('list');
+		$this->set(compact('selgere', 'lagertyper'));
 	}
 
 	function edit($id = null) {
