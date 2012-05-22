@@ -1,0 +1,13 @@
+Bruk instruksjoner hos cake.
+
+Husk å installere:
+
+php-mysql
+
+Husk å aktivere:
+
+mod_rewrite i apache
+
+Husk å legge i database:
+
+En epost for admin-kontoen
