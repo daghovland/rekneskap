@@ -1,7 +1,6 @@
 <?php
 class AdresserHelper extends AppHelper {
 	var $helpers = array('Form');
-
 	function adresseSkjema($id, $legend, $label){
 		$tekst = "<fieldset id =\"" . $id . "\">";
 		$tekst .= "<legend>" . __($legend) . "</legend>"; 
@@ -15,8 +14,4 @@ class AdresserHelper extends AppHelper {
 		$tekst .= "</fieldset>";
 		return $tekst;
 	}
-	
-
 }
-?>
-
