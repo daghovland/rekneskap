@@ -47,5 +47,5 @@
    Laster REST for bestilliinger. 
    Drupal / ubercart skal på sikt koples til dette
 **/
-Router::mapResources('recipes');
+Router::mapResources('tinging');
 Router::parseExtensions();
