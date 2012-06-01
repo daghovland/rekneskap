@@ -6,7 +6,6 @@ class KaffeComponent extends Component {
 	else
 		$this->cakeError("Ugyldig dato oppgitt");
   }
-
   function BankDatoSql($bankdato){
     $datoarr = explode(".", $bankdato);
     if(is_numeric($datoarr[0]) && is_numeric($datoarr[1]) && is_numeric($datoarr[2]))
@@ -16,4 +15,3 @@ class KaffeComponent extends Component {
   }
 
   }
-?>
