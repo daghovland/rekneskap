@@ -86,6 +86,10 @@ class TingingarController extends AppController {
 		}
 	}
 
+	public function start_xmlrpc_server(){
+	  xmlrpc_server_create();
+	}
+
 /**
  * delete method
  *
