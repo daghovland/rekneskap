@@ -8,7 +8,7 @@ Class AppController extends Controller {
 								  'fields' => array('username' => 'navn', 
 										    'password' => 'passord')
 								  ),
-				      'Form',
+				      'Form'
 				      );
     $this->Auth->authorize = array('Controller' => array('userModel' => 'Selger'));
     $this->Auth->loginAction = array('controller' => 'selgere',  'action' => 'login');

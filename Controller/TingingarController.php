@@ -6,8 +6,22 @@ App::uses('AppController', 'Controller');
  * @property Tinging $Tinging
  */
 class TingingarController extends AppController {
-
-
+  
+  /*
+    Sida vert nytta fra REST og difor treng Basic authentication
+    Dette virker førebels ikkje
+  */  
+  function beforeFilter() {
+    parent::beforeFilter();
+    $this->Auth->allow('add');
+  }
+  public function login(){
+    if ($this->Auth->login()) {
+      return $this->redirect($this->Auth->redirect());
+    } else {
+      $this->Session->setFlash("Ugyldig passord eller brukarnamn", 'default', array(), 'auth');
+    }
+  }
 /**
  * index method
  *

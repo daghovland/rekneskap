@@ -5,6 +5,7 @@
 			<th><?php echo $this->Paginator->sort('id');?></th>
 			<th><?php echo $this->Paginator->sort('tinga');?></th>
 			<th><?php echo $this->Paginator->sort('kunde_id');?></th>
+			<th><?php echo $this->Paginator->sort('ubercart_ordre_id');?></th>
 			<th><?php echo $this->Paginator->sort('total');?></th>
 			<th><?php echo $this->Paginator->sort('frakt');?></th>
 			<th><?php echo $this->Paginator->sort('varetekst');?></th>
@@ -19,6 +20,7 @@
 		<td><?php echo h($tinging['Tinging']['id']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['tinga']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['kunde_id']); ?>&nbsp;</td>
+		<td><?php echo h($tinging['Tinging']['ubercart_ordre_id']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['total']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['frakt']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['varetekst']); ?>&nbsp;</td>
