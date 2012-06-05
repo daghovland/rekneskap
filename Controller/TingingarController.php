@@ -6,22 +6,12 @@ App::uses('AppController', 'Controller');
  * @property Tinging $Tinging
  */
 class TingingarController extends AppController {
-  
-  /*
-    Sida vert nytta fra REST og difor treng Basic authentication
-    Dette virker førebels ikkje
-  */  
-  function beforeFilter() {
+
+  public function beforeFilter(){
     parent::beforeFilter();
     $this->Auth->allow('add');
   }
-  public function login(){
-    if ($this->Auth->login()) {
-      return $this->redirect($this->Auth->redirect());
-    } else {
-      $this->Session->setFlash("Ugyldig passord eller brukarnamn", 'default', array(), 'auth');
-    }
-  }
+
 /**
  * index method
  *
@@ -52,15 +42,14 @@ class TingingarController extends AppController {
  * @return void
  */
 	public function add() {
-		if ($this->request->is('post')) {
-			$this->Tinging->create();
-			if ($this->Tinging->save($this->request->data)) {
-				$this->Session->setFlash(__('The tinging has been saved'));
-				$this->redirect(array('action' => 'index'));
-			} else {
-				$this->Session->setFlash(__('The tinging could not be saved. Please, try again.'));
-			}
-		}
+	  if ($this->request->is('post')) {
+	    if ($this->Tinging->tingingFraUbercart($this->request->data)) {
+	      $this->Session->setFlash(__('Tinginga er registrert'));
+	      $this->redirect(array('action' => 'index'));
+	    } else {
+	      $this->Session->setFlash(__('Feil under lagring av tinging.'));
+	    }
+	  }
 	}
 
 /**
@@ -84,10 +73,8 @@ class TingingarController extends AppController {
 		} else {
 			$this->request->data = $this->Tinging->read(null, $id);
 		}
-	}
-
-	public function start_xmlrpc_server(){
-	  xmlrpc_server_create();
+		$kunder = $this->Tinging->Kunde->find('list');
+		$this->set(compact('kunder'));
 	}
 
 /**
