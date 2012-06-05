@@ -3,13 +3,11 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id');?></th>
+			<th><?php echo $this->Paginator->sort('ubercart_ordre_id');?></th>
 			<th><?php echo $this->Paginator->sort('tinga');?></th>
 			<th><?php echo $this->Paginator->sort('kunde_id');?></th>
-			<th><?php echo $this->Paginator->sort('ubercart_ordre_id');?></th>
 			<th><?php echo $this->Paginator->sort('total');?></th>
 			<th><?php echo $this->Paginator->sort('frakt');?></th>
-			<th><?php echo $this->Paginator->sort('varetekst');?></th>
-			<th><?php echo $this->Paginator->sort('kundetekst');?></th>
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort('created');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
@@ -18,13 +16,13 @@
 	foreach ($tingingar as $tinging): ?>
 	<tr>
 		<td><?php echo h($tinging['Tinging']['id']); ?>&nbsp;</td>
-		<td><?php echo h($tinging['Tinging']['tinga']); ?>&nbsp;</td>
-		<td><?php echo h($tinging['Tinging']['kunde_id']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['ubercart_ordre_id']); ?>&nbsp;</td>
+		<td><?php echo h($tinging['Tinging']['tinga']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($tinging['Kunde']['nummer'], array('controller' => 'kunder', 'action' => 'view', $tinging['Kunde']['nummer'])); ?>
+		</td>
 		<td><?php echo h($tinging['Tinging']['total']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['frakt']); ?>&nbsp;</td>
-		<td><?php echo h($tinging['Tinging']['varetekst']); ?>&nbsp;</td>
-		<td><?php echo h($tinging['Tinging']['kundetekst']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['modified']); ?>&nbsp;</td>
 		<td><?php echo h($tinging['Tinging']['created']); ?>&nbsp;</td>
 		<td class="actions">
@@ -54,5 +52,9 @@
 	<h3><?php echo __('Actions'); ?></h3>
 	<ul>
 		<li><?php echo $this->Html->link(__('New Tinging'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('List Kunder'), array('controller' => 'kunder', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kunde'), array('controller' => 'kunder', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Kaffeflyttinger'), array('controller' => 'kaffeflyttinger', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Kaffeflytting'), array('controller' => 'kaffeflyttinger', 'action' => 'add')); ?> </li>
 	</ul>
 </div>
