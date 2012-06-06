@@ -6,7 +6,6 @@
 		echo $this->Form->input('selger', array('options' => $selgere));
 		echo $this->Form->input('beskrivelse');
 		echo $this->Form->input('lagertype', array('options' => $lagertyper));
-		echo $this->Form->input('konto');
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Submit');?>
