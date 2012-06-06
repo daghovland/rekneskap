@@ -7,11 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class TingingarController extends AppController {
 
-  public function beforeFilter(){
-    parent::beforeFilter();
-    $this->Auth->allow('add');
-  }
-
+ 
 /**
  * index method
  *
