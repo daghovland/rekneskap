@@ -81,6 +81,7 @@
 	  <option value="<?php echo $this->Html->url(array('controller' => 'fakturaer', 'action' => 'index')); ?>">Alle fakturaer</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffesalg', 'action' => 'index')); ?>">Alle kaffesalg</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffelagre', 'action' => 'index')); ?>">Alle kaffelagre</option>
+	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffelagre', 'action' => 'beholdninger')); ?>">Alle kaffelagerbeholdninger</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffeflyttinger', 'action' => 'index')); ?>">Alle kaffeflyttinger</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kontoer', 'action' => 'index')); ?>">Rekneskapskontoer</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffepriser', 'action' => 'index')); ?>">Alle kaffityper</option>

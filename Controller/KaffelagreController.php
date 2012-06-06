@@ -19,8 +19,11 @@ class KaffelagreController extends AppController {
 		)
 	);
 	
-
 	function index() {
+		$this->Kaffelager->recursive = 0;
+		$this->set('kaffelagre', $this->paginate());
+	}
+	function beholdninger() {
 		$this->Kaffelager->recursive = 0;
 		$this->set('beholdninger', $this->Kaffelager->Kaffelagerbeholdning->find('all', array('order' => array('kaffelager_id ASC', 'kaffepris_id ASC'), 'conditions' => array('lagertype_id' => 3))));
 		$this->set('kaffelagre', $this->Kaffelager->find('all', array('conditions' => array('Kaffelager.lagertype' => 3), 'order' => array('Kaffelager.nummer ASC'))));
@@ -107,7 +110,7 @@ class KaffelagreController extends AppController {
 			$this->Session->setFlash(__('Invalid id for Kaffelager', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if ($this->Kaffelager->del($id)) {
+		if ($this->Kaffelager->delete($id)) {
 			$this->Session->setFlash(__('Kaffelager deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
