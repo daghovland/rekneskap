@@ -1,65 +1,102 @@
 <?php
+App::uses('AppController', 'Controller');
+/**
+ * Kaffepriser Controller
+ *
+ * @property Kaffepris $Kaffepris
+ */
 class KaffepriserController extends AppController {
 
-	var $name = 'Kaffepriser';
-	var $helpers = array('Html', 'Form');
-	var $components = array('Acl');
 
-	function index() {
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function index() {
 		$this->Kaffepris->recursive = 0;
 		$this->set('kaffepriser', $this->paginate());
 	}
 
-	function view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid Kaffepris.', true));
-			$this->redirect(array('action'=>'index'));
+/**
+ * view method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function view($id = null) {
+		$this->Kaffepris->id = $id;
+		if (!$this->Kaffepris->exists()) {
+			throw new NotFoundException(__('Invalid kaffepris'));
 		}
 		$this->set('kaffepris', $this->Kaffepris->read(null, $id));
 	}
 
-	function add() {
-		if (!empty($this->request->data)) {
+/**
+ * add method
+ *
+ * @return void
+ */
+	public function add() {
+		if ($this->request->is('post')) {
 			$this->Kaffepris->create();
 			if ($this->Kaffepris->save($this->request->data)) {
-				$this->Session->setFlash(__('The Kaffepris has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->Session->setFlash(__('The kaffepris has been saved'));
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Kaffepris could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The kaffepris could not be saved. Please, try again.'));
 			}
 		}
-		$this->set('kaffibrenningar', $this->Kaffepris->Kaffibrenning->find('list'));
+		$kaffibrenningar = $this->Kaffepris->Kaffibrenning->find('list');
+		$kaffityper = $this->Kaffepris->Kaffitype->find('list');
+		$this->set(compact('kaffibrenningar', 'kaffityper'));
 	}
 
-	function edit($id = null) {
-		if (!$id && empty($this->request->data)) {
-			$this->Session->setFlash(__('Invalid Kaffepris', true));
-			$this->redirect(array('action'=>'index'));
+/**
+ * edit method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function edit($id = null) {
+		$this->Kaffepris->id = $id;
+		if (!$this->Kaffepris->exists()) {
+			throw new NotFoundException(__('Invalid kaffepris'));
 		}
-		if (!empty($this->request->data)) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Kaffepris->save($this->request->data)) {
-				$this->Session->setFlash(__('The Kaffepris has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->Session->setFlash(__('The kaffepris has been saved'));
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Kaffepris could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The kaffepris could not be saved. Please, try again.'));
 			}
-		}
-		if (empty($this->request->data)) {
+		} else {
 			$this->request->data = $this->Kaffepris->read(null, $id);
-			$this->set('kaffibrenningar', $this->Kaffepris->Kaffibrenning->find('list'));
 		}
+		$kaffibrenningar = $this->Kaffepris->Kaffibrenning->find('list');
+		$kaffityper = $this->Kaffepris->Kaffitype->find('list');
+		$this->set(compact('kaffibrenningar', 'kaffityper'));
 	}
 
-	function delete($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Kaffepris', true));
-			$this->redirect(array('action'=>'index'));
+/**
+ * delete method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
 		}
-		if ($this->Kaffepris->del($id)) {
-			$this->Session->setFlash(__('Kaffepris deleted', true));
-			$this->redirect(array('action'=>'index'));
+		$this->Kaffepris->id = $id;
+		if (!$this->Kaffepris->exists()) {
+			throw new NotFoundException(__('Invalid kaffepris'));
 		}
+		if ($this->Kaffepris->delete()) {
+			$this->Session->setFlash(__('Kaffepris deleted'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash(__('Kaffepris was not deleted'));
+		$this->redirect(array('action' => 'index'));
 	}
-
 }
-?>
