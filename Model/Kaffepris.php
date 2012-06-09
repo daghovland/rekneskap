@@ -2,7 +2,6 @@
 class Kaffepris extends AppModel {
 
 	var $name = 'Kaffepris';
-	var $useTable = 'kaffepris';
 	var $primaryKey = 'nummer';
 	var $displayField = 'intern_navn';
 	var $validate = array(
@@ -19,22 +18,13 @@ class Kaffepris extends AppModel {
 			'className' => 'Kaffeflytting',
 			'foreignKey' => 'type',
 			'dependent' => false,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
 		),
 		'Rabatt' => array(
-				'className' => 'Rabatt',
-				'foreignKey' => 'kaffepris_id',
-				'dependent' => 'false'
-		)
+				  'className' => 'Rabatt',
+				  'foreignKey' => 'kaffepris_id',
+				  'dependent' => 'false'
+				  ),
 	);
-	var $belongsTo = array('Kaffibrenning');
-
+	var $belongsTo = array('Kaffibrenning', 'Kaffitype');
 }
 ?>

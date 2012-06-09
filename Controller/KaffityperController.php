@@ -1,59 +1,98 @@
 <?php
+App::uses('AppController', 'Controller');
+/**
+ * Kaffityper Controller
+ *
+ * @property Kaffitype $Kaffitype
+ */
 class KaffityperController extends AppController {
 
-	function index() {
+
+/**
+ * index method
+ *
+ * @return void
+ */
+	public function index() {
 		$this->Kaffitype->recursive = 0;
 		$this->set('kaffityper', $this->paginate());
 	}
 
-	function view($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid Kaffitype.', true));
-			$this->redirect(array('action'=>'index'));
+/**
+ * view method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function view($id = null) {
+		$this->Kaffitype->id = $id;
+		if (!$this->Kaffitype->exists()) {
+			throw new NotFoundException(__('Invalid kaffitype'));
 		}
 		$this->set('kaffitype', $this->Kaffitype->read(null, $id));
 	}
 
-	function add() {
-		if (!empty($this->request->data)) {
+/**
+ * add method
+ *
+ * @return void
+ */
+	public function add() {
+		if ($this->request->is('post')) {
 			$this->Kaffitype->create();
 			if ($this->Kaffitype->save($this->request->data)) {
-				$this->Session->setFlash(__('The Kaffitype has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->Session->setFlash(__('The kaffitype has been saved'));
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Kaffitype could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The kaffitype could not be saved. Please, try again.'));
 			}
 		}
 	}
 
-	function edit($id = null) {
-		if (!$id && empty($this->request->data)) {
-			$this->Session->setFlash(__('Invalid Kaffitype', true));
-			$this->redirect(array('action'=>'index'));
+/**
+ * edit method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function edit($id = null) {
+		$this->Kaffitype->id = $id;
+		if (!$this->Kaffitype->exists()) {
+			throw new NotFoundException(__('Invalid kaffitype'));
 		}
-		if (!empty($this->request->data)) {
+		if ($this->request->is('post') || $this->request->is('put')) {
 			if ($this->Kaffitype->save($this->request->data)) {
-				$this->Session->setFlash(__('The Kaffitype has been saved', true));
-				$this->redirect(array('action'=>'index'));
+				$this->Session->setFlash(__('The kaffitype has been saved'));
+				$this->redirect(array('action' => 'index'));
 			} else {
-				$this->Session->setFlash(__('The Kaffitype could not be saved. Please, try again.', true));
+				$this->Session->setFlash(__('The kaffitype could not be saved. Please, try again.'));
 			}
-		}
-		if (empty($this->request->data)) {
+		} else {
 			$this->request->data = $this->Kaffitype->read(null, $id);
 		}
+		$standardKaffepris = $this->Kaffitype->StandardKaffepris->find('list');
+		$this->set(compact('standardKaffepris'));
 	}
 
-	function delete($id = null) {
-		if (!$id) {
-			$this->Session->setFlash(__('Invalid id for Kaffitype', true));
-			$this->redirect(array('action'=>'index'));
+/**
+ * delete method
+ *
+ * @param string $id
+ * @return void
+ */
+	public function delete($id = null) {
+		if (!$this->request->is('post')) {
+			throw new MethodNotAllowedException();
 		}
-		if ($this->Kaffitype->del($id)) {
-			$this->Session->setFlash(__('Kaffitype deleted', true));
-			$this->redirect(array('action'=>'index'));
+		$this->Kaffitype->id = $id;
+		if (!$this->Kaffitype->exists()) {
+			throw new NotFoundException(__('Invalid kaffitype'));
 		}
+		if ($this->Kaffitype->delete()) {
+			$this->Session->setFlash(__('Kaffitype deleted'));
+			$this->redirect(array('action' => 'index'));
+		}
+		$this->Session->setFlash(__('Kaffitype was not deleted'));
+		$this->redirect(array('action' => 'index'));
 	}
-
 }
-?>
