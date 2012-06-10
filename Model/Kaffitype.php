@@ -6,7 +6,7 @@ class Kaffitype extends AppModel {
 	var $displayField = 'namn';
 	var $hasMany = array('Kaffiinnkjop', 
 			     'Kaffepris' => array('className' => 'Kaffepris', 
-						  'foreignKey' => 'kaffetype_id')
+						  'foreignKey' => 'kaffitype_id')
 			     );
 
 	var $belongsTo = array('StandardKaffepris' => array('className' => 'Kaffepris', 
