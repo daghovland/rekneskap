@@ -3,18 +3,14 @@
 	<fieldset>
 		<legend><?php echo __('Edit Kaffepris'); ?></legend>
 	<?php
-		echo $this->Form->input('type');
+		echo $this->Form->input('kaffitype_id');
 		echo $this->Form->input('beskrivelse');
 		echo $this->Form->input('pris');
 		echo $this->Form->input('nummer');
-		echo $this->Form->input('gram');
 		echo $this->Form->input('haldbar');
-		echo $this->Form->input('malt');
 		echo $this->Form->input('intern_navn');
-		echo $this->Form->input('brennings_grad');
 		echo $this->Form->input('salsnamn');
 		echo $this->Form->input('kaffibrenning_id');
-		echo $this->Form->input('kaffitype_id');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
