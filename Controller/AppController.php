@@ -11,7 +11,7 @@ Class AppController extends Controller {
 								  'fields' => array('username' => 'navn', 
 										    'password' => 'passord')
 								  ),
-				      'Basic',
+				      //				      'Basic',
 				      'Form'
 				      );
     $this->Auth->authorize = array('Controller' => array('userModel' => 'Selger'));
