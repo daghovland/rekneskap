@@ -4,9 +4,9 @@
 		<legend><?php echo __('Edit Tinging'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('ubercart_ordre_id');
+		echo $this->Form->input('ubercart_ordre_id', array('type' => 'number'));
 		echo $this->Form->input('tinga');
-		echo $this->Form->input('kunde_id');
+		echo $this->Form->input('kunde_id', array('options' => $kunder));
 		echo $this->Form->input('total');
 		echo $this->Form->input('frakt');
 	?>

@@ -7,6 +7,14 @@ App::uses('AppController', 'Controller');
  */
 class TingingarController extends AppController {
 
+  public function beforeFilter(){
+    parent::beforeFilter();
+    $this->Auth->authenticate = array('Basic'  => array('userModel' => 'Selger',
+							'fields' => array('username' => 'navn', 
+									  'password' => 'passord')
+							));
+    $this->Auth->allow(array('add'));
+  }
  
 /**
  * index method
@@ -47,8 +55,7 @@ class TingingarController extends AppController {
 	    }
 	  }
 	}
-
-/**
+	/**
  * edit method
  *
  * @param string $id
@@ -69,7 +76,7 @@ class TingingarController extends AppController {
 		} else {
 			$this->request->data = $this->Tinging->read(null, $id);
 		}
-		$kunder = $this->Tinging->Kunde->find('list');
+		$kunder = $this->Tinging->Kunde->find('list', array('fields' => array('nummer', 'navn')));
 		$this->set(compact('kunder'));
 	}
 

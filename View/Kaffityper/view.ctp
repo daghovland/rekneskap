@@ -57,8 +57,8 @@
 			<td><?php echo $kaffepris['haldbar'];?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('Syn', true), array('controller' => 'kaffepriser', 'action' => 'view', $kaffepris['nummer'])); ?>
-				<?php echo $this->Html->link(__('Edit', true), array('controller' => 'kaffepriser', 'action' => 'edit', $kaffepris['nummer'])); ?>
-				<?php echo $this->Html->link(__('Delete', true), array('controller' => 'kaffepriser', 'action' => 'delete', $kaffepris['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffepris['nummer'])); ?>
+				<?php echo $this->Html->link(__('Endre', true), array('controller' => 'kaffepriser', 'action' => 'edit', $kaffepris['nummer'])); ?>
+				<?php echo $this->Html->link(__('Slett', true), array('controller' => 'kaffepriser', 'action' => 'delete', $kaffepris['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffepris['nummer'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
@@ -67,7 +67,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add'));?> </li>
+			<li><?php echo $this->Html->link(__('Ny kaffepris', true), array('controller' => 'kaffepriser', 'action' => 'add'));?> </li>
 		</ul>
 	</div>
 </div>
@@ -117,7 +117,7 @@
 
 	<div class="actions">
 		<ul>
-			<li><?php echo $this->Html->link(__('New Kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add'));?> </li>
+			<li><?php echo $this->Html->link(__('Nytt kaffiinnkjop', true), array('controller' => 'kaffiinnkjop', 'action' => 'add'));?> </li>
 		</ul>
 	</div>
 </div>

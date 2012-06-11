@@ -192,7 +192,7 @@ class KunderController extends AppController {
 			$this->Session->setFlash(__('Ugyldig kunde id', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if ($this->Kunde->del($id)) {
+		if ($this->Kunde->delete($id)) {
 			$this->Session->setFlash(__('Sletta kunde nummer ' . $id, true));
 			$this->redirect(array('action'=>'index'));
 		}
