@@ -1,9 +1,9 @@
 <div class="kaffityper view">
 <h2><?php  __('Kaffitype');?></h2>
 	<dl><?php $i = 0; $class = ' class="altrow"';?>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Id'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Namn'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $kaffitype['Kaffitype']['id']; ?>
+			<?php echo $kaffitype['Kaffitype']['namn']; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Nettogram'); ?></dt>
@@ -11,9 +11,15 @@
 			<?php echo $kaffitype['Kaffitype']['nettogram']; ?>
 			&nbsp;
 		</dd>
-		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Namn'); ?></dt>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Standard kaffepris'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $kaffitype['Kaffitype']['namn']; ?>
+<?php if(isset($kaffitype['Kaffitype']['standard_kaffepris_id']))
+echo $this->Html->link($standardKaffepris[$kaffitype['Kaffitype']['standard_kaffepris_id']], array('controller' => 'kaffepriser', 'action' => 'view', $kaffitype['Kaffitype']['standard_kaffepris_id'])); ?>
+			&nbsp;
+		</dd>
+<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Ubercart SKU'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $kaffitype['Kaffitype']['ubercart_SKU']; ?>
 			&nbsp;
 		</dd>
 	</dl>

@@ -5,6 +5,7 @@
 	<?php
 		echo $this->Form->input('nettogram');
 		echo $this->Form->input('namn');
+		echo $this->Form->input('ubercart_SKU');
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Submit');?>
