@@ -16,6 +16,7 @@ class KaffityperController extends AppController {
 	public function index() {
 		$this->Kaffitype->recursive = 0;
 		$this->set('kaffityper', $this->paginate());
+		$this->set('kaffepriser', $this->Kaffitype->Kaffepris->find('list'));
 	}
 
 /**
@@ -28,8 +29,10 @@ class KaffityperController extends AppController {
 		$this->Kaffitype->id = $id;
 		if (!$this->Kaffitype->exists()) {
 			throw new NotFoundException(__('Invalid kaffitype'));
-		}
-		$this->set('kaffitype', $this->Kaffitype->read(null, $id));
+		}	
+		$standardKaffepris = $this->Kaffitype->StandardKaffepris->find('list');
+		$kaffitype = $this->Kaffitype->read(null, $id);
+		$this->set(compact('kaffitype', 'standardKaffepris'));
 	}
 
 /**
@@ -70,7 +73,7 @@ class KaffityperController extends AppController {
 		} else {
 			$this->request->data = $this->Kaffitype->read(null, $id);
 		}
-		$standardKaffepris = $this->Kaffitype->StandardKaffepris->find('list');
+		$standardKaffepris = $this->Kaffitype->StandardKaffepris->find('list', array('conditions' => array('StandardKaffepris.kaffitype_id' => $id)));
 		$this->set(compact('standardKaffepris'));
 	}
 

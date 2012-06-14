@@ -9,6 +9,8 @@ echo $this->Paginator->counter(array('format' => __('Side {:page} av {:pages}, v
 	<th><?php echo $this->Paginator->sort('id');?></th>
 	<th><?php echo $this->Paginator->sort('nettogram');?></th>
 	<th><?php echo $this->Paginator->sort('namn');?></th>
+	<th><?php echo $this->Paginator->sort('standardKaffepris');?></th>
+	<th><?php echo $this->Paginator->sort('ubercart_SKU');?></th>
 	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
@@ -29,10 +31,18 @@ foreach ($kaffityper as $kaffitype):
 		<td>
 			<?php echo $kaffitype['Kaffitype']['namn']; ?>
 		</td>
+		<td>
+<?php if (isset($kaffitype['Kaffitype']['standard_kaffepris_id']))
+echo $this->Html->link($kaffepriser[$kaffitype['Kaffitype']['standard_kaffepris_id']], array('controller'=>'kaffepriser', 'action' => 'view', $kaffitype['Kaffitype']['standard_kaffepris_id']));
+else echo "Ikkje satt enno";?>
+		</td>
+		<td>
+			<?php echo $kaffitype['Kaffitype']['ubercart_SKU']; ?>
+		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View', true), array('action' => 'view', $kaffitype['Kaffitype']['id'])); ?>
-			<?php echo $this->Html->link(__('Edit', true), array('action' => 'edit', $kaffitype['Kaffitype']['id'])); ?>
-			<?php echo $this->Html->link(__('Delete', true), array('action' => 'delete', $kaffitype['Kaffitype']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffitype['Kaffitype']['id'])); ?>
+			<?php echo $this->Html->link(__('Syn', true), array('action' => 'view', $kaffitype['Kaffitype']['id'])); ?>
+			<?php echo $this->Html->link(__('Endre', true), array('action' => 'edit', $kaffitype['Kaffitype']['id'])); ?>
+			<?php echo $this->Html->link(__('Slett', true), array('action' => 'delete', $kaffitype['Kaffitype']['id']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffitype['Kaffitype']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
