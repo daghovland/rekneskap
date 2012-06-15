@@ -5,7 +5,7 @@
       <th>Lager nummer</th>
       <th>Lagernavn</th>
       <?php foreach($kaffetyper as $kaffetype): ?>
-   <th><?php echo $this->Html->link($kaffetype['Kaffepris']['type'], array('controller' => 'kaffepriser', 'action' => 'view',$kaffetype['Kaffepris']['nummer'])); ?> </th>
+   <th><?php echo $this->Html->link($kaffetype['Kaffepris']['intern_navn'], array('controller' => 'kaffepriser', 'action' => 'view',$kaffetype['Kaffepris']['nummer'])); ?> </th>
       <?php endforeach; ?>
       <th>Pengebalanse</th>
     </tr>
@@ -24,9 +24,9 @@
 	<?php echo $this->Html->link($kaffelager['Kaffelager']['nummer'], array('controller' => 'kaffelagre', 'action' => 'view', $kaffelager['Kaffelager']['nummer'])); ?>
       </td>
       <td>
-      <?php echo $this->Html->link($kaffelager['Kaffelager']['beskrivelse'], array('controller' => 'kaffelagre', 'action' => 'view', $kaffelager['Kaffelager']['nummer'])); ?>
+<?php echo $this->Html->link($kaffelager['Kaffelager']['beskrivelse'] . "(" . $lagertyper[$kaffelager['Kaffelager']['lagertype']] . ")", array('controller' => 'kaffelagre', 'action' => 'view', $kaffelager['Kaffelager']['nummer'])); ?>
       </td>
-      <?php foreach($kaffetyper as $kaffetype): ?>
+<?php foreach($kaffetyper as $kaffetype): ?>
       <td>
 	<?php if($beholdninger[$beholdning_index]['Kaffelager']['nummer'] == $kaffelager['Kaffelager']['nummer'] && $beholdninger[$beholdning_index]['Kaffepris']['nummer'] == $kaffetype['Kaffepris']['nummer']){
 	      $antall = $beholdninger[$beholdning_index]['Kaffelagerbeholdning']['antall'];

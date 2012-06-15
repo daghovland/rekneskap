@@ -21,7 +21,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Kaffeflytting.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Kaffeflytting.nummer'))); ?></li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Kaffeflytting.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Kaffeflytting.nummer'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('action'=>'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Kontantbetaling', true), array('controller'=> 'pengeflyttinger', 'action'=>'add')); ?> </li>

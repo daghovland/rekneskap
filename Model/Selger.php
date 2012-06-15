@@ -3,6 +3,7 @@ App::uses('CakeEmail', 'Network/Email');
 class Selger extends AppModel {
   public $name = 'Selger';
   public $primaryKey = 'nummer';
+  public $displayField = 'navn';
   public $useTable = 'selgere';
 
   // Values returned from glemtPassord

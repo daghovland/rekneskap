@@ -18,17 +18,20 @@
 			       )
        ;
        foreach($kaffetyper as $kaffetype){
-	 echo "<fieldset>";
 	 $kaffetypeId = $kaffetype['Kaffepris']['nummer'];
-         echo $this->Form->input('antall' . $kaffetypeId, 
-				 array('options' => range(0,$SentrallagerBeholdninger[$kaffetypeId]), 
-				       'id' => 'KaffeSalg' . $kaffetypeId, 
-				       'label' => $kaffetype['Kaffepris']['type'] . " (" . $kaffetype['Kaffepris']['beskrivelse'] . ') - haldbar til ' . $kaffetype['Kaffepris']['haldbar']
-				       )
-				 )
-	   ;
-	 echo $this->Form->input('rabatt' . $kaffetype['Kaffepris']['nummer'], array('label' => 'Pris', 'options' => $rabatter[$kaffetype['Kaffepris']['nummer']]));
-	 echo "</fieldset>";
+	 if(isset($SentrallagerBeholdninger[$kaffetypeId]) && $SentrallagerBeholdninger[$kaffetypeId] > 0){
+	   echo "<fieldset>";
+	   $kaffetypeId = $kaffetype['Kaffepris']['nummer'];
+	   echo $this->Form->input('antall' . $kaffetypeId, 
+				   array('options' => range(0,$SentrallagerBeholdninger[$kaffetypeId]), 
+					 'id' => 'KaffeSalg' . $kaffetypeId, 
+					 'label' => $kaffetype['Kaffepris']['type'] . " (" . $kaffetype['Kaffepris']['beskrivelse'] . ') - haldbar til ' . $kaffetype['Kaffepris']['haldbar']
+					 )
+				   )
+	     ;
+	   echo $this->Form->input('rabatt' . $kaffetype['Kaffepris']['nummer'], array('label' => 'Pris', 'options' => $rabatter[$kaffetype['Kaffepris']['nummer']]));
+	   echo "</fieldset>";
+	 }
        }
     ?>
     <table id="adresseVisning">
