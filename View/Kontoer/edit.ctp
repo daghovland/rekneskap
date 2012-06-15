@@ -5,6 +5,7 @@
 	<?php
 		echo $this->Form->input('nummer');
 		echo $this->Form->input('beskrivelse');
+		echo $this->Form->input('NS4102', array("label" => 'NS4102 (Norsk standard kontoplan)'));
 		echo $this->Form->input('type',array('options' => $typer));
 		echo $this->Form->input('ansvarlig', array('options' => $ansvarlige));
 		echo $this->Form->input('delav');
@@ -14,7 +15,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Konto.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Konto.nummer'))); ?></li>
+		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Konto.nummer')), null, sprintf(__('Are you sure you want to delete # %s?', true), $this->Form->value('Konto.nummer'))); ?></li>
 		<li><?php echo $this->Html->link(__('List Kontoer', true), array('action'=>'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Kontotyper', true), array('controller'=> 'kontotyper', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Kontotypenavn', true), array('controller'=> 'kontotyper', 'action'=>'add')); ?> </li>

@@ -6,10 +6,10 @@
 	<?php
 		echo $this->Form->input('type', array('options' => $kaffetyper));
 		echo $this->Form->input('antall');
-		echo $this->Form->input('fra', array('label' => 'Frå'));
-                echo $this->Form->input('fralagertype', array('label' => 'Frå lagertype'));
-		echo $this->Form->input('til', array('label' => 'Til'));
-                echo $this->Form->input('tillagertype', array('label' => 'Tillagertype'));
+echo $this->Form->input('fra', array('label' => 'Frå', 'options' => $fra));
+echo $this->Form->input('fralagertype', array('label' => 'Frå lagertype', 'options' => $lagertyper));
+echo $this->Form->input('til', array('label' => 'Til', 'options' => $til));
+echo $this->Form->input('tillagertype', array('label' => 'Til lagertype', 'options' => $lagertyper));
 		echo $this->Form->input('beskrivelse', array('label' => 'Kommentar'));
                 if(isset($kaffesalg_dato))
 		  echo $this->Form->hidden('dato', array('value' => $kaffesalg_dato));

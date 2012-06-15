@@ -95,21 +95,19 @@ class KaffeflyttingerController extends AppController {
     $til = $fra;
     $kaffetyper = $this->Kaffeflytting->Kaffepris->find('list');
     $typer = $kaffetyper;
-    $lagertypenavn = $this->Kaffeflytting->Fralagertypenavn->find('list');
-    $fralagertyper = $lagertypenavn;
-    $tillagertyper = $lagertypenavn;
-    $this->set(compact('kaffesalg', 'fra', 'til', 'typer', 'kaffetyper', 'fralagertyper', 'tillagertyper'));
+    $lagertyper = $this->Kaffeflytting->Fralagertypenavn->find('list');
+    $this->set(compact('kaffesalg', 'fra', 'til', 'typer', 'kaffetyper', 'lagertyper'));
   }
   
   function edit($id = null) {
     if (!$id && empty($this->request->data)) {
-      $this->Session->setFlash(__('Ugylidg Kaffeflytting', true));
-      $this->redirect($this->Session->read('forrigeSide'));
+      $this->Session->setFlash(__('Ugyldig Kaffeflytting', true));
+      //$this->redirect($this->Session->read('forrigeSide'));
     }
     if (!empty($this->request->data)) {
       if ($this->Kaffeflytting->save($this->request->data)) {
 	$this->Session->setFlash(__('Kaffeflyttinga er lagra', true));
-	$this->redirect($this->Session->read('forrigeSide'));
+	$this->redirect(array('action' => 'view', $id));
       } else {
 	$this->Session->setFlash(__('Kunne ikkje lagre kaffeflyttinga. Prøv igjen.', true));
       }

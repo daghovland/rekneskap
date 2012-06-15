@@ -102,7 +102,9 @@ class KaffelagreController extends AppController {
 			$this->request->data = $this->Kaffelager->read(null, $id);
 		}
 		$selgere = $this->Kaffelager->Selger->find('list');
-		$this->set(compact('selgere'));
+		$lagertyper = $this->Kaffelager->lagertypenavn->find('list');
+		$kontoer = $this->Kaffelager->lagerkonto->find('list');
+		$this->set(compact('selgere', 'kontoer', 'lagertyper'));
 	}
 
 	function delete($id = null) {
