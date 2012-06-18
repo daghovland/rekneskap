@@ -128,12 +128,11 @@ class KaffeflyttingerController extends AppController {
   function delete($id = null) {
 		if (!$id) {
 			$this->Session->setFlash(__('Invalid id for Kaffeflytting', true));
-			$this->redirect($this->Session->read('forrigeSide'));
 		}
-		if ($this->Kaffeflytting->del($id)) {
+		if ($this->Kaffeflytting->delete($id)) {
 			$this->Session->setFlash(__('Kaffeflytting deleted', true));
-			$this->redirect($this->Session->read('forrigeSide'));
 		}
+		$this->redirect(array('action' => 'index'));
 	}
 
 }
