@@ -28,7 +28,7 @@
       </td>
 <?php foreach($kaffetyper as $kaffetype): ?>
       <td>
-	<?php if($beholdninger[$beholdning_index]['Kaffelager']['nummer'] == $kaffelager['Kaffelager']['nummer'] && $beholdninger[$beholdning_index]['Kaffepris']['nummer'] == $kaffetype['Kaffepris']['nummer']){
+<?php if(isset($beholdninger[$beholdning_index]) && $beholdninger[$beholdning_index]['Kaffelager']['nummer'] == $kaffelager['Kaffelager']['nummer'] && $beholdninger[$beholdning_index]['Kaffepris']['nummer'] == $kaffetype['Kaffepris']['nummer']){
 	      $antall = $beholdninger[$beholdning_index]['Kaffelagerbeholdning']['antall'];
 	      if($antall != 0)
 		echo $antall;
