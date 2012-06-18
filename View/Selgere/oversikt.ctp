@@ -15,8 +15,9 @@
       <?php
 	$i = 0;
 	$beholdning_index = 0;
+debug($kaffelagre);
 	foreach ($kaffelagre as $array_key => $selger):
-	if($selger['Kaffelager']['lagertype'] == "3"):
+//if($selger['Kaffelager']['lagertype'] == "3"):
 	$class = null;
 	if ($i++ % 2 == 0) {
 	  $class = ' class="altrow"';
@@ -56,7 +57,8 @@
 	<?php echo $this->Html->link(__('Endre passord', true), array('action'=>'endre_passord', $selger['Selger']['nummer'])); ?>
       </td>
     </tr>
-	  <?php endif; endforeach;  ?>
+	  <?php //endif; 
+	  endforeach;  ?>
   </table>
 </div>
 <div class="actions">
