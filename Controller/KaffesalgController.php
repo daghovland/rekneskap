@@ -86,20 +86,20 @@ class KaffesalgController extends AppController {
 			      $this->Kaffesalg->id));
       }
     }
-    $standardLager = "8";
-    $this->set('standardLager', $standardLager);
+    $standardLager = $this->Kaffesalg->Kaffeflytting->Fra->find('first', array('conditions' => array('er_standard_lager' => true)));
+    $this->set('standardLager', $standardLager['Fra']['nummer']);
     if(isset($this->params['named']['kundenummer']))
       $this->set('kundenummer', $this->params['named']['kundenummer']);		
     $this->set('rabatter', $this->Kaffesalg->hent_rabatter());
     $this->set('SentrallagerBeholdninger', $this->Kaffesalg->Kaffeflytting->Fra->Kaffelagerbeholdning->find('list', 
-													    array('conditions' => array('kaffelager_id' => $standardLager,
-																	'lagertype_id' => '3'),
+													    array('conditions' => array('kaffelager_id' => $standardLager['Fra']['nummer'],
+																	'er_vanlig_lagertype' => true),
 														  'fields' => array('kaffepris_id', 'antall') 
 														  )))
       ;
-    $this->set('fralagre', $this->Kaffesalg->Kaffeflytting->Fra->find('list'));
+    $this->set('fralagre', $this->Kaffesalg->Kaffeflytting->Fra->Kaffelagerbeholdning->find('list', array('fields' => array('kaffelager_id', 'kaffelager_id'), 'conditions' => array('er_vanlig_lagertype' => true))));
     $this->set('kunder', $this->Kaffesalg->Faktura->Kunde->find('list', array('fields' => array('navn'), 'order' => array('navn ASC'))));
-    $this->set('fralagernavn', $this->Kaffesalg->Kaffeflytting->Fra->find('list', array('fields' => array('beskrivelse'))));
+    $this->set('fralagernavn', $this->Kaffesalg->Kaffeflytting->Fra->Kaffelagerbeholdning->find('list', array('fields' => array('kaffelager_id', 'lagernavn'), 'conditions' => array('er_vanlig_lagertype' => true))));
     $this->set('kaffetyper', $this->Kaffesalg->Kaffeflytting->Kaffepris->find('all', array('order' => 'nummer DESC')));
     $this->set('kaffetypenavn', $this->Kaffesalg->Kaffeflytting->Kaffepris->find('list', array('fields' => array('type'))));
     $selgerData = $this->Auth->user();

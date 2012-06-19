@@ -8,6 +8,7 @@ echo $this->Form->input('selger', array('options' => $selgere));
 		echo $this->Form->input('beskrivelse');
 echo $this->Form->input('lagertype', array('options' => $lagertyper));
 echo $this->Form->input('konto', array('options' => $kontoer, 'empty' => "Vel ein konto"));
+echo $this->Form->input('er_standard_lager');
 	?>
 	</fieldset>
 <?php echo $this->Form->end('Submit');?>
