@@ -5,6 +5,7 @@
 	<th><?php echo __('Beskrivelse');?></th>
 	<th><?php echo __('Lager-ansvarleg');?></th>
 	<th><?php echo __('Lagertype');?></th>
+	<th><?php echo __('Standard Lager');?></th>
 	<th class="actions"><?php echo __('Handlingar');?></th>
 </tr>
 <?php
@@ -25,6 +26,9 @@ foreach ($kaffelagre as $kaffelager):
 		</td>
 		<td>
 			<?php echo $this->Html->link($kaffelager['lagertypenavn']['navn'], array('controller' => 'lagertyper', 'action' => 'view', $kaffelager['lagertypenavn']['nummer'])); ?>
+		</td>
+		<td>
+			<?php if($kaffelager['Kaffelager']['er_standard_lager']) echo "x"; ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $kaffelager['Kaffelager']['nummer'])); ?>

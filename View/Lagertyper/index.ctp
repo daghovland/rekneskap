@@ -4,6 +4,7 @@
 <tr>
 	<th><?php echo $this->Paginator->sort('nummer');?></th>
 	<th><?php echo $this->Paginator->sort('navn');?></th>
+	<th><?php echo $this->Paginator->sort('er_vanlig_lagertype');?></th>
 	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
@@ -20,6 +21,9 @@ foreach ($lagertyper as $lagertype):
 		</td>
 		<td>
 			<?php echo $lagertype['Lagertype']['navn']; ?>
+		</td>
+		<td>
+			<?php if($lagertype['Lagertype']['er_vanlig_lagertype']) echo "x"; ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View', true), array('action'=>'view', $lagertype['Lagertype']['nummer'])); ?>
