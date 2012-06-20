@@ -15,9 +15,7 @@
       <?php
 	$i = 0;
 	$beholdning_index = 0;
-debug($kaffelagre);
 	foreach ($kaffelagre as $array_key => $selger):
-//if($selger['Kaffelager']['lagertype'] == "3"):
 	$class = null;
 	if ($i++ % 2 == 0) {
 	  $class = ' class="altrow"';
@@ -25,14 +23,16 @@ debug($kaffelagre);
       ?>
       <tr<?php echo $class;?>>
       <td>
-	<?php echo $selger['Selger']['navn']; ?>
+	<?php echo $selger['Selger']['navn'] . "( Lager nr " . $selger['Kaffelager']['nummer'] . ")"; ?>
       </td>
       <?php 
 	foreach($kaffetyper as $kaffetype){
 	  echo "<td>";
+	  echo "Lager nr " . $kaffetype['Kaffepris']['nummer'] . ", selger nr " . $selger['Kaffelager']['nummer'];
 	  foreach($beholdninger as $beholdning){
-	    if($kaffetype['Kaffepris']['nummer'] == $beholdning['Kaffepris']['nummer'] &&
-	       $selger['Kaffelager']['nummer'] == $beholdning['Kaffelager']['nummer']){
+	    if($kaffetype['Kaffepris']['nummer'] == $beholdning['Kaffelagerbeholdning']['kaffepris_id'] &&
+	       $selger['Kaffelager']['nummer'] == $beholdning['Kaffelagerbeholdning']['kaffelager_id'] &&
+	       $beholdning['Kaffelagerbeholdning']['er_vanlig_lagertype']){
 	      $antall = $beholdning['Kaffelagerbeholdning']['antall'];
 	      if($antall != 0)
 		echo $antall;

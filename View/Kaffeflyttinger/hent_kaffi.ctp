@@ -18,15 +18,16 @@
 					  'selected' => count($kaffetypenavn),
 					  'id' => 'KaffeflyttingKaffetypeId',))
     ;
+    $sisteKaffeTypeIndex = count($kaffetypenavn);
     echo $this->Form->input('antall', 
-			    array('options' => range(0,$standardBeholdninger[count($kaffetypenavn)]), 
+			    array('options' => range(0,(isset($standardBeholdninger[$sisteKaffeTypeIndex])) ? $standardBeholdninger[$sisteKaffeTypeIndex] : 0), 
 				  'id' => 'KaffeflyttingAntall')
 			    )
     ;
 		echo $this->Form->input('beskrivelse', array('label' => 'Kommentar'));
 		echo $this->Form->input('dato', array('minYear' => 2007, 'maxYear' => date('Y')));
-		echo $this->Form->hidden('fralagertype', array('value' => 3));
-		echo $this->Form->hidden('tillagertype', array('value' => 3));
+		echo $this->Form->hidden('fralagertype', array('value' => $vanligLagerType));
+		echo $this->Form->hidden('tillagertype', array('value' => $vanligLagerType));
     ?>
   </fieldset>
   <?php echo $this->Form->end('Hentet kaffi');?>

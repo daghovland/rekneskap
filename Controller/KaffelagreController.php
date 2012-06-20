@@ -42,13 +42,18 @@ class KaffelagreController extends AppController {
 	*/
 	function lager_type_beholdning(){
 	  $this->layout = 'ajax';
-	  $lager_id = $this->request->data['lager'];
-	  $type_id = $this->request->data['type'];
+	  if($this->request->is('post')){
+	    $lager_id = $this->request->data['lager'];
+	    $type_id = $this->request->data['type'];
+	  } else {
+	    $lager_id = $this->request['named']['lager'];
+	    $type_id = $this->request['named']['type'];
+	  }
 	  if(is_numeric($lager_id) && is_numeric($type_id)){
 	    $beholdning = $this->Kaffelager->Kaffelagerbeholdning->find('first', array('conditions' => array(
 													     'kaffelager_id' => $lager_id,
 													     'kaffepris_id' => $type_id,
-													     'lagertype_id' => 3)));
+													     'Kaffelagerbeholdning.er_vanlig_lagertype' => true)));
 	    //		$beholdning = $this->Kaffelager->lager_type_beholdning($this->params['form']['lager'], $this->params['form']['type']);
 	    $this->set('beholdning', $beholdning['Kaffelagerbeholdning']['antall']);
 	  }
