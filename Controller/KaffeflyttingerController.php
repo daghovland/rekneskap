@@ -55,11 +55,13 @@ class KaffeflyttingerController extends AppController {
 								     )
 	       )
       ;
-    $this->set('fralagre', $this->Kaffeflytting->Fra->Kaffelagerbeholdning->find('list', array('fields' => array('kaffelager_id', 'kaffelager_id'), 'conditions' => array('er_vanlig_lagertype' => true))));
-    $this->set('fralagernavn', $this->Kaffeflytting->Fra->Kaffelagerbeholdning->find('list', array('fields' => array('kaffelager_id', 'lagernavn'), 'conditions' => array('er_vanlig_lagertype' => true))));
+    $this->set('fralagre', $this->Kaffeflytting->Fra->find('list', array('fields' => array('nummer', 'nummer'))));
+    $this->set('fralagernavn', $this->Kaffeflytting->Fra->find('list', array('fields' => array('nummer', 'beskrivelse'))));
     $this->set('kaffetyper', $this->Kaffeflytting->Kaffepris->find('list', array('order' => array('nummer ASC'))));
     $this->set('kaffetypenavn', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('intern_navn'))));
     $this->set('kaffetypebeskrivelse', $this->Kaffeflytting->Kaffepris->find('list', array('fields' => array('beskrivelse'))));
+    $vanligLagerType = $this->Kaffeflytting->Fralagertypenavn->find('first', array('conditions' => array('er_vanlig_lagertype' => true)));
+    $this->set('vanligLagerType', $vanligLagerType['Fralagertypenavn']['nummer']);
     $selgerData = $this->Auth->user();
     $this->set('selgerInfo', $this->Kaffeflytting->Fra->Selger->findAllByNummer($selgerData['nummer']));
   }
