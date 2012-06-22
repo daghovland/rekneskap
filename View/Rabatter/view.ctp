@@ -8,7 +8,7 @@
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Type'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
-			<?php echo $rabatt['Rabatt']['kaffepris_id']; ?>
+<?php echo $this->Html->link($rabatt['Kaffepris']['intern_navn'], array('controller' => 'Kaffepriser', 'actions' => 'view', $rabatt['Kaffepris']['intern_navn']));; ?>
 			&nbsp;
 		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Pris'); ?></dt>
@@ -36,46 +36,30 @@
 	</ul>
 </div>
 <div class="related">
-	<h3><?php echo __('Related Kaffesalg');?></h3>
-	<?php if (!empty($rabatt['Kaffesalg'])):?>
+	<h3><?php echo __('Related Kaffeflyttinger');?></h3>
+	<?php if (!empty($rabatt['Kaffeflytting'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
 		<th><?php echo __('Nummer'); ?></th>
-		<th><?php echo __('Total'); ?></th>
-		<th><?php echo __('Frakt'); ?></th>
-		<th><?php echo __('Mva'); ?></th>
-		<th><?php echo __('Kontant'); ?></th>
-		<th><?php echo __('Sending'); ?></th>
+		<th><?php echo __('antall'); ?></th>
+		<th><?php echo __('Beskrivelse'); ?></th>
 		<th><?php echo __('Dato'); ?></th>
-		<th><?php echo __('Modified'); ?></th>
-		<th><?php echo __('Created'); ?></th>
-		<th><?php echo __('Selger Id'); ?></th>
-		<th class="actions"><?php echo __('Actions');?></th>
+		<th><?php echo __('Del av kaffisal nummer'); ?></th>
 	</tr>
 	<?php
 		$i = 0;
-		foreach ($rabatt['Kaffesalg'] as $kaffesalg):
+		foreach ($rabatt['Kaffeflytting'] as $kaffeflytting):
 			$class = null;
 			if ($i++ % 2 == 0) {
 				$class = ' class="altrow"';
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $kaffesalg['nummer'];?></td>
-			<td><?php echo $kaffesalg['total'];?></td>
-			<td><?php echo $kaffesalg['frakt'];?></td>
-			<td><?php echo $kaffesalg['mva'];?></td>
-			<td><?php echo $kaffesalg['kontant'];?></td>
-			<td><?php echo $kaffesalg['sending'];?></td>
-			<td><?php echo $kaffesalg['dato'];?></td>
-			<td><?php echo $kaffesalg['modified'];?></td>
-			<td><?php echo $kaffesalg['created'];?></td>
-			<td><?php echo $kaffesalg['selger_id'];?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('View', true), array('controller'=> 'kaffesalg', 'action'=>'view', $kaffesalg['nummer'])); ?>
-				<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'kaffesalg', 'action'=>'edit', $kaffesalg['nummer'])); ?>
-				<?php echo $this->Html->link(__('Delete', true), array('controller'=> 'kaffesalg', 'action'=>'delete', $kaffesalg['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffesalg['nummer'])); ?>
-			</td>
+<td><?php echo $this->Html->link($kaffeflytting['nummer'], array('controller' => 'kaffeflyttinger', 'action' => 'view', $kaffeflytting['nummer']));?></td>
+			<td><?php echo $kaffeflytting['antall'];?></td>
+			<td><?php echo $kaffeflytting['beskrivelse'];?></td>
+			<td><?php echo $kaffeflytting['dato'];?></td>
+<td><?php echo $this->Html->link($kaffeflytting['kaffesalg_id'], array('controller' => 'kaffesalg', 'action' => 'view',$kaffeflytting['kaffesalg_id'])) ;?></td>
 		</tr>
 	<?php endforeach; ?>
 	</table>
