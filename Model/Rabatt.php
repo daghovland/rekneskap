@@ -16,8 +16,8 @@ class Rabatt extends AppModel {
 	);
 
 	var $hasMany = array(
-		'Kaffesalg' => array(
-			'className' => 'Kaffesalg',
+		'Kaffeflytting' => array(
+			'className' => 'Kaffeflytting',
 			'foreignKey' => 'rabatt_id',
 			'dependent' => false,
 			'conditions' => '',
