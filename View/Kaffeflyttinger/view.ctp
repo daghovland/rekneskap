@@ -73,7 +73,7 @@
 <div class="actions">
   <ul>
     <li><?php echo $this->Html->link(__('Endre Kaffeflytting', true), array('action'=>'edit', $kaffeflytting['Kaffeflytting']['nummer'])); ?> </li>
-    <li><?php echo $this->Html->link(__('Slett Kaffeflytting', true), array('action'=>'delete', $kaffeflytting['Kaffeflytting']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffeflytting['Kaffeflytting']['nummer'])); ?> </li>
+<li><?php echo $this->Html->link(__('Slett Kaffeflytting', true), array('action'=>'delete', $kaffeflytting['Kaffeflytting']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', $kaffeflytting['Kaffeflytting']['nummer']))); ?> </li>
     <li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('action'=>'index')); ?> </li>
     <li><?php echo $this->Html->link(__('Ny Kaffeflytting', true), array('action'=>'add')); ?> </li>
     <li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
