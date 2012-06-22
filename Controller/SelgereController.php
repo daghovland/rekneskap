@@ -62,7 +62,7 @@ class SelgereController extends AppController {
 											    'kaffepris_id ASC')
 									   , 'conditions' => array('Kaffelagerbeholdning.er_vanlig_lagertype' => true)
 									   )));
-    $this->set('kaffelagre', $this->Selger->find('threaded', array('order' => array('Kaffelager.nummer ASC'))));
+    $this->set('kaffelagre', $this->Selger->find('all', array('order' => array('Kaffelager.nummer ASC'))));
     $this->set('kaffetyper', 
 	       $this->Selger->Kaffelager->lagerfraflytting->Kaffepris->find('all', 
 									    array('order' => array('nummer ASC'))));
