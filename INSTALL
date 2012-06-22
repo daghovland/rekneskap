@@ -1,0 +1,17 @@
+Bruk instruksjoner hos cake.
+
+Husk å installere:
+
+php-mysql
+
+Husk å aktivere:
+
+mod_rewrite i apache
+
+Husk å legge i database:
+
+En epost for admin-kontoen
+
+Apache-konfigurasjon
+
+Husk AllowOverride All i både webroot og app-katalog (Men ikke i /)
