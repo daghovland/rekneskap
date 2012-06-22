@@ -28,7 +28,7 @@
       <?php 
 	foreach($kaffetyper as $kaffetype){
 	  echo "<td>";
-	  echo "Lager nr " . $kaffetype['Kaffepris']['nummer'] . ", selger nr " . $selger['Kaffelager']['nummer'];
+	  //echo "Lager nr " . $kaffetype['Kaffepris']['nummer'] . ", selger nr " . $selger['Kaffelager']['nummer'];
 	  foreach($beholdninger as $beholdning){
 	    if($kaffetype['Kaffepris']['nummer'] == $beholdning['Kaffelagerbeholdning']['kaffepris_id'] &&
 	       $selger['Kaffelager']['nummer'] == $beholdning['Kaffelagerbeholdning']['kaffelager_id'] &&
