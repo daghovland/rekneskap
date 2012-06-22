@@ -23,7 +23,8 @@
       ?>
       <tr<?php echo $class;?>>
       <td>
-	<?php echo $selger['Selger']['navn'] . "( Lager nr " . $selger['Kaffelager']['nummer'] . ")"; ?>
+<?php echo $selger['Selger']['navn'] . " (Lager " . $selger['Kaffelager']['beskrivelse'] . ")"; 
+?>
       </td>
       <?php 
 	foreach($kaffetyper as $kaffetype){
