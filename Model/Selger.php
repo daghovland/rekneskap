@@ -60,13 +60,13 @@ class Selger extends AppModel {
 		      'SelgerKonto' => array(
 					     'className' => 'Konto',
 					     'foreignKey' => 'ansvarlig',
-					     'conditions' => array('SelgerKonto.type' => 7)
+					     'conditions' => array('SelgerKonto.type' => 5) // 7 i rekneskapsystem
 
 					     ),
 		      'SalgsKonto' => array(
 					    'className' => 'Konto',
 					    'foreignKey' => 'ansvarlig',
-					    'conditions' => array('SalgsKonto.type' => 6)
+					    'conditions' => array('SalgsKonto.type' => 6) // 6 i rekneskapsystem
 
 					    ),
 		      'Selgerbalanse' => array(
