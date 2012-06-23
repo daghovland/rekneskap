@@ -219,12 +219,14 @@ class Kaffesalg extends AppModel {
 	if($antall > 0){	
 	  $kaffesalg['Kaffeflytting'][] = $kaffeFlytting;
 	  $med_kaffi = true;
+	} else {
+	  echo "Ingen kaffi i salet!";
 	}
       }
     }
-    if(!$med_kaffi)
+    if(!$med_kaffi){
       return false;
-
+    }
     $fraktUtgift = array();	
     $frakt = $data['frakt'];
     $kaffesalg['Kaffesalg']['total'] = $sum + $frakt;
@@ -273,6 +275,7 @@ class Kaffesalg extends AppModel {
     $kaffesalg['Pengeflytting'][] = $pengeflytting;
     if($frakt > 0)
       $kaffesalg['Pengeflytting'][] = $fraktUtgift;
+    debug($kaffesalg);
     return $this->saveAll($kaffesalg);
   }
 
