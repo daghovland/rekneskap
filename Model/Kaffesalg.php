@@ -275,7 +275,6 @@ class Kaffesalg extends AppModel {
     $kaffesalg['Pengeflytting'][] = $pengeflytting;
     if($frakt > 0)
       $kaffesalg['Pengeflytting'][] = $fraktUtgift;
-    debug($kaffesalg);
     return $this->saveAll($kaffesalg);
   }
 
