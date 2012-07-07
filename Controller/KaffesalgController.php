@@ -130,7 +130,7 @@ class KaffesalgController extends AppController {
       $this->Session->setFlash(__('Ugyldig id for kaffisal', true));
       $this->redirect(array('action'=>'index'));
     }
-    if ($this->Kaffesalg->del($id)) {
+    if ($this->Kaffesalg->delete($id)) {
       $this->Session->setFlash(__('sletta kaffisal', true));
       $this->redirect(array('action'=>'index'));
     }
