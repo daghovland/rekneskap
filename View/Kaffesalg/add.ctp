@@ -84,8 +84,10 @@
   $fraktPrisData = '"';
   foreach($kaffetyper as $kaffetype){
     $kaffeid = $kaffetype['Kaffepris']['nummer'];
-    $fraktPrisData .= 'antall' . $kaffeid . '=" + $("KaffeSalg' . $kaffeid . '").value + "&';
-    $fraktPrisData .= 'rabatt' . $kaffeid . '=" + $("KaffesalgRabatt' . $kaffeid . '").value + "&';
+    if (isset($SentrallagerBeholdninger[$kaffeid]) && $SentrallagerBeholdninger[$kaffeid] > 0){
+      $fraktPrisData .= 'antall' . $kaffeid . '=" + $("KaffeSalg' . $kaffeid . '").value + "&';
+      $fraktPrisData .= 'rabatt' . $kaffeid . '=" + $("KaffesalgRabatt' . $kaffeid . '").value + "&';
+    }
   }
   $fraktPrisData .= 'frakt=" + $("KaffesalgFrakt").value + "&';
   $fraktPrisData .= 'postSending=" + $("KaffeSalgPostSending").value + "&';
@@ -123,9 +125,11 @@
   
   foreach ($kaffetyper as $kaffetype){
     $kaffeid = $kaffetype['Kaffepris']['nummer'];
-    lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fraktanslag", $frakt_pris_url, $this->Js, $fraktPrisData);
-    lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
-    lagAjaxAntall("KaffeSalgFra", $kaffeid, $this->Js);
+    if (isset($SentrallagerBeholdninger[$kaffeid]) && $SentrallagerBeholdninger[$kaffeid] > 0){
+      lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fraktanslag", $frakt_pris_url, $this->Js, $fraktPrisData);
+      lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
+      lagAjaxAntall("KaffeSalgFra", $kaffeid, $this->Js);
+    }
   }
 
   function lagAjaxAdresser($observerFeltId, $Js){ 
