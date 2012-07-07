@@ -29,10 +29,12 @@ class Kaffesalg extends AppModel {
 		       'Kaffeflytting' => array(
 						'className' => 'Kaffeflytting',
 						'foreignKey' => 'kaffesalg_id',
+						'dependent' => true,
 						),
 		       'Pengeflytting' => array(
 						'className' => 'Pengeflytting',
 						'foreignKey' => 'kaffesalg_id',
+						'dependent' => true,
 						)
 		       );
 

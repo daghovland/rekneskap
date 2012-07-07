@@ -91,7 +91,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Slett Kaffisal', true), array('action'=>'delete', $kaffesalg['Kaffesalg']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $kaffesalg['Kaffesalg']['nummer'])); ?> </li>
+		<li><?php echo $this->Html->link(__('Slett Kaffisal', true), array('action'=>'delete', $kaffesalg['Kaffesalg']['nummer']), null, sprintf('Er du sikker på at du vil slette kaffisal # %s? Du kan ikkje angre. Berre gjer dette om du er heilt sikker. Fakturaen slettes også.', $kaffesalg['Kaffesalg']['nummer'])); ?> </li>
 		<li><?php echo $this->Html->link(__('List Kaffisal', true), array('action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('Nytt Kaffisal', true), array('action'=>'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('Ny postsending', true), array('controller' => 'postsendingar', 'action'=>'add', '/kaffesalg:' . $kaffesalg['Kaffesalg']['nummer'])); ?> </li>
