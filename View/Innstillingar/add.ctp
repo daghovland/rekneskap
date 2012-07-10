@@ -4,8 +4,8 @@
 		<legend><?php echo __('Add Innstilling'); ?></legend>
 	<?php
 		echo $this->Form->input('namn');
-		echo $this->Form->input('ubetalte_kafferegninger');
-		echo $this->Form->input('kaffesalg_fraktutgift');
+		echo $this->Form->input('ubetalte_kafferegninger', array('options' => $kontoer));
+		echo $this->Form->input('kaffesalg_fraktutgift', array('options' => $kontoer));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>
