@@ -46,6 +46,9 @@ class InnstillingarController extends AppController {
 			} else {
 				$this->Session->setFlash(__('The innstilling could not be saved. Please, try again.'));
 			}
+		} else {
+		  $kontoer = $this->Innstilling->Fraktutgift->find('list');
+		  $this->set('kontoer', $kontoer);
 		}
 	}
 
