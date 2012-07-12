@@ -90,6 +90,8 @@
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kontotyper', 'action' => 'index')); ?>">Kontotyper</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'lagertyper', 'action' => 'index')); ?>">Lagertyper</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'rabatter', 'action' => 'index')); ?>">Alle rabatter</option>
+	  <option value="<?php echo $this->Html->url(array('controller' => 'innstillingar', 'action' => 'index')); ?>">Innstillingar</option>
+	  <option value="<?php echo $this->Html->url(array('controller' => 'tingingar', 'action' => 'index')); ?>">Alle tingingar</option>
 	</select>
 	<br />
 	<?php echo $this->Html->link(__('Registrer kaffisal', true), array('controller' => 'kaffesalg', 'action' => 'add')); ?>
