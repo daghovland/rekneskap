@@ -4,6 +4,7 @@ class Kaffesalg extends AppModel {
   public $name = 'Kaffesalg';
   public $useTable = 'kaffesalg';
   public $primaryKey = 'nummer';
+  public $uses = array('Innstilling');
   public $validate = array(
 			   'nummer' => array('numeric')
 			   );
