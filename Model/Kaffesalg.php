@@ -41,7 +41,8 @@ class Kaffesalg extends AppModel {
 						'className' => 'Pengeflytting',
 						'foreignKey' => 'kaffesalg_id',
 						'dependent' => true,
-						)
+						),
+		       'Tinging',
 		       );
 
 
@@ -58,7 +59,7 @@ class Kaffesalg extends AppModel {
   }
 
 
-  function frakt_pris($data){
+  public function frakt_pris($data){
     if($data['postSending'] && is_numeric($data['kunde'])){
       $vekt = $this->kaffi_vekt($data);
       $kundeData = $this->Kunde->findByNummer($data['kunde']);
@@ -196,8 +197,8 @@ class Kaffesalg extends AppModel {
   function lag_salg($dato, $data) {
     $fraselger = $this->Kaffeflytting->Fra->Selger->findAllByNummer($data['selger']);
     $rabatter = $this->Kaffeflytting->Rabatt->find('list');
-    //    $this->load('Innstilling.php');
     $innstillingar = $this->Innstilling->find('first');
+    $lagertyper = $this->Kaffeflytting->Fra->lagertypenavn->find('list', array('fields' => array('navn', 'nummer')));
     $kaffesalg = array();
     $kaffesalg['Kaffeflytting'] = array();
     $kaffesalg['Kaffesalg']['dato'] = $data['dato'];
@@ -211,8 +212,8 @@ class Kaffesalg extends AppModel {
 	$kaffeFlytting = array();
 	$kaffeFlytting['fra'] = $data['fra'];
 	$kaffeFlytting['til'] = $data['fra'];
-	$kaffeFlytting['fralagertype'] = 3;
-	$kaffeFlytting['tillagertype'] = 1;
+	$kaffeFlytting['fralagertype'] = $lagertyper['lager'];
+	$kaffeFlytting['tillagertype'] = $lagertyper['salg'];
 	$rabatt_id = $data['rabatt' . $kaffetype['Kaffepris']['nummer']];
 	if($rabatt_id != 0)
 	  $kaffeFlytting['rabatt_id'] = $rabatt_id;

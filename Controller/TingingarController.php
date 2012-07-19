@@ -38,6 +38,9 @@ class TingingarController extends AppController {
 			throw new NotFoundException(__('Invalid tinging'));
 		}
 		$this->set('tinging', $this->Tinging->read(null, $id));
+		$this->set('kaffityper', $this->Tinging->Kaffeflytting->Kaffepris->Kaffitype->find('list'));
+		$this->set('lagertyper', $this->Tinging->Kaffeflytting->Fralagertypenavn->find('list'));
+		$this->set('kaffilagre', $this->Tinging->Kaffeflytting->Fra->find('list'));
 	}
 
 /**
