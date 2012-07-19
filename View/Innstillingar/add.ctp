@@ -6,6 +6,9 @@
 		echo $this->Form->input('namn');
 		echo $this->Form->input('ubetalte_kafferegninger', array('options' => $kontoer));
 		echo $this->Form->input('kaffesalg_fraktutgift', array('options' => $kontoer));
+		echo $this->Form->input('standard_lager', array('options' => $kaffelagre));
+		echo $this->Form->input('nettsal_lager', array('options' => $kaffelagre));
+
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit'));?>

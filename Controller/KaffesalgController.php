@@ -86,13 +86,14 @@ class KaffesalgController extends AppController {
 			      $this->Kaffesalg->id));
       }
     }
-    $standardLager = $this->Kaffesalg->Kaffeflytting->Fra->find('first', array('conditions' => array('er_standard_lager' => true)));
-    $this->set('standardLager', $standardLager['Fra']['nummer']);
+    $innstillingar = $this->Kaffesalg->Innstilling->find('first');
+    $standardLager = $innstillingar['Innstilling']['standard_lager'];
+    $this->set('standardLager', $standardLager);
     if(isset($this->params['named']['kundenummer']))
       $this->set('kundenummer', $this->params['named']['kundenummer']);		
     $this->set('rabatter', $this->Kaffesalg->hent_rabatter());
     $this->set('SentrallagerBeholdninger', $this->Kaffesalg->Kaffeflytting->Fra->Kaffelagerbeholdning->find('list', 
-													    array('conditions' => array('kaffelager_id' => $standardLager['Fra']['nummer'],
+													    array('conditions' => array('kaffelager_id' => $standardLager,
 																	'er_vanlig_lagertype' => true),
 														  'fields' => array('kaffepris_id', 'antall') 
 														  )))

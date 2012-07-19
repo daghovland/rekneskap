@@ -1,10 +1,10 @@
 <?php
+App::uses('AppModel', 'Model');
 class Kaffesalg extends AppModel {
 
   public $name = 'Kaffesalg';
   public $useTable = 'kaffesalg';
   public $primaryKey = 'nummer';
-  public $uses = array('Innstilling');
   public $validate = array(
 			   'nummer' => array('numeric')
 			   );
@@ -19,10 +19,15 @@ class Kaffesalg extends AppModel {
 					 'conditions' => '',
 					 'fields' => '',
 					 'order' => ''
-					 )
+					 ),
+		      
 		      );
 
-  var $belongsTo = array('Selger', 'Kunde');
+  var $belongsTo = array('Selger', 'Kunde',
+			 'Innstilling' => array('className' => 'Innstilling',
+						'foreignKey' => 'nummer',
+						),
+			 );
 
 
   var $hasMany = array(
@@ -191,6 +196,8 @@ class Kaffesalg extends AppModel {
   function lag_salg($dato, $data) {
     $fraselger = $this->Kaffeflytting->Fra->Selger->findAllByNummer($data['selger']);
     $rabatter = $this->Kaffeflytting->Rabatt->find('list');
+    //    $this->load('Innstilling.php');
+    $innstillingar = $this->Innstilling->find('first');
     $kaffesalg = array();
     $kaffesalg['Kaffeflytting'] = array();
     $kaffesalg['Kaffesalg']['dato'] = $data['dato'];
@@ -249,14 +256,14 @@ class Kaffesalg extends AppModel {
     $pengeflytting['beskrivelse'] = $data['beskrivelse'] . " - kaffeverdi";
     $fraktUtgift['beskrivelse'] = $data['beskrivelse'] . " - frakt";
     $pengeflytting['fra'] = $fraselger[0]['SalgsKonto']['nummer'];
-    $fraktUtgift['fra'] = 43; // 43 er "Utsending av kaffe"
+    $fraktUtgift['fra'] = $innstillingar['Innstilling']['kaffesalg_fraktutgift']; 
 	  
     if($kaffesalg['Kaffesalg']['kontant']){
       $pengeflytting['til'] = $fraselger[0]['SelgerKonto']['nummer'];
       $fraktUtgift['til'] = $fraselger[0]['SelgerKonto']['nummer'];
     } else {
-      $pengeflytting['til'] = 51; // 51 er "Ubetalte kafferegninger"
-      $fraktUtgift['til'] = 51;
+      $pengeflytting['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger']; 
+      $fraktUtgift['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger'];
       $kunde = $this->Faktura->Kunde->findAllByNummer($data['til']);
       $kaffesalg['Faktura']['kunde'] = $data['til'];
       $kaffesalg['Faktura']['betalings_frist'] = date("Y-m-d",strtotime("+" . $data['betalingsfrist'] . " weeks"));

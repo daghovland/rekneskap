@@ -16,21 +16,12 @@ class InnstillingarController extends AppController {
 	public function index() {
 		$this->Innstilling->recursive = 0;
 		$this->set('innstillingar', $this->paginate());
+		$kontoer = $this->Innstilling->Fraktutgift->find('list');
+		$kaffelagre = $this->Innstilling->StandardLager->find('list');
+		$this->set('kontoer', $kontoer);
+		$this->set('kaffelagre', $kaffelagre);
 	}
 
-/**
- * view method
- *
- * @param string $id
- * @return void
- */
-	public function view($id = null) {
-		$this->Innstilling->id = $id;
-		if (!$this->Innstilling->exists()) {
-			throw new NotFoundException(__('Invalid innstilling'));
-		}
-		$this->set('innstilling', $this->Innstilling->read(null, $id));
-	}
 
 /**
  * add method
@@ -48,7 +39,9 @@ class InnstillingarController extends AppController {
 			}
 		} else {
 		  $kontoer = $this->Innstilling->Fraktutgift->find('list');
+		  $kaffelagre = $this->Innstilling->StandardLager->find('list');
 		  $this->set('kontoer', $kontoer);
+		  $this->set('kaffelagre', $kaffelagre);
 		}
 	}
 
@@ -72,6 +65,10 @@ class InnstillingarController extends AppController {
 			}
 		} else {
 			$this->request->data = $this->Innstilling->read(null, $id);
+			$kontoer = $this->Innstilling->Fraktutgift->find('list');
+			$kaffelagre = $this->Innstilling->StandardLager->find('list');
+			$this->set('kontoer', $kontoer);
+			$this->set('kaffelagre', $kaffelagre);
 		}
 	}
 
