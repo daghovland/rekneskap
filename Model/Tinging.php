@@ -22,17 +22,15 @@ class Tinging extends AppModel {
  * @var array
  */
 	public $belongsTo = array(
-		'Kunde' => array(
-			'className' => 'Kunde',
-			'foreignKey' => 'kunde_id',
-			'conditions' => '',
-			'dependent' => true,
-			'fields' => '',
-			'order' => ''
-		)
-	);
-
-/**
+				  'Kunde' => array(
+						   'className' => 'Kunde',
+						   'foreignKey' => 'kunde_id',
+						   'dependent' => true,
+						   ),
+				  'Innstilling',
+				  );
+	
+	/**
  * hasMany associations
  *
  * @var array
@@ -58,12 +56,17 @@ class Tinging extends AppModel {
 	    return false;
 	  $registrert = date(DATE_ATOM);
 	  $data['Tinging']['tinga'] = $registrert;
+	  $innstillingar = $this->Innstilling->find('first');
+	  $lagertyper = $this->Kaffeflytting->Fra->Lagertyper->find('list', array('fields' => array('navn', 'nummer')));
+	  $kaffityper_sku = $this->Kaffeflytting->Kaffityper->find('list', array('fields' => array('ubercart_sku', 'nummer')));
 	  foreach($data['Kaffeflytting'] as $key => $flytting){
 	    $data['Kaffeflytting'][$key]['registrert'] = $registrert;
-	    $data['Kaffeflytting'][$key]['fra'] = 1;
-	    $data['Kaffeflytting'][$key]['til'] = 2;
-	    $data['Kaffeflytting'][$key]['fralagertype'] = 1;
-	    $data['Kaffeflytting'][$key]['tillagertype'] = 2;
+	    $data['Kaffeflytting'][$key]['fra'] = $innstillingar['Innstilling']['standard_lager'];
+	    $data['Kaffeflytting'][$key]['til'] = $innstillingar['Innstilling']['nettsal_lager'];
+	    $data['Kaffeflytting'][$key]['type'] = $kaffityper_sku[$flytting['vare_id']];
+	    $data['Kaffeflytting'][$key]['antall'] = $kaffityper_sku[$flytting['antall']];
+	    $data['Kaffeflytting'][$key]['fralagertype'] = $lagertyper['lager'];
+	    $data['Kaffeflytting'][$key]['tillagertype'] = $lager['tinging'];
 	  }
 	  debug($data);
 	  $this->create();

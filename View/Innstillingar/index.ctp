@@ -8,6 +8,8 @@
 			<th><?php echo $this->Paginator->sort('modified');?></th>
 			<th><?php echo $this->Paginator->sort('ubetalte_kafferegninger');?></th>
 			<th><?php echo $this->Paginator->sort('kaffesalg_fraktutgift');?></th>
+			<th><?php echo $this->Paginator->sort('standard_lager');?></th>
+			<th><?php echo $this->Paginator->sort('nettsal_lager');?></th>
 			<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 	<?php
@@ -17,10 +19,11 @@
 		<td><?php echo h($innstilling['Innstilling']['namn']); ?>&nbsp;</td>
 		<td><?php echo h($innstilling['Innstilling']['created']); ?>&nbsp;</td>
 		<td><?php echo h($innstilling['Innstilling']['modified']); ?>&nbsp;</td>
-		<td><?php echo h($innstilling['Innstilling']['ubetalte_kafferegninger']); ?>&nbsp;</td>
-		<td><?php echo h($innstilling['Innstilling']['kaffesalg_fraktutgift']); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($kontoer[$innstilling['Innstilling']['ubetalte_kafferegninger']], array('controller' => 'kontoer', 'action' => 'view', $innstilling['Innstilling']['ubetalte_kafferegninger'])); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($kontoer[$innstilling['Innstilling']['kaffesalg_fraktutgift']], array('controller' => 'kontoer', 'action' => 'view', $innstilling['Innstilling']['kaffesalg_fraktutgift'])); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($kaffelagre[$innstilling['Innstilling']['standard_lager']], array('controller' => 'kaffelagre', 'action' => 'view', $innstilling['Innstilling']['standard_lager'])); ?>&nbsp;</td>
+		<td><?php echo $this->Html->link($kaffelagre[$innstilling['Innstilling']['nettsal_lager']], array('controller' => 'kaffelagre', 'action' => 'view', $innstilling['Innstilling']['nettsal_lager'])); ?>&nbsp;</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('View'), array('action' => 'view', $innstilling['Innstilling']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $innstilling['Innstilling']['id'])); ?>
 			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $innstilling['Innstilling']['id']), null, __('Are you sure you want to delete # %s?', $innstilling['Innstilling']['id'])); ?>
 		</td>
