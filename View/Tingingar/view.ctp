@@ -65,12 +65,8 @@
 		<th><?php echo __('Type'); ?></th>
 		<th><?php echo __('Antall'); ?></th>
 		<th><?php echo __('Fra'); ?></th>
-		<th><?php echo __('Beskrivelse'); ?></th>
 		<th><?php echo __('Til'); ?></th>
 		<th><?php echo __('Dato'); ?></th>
-		<th><?php echo __('Pengeflytting'); ?></th>
-		<th><?php echo __('Fralagertype'); ?></th>
-		<th><?php echo __('Tillagertype'); ?></th>
 		<th><?php echo __('Ansvarlig'); ?></th>
 		<th><?php echo __('Faktura'); ?></th>
 		<th><?php echo __('Kaffesalg Id'); ?></th>
@@ -86,15 +82,11 @@
 		foreach ($tinging['Kaffeflytting'] as $kaffeflytting): ?>
 		<tr>
 			<td><?php echo $kaffeflytting['nummer'];?></td>
-			<td><?php echo $kaffeflytting['type'];?></td>
+			<td><?php echo $kaffityper[$kaffeflytting['type']];?></td>
 			<td><?php echo $kaffeflytting['antall'];?></td>
-			<td><?php echo $kaffeflytting['fra'];?></td>
-			<td><?php echo $kaffeflytting['beskrivelse'];?></td>
-			<td><?php echo $kaffeflytting['til'];?></td>
+			<td><?php echo $kaffilagre[$kaffeflytting['fra']] . "(" . $lagertyper[$kaffeflytting['fralagertype']] . ")";?></td>
+			<td><?php echo $kaffilagre[$kaffeflytting['til']] . "(" . $lagertyper[$kaffeflytting['tillagertype']] . ")";?></td>	
 			<td><?php echo $kaffeflytting['dato'];?></td>
-			<td><?php echo $kaffeflytting['pengeflytting'];?></td>
-			<td><?php echo $kaffeflytting['fralagertype'];?></td>
-			<td><?php echo $kaffeflytting['tillagertype'];?></td>
 			<td><?php echo $kaffeflytting['ansvarlig'];?></td>
 			<td><?php echo $kaffeflytting['faktura'];?></td>
 			<td><?php echo $kaffeflytting['kaffesalg_id'];?></td>
