@@ -59,7 +59,7 @@ foreach ($pengetellingar as $pengetelling):
 		<td class="actions">
 			<?php echo $this->Html->link(__('Vis', true), array('action'=>'view', $pengetelling['Pengetelling']['id'])); ?>
 			<?php echo $this->Html->link(__('Endre', true), array('action'=>'edit', $pengetelling['Pengetelling']['id'])); ?>
-			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $pengetelling['Pengetelling']['id']), null, sprintf(__('Vil du virkelig slette # %s?', true), $pengetelling['Pengetelling']['id'])); ?>
+			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $pengetelling['Pengetelling']['id']), null, sprintf('Vil du virkelig slette telling nr. %s, av konto %s gjort %s?', $pengetelling['Konto']['nummer'], $pengetelling['Konto']['beskrivelse'], $pengetelling['Pengetelling']['dato'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>
