@@ -69,7 +69,6 @@
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kunder', 'action' => 'index')); ?>">Kundeoversikt</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'varetellinger', 'action' => 'index')); ?>">Varetellingar</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'internfiler', 'action' => 'index')); ?>">Internt fillager</option>
-	  <option value="<?php echo $this->Html->url(array('controller' => 'lagertyper', 'action' => 'view', 4)); ?>">Syn svinn</option>
 	</select>
 	
 	<select onChange = "window.location = this.options[this.selectedIndex].value">
@@ -79,7 +78,6 @@
 	  <option value="<?php echo $this->Html->url(array('controller' => 'budsjettPengeflyttinger')); ?>">Budsjett-posteringar</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'fakturaer', 'action' => 'ubetalte')); ?>">Ubetalte fakturaer</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'fakturaer', 'action' => 'index')); ?>">Alle fakturaer</option>
-	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffesalg', 'action' => 'index')); ?>">Alle kaffesalg</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffelagre', 'action' => 'index')); ?>">Alle kaffelagre</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffelagre', 'action' => 'beholdninger')); ?>">Alle kaffelagerbeholdninger</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffeflyttinger', 'action' => 'index')); ?>">Alle kaffeflyttinger</option>
@@ -87,8 +85,6 @@
 	  <option value="<?php echo $this->Html->url(array('controller' => 'kaffepriser', 'action' => 'index')); ?>">Alle kaffityper</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'lagerverdikontoer', 'action' => 'index')); ?>">Lagerverdikontoer</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'lagerverdityper', 'action' => 'index')); ?>">Lagerverdityper</option>
-	  <option value="<?php echo $this->Html->url(array('controller' => 'kontotyper', 'action' => 'index')); ?>">Kontotyper</option>
-	  <option value="<?php echo $this->Html->url(array('controller' => 'lagertyper', 'action' => 'index')); ?>">Lagertyper</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'rabatter', 'action' => 'index')); ?>">Alle rabatter</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'innstillingar', 'action' => 'index')); ?>">Innstillingar</option>
 	  <option value="<?php echo $this->Html->url(array('controller' => 'tingingar', 'action' => 'index')); ?>">Alle tingingar</option>
