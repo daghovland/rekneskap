@@ -63,7 +63,7 @@ class PengetellingarController extends AppController {
 			$this->Session->setFlash(__('Ugyldig pengetelling', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if ($this->Pengetelling->del($id)) {
+		if ($this->Pengetelling->delete($id)) {
 			$this->Session->setFlash(__('Sletta pengetelling', true));
 			$this->redirect(array('action'=>'index'));
 		}
