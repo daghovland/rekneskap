@@ -52,7 +52,6 @@ foreach ($pengeflyttinger as $pengeflytting):
 			<?php echo $this->Html->link(__('Sjå meir', true), array('controller' => 'pengeflyttinger', 'action'=>'view', $pengeflytting[$key]['nummer'])); ?>
 			<?php echo $this->Html->link(__('Last opp vedlegg', true), array('controller' => 'bilag', 'action'=>'add', $pengeflytting[$key]['nummer'])); ?>
 			<?php echo $this->Html->link(__('Endre', true), array('controller' => 'pengeflyttinger', 'action'=>'edit', $pengeflytting[$key]['nummer'])); ?>
-			<?php echo $this->Html->link(__('Slett', true), array('controller' => 'pengeflyttinger', 'action'=>'delete', $pengeflytting[$key]['nummer']), null, sprintf(__('Er du sikker på du vil slette pengeflytting nummer %s?', true), $pengeflytting[$key]['nummer'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

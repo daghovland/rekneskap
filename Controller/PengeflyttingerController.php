@@ -124,7 +124,7 @@ class PengeflyttingerController extends AppController {
 			$this->Session->setFlash(__('Invalid id for Pengeflytting', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if ($this->Pengeflytting->del($id)) {
+		if ($this->Pengeflytting->delete($id)) {
 			$this->Session->setFlash(__('Pengeflytting deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
