@@ -51,7 +51,7 @@
 <div class="actions">
   <ul>
     <li><?php echo $this->Html->link(__('Endre Pengeflytting', true), array('action'=>'edit', $pengeflytting['Pengeflytting']['nummer'])); ?> </li>
-    <li><?php echo $this->Html->link(__('Delete Pengeflytting', true), array('action'=>'delete', $pengeflytting['Pengeflytting']['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $pengeflytting['Pengeflytting']['nummer'])); ?> </li>
+    <li><?php echo $this->Html->link(__('Delete Pengeflytting', true), array('action'=>'delete', $pengeflytting['Pengeflytting']['nummer']), null, sprintf('Are you sure you want to delete # %s?', $pengeflytting['Pengeflytting']['nummer'])); ?> </li>
     <li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('action'=>'index')); ?> </li>
     <li><?php echo $this->Html->link(__('New Pengeflytting', true), array('action'=>'add')); ?> </li>
     <li><?php echo $this->Html->link(__('List Kontoer', true), array('controller'=> 'kontoer', 'action'=>'index')); ?> </li>
