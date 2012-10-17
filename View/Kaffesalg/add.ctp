@@ -127,7 +127,9 @@
     $kaffeid = $kaffetype['Kaffepris']['nummer'];
     if (isset($SentrallagerBeholdninger[$kaffeid]) && $SentrallagerBeholdninger[$kaffeid] > 0){
       lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fraktanslag", $frakt_pris_url, $this->Js, $fraktPrisData);
+      lagAjaxFraktFaktura("KaffesalgRabatt" . $kaffeid, "fraktanslag", $frakt_pris_url, $this->Js, $fraktPrisData);
       lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
+      lagAjaxFraktFaktura("KaffesalgRabatt" . $kaffeid, "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
       lagAjaxAntall("KaffeSalgFra", $kaffeid, $this->Js);
     }
   }
