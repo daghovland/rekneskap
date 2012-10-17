@@ -53,7 +53,7 @@ class Kaffesalg extends AppModel {
       $nummer = $kaffepris['Kaffepris']['nummer'];
       $indeks = 'antall' . $nummer;
       if(array_key_exists($indeks, $data) && is_numeric($data[$indeks]))
-	$vekt += $data[$indeks] * $kaffepris['Kaffepris']['gram'];
+	$vekt += $data[$indeks] * $kaffepris['Kaffitype']['nettogram'];
     }
     return $vekt;
   }
