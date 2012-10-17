@@ -23,7 +23,7 @@
 		<td><?php echo h($kaffepris['Kaffepris']['beskrivelse']); ?>&nbsp;</td>
 		<td><?php echo h($kaffepris['Kaffepris']['pris']); ?>&nbsp;</td>
 		<td><?php echo h($kaffepris['Kaffepris']['nummer']); ?>&nbsp;</td>
-		<td><?php echo h($kaffepris['Kaffepris']['gram']); ?>&nbsp;</td>
+		<td><?php echo h($kaffepris['Kaffitype']['nettogram']); ?>&nbsp;</td>
 		<td><?php echo h($kaffepris['Kaffepris']['haldbar']); ?>&nbsp;</td>
 		<td><?php echo h($kaffepris['Kaffepris']['malt']); ?>&nbsp;</td>
 		<td><?php echo h($kaffepris['Kaffepris']['intern_navn']); ?>&nbsp;</td>
