@@ -135,7 +135,7 @@ class FakturaerController extends AppController {
       $this->Session->setFlash(__('Invalid id for Faktura', true));
       $this->redirect(array('action'=>'index'));
     }
-    if ($this->Faktura->del($id)) {
+    if ($this->Faktura->delete($id)) {
       $this->Session->setFlash(__('Faktura deleted', true));
       $this->redirect(array('action'=>'index'));
     }

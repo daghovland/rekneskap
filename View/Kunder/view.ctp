@@ -107,7 +107,7 @@
 			<td class="actions">
 				<?php echo $this->Html->link(__('View', true), array('controller'=> 'fakturaer', 'action'=>'view', $faktura['nummer'])); ?>
 				<?php echo $this->Html->link(__('Edit', true), array('controller'=> 'fakturaer', 'action'=>'edit', $faktura['nummer'])); ?>
-				<?php echo $this->Html->link(__('Delete', true), array('controller'=> 'fakturaer', 'action'=>'delete', $faktura['nummer']), null, sprintf(__('Are you sure you want to delete # %s?', true), $faktura['nummer'])); ?>
+				<?php echo $this->Html->link(__('Delete', true), array('controller'=> 'fakturaer', 'action'=>'delete', $faktura['nummer']), null, sprintf('Vi ldu verkeleg slette rekning nummer %s? Valet kan ikkje gjerast om.', $faktura['nummer'])); ?>
 			</td>
 		</tr>
 	<?php endforeach; ?>
