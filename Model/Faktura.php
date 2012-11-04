@@ -134,7 +134,7 @@ class Faktura extends AppModel {
   **/
   function lagFakturaTcpdf($faktura, $kaffesalg){
     $tcpdf = new XTCPDF();
-    $textfont = 'freesans'; // looks better, finer, and more condensed than 'dejavusans'
+    $textfont = 'dejavusans'; // looks better, finer, and more condensed than 'dejavusans'
     //$tcpdf->setCreator(PDF_CREATOR);
     $tcpdf->SetAuthor("Zapatistgruppa i Bergen http://www.zapatista.no");
     $tcpdf->setCreator("Zapatistgruppa i Bergen http://www.zapatista.no");
@@ -196,8 +196,9 @@ Zapatistgruppa i Bergen", 0, 'L', 0, 1);
       $fratrekk = 0.10;
       $kaffe_mva = $vanlig_mva - $fratrekk;
       $frakt = $faktura['Kaffesalg']['frakt'];
+      $total = $faktura['Kaffesalg']['total'];
       $frakt_mva = $frakt - $frakt / (1 + $vanlig_mva);
-      $kaffe = $total-$frakt;
+      $kaffe = $total - $frakt;
       $kaffe_mva = $kaffe - $kaffe / (1 + $kaffe_mva);
       $total_mva = $kaffe_mva + $frakt_mva;
       $tcpdf->Cell(30,0, $total_mva . ",-   kr",0,1,'R');
