@@ -1,7 +1,7 @@
 <?php
 App::uses('CakeEmail', 'Network/Email');
 App::import('Vendor','xtcpdf'); 
-App::import('Vendor','fpdi'); 
+//App::import('Vendor','fpdi'); 
 
 class Faktura extends AppModel {
 

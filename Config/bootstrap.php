@@ -72,4 +72,27 @@ Inflector::rules('singular', array('rules' => array('/^(.+)er$/i' => '\1', '/^(.
  * CakePlugin::load('DebugKit'); //Loads a single plugin named DebugKit
  *
  */
+
+
+/** 
+    Copied from guide to upgrade to cake 2.2
+**/
+// Enable the Dispatcher filters for plugin assets, and
+// CacheHelper.
+Configure::write('Dispatcher.filters', array(
+    'AssetDispatcher',
+    'CacheDispatcher'
+));
+
+// Add logging configuration.
+CakeLog::config('debug', array(
+    'engine' => 'FileLog',
+    'types' => array('notice', 'info', 'debug'),
+    'file' => 'debug',
+));
+CakeLog::config('error', array(
+    'engine' => 'FileLog',
+    'types' => array('warning', 'error', 'critical', 'alert', 'emergency'),
+    'file' => 'error',
+));
 ?>

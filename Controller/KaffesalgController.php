@@ -73,6 +73,8 @@ class KaffesalgController extends AppController {
 			  array('controller' => 'kaffesalg', 
 				'action' => 'add'));
     if(!empty($this->request->data)){
+      echo "<H1>Kaffesalg / Add</h1>";
+      debug("Controller lager kaffesalg");
       if(!$this->Kaffesalg->lag_salg($this->Kaffe->dateToSql($this->request->data['Kaffesalg']['dato']), 
 				     $this->request->data['Kaffesalg']))
 	{
