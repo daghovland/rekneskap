@@ -1,6 +1,6 @@
 <?php
 App::import('Vendor','xtcpdf'); 
-App::import('Vendor','fpdi'); 
+//App::import('Vendor','fpdi'); 
 App::uses('CakeEmail', 'Network/Email');
 App::uses('Folder', 'Utility');
 App::uses('File', 'Utility');

@@ -195,6 +195,8 @@ class Kaffesalg extends AppModel {
   }
 
   function lag_salg($dato, $data) {
+    echo "Lager salg";
+    debug("Lager salg");
     $fraselger = $this->Kaffeflytting->Fra->Selger->findAllByNummer($data['selger']);
     $rabatter = $this->Kaffeflytting->Rabatt->find('list');
     $innstillingar = $this->Innstilling->find('first');
@@ -236,6 +238,7 @@ class Kaffesalg extends AppModel {
       }
     }
     if(!$med_kaffi){
+	echo "Ikkje noko kaffi i salet";		
       return false;
     }
     $fraktUtgift = array();	
@@ -286,6 +289,7 @@ class Kaffesalg extends AppModel {
     $kaffesalg['Pengeflytting'][] = $pengeflytting;
     if($frakt > 0)
       $kaffesalg['Pengeflytting'][] = $fraktUtgift;
+    echo($kaffesalg);
     return $this->saveAll($kaffesalg);
   }
 
