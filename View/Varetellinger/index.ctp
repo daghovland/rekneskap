@@ -33,7 +33,7 @@ foreach ($varetellinger as $varetelling):
 			<?php echo $this->Html->link($varetelling['Kaffelager']['beskrivelse'], array('controller'=> 'kaffelagre', 'action'=>'view', $varetelling['Kaffelager']['nummer'])); ?>
 		</td>
 		<td>
-			<?php echo $this->Html->link($varetelling['Kaffepris']['type'], array('controller'=> 'kaffepriser', 'action'=>'view', $varetelling['Kaffepris']['nummer'])); ?>
+			<?php echo $this->Html->link($varetelling['Kaffepris']['intern_navn'], array('controller'=> 'kaffepriser', 'action'=>'view', $varetelling['Kaffepris']['nummer'])); ?>
 		</td>
 		<td>
 			<?php echo $varetelling['Varetelling']['antall']; ?>
