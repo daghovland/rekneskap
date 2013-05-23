@@ -121,7 +121,7 @@
 			<td><?php echo $kaffeTypeFlyttinger['tillagertype'];?></td>
 			<td><?php echo $kaffeTypeFlyttinger['ansvarlig'];?></td>
 			<td><?php echo $kaffeTypeFlyttinger['faktura'];?></td>
-			<td><?php echo $kaffeTypeFlyttinger['kaffesalg_id'];?></td>
+			<td><?php echo $this->Html->link($kaffeTypeFlyttinger['kaffesalg_id'], array('controller' => 'kaffesalg', 'action' => 'view', $kaffeTypeFlyttinger['kaffesalg_id']), array('controller' => 'kaffesalg', 'action' => 'view', $kaffeTypeFlyttinger['kaffesalg_id']));?></td>
 			<td><?php echo $kaffeTypeFlyttinger['created'];?></td>
 			<td><?php echo $kaffeTypeFlyttinger['modified'];?></td>
 			<td><?php echo $kaffeTypeFlyttinger['rabatt_id'];?></td>

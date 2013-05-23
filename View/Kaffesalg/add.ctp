@@ -10,7 +10,8 @@
       echo $this->Form->input('fra', array('options' => $fralagernavn, 
 					   'label' => 'Frå lager', 
 					   'id' => 'KaffeSalgFra',
-					   'selected' => $standardLager // Sentrallager
+					   'selected' => $standardLager, // Sentrallager
+						'onChange' => 'window.location.href="' . $this->Html->url(array('action' => 'add')) . '/lager:" + this.value'
 					   )); 
        echo $this->Form->radio("Betaling", 
 			       array("Kontant" => "Kontant", "Post" => "Rekning"),
@@ -130,7 +131,7 @@
       lagAjaxFraktFaktura("KaffesalgRabatt" . $kaffeid, "fraktanslag", $frakt_pris_url, $this->Js, $fraktPrisData);
       lagAjaxFraktFaktura("KaffeSalg" . $kaffeid, "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
       lagAjaxFraktFaktura("KaffesalgRabatt" . $kaffeid, "fakturatekst", $faktura_tekst_url, $this->Js, $fraktPrisData);
-      lagAjaxAntall("KaffeSalgFra", $kaffeid, $this->Js);
+      //lagAjaxAntall("KaffeSalgFra", $kaffeid, $this->Js);
     }
   }
 
