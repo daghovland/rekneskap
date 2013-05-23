@@ -37,7 +37,6 @@ class Faktura extends AppModel {
 			 'Kaffesalg' => array(
 					      'className' => 'Kaffesalg',
 					      'foreignKey' => 'kaffesalg_id',
-					      'dependent' => 'true'
 					      ),
 			 );
 
@@ -65,7 +64,8 @@ class Faktura extends AppModel {
 						'counterQuery' => ''
 						),
 		       'Purring' => array('className' => 'Purring', 
-					  'foreignKey' => 'faktura')
+					  'foreignKey' => 'faktura',
+					  'dependent' => true)
 		       );
   var $hasOne = array('FakturaUbetalt', 'PurreFaktura', 'MeldeFaktura', 'SistPurretFaktura');
 
