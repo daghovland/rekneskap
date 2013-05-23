@@ -55,7 +55,7 @@ foreach ($varetellinger as $varetelling):
 		<td class="actions">
 			<?php echo $this->Html->link(__('Vis', true), array('action'=>'view', $varetelling['Varetelling']['id'])); ?>
 			<?php echo $this->Html->link(__('Endre', true), array('action'=>'edit', $varetelling['Varetelling']['id'])); ?>
-			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $varetelling['Varetelling']['id']), null, sprintf(__('Vil du virkelig slette # %s?', true), $varetelling['Varetelling']['id'])); ?>
+			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $varetelling['Varetelling']['id']), null, sprintf('Vil du virkelig slette # %s?', $varetelling['Varetelling']['id'])); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

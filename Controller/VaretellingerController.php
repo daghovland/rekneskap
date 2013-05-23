@@ -66,7 +66,7 @@ class VaretellingerController extends AppController {
 			$this->Session->setFlash(__('Invalid id for Varetelling', true));
 			$this->redirect(array('action'=>'index'));
 		}
-		if ($this->Varetelling->del($id)) {
+		if ($this->Varetelling->delete($id)) {
 			$this->Session->setFlash(__('Varetelling deleted', true));
 			$this->redirect(array('action'=>'index'));
 		}
