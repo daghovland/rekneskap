@@ -13,11 +13,6 @@
 					   'selected' => $standardLager, // Sentrallager
 						'onChange' => 'window.location.href="' . $this->Html->url(array('action' => 'add')) . '/lager:" + this.value'
 					   )); 
-       echo $this->Form->radio("Betaling", 
-			       array("Kontant" => "Kontant", "Post" => "Rekning"),
-			       array('value' => 'Post')
-			       )
-       ;
        foreach($kaffetyper as $kaffetype){
 	 $kaffetypeId = $kaffetype['Kaffepris']['nummer'];
 	 if(isset($SentrallagerBeholdninger[$kaffetypeId]) && $SentrallagerBeholdninger[$kaffetypeId] > 0){
