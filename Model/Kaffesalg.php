@@ -97,6 +97,30 @@ class Kaffesalg extends AppModel {
     }
   }
 
+
+  /**
+     Returnerer delen av prisen som er mva av totalpris for mva gitt i desimal (f.eks. 0.25)
+  **/
+  function berekne_mva($totalpris, $mva_andel){
+    return $totalpris - $totalpris / (1 + $mva_andel);
+  }
+	
+  /**
+     Returnerer andelen som er mva av total kaffipris
+  **/
+  function berekne_kaffi_mva($totalpris){
+    return $this->berekne_mva($totalpris, 0.15);
+  }
+
+  function berekne_vanlig_mva($totalpris){
+    return $this->berekne-mva($totalpris, 0.25);
+  }
+
+
+
+
+
+
   function faktura_tekst($data){
     $kaffepriser = $this->Kaffeflytting->Kaffepris->find('all');
     $rabatter = $this->Kaffeflytting->Rabatt->find('list', 
@@ -176,24 +200,6 @@ class Kaffesalg extends AppModel {
   }
 	
 
-  function lag_kontant_salg($selger_id, $data){
-    $data['selger'] = $selger_id;
-    $data['frakt'] = 0;
-    $data['Betaling'] = 'Kontant';
-    $data['dato'] = date("Y-m-d");
-
-    $FralagerNummer =  $this->Kaffeflytting->Fra->find('first',
-						       array('conditions' => array('Fra.selger' => $selger_id,
-										   'Fra.lagertype' => 3)));
-
-    $TillagerNummer =  $this->Kaffeflytting->Til->find('first',
-						       array('conditions' => array('Til.selger' => $selger_id,
-										   'Til.lagertype' => 1)));
-    $data['til'] = $TillagerNummer['Til']['nummer'];
-    $data['fra'] = $TillagerNummer['Fra']['nummer'];
-    return $this->lag_salg(date("Y-m-d"), $data);
-  }
-
   function lag_salg($dato, $data) {
     echo "Lager salg";
     debug("Lager salg");
@@ -245,13 +251,6 @@ class Kaffesalg extends AppModel {
     $frakt = $data['frakt'];
     $kaffesalg['Kaffesalg']['total'] = $sum + $frakt;
     $kaffesalg['Kaffesalg']['frakt'] = $frakt;
-    if($data['Betaling'] == 'Kontant'){
-      $kaffesalg['Kaffesalg']['kontant'] = true;
-      $kaffesalg['Kaffesalg']['regning'] = false;
-    } else {
-      $kaffesalg['Kaffesalg']['kontant'] = false;
-      $kaffesalg['Kaffesalg']['regning'] = true;
-    }
     $pengeFlytting = array();
     $pengeflytting['kroner'] = $sum;
     $fraktUtgift['kroner'] = $frakt;
@@ -262,29 +261,24 @@ class Kaffesalg extends AppModel {
     $pengeflytting['fra'] = $fraselger[0]['SalgsKonto']['nummer'];
     $fraktUtgift['fra'] = $innstillingar['Innstilling']['kaffesalg_fraktutgift']; 
 	  
-    if($kaffesalg['Kaffesalg']['kontant']){
-      $pengeflytting['til'] = $fraselger[0]['SelgerKonto']['nummer'];
-      $fraktUtgift['til'] = $fraselger[0]['SelgerKonto']['nummer'];
-    } else {
-      $pengeflytting['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger']; 
-      $fraktUtgift['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger'];
-      $kunde = $this->Faktura->Kunde->findAllByNummer($data['til']);
-      $kaffesalg['Faktura']['kunde'] = $data['til'];
-      $kaffesalg['Faktura']['betalings_frist'] = date("Y-m-d",strtotime("+" . $data['betalingsfrist'] . " weeks"));
-      $kaffesalg['Faktura']['faktura_dato'] = $dato;
-      $kaffesalg['Faktura']['melding'] = $data['beskrivelse'];
-      $kaffesalg['Faktura']['kroner'] = $sum;
-      $kaffesalg['Faktura']['mva'] = 0;
-      $kaffesalg['Faktura']['betalt'] = false;
-      $kaffesalg['Faktura']['frakt'] = $frakt;
-      $kaffesalg['Faktura']['totalpris'] = $sum + $frakt;
-      $kaffesalg['Kaffesalg']['fakturatekst'] = $this->faktura_tekst($data);
-      $kaffesalg['Faktura']['tekst'] = $this->faktura_tekst($data);
-      if(is_numeric($kunde[0]['Kunde']['fakturaadresse']))
-	$kaffesalg['Faktura']['adresse'] = $kunde[0]['FakturaAdresse']['nummer'];
-      else
-	$kaffesalg['Faktura']['adresse'] = $kunde[0]['LeveringsAdresse']['nummer'];
-    }
+    $pengeflytting['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger']; 
+    $fraktUtgift['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger'];
+    $kunde = $this->Faktura->Kunde->findAllByNummer($data['til']);
+    $kaffesalg['Faktura']['kunde'] = $data['til'];
+    $kaffesalg['Faktura']['betalings_frist'] = date("Y-m-d",strtotime("+" . $data['betalingsfrist'] . " weeks"));
+    $kaffesalg['Faktura']['faktura_dato'] = $dato;
+    $kaffesalg['Faktura']['melding'] = $data['beskrivelse'];
+    $kaffesalg['Faktura']['kroner'] = $sum;
+    $kaffesalg['Faktura']['mva'] = 0;
+    $kaffesalg['Faktura']['betalt'] = false;
+    $kaffesalg['Faktura']['frakt'] = $frakt;
+    $kaffesalg['Faktura']['totalpris'] = $sum + $frakt;
+    $kaffesalg['Kaffesalg']['fakturatekst'] = $this->faktura_tekst($data);
+    $kaffesalg['Faktura']['tekst'] = $this->faktura_tekst($data);
+    if(is_numeric($kunde[0]['Kunde']['fakturaadresse']))
+      $kaffesalg['Faktura']['adresse'] = $kunde[0]['FakturaAdresse']['nummer'];
+    else
+      $kaffesalg['Faktura']['adresse'] = $kunde[0]['LeveringsAdresse']['nummer'];
     $kaffesalg['Pengeflytting'] = array();
     $kaffesalg['Pengeflytting'][] = $pengeflytting;
     if($frakt > 0)
@@ -292,7 +286,7 @@ class Kaffesalg extends AppModel {
     echo($kaffesalg);
     return $this->saveAll($kaffesalg);
   }
-
+  
 
 	
 

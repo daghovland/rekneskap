@@ -27,6 +27,12 @@ class FakturaerController extends AppController {
     $this->Session->write('forrigeSide', array('controller' => 'fakturaer', 'action' => 'ubetalte'));
   }
 
+  function opne(){
+    $this->set('opneTingingar', $this->Faktura->find('all', array('conditions' => array('pakket' => null))));
+    $this->set('kunder', $this->Faktura->Kunde->find('list', array('fields' => array('navn'))));
+    $this->Session->write('forrigeSide', array('controller' => 'fakturaer', 'action' => 'ubetalte'));
+  }
+
   function view($id = null) {
     if (!$id) {
       $this->Session->setFlash(__('Invalid Faktura.', true));

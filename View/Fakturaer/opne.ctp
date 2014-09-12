@@ -1,5 +1,5 @@
 <div class="fakturaer index">
-  <h2><?php echo __('Fakturaer');?></h2>
+  <h2><?php echo __('Opne tingingar (ikkje pakka)');?></h2>
 <p>
 <table cellpadding="0" cellspacing="0">
 <tr>
@@ -7,8 +7,6 @@
 	<th><?php echo __('kunde');?></th>
 	<th><?php echo __('faktura_dato');?></th>
 	<th><?php echo __('betalings_frist');?></th>
-	<th><?php echo __('pakket');?></th>
-	<th><?php echo __('sist_purret');?></th>
 	<th><?php echo __('melding');?></th>
 	<th><?php echo __('kroner');?></th>
 	<th><?php echo __('mva');?></th>
@@ -17,7 +15,7 @@
 </tr>
 <?php
 $i = 0;
-foreach ($fakturaer as $faktura):
+foreach ($opneTingingar as $faktura):
 	$class = null;
 	if ($i++ % 2 == 0) {
 		$class = ' class="altrow"';
@@ -37,18 +35,6 @@ foreach ($fakturaer as $faktura):
 			<?php echo $faktura['Faktura']['betalings_frist']; ?>
 		</td>
 		<td>
-			<?php echo $faktura['Faktura']['pakket']; ?>
-		</td>
-		<td>
-		  <?php 
-		    echo $this->Html->link($faktura['SistPurretFaktura']['sist_purret'],
-					   array('controller' => 'purringer', 
-						 'action' => 'view',
-						 $faktura['SistPurretFaktura']['purring_id']
-						 ));
-		  ?>
-		</td>
-		<td>
 			<?php echo $faktura['Faktura']['melding']; ?>
 		</td>
 		<td>
@@ -63,8 +49,7 @@ foreach ($fakturaer as $faktura):
 		<td class="actions">
 			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
 			<?php echo $this->Html->link(__('Pdf', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
-		<?php echo $this->Html->link(__('Betalt', true), array('controller' => 'pengeflyttinger', 'action'=>'faktura_innbetaling', $faktura['Faktura']['nummer'])); ?>
-		<?php echo $this->Html->link(__('Purra', true), array('controller' => 'purringer', 'action'=>'add', $faktura['Faktura']['nummer'])); ?>
+		<?php echo $this->Html->link(__('Pakka', true), array('controller' => 'faktura', 'action'=>'pakking', $faktura['Faktura']['nummer'])); ?>
 		</td>
 	</tr>
 		<?php  
