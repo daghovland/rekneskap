@@ -165,14 +165,14 @@ class Faktura extends AppModel {
       $adressetekst .= "Tlf.: " . $faktura['Kunde']['telefon'] . "\n";	
     $tcpdf->MultiCell(190,0, $adressetekst, 0, 'L', 0, 1);
     $tcpdf->SetFont($textfont,'',9);
-    $tcpdf->MultiCell(190,0, "\nTakk for tinginga!\n
+    $BrevTekst = "\nTakk for tinginga!\n
 Me håper at du er nøgd med tenestene våre. Gje oss gjerne tilbakemelding om det er noko du vil me skal forbetre. Me set pris på om du kan referere til fakturanummer ved betaling!
 
-Kaffien kjem frå det zapatistiske kooperativet Yachil i Chiapas, Mexico. Kaffien er laga av arabicabønner av høgste kvalitet, og er dyrka utan bruk av sprøytemiddel og kunstgjødsel. Den vart brend, malt og pakka ved familien Lindvalls røsteri i Uppsala. 
-
-Solidarisk helsing
-" . $kaffesalg['Selger']['navn'] . "
-Zapatistgruppa i Bergen", 0, 'L', 0, 1);
+Kaffien kjem frå det zapatistiske kooperativet Yachil i Chiapas, Mexico. Kaffien er laga av arabicabønner av høgste kvalitet, og er dyrka utan bruk av sprøytemiddel og kunstgjødsel. Den vart brend, malt og pakka ved familien Lindvalls røsteri i Uppsala. ";
+    if(array_key_exists('Selger', $kaffesalg)){
+	$BrevTekst .= "\nSolidarisk helsing\n" . $kaffesalg['Selger']['navn'] . "\nZapatistgruppa I Bergen";
+    }
+    $tcpdf->MultiCell(190,0, $BrevTekst, 0, 'L', 0, 1);
     $tcpdf->SetFont($textfont,'',9);
     $tcpdf->MultiCell(190,0, "Fakturaen gjeld: \n\n", 0, 'L', 0, 1);
     $tcpdf->SetFont($textfont,'',9);

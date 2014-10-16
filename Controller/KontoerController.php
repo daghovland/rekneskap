@@ -1,7 +1,9 @@
 <?php
 class KontoerController extends AppController {
 
-	var $paginate = array('limit' => 200);
+	var $paginate = array('limit' => 200,
+			      'order' => array('dato' => 'desc')
+                             );
 
 	function index() {
 		$this->Konto->recursive = 0;
@@ -11,7 +13,7 @@ class KontoerController extends AppController {
 		$this->set('kontoer', $this->Konto->find('all'));
 	}
 
-	function view($id = null, $sort='dato') {
+	function view($id = null, $sort='dato', $direction='asc') {
 		if (!$id || !is_numeric($id)) {
 			$this->Session->setFlash(__('Invalid Konto.', true));
 			$this->redirect(array('action'=>'index'));
@@ -19,7 +21,7 @@ class KontoerController extends AppController {
 		$kontodata = $this->Konto->read(null, $id);
 		$this->set('balanse', $this->Konto->balanse($id));
 		$this->set('pengeflyttinger', $this->paginate('Konto.kontoInnskudd', array('kontoInnskudd.fra =' . $id . ' OR kontoInnskudd.til = ' . $id))); 
-		$this->set('bevegelser', $this->Konto->kontoInnskudd->find('all', array('conditions' => '(kontoInnskudd.fra = ' . $id . ' OR kontoInnskudd.til = ' . $id . ') ORDER BY kontoInnskudd.dato')));
+//		$this->set('bevegelser', $this->Konto->kontoInnskudd->find('all', array('conditions' => '(kontoInnskudd.fra = ' . $id . ' OR kontoInnskudd.til = ' . $id . ') ORDER BY kontoInnskudd.dato')));
 		$this->set('konto', $kontodata);
 		$this->set('vedlegg', $this->Konto->kontoInnskudd->PengeflyttingBilag->find('list', array('fields' => array('bilag_id', 'bilag_id', 'pengeflytting_id'))));
 		$this->Session->write('forrigeSide', array('controller' => 'kontoer', 'action' => 'view',$id));
