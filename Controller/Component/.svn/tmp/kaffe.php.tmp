@@ -1,0 +1,16 @@
+<<<<<<< .mine
+<?php
+	class KaffeComponent extends Object {
+		function dateToSql($date){
+			return $date['year'] . "-" . $date['month'] . "-" . $date['day'];
+		}
+	}
+?>
+=======
+<?php
+class KaffeComponent extends Object {
+  function dateToSql($dato){
+    return $dato['year'] . '-' . $dato['month'] . '-' . $dato['day'];
+  }
+  }
+?>>>>>>>> .r74

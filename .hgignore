@@ -1,0 +1,11 @@
+syntax:glob
+*~
+.*.swp
+.*.swo
+Config/core.php
+Config/database.php
+tmp
+vendors
+.svn
+schemas/oppdater.sh
+Config/email.php
