@@ -64,12 +64,12 @@
 				 )
 	 ;
 	 echo $this->Form->input('beskrivelse', array('label' => 'Kommentar'));
-	 echo $this->Form->input('dato', array('minYear' => 2008, 'maxYear' => date('Y')));
-	 echo $this->Form->input('betalingsfrist', array('options' => array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12),
-							 'selected' => 3,
-							 'label' => 'Betalingsfrist (uker)',
-							 'div' => array('id' => 'BetalingsfristDiv')))
-	 ;
+//	 echo $this->Form->input('dato', array('minYear' => 2008, 'maxYear' => date('Y')));
+//	 echo $this->Form->input('betalingsfrist', array('options' => array(1=>1,2=>2,3=>3,4=>4,5=>5,6=>6,7=>7,8=>8,9=>9,10=>10,11=>11,12=>12),
+//							 'selected' => 3,
+//							 'label' => 'Betalingsfrist (uker)',
+//							 'div' => array('id' => 'BetalingsfristDiv')))
+//	 ;
          echo $this->Form->hidden('fralagertype', array('value' => 3));
 	 echo $this->Form->hidden('tillagertype', array('value' => 3));
     ?>

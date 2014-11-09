@@ -19,14 +19,14 @@ class Kaffesalg extends AppModel {
 					 'conditions' => '',
 					 'fields' => '',
 					 'order' => ''
-					 ),
-		      
+					 )
 		      );
 
-  var $belongsTo = array('Selger', 'Kunde',
+  var $belongsTo = array('Selger',
 			 'Innstilling' => array('className' => 'Innstilling',
 						'foreignKey' => 'nummer',
 						),
+			 'Kunde'
 			 );
 
 
@@ -198,18 +198,41 @@ class Kaffesalg extends AppModel {
     }
     return $rabatter;
   }
-	
 
-  function lag_salg($dato, $data) {
+  /**
+     Setter "dato" feltet på kaffesalget og alle tilhørende pengeflyttinger
+     Kalles fra Faktura->registrerPakking
+  **/
+  function settSalgsDato($kaffesalg_id){
+    $kaffesalg = $this->find('first', array('conditions' => array('Kaffesalg.nummer' => $kaffesalg_id)));
+    $dato = date("Y-m-d H:m:s");
+    $kaffesalg['Kaffesalg']['dato'] = $dato;
+    $kaffesalg['Kaffesalg']['modified'] = $dato;
+    foreach($kaffesalg['Pengeflytting'] as $pf_idx => $pf){
+      $pf['dato'] = $dato;
+      $pf['modified'] = $dato;
+      $this->Pengeflytting->save($pf);
+    }
+    foreach($kaffesalg['Kaffeflytting'] as $pf_idx => $pf){
+      $pf['dato'] = $dato;
+      $pf['modified'] = $dato;
+      $this->Pengeflytting->save($pf);
+    }
+    return $this->save($kaffesalg);
+  }
+
+
+  function lag_salg($data) {
     echo "Lager salg";
     debug("Lager salg");
+    $dato = date("Y-m-d");
     $fraselger = $this->Kaffeflytting->Fra->Selger->findAllByNummer($data['selger']);
     $rabatter = $this->Kaffeflytting->Rabatt->find('list');
     $innstillingar = $this->Innstilling->find('first');
     $lagertyper = $this->Kaffeflytting->Fra->lagertypenavn->find('list', array('fields' => array('navn', 'nummer')));
     $kaffesalg = array();
     $kaffesalg['Kaffeflytting'] = array();
-    $kaffesalg['Kaffesalg']['dato'] = $data['dato'];
+    $kaffesalg['Kaffesalg']['dato'] = $dato;
     $kaffesalg['Kaffesalg']['selger_id'] = $data['selger'];
     $kaffesalg['Kaffesalg']['internmelding'] = $data['beskrivelse'];
     $sum = 0;
@@ -230,7 +253,7 @@ class Kaffesalg extends AppModel {
 	$kaffeFlytting['type'] = $kaffetype['Kaffepris']['nummer'];
 	$antall = $data['antall' . $kaffetype['Kaffepris']['nummer']];
 	$kaffeFlytting['antall'] = $antall;
-	$kaffeFlytting['dato'] = $data['dato'];
+	$kaffeFlytting['dato'] = $dato;
 	if($rabatt_id != 0)
 	  $sum += $antall * $rabatter[$rabatt_id];	
 	else
@@ -238,9 +261,7 @@ class Kaffesalg extends AppModel {
 	if($antall > 0){	
 	  $kaffesalg['Kaffeflytting'][] = $kaffeFlytting;
 	  $med_kaffi = true;
-	} else {
-	  echo "Ingen kaffi i salet!";
-	}
+	} 
       }
     }
     if(!$med_kaffi){
@@ -254,8 +275,8 @@ class Kaffesalg extends AppModel {
     $pengeFlytting = array();
     $pengeflytting['kroner'] = $sum;
     $fraktUtgift['kroner'] = $frakt;
-    $pengeflytting['dato'] = $data['dato'];
-    $fraktUtgift['dato'] = $data['dato'];
+    $pengeflytting['dato'] = $dato;
+    $fraktUtgift['dato'] = $dato;
     $pengeflytting['beskrivelse'] = $data['beskrivelse'] . " - kaffeverdi";
     $fraktUtgift['beskrivelse'] = $data['beskrivelse'] . " - frakt";
     $pengeflytting['fra'] = $fraselger[0]['SalgsKonto']['nummer'];
@@ -265,8 +286,8 @@ class Kaffesalg extends AppModel {
     $fraktUtgift['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger'];
     $kunde = $this->Faktura->Kunde->findAllByNummer($data['til']);
     $kaffesalg['Faktura']['kunde'] = $data['til'];
-    $kaffesalg['Faktura']['betalings_frist'] = date("Y-m-d",strtotime("+" . $data['betalingsfrist'] . " weeks"));
-    $kaffesalg['Faktura']['faktura_dato'] = $dato;
+    //$kaffesalg['Faktura']['betalings_frist'] = date("Y-m-d",strtotime("+" . $data['betalingsfrist'] . " weeks"));
+    //    $kaffesalg['Faktura']['faktura_dato'] = $dato;
     $kaffesalg['Faktura']['melding'] = $data['beskrivelse'];
     $kaffesalg['Faktura']['kroner'] = $sum;
     $kaffesalg['Faktura']['mva'] = 0;
@@ -283,12 +304,14 @@ class Kaffesalg extends AppModel {
     $kaffesalg['Pengeflytting'][] = $pengeflytting;
     if($frakt > 0)
       $kaffesalg['Pengeflytting'][] = $fraktUtgift;
-    echo($kaffesalg);
     return $this->saveAll($kaffesalg);
   }
   
 
-	
+  function lagBringSeddel($kaffesalg){
+
+  }
+  
 
 }
 ?>

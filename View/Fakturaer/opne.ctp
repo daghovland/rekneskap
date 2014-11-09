@@ -47,9 +47,11 @@ foreach ($opneTingingar as $faktura):
 			<?php echo $faktura['Faktura']['totalpris']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
 			<?php echo $this->Html->link(__('Pdf', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
-		<?php echo $this->Html->link(__('Pakka', true), array('controller' => 'faktura', 'action'=>'pakking', $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Ting Bring', true), array('action'=>'tingBring', $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $faktura['Faktura']['nummer'])); ?>
+		<?php echo $this->Html->link(__('Pakka', true), array('controller' => 'fakturaer', 'action'=>'pakket', $faktura['Faktura']['nummer'])); ?>
 		</td>
 	</tr>
 		<?php  

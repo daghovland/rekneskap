@@ -89,6 +89,8 @@ class Faktura extends AppModel {
     return $utestaende;
   }
 
+  
+
   /**
      Sender purringer til alle som har vært forfalt og ikke purret i minst to uker
      
@@ -125,6 +127,126 @@ class Faktura extends AppModel {
 	->send();
     }
     return;
+  }
+  
+  function registrerPakking($faktura_id){
+    $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
+    $dato = date("Y-m-d");
+    $faktura['Faktura']['betalings_frist'] =  date("Y-m-d",strtotime("+ 3 weeks"));
+    $faktura['Faktura']['faktura_dato'] = $dato;
+    $faktura['Faktura']['pakket'] = $dato;
+    $faktura['Kaffesalg']['dato'] = $dato;
+    if(!$this->save($faktura))
+      return false;
+    return $this->Kaffesalg->settSalgsDato($faktura['Kaffesalg']['nummer']);
+  }
+
+  function tingBring($faktura_id){
+    $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
+    //API Url
+    $url = 'https://api.bring.com/booking/api/booking';
+
+
+    $curl_opts = array('Content-Type: application/json',
+		       'Accept: application/json');
+    
+    // Must add login info to the $curl_opts, and set $bring_customer_no
+    include 'api_key.php';
+ 
+    //Initiate cURL.
+    $ch = curl_init($url);
+    $bring_tinging = array(
+			   'testIndicator' => true,
+			   'schemaVersion' => 1,
+			   'consignments' => array()
+			   );
+
+
+
+    $sender = array('name' => 'Zapatistgruppa i Bergen'
+		    , 'addressLine2' => 'c/o Dag Hovland'
+		    , 'addressLine' => 'Øvre Lynghaugen 38'
+		    , 'postalCode' => '5038'
+		    , 'city' => 'BERGEN'
+		    , 'countryCode' => 'no'
+		    , 'reference' => $faktura['Faktura']['nummer']
+		    , 'additionalAddressInfo' => null
+		    , 'contact' => array(
+					 'name' => 'Dag Hovland'
+					 , 'email' => 'tinging@zapatista.no'
+					 , 'phoneNumber' => '97046378'
+		    		       )
+		    );
+
+    $recipient = array(
+		       'name' => $faktura['Kunde']['navn'],
+		       'addressLine' => $faktura['fakturaadresse']['linje1'],
+		       'addressLine2' => $faktura['fakturaadresse']['linje2'],
+		       "postalCode" => $faktura['fakturaadresse']['postnummer'],
+		       "city" => strtoupper($faktura['fakturaadresse']['poststad']),
+		       "countryCode" => "no", 
+		       "reference" => "Cafe YaBasta",
+		       "additionalAddressInfo" => $faktura['fakturaadresse']['merkes'], 
+		       'contact' => array(
+					    'email' => $faktura['Kunde']['epost'],
+					    'phoneNumber' => $faktura['Kunde']['telefon']
+					    )
+		       );
+    if(array_key_exists('kontaktperson', $faktura['Kunde']) && $faktura['Kunde']['kontaktperson'] != null)
+      $recipient['contact']['name'] = $faktura['Kunde']['kontaktperson'];
+    
+    $consignments = 
+      array("correlationId" => "YABASTA-" . $faktura['Faktura']['nummer'],
+	    "shippingDateTime" => (time() + (2 * 24 * 60 * 60))*1000,
+	    'parties' => array('sender'  => $sender,
+			       'recipient' => $recipient ,
+			       'pickupPoint' => null
+			       ),
+	    'product' => array('id' => 'SERVICEPAKKE',
+			       'customerNumber' => $bring_customer_no,
+			       'services' => null,
+			       'customsDeclaration' => null),
+	    'purchaseOrder' => null, 
+	    'packages' => array()
+	    );
+    
+    $consignments['packages'][] = 
+      array(
+	    'correlationId' => 'PAKKE-' . $faktura['Faktura']['nummer'],
+	    'weightInKg' => 1,
+	    "goodsDescription" => "Kaffe",
+	    "dimensions" => array(
+				  "heightInCm" => 13,
+				  "widthInCm" =>  23,
+				  "lengthInCm" => 10
+				  ),
+	    "containerId" => null,
+	    "packageType" => null,
+	    "numberOfItems" => null
+	    );
+    
+    $bring_tinging['consignments'][] = $consignments;
+    
+    $jsonstring = json_encode($bring_tinging);
+
+    debug($jsonstring);
+    //Tell cURL that we want to send a POST request.
+    curl_setopt($ch, CURLOPT_POST, 1);
+ 
+    //Attach our encoded JSON string to the POST fields.
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonstring);
+ 
+
+    $curl_opts[] = 'Host: api.bring.com';
+ 
+    debug($curl_opts);
+    //Set the content type to application/json
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $curl_opts);
+ 
+    //Execute the request
+    $result = curl_exec($ch);
+    debug($result);
+    return $result;
   }
 
   /**
