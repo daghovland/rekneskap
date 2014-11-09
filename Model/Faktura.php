@@ -141,6 +141,8 @@ class Faktura extends AppModel {
     return $this->Kaffesalg->settSalgsDato($faktura['Kaffesalg']['nummer']);
   }
 
+ 
+
   function tingBring($faktura_id){
     $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
     //API Url
@@ -195,6 +197,9 @@ class Faktura extends AppModel {
     if(array_key_exists('kontaktperson', $faktura['Kunde']) && $faktura['Kunde']['kontaktperson'] != null)
       $recipient['contact']['name'] = $faktura['Kunde']['kontaktperson'];
     
+    $services = array('recipientNotification' => array('email' => $faktura['Kunde']['epost'],
+						       'mobile' => $faktura['Kunde']['telefon']));
+
     $consignments = 
       array("correlationId" => "YABASTA-" . $faktura['Faktura']['nummer'],
 	    "shippingDateTime" => (time() + (2 * 24 * 60 * 60))*1000,
@@ -204,7 +209,7 @@ class Faktura extends AppModel {
 			       ),
 	    'product' => array('id' => 'SERVICEPAKKE',
 			       'customerNumber' => $bring_customer_no,
-			       'services' => null,
+			       'services' => $services,
 			       'customsDeclaration' => null),
 	    'purchaseOrder' => null, 
 	    'packages' => array()
@@ -213,18 +218,25 @@ class Faktura extends AppModel {
     $consignments['packages'][] = 
       array(
 	    'correlationId' => 'PAKKE-' . $faktura['Faktura']['nummer'],
-	    'weightInKg' => 1,
 	    "goodsDescription" => "Kaffe",
 	    "dimensions" => array(
-				  "heightInCm" => 13,
-				  "widthInCm" =>  23,
-				  "lengthInCm" => 10
+				  "heightInCm" => 59,
+				  "widthInCm" =>  59,
+				  "lengthInCm" => 119
 				  ),
 	    "containerId" => null,
 	    "packageType" => null,
 	    "numberOfItems" => null
 	    );
-    
+
+    $vekter = $this->Kaffesalg->Kaffeflytting->Kaffeflyttingvekt->find('list', array('conditions' => array('kaffesalg_id' => $faktura['Kaffesalg']['nummer']), 'fields' => array('kilo')));
+
+    $vekt = 1;
+    foreach($vekter as $envekt)
+      $vekt += $envekt;
+
+    $consignments['packages'][0]['weightInKg'] = $vekt;
+
     $bring_tinging['consignments'][] = $consignments;
     
     $jsonstring = json_encode($bring_tinging);
@@ -232,7 +244,12 @@ class Faktura extends AppModel {
     debug($jsonstring);
     //Tell cURL that we want to send a POST request.
     curl_setopt($ch, CURLOPT_POST, 1);
- 
+
+    //Tell cURL that we want to get the result
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+
+
     //Attach our encoded JSON string to the POST fields.
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonstring);
  
@@ -245,8 +262,18 @@ class Faktura extends AppModel {
  
     //Execute the request
     $result = curl_exec($ch);
-    debug($result);
-    return $result;
+
+    curl_close($ch);
+
+    if($result.consignment.confirmation == null){
+      debug($result);
+      return $result;
+    } else {
+      
+      debug($result);
+      
+      return $result;
+    }
   }
 
   /**

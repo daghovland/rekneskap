@@ -46,6 +46,7 @@ class Kaffesalg extends AppModel {
 		       );
 
 
+  /* Kalles fra ajax under registrering av salg */
   function kaffi_vekt($data){
     $kaffepriser = $this->Kaffeflytting->Kaffepris->find('all');
     $vekt = 0;
@@ -58,6 +59,7 @@ class Kaffesalg extends AppModel {
     return $vekt;
   }
 
+  
 
   public function frakt_pris($data){
     if($data['postSending'] && is_numeric($data['kunde'])){
