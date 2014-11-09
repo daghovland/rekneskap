@@ -47,8 +47,9 @@ foreach ($opneTingingar as $faktura):
 			<?php echo $faktura['Faktura']['totalpris']; ?>
 		</td>
 		<td class="actions">
-			<?php echo $this->Html->link(__('Pdf', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
-			<?php echo $this->Html->link(__('Ting Bring', true), array('action'=>'tingBring', $faktura['Faktura']['nummer'])); ?>
+			<?php echo $this->Html->link(__('Rekning', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
+			<?php if(strlen($faktura['Faktura']['pakkeseddel']) > 1) { echo $this->Html->link(__('Pakkeseddel', true), $faktura['Faktura']['pakkeseddel']); } else {echo $this->Html->link(__('Ting Bring', true), array('action'=>'tingBring', $faktura['Faktura']['nummer']));} ?>
+<?php if(strlen($faktura['Faktura']['sporing']) > 1) { echo $this->Html->link(__('Sporing', true), $faktura['Faktura']['sporing']); } ?>
 			<?php echo $this->Html->link(__('Syn', true), array('action'=>'view', $faktura['Faktura']['nummer'])); ?>
 			<?php echo $this->Html->link(__('Slett', true), array('action'=>'delete', $faktura['Faktura']['nummer'])); ?>
 		<?php echo $this->Html->link(__('Pakka', true), array('controller' => 'fakturaer', 'action'=>'pakket', $faktura['Faktura']['nummer'])); ?>
