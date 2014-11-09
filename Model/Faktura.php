@@ -3,6 +3,11 @@ App::uses('CakeEmail', 'Network/Email');
 App::import('Vendor','xtcpdf'); 
 //App::import('Vendor','fpdi'); 
 
+class TingBringException extends CakeException {
+  protected $_messageTemplate = 'Det oppstod ein feil i tinginga av pakke hos Bring: %s.';
+
+};
+
 class Faktura extends AppModel {
 
   var $name = 'Faktura';
@@ -89,6 +94,8 @@ class Faktura extends AppModel {
     return $utestaende;
   }
 
+  
+
   /**
      Sender purringer til alle som har vært forfalt og ikke purret i minst to uker
      
@@ -125,6 +132,190 @@ class Faktura extends AppModel {
 	->send();
     }
     return;
+  }
+  
+  /**
+     Tar inn en kaffesalg_id, returnerer total netto kaffivekt av salget
+  **/
+  function faktura_vekt($kaffesalg_id){
+    $vekter = $this->Kaffesalg->Kaffeflytting->Kaffeflyttingvekt->find('list', array('conditions' => array('kaffesalg_id' => $kaffesalg_id), 'fields' => array('kilo')));
+    $vekt = 0;
+    foreach($vekter as $envekt)
+      $vekt += $envekt;
+    return $vekt;
+  }
+
+  function registrerPakking($faktura_id){
+    $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
+    $dato = date("Y-m-d");
+    $faktura['Faktura']['betalings_frist'] =  date("Y-m-d",strtotime("+ 3 weeks"));
+    $faktura['Faktura']['faktura_dato'] = $dato;
+    $faktura['Faktura']['pakket'] = $dato;
+    $faktura['Kaffesalg']['dato'] = $dato;
+    if(!$this->save($faktura))
+      return false;
+    return $this->Kaffesalg->settSalgsDato($faktura['Kaffesalg']['nummer']);
+  }
+
+  /**
+     Lager registrering av flere pakker, utifra vekt
+     kalles fra ting_bring
+  **/
+  function bring_pakker($faktura_nr, $kaffesalg_id){
+    $vekt = $this->faktura_vekt($kaffesalg_id);
+    if($vekt <= 0)
+      throw new TingBringException("Kunne ikkje berekne vekt på pakkka.");
+    $restvekt = $vekt;
+    $pakke_nr = 0;
+    $pakker = array();
+    do{
+   
+      $pakker[] = 
+	array(
+	      'correlationId' => 'PAKKE-' . $faktura_nr,
+	      "goodsDescription" => "Kaffe",
+	      "dimensions" => array(
+				    "heightInCm" => 59,
+				    "widthInCm" =>  59,
+				    "lengthInCm" => 119
+				    ),
+	      "containerId" => null,
+	      "packageType" => null,
+	      "numberOfItems" => null
+	      );
+      
+      
+      if($restvekt > 24){
+	$pakkevekt = 24;
+      } else {
+	$pakkevekt = $restvekt;
+      }
+      
+      $pakker[$pakke_nr]['weightInKg'] = $pakkevekt + 1;
+
+      $pakke_nr += 1;
+      $restvekt -= $pakkevekt;
+    } while ($restvekt > 0);
+    return $pakker;
+  }
+
+  function tingBring($faktura_id){
+    $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
+    if(strlen($faktura['Faktura']['pakkeseddel']) > 10){
+      return " Allereie tinga hos Bring";
+    }
+    //API Url
+    $url = 'https://api.bring.com/booking/api/booking';
+
+
+    $curl_opts = array('Content-Type: application/json',
+		       'Accept: application/json');
+    
+    // Must add login info to the $curl_opts, and set $bring_customer_no
+    include 'api_key.php';
+ 
+    //Initiate cURL.
+    $ch = curl_init($url);
+    $bring_tinging = array(
+			   'testIndicator' => $bring_test,
+			   'schemaVersion' => 1,
+			   'consignments' => array()
+			   );
+
+
+
+    $sender = array('name' => 'Zapatistgruppa i Bergen'
+		    , 'addressLine2' => 'c/o Dag Hovland'
+		    , 'addressLine' => 'Øvre Lynghaugen 38'
+		    , 'postalCode' => '5038'
+		    , 'city' => 'BERGEN'
+		    , 'countryCode' => 'no'
+		    , 'reference' => $faktura['Faktura']['nummer']
+		    , 'additionalAddressInfo' => null
+		    , 'contact' => array(
+					 'name' => 'Dag Hovland'
+					 , 'email' => 'tinging@zapatista.no'
+					 , 'phoneNumber' => '97046378'
+		    		       )
+		    );
+
+    $recipient = array(
+		       'name' => $faktura['Kunde']['navn'],
+		       'addressLine' => $faktura['fakturaadresse']['linje1'],
+		       'addressLine2' => $faktura['fakturaadresse']['linje2'],
+		       "postalCode" => $faktura['fakturaadresse']['postnummer'],
+		       "city" => strtoupper($faktura['fakturaadresse']['poststad']),
+		       "countryCode" => "no", 
+		       "reference" => "Cafe YaBasta",
+		       "additionalAddressInfo" => $faktura['fakturaadresse']['merkes'], 
+		       'contact' => array(
+					    'email' => $faktura['Kunde']['epost'],
+					    'phoneNumber' => $faktura['Kunde']['telefon']
+					    )
+		       );
+    if(array_key_exists('kontaktperson', $faktura['Kunde']) && $faktura['Kunde']['kontaktperson'] != null)
+      $recipient['contact']['name'] = $faktura['Kunde']['kontaktperson'];
+    
+    $services = array('recipientNotification' => array('email' => $faktura['Kunde']['epost'],
+						       'mobile' => $faktura['Kunde']['telefon']));
+
+    $consignments = 
+      array("correlationId" => "YABASTA-" . $faktura['Faktura']['nummer'],
+	    "shippingDateTime" => (time() + (2 * 24 * 60 * 60))*1000,
+	    'parties' => array('sender'  => $sender,
+			       'recipient' => $recipient ,
+			       'pickupPoint' => null
+			       ),
+	    'product' => array('id' => 'SERVICEPAKKE',
+			       'customerNumber' => $bring_customer_no,
+			       'services' => $services,
+			       'customsDeclaration' => null),
+	    'purchaseOrder' => null, 
+	    'packages' => $this->bring_pakker($faktura['Faktura']['nummer'], $faktura['Kaffesalg']['nummer'])
+	    );
+
+    $bring_tinging['consignments'][] = $consignments;
+    
+    $jsonstring = json_encode($bring_tinging);
+
+    //Tell cURL that we want to send a POST request.
+    curl_setopt($ch, CURLOPT_POST, 1);
+
+    //Tell cURL that we want to get the result
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+
+
+    //Attach our encoded JSON string to the POST fields.
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonstring);
+ 
+
+    $curl_opts[] = 'Host: api.bring.com';
+ 
+    //Set the content type to application/json
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $curl_opts);
+ 
+    //Execute the request
+    $result = curl_exec($ch);
+    $returned = json_decode($result);
+    curl_close($ch);
+    
+    $confirmation = $returned->consignments[0]->confirmation;
+    $errors = $returned->consignments[0]->errors;
+      
+    if($confirmation != null){
+      $faktura['Faktura']['pakkeseddel'] = $confirmation->links->labels;
+      $faktura['Faktura']['sporing'] = $confirmation->links->tracking;
+      $this->save($faktura, false, array('pakkeseddel', 'sporing'));
+    } else {
+      if($errors == null)
+	throw new TingBringException("Bring did not give confirmation, and no error message");
+    }
+    debug($errors);
+    if($errors != null){ 
+      throw new TingBringException($errors[0]->messages[0]->message);
+    }
+    return true;
   }
 
   /**

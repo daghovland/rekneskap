@@ -73,8 +73,7 @@ class KaffesalgController extends AppController {
 			  array('controller' => 'kaffesalg', 
 				'action' => 'add'));
     if(!empty($this->request->data)){
-      if(!$this->Kaffesalg->lag_salg($this->Kaffe->dateToSql($this->request->data['Kaffesalg']['dato']), 
-				     $this->request->data['Kaffesalg']))
+      if(!$this->Kaffesalg->lag_salg($this->request->data['Kaffesalg']))
 	{
 	  $this->Session->setFlash(__('Kunne ikkje lagre kaffisalet. Prøv igjen',   true));
 	  $this->redirect(array('action' => 'add'));
