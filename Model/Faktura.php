@@ -3,6 +3,11 @@ App::uses('CakeEmail', 'Network/Email');
 App::import('Vendor','xtcpdf'); 
 //App::import('Vendor','fpdi'); 
 
+class TingBringException extends CakeException {
+  protected $_messageTemplate = 'Det oppstod ein feil i tinginga av pakke hos Bring: %s.';
+
+};
+
 class Faktura extends AppModel {
 
   var $name = 'Faktura';
@@ -129,6 +134,17 @@ class Faktura extends AppModel {
     return;
   }
   
+  /**
+     Tar inn en kaffesalg_id, returnerer total netto kaffivekt av salget
+  **/
+  function faktura_vekt($kaffesalg_id){
+    $vekter = $this->Kaffesalg->Kaffeflytting->Kaffeflyttingvekt->find('list', array('conditions' => array('kaffesalg_id' => $kaffesalg_id), 'fields' => array('kilo')));
+    $vekt = 0;
+    foreach($vekter as $envekt)
+      $vekt += $envekt;
+    return $vekt;
+  }
+
   function registrerPakking($faktura_id){
     $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
     $dato = date("Y-m-d");
@@ -141,10 +157,53 @@ class Faktura extends AppModel {
     return $this->Kaffesalg->settSalgsDato($faktura['Kaffesalg']['nummer']);
   }
 
- 
+  /**
+     Lager registrering av flere pakker, utifra vekt
+     kalles fra ting_bring
+  **/
+  function bring_pakker($faktura_nr, $kaffesalg_id){
+    $vekt = $this->faktura_vekt($kaffesalg_id);
+    if($vekt <= 0)
+      throw new TingBringException("Kunne ikkje berekne vekt på pakkka.");
+    $restvekt = $vekt;
+    $pakke_nr = 0;
+    $pakker = array();
+    do{
+   
+      $pakker[] = 
+	array(
+	      'correlationId' => 'PAKKE-' . $faktura_nr,
+	      "goodsDescription" => "Kaffe",
+	      "dimensions" => array(
+				    "heightInCm" => 59,
+				    "widthInCm" =>  59,
+				    "lengthInCm" => 119
+				    ),
+	      "containerId" => null,
+	      "packageType" => null,
+	      "numberOfItems" => null
+	      );
+      
+      
+      if($restvekt > 24){
+	$pakkevekt = 24;
+      } else {
+	$pakkevekt = $restvekt;
+      }
+      
+      $pakker[$pakke_nr]['weightInKg'] = $pakkevekt + 1;
+
+      $pakke_nr += 1;
+      $restvekt -= $pakkevekt;
+    } while ($restvekt > 0);
+    return $pakker;
+  }
 
   function tingBring($faktura_id){
     $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
+    if(strlen($faktura['Faktura']['pakkeseddel']) > 10){
+      return " Allereie tinga hos Bring";
+    }
     //API Url
     $url = 'https://api.bring.com/booking/api/booking';
 
@@ -158,7 +217,7 @@ class Faktura extends AppModel {
     //Initiate cURL.
     $ch = curl_init($url);
     $bring_tinging = array(
-			   'testIndicator' => true,
+			   'testIndicator' => $bring_test,
 			   'schemaVersion' => 1,
 			   'consignments' => array()
 			   );
@@ -212,36 +271,13 @@ class Faktura extends AppModel {
 			       'services' => $services,
 			       'customsDeclaration' => null),
 	    'purchaseOrder' => null, 
-	    'packages' => array()
+	    'packages' => $this->bring_pakker($faktura['Faktura']['nummer'], $faktura['Kaffesalg']['nummer'])
 	    );
-    
-    $consignments['packages'][] = 
-      array(
-	    'correlationId' => 'PAKKE-' . $faktura['Faktura']['nummer'],
-	    "goodsDescription" => "Kaffe",
-	    "dimensions" => array(
-				  "heightInCm" => 59,
-				  "widthInCm" =>  59,
-				  "lengthInCm" => 119
-				  ),
-	    "containerId" => null,
-	    "packageType" => null,
-	    "numberOfItems" => null
-	    );
-
-    $vekter = $this->Kaffesalg->Kaffeflytting->Kaffeflyttingvekt->find('list', array('conditions' => array('kaffesalg_id' => $faktura['Kaffesalg']['nummer']), 'fields' => array('kilo')));
-
-    $vekt = 1;
-    foreach($vekter as $envekt)
-      $vekt += $envekt;
-
-    $consignments['packages'][0]['weightInKg'] = $vekt;
 
     $bring_tinging['consignments'][] = $consignments;
     
     $jsonstring = json_encode($bring_tinging);
 
-    debug($jsonstring);
     //Tell cURL that we want to send a POST request.
     curl_setopt($ch, CURLOPT_POST, 1);
 
@@ -256,24 +292,30 @@ class Faktura extends AppModel {
 
     $curl_opts[] = 'Host: api.bring.com';
  
-    debug($curl_opts);
     //Set the content type to application/json
     curl_setopt($ch, CURLOPT_HTTPHEADER, $curl_opts);
  
     //Execute the request
     $result = curl_exec($ch);
-
+    $returned = json_decode($result);
     curl_close($ch);
-
-    if($result.consignment.confirmation == null){
-      debug($result);
-      return $result;
+    
+    $confirmation = $returned->consignments[0]->confirmation;
+    $errors = $returned->consignments[0]->errors;
+      
+    if($confirmation != null){
+      $faktura['Faktura']['pakkeseddel'] = $confirmation->links->labels;
+      $faktura['Faktura']['sporing'] = $confirmation->links->tracking;
+      $this->save($faktura, false, array('pakkeseddel', 'sporing'));
     } else {
-      
-      debug($result);
-      
-      return $result;
+      if($errors == null)
+	throw new TingBringException("Bring did not give confirmation, and no error message");
     }
+    debug($errors);
+    if($errors != null){ 
+      throw new TingBringException($errors[0]->messages[0]->message);
+    }
+    return true;
   }
 
   /**

@@ -50,20 +50,18 @@ class FakturaerController extends AppController {
 
   function tingBring($id=null){
     if($id){
-      $res = $this->Faktura->tingBring($id);
-      debug($res);
-      /*
-      if(!$this->Faktura->tingBring($id))	
-	{
-	  $this->Session->setFlash(__('Kunne ikkje tinge Bring for rekning " + $id + ". Prøv igjen',   true));
-	  $this->redirect(array('action' => 'opne'));
-	} else {	    
+      try{
+	$res = $this->Faktura->tingBring($id);	
 	$this->Session->setFlash(__('Pakka er tinga hos Bring', 
 				    true));
 	$this->redirect(array('controller' => 'fakturaer', 
 			      'action'=>'opne'));
-      }
-      */
+      } catch(Exception $e)
+	{
+	  $this->Session->setFlash('Kunne ikkje tinge Bring for rekning ' + $id + '. Melding: ' . $e,   true);
+	  $this->redirect(array('action' => 'opne'));
+	} 
+
     }
   }
 
