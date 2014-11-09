@@ -28,9 +28,43 @@ class FakturaerController extends AppController {
   }
 
   function opne(){
-    $this->set('opneTingingar', $this->Faktura->find('all', array('conditions' => array('pakket' => null))));
+    $this->set('opneTingingar', $this->Faktura->find('all', array('conditions' => array('pakket IS NULL'))));
     $this->set('kunder', $this->Faktura->Kunde->find('list', array('fields' => array('navn'))));
     $this->Session->write('forrigeSide', array('controller' => 'fakturaer', 'action' => 'ubetalte'));
+  }
+
+  function pakket($id = null){
+    if($id){
+      if(!$this->Faktura->registrerPakking($id))
+	{
+	  $this->Session->setFlash(__('Kunne ikkje registrere pakking av faktura " + $id + ". Prøv igjen',   true));
+	  $this->redirect(array('action' => 'opne'));
+	} else {	    
+	$this->Session->setFlash(__('Pakkinga er registrert', 
+				    true));
+	$this->redirect(array('controller' => 'fakturaer', 
+			      'action'=>'opne'));
+      }
+    }
+  }
+
+  function tingBring($id=null){
+    if($id){
+      $res = $this->Faktura->tingBring($id);
+      debug($res);
+      /*
+      if(!$this->Faktura->tingBring($id))	
+	{
+	  $this->Session->setFlash(__('Kunne ikkje tinge Bring for rekning " + $id + ". Prøv igjen',   true));
+	  $this->redirect(array('action' => 'opne'));
+	} else {	    
+	$this->Session->setFlash(__('Pakka er tinga hos Bring', 
+				    true));
+	$this->redirect(array('controller' => 'fakturaer', 
+			      'action'=>'opne'));
+      }
+      */
+    }
   }
 
   function view($id = null) {
