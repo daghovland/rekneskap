@@ -19,14 +19,14 @@ class Kaffesalg extends AppModel {
 					 'conditions' => '',
 					 'fields' => '',
 					 'order' => ''
-					 ),
-		      
+					 )
 		      );
 
-  var $belongsTo = array('Selger', 'Kunde',
+  var $belongsTo = array('Selger',
 			 'Innstilling' => array('className' => 'Innstilling',
 						'foreignKey' => 'nummer',
 						),
+			 'Kunde'
 			 );
 
 
@@ -46,6 +46,7 @@ class Kaffesalg extends AppModel {
 		       );
 
 
+  /* Kalles fra ajax under registrering av salg */
   function kaffi_vekt($data){
     $kaffepriser = $this->Kaffeflytting->Kaffepris->find('all');
     $vekt = 0;
@@ -58,6 +59,7 @@ class Kaffesalg extends AppModel {
     return $vekt;
   }
 
+  
 
   public function frakt_pris($data){
     if($data['postSending'] && is_numeric($data['kunde'])){
@@ -96,6 +98,30 @@ class Kaffesalg extends AppModel {
       }
     }
   }
+
+
+  /**
+     Returnerer delen av prisen som er mva av totalpris for mva gitt i desimal (f.eks. 0.25)
+  **/
+  function berekne_mva($totalpris, $mva_andel){
+    return $totalpris - $totalpris / (1 + $mva_andel);
+  }
+	
+  /**
+     Returnerer andelen som er mva av total kaffipris
+  **/
+  function berekne_kaffi_mva($totalpris){
+    return $this->berekne_mva($totalpris, 0.15);
+  }
+
+  function berekne_vanlig_mva($totalpris){
+    return $this->berekne-mva($totalpris, 0.25);
+  }
+
+
+
+
+
 
   function faktura_tekst($data){
     $kaffepriser = $this->Kaffeflytting->Kaffepris->find('all');
@@ -174,36 +200,41 @@ class Kaffesalg extends AppModel {
     }
     return $rabatter;
   }
-	
 
-  function lag_kontant_salg($selger_id, $data){
-    $data['selger'] = $selger_id;
-    $data['frakt'] = 0;
-    $data['Betaling'] = 'Kontant';
-    $data['dato'] = date("Y-m-d");
-
-    $FralagerNummer =  $this->Kaffeflytting->Fra->find('first',
-						       array('conditions' => array('Fra.selger' => $selger_id,
-										   'Fra.lagertype' => 3)));
-
-    $TillagerNummer =  $this->Kaffeflytting->Til->find('first',
-						       array('conditions' => array('Til.selger' => $selger_id,
-										   'Til.lagertype' => 1)));
-    $data['til'] = $TillagerNummer['Til']['nummer'];
-    $data['fra'] = $TillagerNummer['Fra']['nummer'];
-    return $this->lag_salg(date("Y-m-d"), $data);
+  /**
+     Setter "dato" feltet på kaffesalget og alle tilhørende pengeflyttinger
+     Kalles fra Faktura->registrerPakking
+  **/
+  function settSalgsDato($kaffesalg_id){
+    $kaffesalg = $this->find('first', array('conditions' => array('Kaffesalg.nummer' => $kaffesalg_id)));
+    $dato = date("Y-m-d H:m:s");
+    $kaffesalg['Kaffesalg']['dato'] = $dato;
+    $kaffesalg['Kaffesalg']['modified'] = $dato;
+    foreach($kaffesalg['Pengeflytting'] as $pf_idx => $pf){
+      $pf['dato'] = $dato;
+      $pf['modified'] = $dato;
+      $this->Pengeflytting->save($pf);
+    }
+    foreach($kaffesalg['Kaffeflytting'] as $pf_idx => $pf){
+      $pf['dato'] = $dato;
+      $pf['modified'] = $dato;
+      $this->Pengeflytting->save($pf);
+    }
+    return $this->save($kaffesalg);
   }
 
-  function lag_salg($dato, $data) {
+
+  function lag_salg($data) {
     echo "Lager salg";
     debug("Lager salg");
+    $dato = date("Y-m-d");
     $fraselger = $this->Kaffeflytting->Fra->Selger->findAllByNummer($data['selger']);
     $rabatter = $this->Kaffeflytting->Rabatt->find('list');
     $innstillingar = $this->Innstilling->find('first');
     $lagertyper = $this->Kaffeflytting->Fra->lagertypenavn->find('list', array('fields' => array('navn', 'nummer')));
     $kaffesalg = array();
     $kaffesalg['Kaffeflytting'] = array();
-    $kaffesalg['Kaffesalg']['dato'] = $data['dato'];
+    $kaffesalg['Kaffesalg']['dato'] = $dato;
     $kaffesalg['Kaffesalg']['selger_id'] = $data['selger'];
     $kaffesalg['Kaffesalg']['internmelding'] = $data['beskrivelse'];
     $sum = 0;
@@ -224,7 +255,7 @@ class Kaffesalg extends AppModel {
 	$kaffeFlytting['type'] = $kaffetype['Kaffepris']['nummer'];
 	$antall = $data['antall' . $kaffetype['Kaffepris']['nummer']];
 	$kaffeFlytting['antall'] = $antall;
-	$kaffeFlytting['dato'] = $data['dato'];
+	$kaffeFlytting['dato'] = $dato;
 	if($rabatt_id != 0)
 	  $sum += $antall * $rabatter[$rabatt_id];	
 	else
@@ -232,9 +263,7 @@ class Kaffesalg extends AppModel {
 	if($antall > 0){	
 	  $kaffesalg['Kaffeflytting'][] = $kaffeFlytting;
 	  $med_kaffi = true;
-	} else {
-	  echo "Ingen kaffi i salet!";
-	}
+	} 
       }
     }
     if(!$med_kaffi){
@@ -245,56 +274,46 @@ class Kaffesalg extends AppModel {
     $frakt = $data['frakt'];
     $kaffesalg['Kaffesalg']['total'] = $sum + $frakt;
     $kaffesalg['Kaffesalg']['frakt'] = $frakt;
-    if($data['Betaling'] == 'Kontant'){
-      $kaffesalg['Kaffesalg']['kontant'] = true;
-      $kaffesalg['Kaffesalg']['regning'] = false;
-    } else {
-      $kaffesalg['Kaffesalg']['kontant'] = false;
-      $kaffesalg['Kaffesalg']['regning'] = true;
-    }
     $pengeFlytting = array();
     $pengeflytting['kroner'] = $sum;
     $fraktUtgift['kroner'] = $frakt;
-    $pengeflytting['dato'] = $data['dato'];
-    $fraktUtgift['dato'] = $data['dato'];
+    $pengeflytting['dato'] = $dato;
+    $fraktUtgift['dato'] = $dato;
     $pengeflytting['beskrivelse'] = $data['beskrivelse'] . " - kaffeverdi";
     $fraktUtgift['beskrivelse'] = $data['beskrivelse'] . " - frakt";
     $pengeflytting['fra'] = $fraselger[0]['SalgsKonto']['nummer'];
     $fraktUtgift['fra'] = $innstillingar['Innstilling']['kaffesalg_fraktutgift']; 
 	  
-    if($kaffesalg['Kaffesalg']['kontant']){
-      $pengeflytting['til'] = $fraselger[0]['SelgerKonto']['nummer'];
-      $fraktUtgift['til'] = $fraselger[0]['SelgerKonto']['nummer'];
-    } else {
-      $pengeflytting['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger']; 
-      $fraktUtgift['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger'];
-      $kunde = $this->Faktura->Kunde->findAllByNummer($data['til']);
-      $kaffesalg['Faktura']['kunde'] = $data['til'];
-      $kaffesalg['Faktura']['betalings_frist'] = date("Y-m-d",strtotime("+" . $data['betalingsfrist'] . " weeks"));
-      $kaffesalg['Faktura']['faktura_dato'] = $dato;
-      $kaffesalg['Faktura']['melding'] = $data['beskrivelse'];
-      $kaffesalg['Faktura']['kroner'] = $sum;
-      $kaffesalg['Faktura']['mva'] = 0;
-      $kaffesalg['Faktura']['betalt'] = false;
-      $kaffesalg['Faktura']['frakt'] = $frakt;
-      $kaffesalg['Faktura']['totalpris'] = $sum + $frakt;
-      $kaffesalg['Kaffesalg']['fakturatekst'] = $this->faktura_tekst($data);
-      $kaffesalg['Faktura']['tekst'] = $this->faktura_tekst($data);
-      if(is_numeric($kunde[0]['Kunde']['fakturaadresse']))
-	$kaffesalg['Faktura']['adresse'] = $kunde[0]['FakturaAdresse']['nummer'];
-      else
-	$kaffesalg['Faktura']['adresse'] = $kunde[0]['LeveringsAdresse']['nummer'];
-    }
+    $pengeflytting['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger']; 
+    $fraktUtgift['til'] = $innstillingar['Innstilling']['ubetalte_kafferegninger'];
+    $kunde = $this->Faktura->Kunde->findAllByNummer($data['til']);
+    $kaffesalg['Faktura']['kunde'] = $data['til'];
+    //$kaffesalg['Faktura']['betalings_frist'] = date("Y-m-d",strtotime("+" . $data['betalingsfrist'] . " weeks"));
+    //    $kaffesalg['Faktura']['faktura_dato'] = $dato;
+    $kaffesalg['Faktura']['melding'] = $data['beskrivelse'];
+    $kaffesalg['Faktura']['kroner'] = $sum;
+    $kaffesalg['Faktura']['mva'] = 0;
+    $kaffesalg['Faktura']['betalt'] = false;
+    $kaffesalg['Faktura']['frakt'] = $frakt;
+    $kaffesalg['Faktura']['totalpris'] = $sum + $frakt;
+    $kaffesalg['Kaffesalg']['fakturatekst'] = $this->faktura_tekst($data);
+    $kaffesalg['Faktura']['tekst'] = $this->faktura_tekst($data);
+    if(is_numeric($kunde[0]['Kunde']['fakturaadresse']))
+      $kaffesalg['Faktura']['adresse'] = $kunde[0]['FakturaAdresse']['nummer'];
+    else
+      $kaffesalg['Faktura']['adresse'] = $kunde[0]['LeveringsAdresse']['nummer'];
     $kaffesalg['Pengeflytting'] = array();
     $kaffesalg['Pengeflytting'][] = $pengeflytting;
     if($frakt > 0)
       $kaffesalg['Pengeflytting'][] = $fraktUtgift;
-    echo($kaffesalg);
     return $this->saveAll($kaffesalg);
   }
+  
 
+  function lagBringSeddel($kaffesalg){
 
-	
+  }
+  
 
 }
 ?>
