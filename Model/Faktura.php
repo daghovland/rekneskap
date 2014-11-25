@@ -1,5 +1,6 @@
 <?php
 App::uses('CakeEmail', 'Network/Email');
+App::uses('Auth','Controller/Component');
 App::import('Vendor','xtcpdf'); 
 //App::import('Vendor','fpdi'); 
 
@@ -146,12 +147,13 @@ class Faktura extends AppModel {
     return $vekt;
   }
 
-  function registrerPakking($faktura_id){
+  function registrerPakking($faktura_id, $user_id){
     $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
     $dato = date("Y-m-d");
     $faktura['Faktura']['betalings_frist'] =  date("Y-m-d",strtotime("+ 3 weeks"));
     $faktura['Faktura']['faktura_dato'] = $dato;
     $faktura['Faktura']['pakket'] = $dato;
+    $faktura['Faktura']['pakket_av'] = $user_id;
     $faktura['Kaffesalg']['dato'] = $dato;
     if(!$this->save($faktura))
       return false;
