@@ -140,6 +140,7 @@ class Faktura extends AppModel {
   function faktura_vekt($kaffesalg_id){
     $vekter = $this->Kaffesalg->Kaffeflytting->Kaffeflyttingvekt->find('list', array('conditions' => array('kaffesalg_id' => $kaffesalg_id), 'fields' => array('kilo')));
     $vekt = 0;
+	debug($vekter);
     foreach($vekter as $envekt)
       $vekt += $envekt;
     return $vekt;
@@ -164,7 +165,7 @@ class Faktura extends AppModel {
   function bring_pakker($faktura_nr, $kaffesalg_id){
     $vekt = $this->faktura_vekt($kaffesalg_id);
     if($vekt <= 0)
-      throw new TingBringException("Kunne ikkje berekne vekt på pakkka.");
+      throw new TingBringException("Fekk ugyldig vekt " . $vekt . " på pakkka.");
     $restvekt = $vekt;
     $pakke_nr = 0;
     $pakker = array();
