@@ -35,7 +35,8 @@ class FakturaerController extends AppController {
 
   function pakket($id = null){
     if($id){
-      if(!$this->Faktura->registrerPakking($id))
+      $user_id = $this->Auth->user('nummer');
+      if(!$this->Faktura->registrerPakking($id, $user_id))
 	{
 	  $this->Session->setFlash(__('Kunne ikkje registrere pakking av faktura " + $id + ". Prøv igjen',   true));
 	  $this->redirect(array('action' => 'opne'));
