@@ -355,21 +355,58 @@ class Faktura extends AppModel {
     return $adressetekst;
   }
 
+  function en_etikett($faktura, $tcpdf, $offset){
+    //    $tcpdf->Image(ROOT . DS . WEBROOT_DIR . DS . 'img' . DS . 'bpost.jpg', 0, 10, 50, 0, 'jpeg', 'Frankopatrykk med miljo-B_Nynorsk.jpg', 'T', true, 0, 'L', false, false, 0, true, false);
+    $tcpdf->Image(ROOT . DS . WEBROOT_DIR . DS . 'img' . DS . 'bpost.jpg', 5, $offset+13, 50, 0, 'jpeg', 'Frankopatrykk med miljo-B_Nynorsk.jpg');
+    $adressetekst = $this->faktura_adresse($faktura);
+    $tcpdf->MultiCell(190,5, $adressetekst, 0, 'L', false, 1, 50, $offset);
+  }
 
   /**
-     Lager b-post etikett. Kjør output for å få pdf
+     Starter etikkett pdf
   **/
-  function lagBPostEtikett($faktura, $kaffesalg){
+  function startEtikettPdf(){
     $tcpdf  = $this->startPdf();
-    $tcpdf->setTitle("Faktura " . $faktura['Faktura']['nummer'] . ": Rekning frå Zapatistgruppa i Bergen til " . $faktura['Kunde']['navn']);
+    $tcpdf->SetAutoPageBreak( true );
+    $tcpdf->setTitle("BPost etiketter");
     $tcpdf->setSubject("Café YaBasta. Kaffi frå zapatistiske kooperativ");
-    $tcpdf->setJPEGQuality(75);
-    $tcpdf->Image(ROOT . DS . WEBROOT_DIR . DS . 'img' . DS . 'bpost.jpg', 0, 10, 50, 0, 'jpeg', 'Frankopatrykk med miljo-B_Nynorsk.jpg', 'T', true, 0, 'L', false, false, 0, true, false);
-    $adressetekst = $this->faktura_adresse($faktura);
+    $tcpdf->setJPEGQuality(100);
+    // set cell padding
+    $tcpdf->setCellPaddings(1, 1, 1, 1);
+    
+    // set cell margins
+    $tcpdf->setCellMargins(10, 10, 10, 10);
     $tcpdf->SetFont('dejavusans','',20);
-    $tcpdf->MultiCell(190,0, $adressetekst, 0, 'L', 0, 1);
     return $tcpdf;
   }
+  
+  /**
+     Lager en b-post etikett. Kjør output for å få pdf
+  **/
+  function lagBPostEtikett($faktura){
+    $tcpdf  = $this->startEtikettPdf();
+    $this->en_etikett($faktura, $tcpdf, 0);
+    return $tcpdf;
+  }
+
+
+  /**
+     Lager mange b-post etiketter av alle opne. Kjør output for å få pdf
+  **/
+  function lagBPostEtiketter($fakturaer){
+    $tcpdf = $this->startEtikettPdf();
+    $offset = 0;
+    foreach ($fakturaer as $faktura){
+       if($offset > 250){
+	$tcpdf->AddPage();
+	$offset = 0;
+      }
+      $this->en_etikett($faktura, $tcpdf, $offset);
+      $offset += 45;
+    }
+    return $tcpdf;
+  }
+
 
   /**
      Returns a TCPDF object on which on should run Output to get the pdf
