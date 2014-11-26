@@ -30,7 +30,7 @@ class FakturaerController extends AppController {
   function opne(){
     $this->set('opneTingingar', $this->Faktura->find('all', array('conditions' => array('pakket IS NULL'))));
     $this->set('kunder', $this->Faktura->Kunde->find('list', array('fields' => array('navn'))));
-    $this->Session->write('forrigeSide', array('controller' => 'fakturaer', 'action' => 'ubetalte'));
+    $this->Session->write('forrigeSide', array('controller' => 'fakturaer', 'action' => 'opne'));
   }
 
   function pakket($id = null){
@@ -93,24 +93,18 @@ class FakturaerController extends AppController {
     $this->set('utestaende', $this->Faktura->utestaende($id));
   }
 
-
-  function bpost($id = null)
-  {
-    if (!$id)
-      {
-	$this->Session->setFlash('Sorry, there was no property ID submitted.');
-	$this->redirect(array('action'=>'index'), null, true);
-      }
+  
+  function bpost($id = null){
     $id = intval($id);
     $faktura = $this->Faktura->findByNummer($id); // here the data is pulled from the database and set for the view
-    $kaffesalg = $this->Faktura->Kaffesalg->findByNummer($faktura['Kaffesalg']['nummer']); // here the data is pulled from the database and set for the view
-    if (!$id || empty($faktura))
-      {
-	$this->Session->setFlash('Sorry, there is no property with the submitted ID.');
-	$this->redirect(array('action'=>'index'), null, true);
-      }
-    $tcpdf = $this->Faktura->lagBPostEtikett($faktura, $kaffesalg);
-    $filnavn = "bpost"  . $faktura['Faktura']['nummer'] . ".pdf";
+    if (!$id || empty($faktura)){
+      $tingingar = $this->Faktura->find('all', array('conditions' => array('pakket IS NULL')));
+      $tcpdf = $this->Faktura->lagBPostEtiketter($tingingar);
+      $filnavn = "bpost.pdf";
+    } else {
+      $tcpdf = $this->Faktura->lagBPostEtikett($faktura);
+      $filnavn = "bpost"  . $faktura['Faktura']['nummer'] . ".pdf";
+    }
     $this->layout = 'pdf'; //this will use the pdf.ctp layout
     $this->set(compact('tcpdf', 'filnavn'));
     $this->render();

@@ -56,5 +56,6 @@ foreach ($opneTingingar as $faktura):
 		<li><?php echo $this->Html->link(__('List Adresser', true), array('controller'=> 'adresser', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Pengeflyttinger', true), array('controller'=> 'pengeflyttinger', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Kaffeflyttinger', true), array('controller'=> 'kaffeflyttinger', 'action'=>'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('B-Post', true), array('controller'=> 'fakturaer', 'action'=>'bpost')); ?> </li>
 			</ul>
 </div>
