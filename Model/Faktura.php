@@ -324,37 +324,70 @@ class Faktura extends AppModel {
   }
 
   /**
-     Returns a TCPDF object on which on should run Output to get the pdf
-
-     the params are model objects as returned by the find function
+     Lager standard tcpdf oppstart
+     Kalles av bpost og faktura
   **/
-  function lagFakturaTcpdf($faktura, $kaffesalg){
+  function startPdf(){
     $tcpdf = new XTCPDF();
-    $textfont = 'dejavusans'; // looks better, finer, and more condensed than 'dejavusans'
     //$tcpdf->setCreator(PDF_CREATOR);
     $tcpdf->SetAuthor("Zapatistgruppa i Bergen http://www.zapatista.no");
     $tcpdf->setCreator("Zapatistgruppa i Bergen http://www.zapatista.no");
     $tcpdf->SetAutoPageBreak( false );
-    $tcpdf->setTitle("Faktura " . $faktura['Faktura']['nummer'] . ": Rekning frå Zapatistgruppa i Bergen til " . $faktura['Kunde']['navn']);
-    $tcpdf->setSubject("Café YaBasta. Kaffi frå zapatistiske kooperativ");
     //set image scale factor
     $tcpdf->setImageScale(PDF_IMAGE_SCALE_RATIO); 
     // Now you position and print your page content
     // example: 
     $tcpdf->SetTextColor(0, 0, 0);
-    $tcpdf->SetFont($textfont,'B',9);
     $tcpdf->AddPage();
-    $tcpdf->MultiCell(60,0, "Zapatistgruppa i Bergen\nMøllendalsveien 17\n5009 Bergen\nOrg.nr. 991 653 503 MVA", 0, 'L', 0, 1);
-    $tcpdf->SetFont($textfont,'',9);
-    $tcpdf->MultiCell(60,0, "mob.:45260227\nepost:bergen@zapatista.no\nvev: www.zapatista.no", 0, 'L', 0, 1);
-    $tcpdf->MultiCell(190,0, "Dato: " . $faktura['Faktura']['faktura_dato'] . "\nForfallsdato: " . $faktura['Faktura']['betalings_frist'] . "\nFakturanr.: " . $faktura['Faktura']['nummer'] , 0, 'R', 0, 1);
-    $tcpdf->SetFont($textfont,'B',9);
+    return $tcpdf;
+  }
+
+  /**
+     Adresse tekst til fakktura og etikett
+  **/
+  function faktura_adresse($faktura){
     $adressetekst = $faktura['Kunde']['navn'] . "\n" . $faktura['fakturaadresse']['linje1'] . "\n";
     if($faktura['fakturaadresse']['linje2'] != "")
       $adressetekst .= $faktura['fakturaadresse']['linje2'] . "\n";	
     if($faktura['fakturaadresse']['linje3'] != "")
       $adressetekst .= $faktura['fakturaadresse']['linje3'] . "\n";	
     $adressetekst .= $faktura['fakturaadresse']['postnummer'] . " " . $faktura['fakturaadresse']['poststad'] . "\n";
+    return $adressetekst;
+  }
+
+
+  /**
+     Lager b-post etikett. Kjør output for å få pdf
+  **/
+  function lagBPostEtikett($faktura, $kaffesalg){
+    $tcpdf  = $this->startPdf();
+    $tcpdf->setTitle("Faktura " . $faktura['Faktura']['nummer'] . ": Rekning frå Zapatistgruppa i Bergen til " . $faktura['Kunde']['navn']);
+    $tcpdf->setSubject("Café YaBasta. Kaffi frå zapatistiske kooperativ");
+    $tcpdf->setJPEGQuality(75);
+    $tcpdf->Image(ROOT . DS . WEBROOT_DIR . DS . 'img' . DS . 'bpost.jpg', 0, 10, 50, 0, 'jpeg', 'Frankopatrykk med miljo-B_Nynorsk.jpg', 'T', true, 0, 'L', false, false, 0, true, false);
+    $adressetekst = $this->faktura_adresse($faktura);
+    $tcpdf->SetFont('dejavusans','',20);
+    $tcpdf->MultiCell(190,0, $adressetekst, 0, 'L', 0, 1);
+    return $tcpdf;
+  }
+
+  /**
+     Returns a TCPDF object on which on should run Output to get the pdf
+
+     the params are model objects as returned by the find function
+  **/
+  function lagFakturaTcpdf($faktura, $kaffesalg){
+    $tcpdf = $this->startPdf();
+    $textfont = 'dejavusans'; // looks better, finer, and more condensed than 'dejavusans'
+    $tcpdf->SetFont($textfont,'B',9);
+    $tcpdf->setTitle("Faktura " . $faktura['Faktura']['nummer'] . ": Rekning frå Zapatistgruppa i Bergen til " . $faktura['Kunde']['navn']);
+    $tcpdf->setSubject("Café YaBasta. Kaffi frå zapatistiske kooperativ");
+    $tcpdf->MultiCell(60,0, "Zapatistgruppa i Bergen\nMøllendalsveien 17\n5009 Bergen\nOrg.nr. 991 653 503 MVA", 0, 'L', 0, 1);
+    $tcpdf->SetFont($textfont,'',9);
+    $tcpdf->MultiCell(60,0, "mob.:45260227\nepost:bergen@zapatista.no\nvev: www.zapatista.no", 0, 'L', 0, 1);
+    $tcpdf->MultiCell(190,0, "Dato: " . $faktura['Faktura']['faktura_dato'] . "\nForfallsdato: " . $faktura['Faktura']['betalings_frist'] . "\nFakturanr.: " . $faktura['Faktura']['nummer'] , 0, 'R', 0, 1);
+    $tcpdf->SetFont($textfont,'B',9);
+    $adressetekst = $this->faktura_adresse($faktura);
     if($faktura['fakturaadresse']['merkes'] != "")
       $adressetekst .= "Merk: " . $faktura['fakturaadresse']['merkes'] . "\n";	
     if($faktura['Kunde']['telefon'] != "")

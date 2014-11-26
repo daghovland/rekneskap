@@ -94,6 +94,28 @@ class FakturaerController extends AppController {
   }
 
 
+  function bpost($id = null)
+  {
+    if (!$id)
+      {
+	$this->Session->setFlash('Sorry, there was no property ID submitted.');
+	$this->redirect(array('action'=>'index'), null, true);
+      }
+    $id = intval($id);
+    $faktura = $this->Faktura->findByNummer($id); // here the data is pulled from the database and set for the view
+    $kaffesalg = $this->Faktura->Kaffesalg->findByNummer($faktura['Kaffesalg']['nummer']); // here the data is pulled from the database and set for the view
+    if (!$id || empty($faktura))
+      {
+	$this->Session->setFlash('Sorry, there is no property with the submitted ID.');
+	$this->redirect(array('action'=>'index'), null, true);
+      }
+    $tcpdf = $this->Faktura->lagBPostEtikett($faktura, $kaffesalg);
+    $filnavn = "bpost"  . $faktura['Faktura']['nummer'] . ".pdf";
+    $this->layout = 'pdf'; //this will use the pdf.ctp layout
+    $this->set(compact('tcpdf', 'filnavn'));
+    $this->render();
+  }
+
   function synPdf($id = null)
   {
     if (!$id)
