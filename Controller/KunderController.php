@@ -168,18 +168,18 @@ class KunderController extends AppController {
 		  } else if (!is_numeric($this->request->data['FakturaAdresse']['nummer']))
 		    unset($this->request->data['FakturaAdresse']['nummer']);
 		  $this->request->data['Kunde']['registrert'] = $this->Kaffe->dateToSql($this->data['Kunde']['registrert']);
-		  	  unset($this->request->data['Kunde']['separat_faktura']);
+		  unset($this->request->data['Kunde']['separat_faktura']);
 		  //		  debug($this->request->data, true);
 		  if ($this->Kunde->saveAll($this->request->data)) {
 		    $this->Session->setFlash(__('The Kunde has been saved', true));
-				$this->redirect(array('action'=>'index'));
-			} else {
+		    $this->redirect(array('action'=>'view', $this->request->data['Kunde']['nummer']));
+		  } else {
 		    debug($this->request->data, true);
-				$this->Session->setFlash(__('Kunne ikkje lagre nye kunde-opplysningar. Prøv igjen.', true));
-			}
+		    $this->Session->setFlash(__('Kunne ikkje lagre nye kunde-opplysningar. Prøv igjen.', true));
+		  }
 		}
 		if (empty($this->request->data)) {
-			$this->request->data = $this->Kunde->read(null, $id);
+		  $this->request->data = $this->Kunde->read(null, $id);
 		}
 	        $levering_adresse = $this->Kunde->LeveringsAdresse->find('list');
 		$faktura_adresse = $this->Kunde->FakturaAdresse->find('list');
