@@ -5,12 +5,8 @@
 <tr>
 	<th><?php echo __('nummer');?></th>
 	<th><?php echo __('kunde');?></th>
-	<th><?php echo __('faktura_dato');?></th>
-	<th><?php echo __('betalings_frist');?></th>
 	<th><?php echo __('melding');?></th>
-	<th><?php echo __('kroner');?></th>
-	<th><?php echo __('mva');?></th>
-	<th><?php echo __('totalpris');?></th>
+	<th><?php echo __('tekst');?></th>
 	<th class="actions"><?php echo __('Actions');?></th>
 </tr>
 <?php
@@ -29,22 +25,10 @@ foreach ($opneTingingar as $faktura):
 			<?php echo $this->Html->link($kunder[$faktura['Faktura']['kunde']], array('controller'=> 'kunder', 'action'=>'view', $faktura['Faktura']['kunde'])); ?>
 		</td>
 		<td>
-			<?php echo $faktura['Faktura']['faktura_dato']; ?>
-		</td>
-		<td>
-			<?php echo $faktura['Faktura']['betalings_frist']; ?>
-		</td>
-		<td>
 			<?php echo $faktura['Faktura']['melding']; ?>
 		</td>
 		<td>
-			<?php echo $faktura['Faktura']['kroner']; ?>
-		</td>
-		<td>
-			<?php echo $faktura['Faktura']['mva']; ?>
-		</td>
-		<td>
-			<?php echo $faktura['Faktura']['totalpris']; ?>
+			<?php echo $faktura['Faktura']['tekst']; ?>
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Rekning', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
