@@ -160,6 +160,8 @@ class Faktura extends AppModel {
     return $this->Kaffesalg->settSalgsDato($faktura['Kaffesalg']['nummer']);
   }
 
+  
+  
   /**
      Lager registrering av flere pakker, utifra vekt
      kalles fra ting_bring
@@ -202,46 +204,35 @@ class Faktura extends AppModel {
     return $pakker;
   }
 
-  function tingBring($faktura_id){
-    $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
-    if(strlen($faktura['Faktura']['pakkeseddel']) > 10){
-      return " Allereie tinga hos Bring";
-    }
-    //API Url
-    $url = 'https://api.bring.com/booking/api/booking';
-
-
-    $curl_opts = array('Content-Type: application/json',
-		       'Accept: application/json');
-    
-    // Must add login info to the $curl_opts, and set $bring_customer_no
-    include 'api_key.php';
- 
+  /**
+     Kalles fra ting_bring
+  **/
+  function send_json_curl($url, $curl_opts, $req_string){
     //Initiate cURL.
     $ch = curl_init($url);
-    $bring_tinging = array(
-			   'testIndicator' => $bring_test,
-			   'schemaVersion' => 1,
-			   'consignments' => array()
-			   );
+    //Tell cURL that we want to send a POST request.
+    curl_setopt($ch, CURLOPT_POST, 1);
 
+    //Tell cURL that we want to get the result
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
+    //Attach our encoded JSON string to the POST fields.
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $req_string);
+  
+    //Set the content type to application/json
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $curl_opts);
+ 
+    //Execute the request
+    $result = curl_exec($ch);
+    $returned = json_decode($result);
+    curl_close($ch);
+    return $returned;
+  }
 
-    $sender = array('name' => 'Zapatistgruppa i Bergen'
-		    , 'addressLine2' => 'c/o Dag Hovland'
-		    , 'addressLine' => 'Øvre Lynghaugen 38'
-		    , 'postalCode' => '5038'
-		    , 'city' => 'BERGEN'
-		    , 'countryCode' => 'no'
-		    , 'reference' => $faktura['Faktura']['nummer']
-		    , 'additionalAddressInfo' => null
-		    , 'contact' => array(
-					 'name' => 'Dag Hovland'
-					 , 'email' => 'tinging@zapatista.no'
-					 , 'phoneNumber' => '97046378'
-		    		       )
-		    );
-
+  /**
+     Sette opp mottaker for bring tinging
+  **/
+  function bring_recipient($faktura, $recipient_reference){
     $recipient = array(
 		       'name' => $faktura['Kunde']['navn'],
 		       'addressLine' => $faktura['fakturaadresse']['linje1'],
@@ -249,7 +240,7 @@ class Faktura extends AppModel {
 		       "postalCode" => $faktura['fakturaadresse']['postnummer'],
 		       "city" => strtoupper($faktura['fakturaadresse']['poststad']),
 		       "countryCode" => "no", 
-		       "reference" => "Cafe YaBasta",
+		       "reference" => $recipient_reference,
 		       "additionalAddressInfo" => $faktura['fakturaadresse']['merkes'], 
 		       'contact' => array(
 					    'email' => $faktura['Kunde']['epost'],
@@ -258,7 +249,39 @@ class Faktura extends AppModel {
 		       );
     if(array_key_exists('kontaktperson', $faktura['Kunde']) && $faktura['Kunde']['kontaktperson'] != null)
       $recipient['contact']['name'] = $faktura['Kunde']['kontaktperson'];
-    
+    return $recipient;
+  }
+
+  function tingServicepakke($faktura_id){
+    $this->tingBring($faktura_id, 'SERVICEPAKKE');
+  }
+
+  function tingBedriftspakke($faktura_id){
+    $this->tingBring($faktura_id, 'BPAKKE_DOR-DOR');
+  }
+
+  /**
+     $faktura_id er faktura_nummeret
+     $pakke_type er 'SERVICEPAKKE', 'BPAKKE_DOR-DOR', 
+     Se http://developer.bring.com/additionalresources/productlist.html?from=shipping
+  **/
+  function tingBring($faktura_id, $pakke_type){
+    $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
+    if(strlen($faktura['Faktura']['pakkeseddel']) > 10){
+      return " Allereie tinga hos Bring";
+    }
+    //API Url
+    $url = 'https://api.bring.com/booking/api/booking';
+    $curl_opts = array('Content-Type: application/json',
+		       'Accept: application/json');
+    // Must add login info to the $curl_opts, and set $bring_customer_no and $sender
+    include 'api_key.php';
+    $bring_tinging = array(
+			   'testIndicator' => $bring_test,
+			   'schemaVersion' => 1,
+			   'consignments' => array()
+			   );
+    $recipient = $this->bring_recipient($faktura,  $recipient_reference);
     $services = array('recipientNotification' => array('email' => $faktura['Kunde']['epost'],
 						       'mobile' => $faktura['Kunde']['telefon']));
 
@@ -269,7 +292,7 @@ class Faktura extends AppModel {
 			       'recipient' => $recipient ,
 			       'pickupPoint' => null
 			       ),
-	    'product' => array('id' => 'SERVICEPAKKE',
+	    'product' => array('id' => $pakke_type,
 			       'customerNumber' => $bring_customer_no,
 			       'services' => $services,
 			       'customsDeclaration' => null),
@@ -278,30 +301,9 @@ class Faktura extends AppModel {
 	    );
 
     $bring_tinging['consignments'][] = $consignments;
-    
     $jsonstring = json_encode($bring_tinging);
-
-    //Tell cURL that we want to send a POST request.
-    curl_setopt($ch, CURLOPT_POST, 1);
-
-    //Tell cURL that we want to get the result
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-
-
-    //Attach our encoded JSON string to the POST fields.
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonstring);
- 
-
     $curl_opts[] = 'Host: api.bring.com';
- 
-    //Set the content type to application/json
-    curl_setopt($ch, CURLOPT_HTTPHEADER, $curl_opts);
- 
-    //Execute the request
-    $result = curl_exec($ch);
-    $returned = json_decode($result);
-    curl_close($ch);
+    $returned = $this->send_json_curl($url, $curl_opts, $jsonstring);
     
     $confirmation = $returned->consignments[0]->confirmation;
     $errors = $returned->consignments[0]->errors;

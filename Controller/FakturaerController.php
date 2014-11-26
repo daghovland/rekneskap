@@ -49,11 +49,29 @@ class FakturaerController extends AppController {
     }
   }
 
-  function tingBring($id=null){
+  function tingServicepakke($id=null){
     if($id){
       try{
-	$res = $this->Faktura->tingBring($id);	
-	$this->Session->setFlash('Pakka er tinga hos Bring');
+	$res = $this->Faktura->tingServicepakke($id);	
+	$this->Session->setFlash('Servicepakke er tinga hos Bring');
+
+	$this->redirect(array('controller' => 'fakturaer', 
+			      'action'=>'opne'));
+      } catch(Exception $e)
+	{
+	  $this->Session->setFlash('Kunne ikkje tinge Bring for rekning ' + $id + '. Melding: ' . $e);
+	  $this->redirect(array('action' => 'opne'));
+	} 
+
+    }
+  }
+
+
+  function tingBedriftspakke($id=null){
+    if($id){
+      try{
+	$res = $this->Faktura->tingBedriftspakke($id);	
+	$this->Session->setFlash('Bedriftspakke er tinga hos Bring');
 
 	$this->redirect(array('controller' => 'fakturaer', 
 			      'action'=>'opne'));
