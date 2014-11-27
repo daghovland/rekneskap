@@ -146,7 +146,7 @@ class KunderController extends AppController {
 			unset($this->request->data['LeveringsAdresse']['nummer']);
 			if ($this->Kunde->saveAll($this->request->data)) {
 			  $this->Session->setFlash(__('Lagra kunde-opplysningar.', true));
-			  $this->redirect(array('action'=>'index'));
+			  $this->redirect(array('action'=>'view', $this->Kunde->getLastInsertID()));
 			} else {
 			  $this->Session->setFlash(__('Kunne ikkje lagre kunden. Prøv igjen.', true));
 			}
