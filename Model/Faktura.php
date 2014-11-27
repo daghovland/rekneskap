@@ -135,18 +135,6 @@ class Faktura extends AppModel {
     return;
   }
   
-  /**
-     Tar inn en kaffesalg_id, returnerer total netto kaffivekt av salget
-  **/
-  function faktura_vekt($kaffesalg_id){
-    $vekter = $this->Kaffesalg->Kaffeflytting->Kaffeflyttingvekt->find('list', array('conditions' => array('kaffesalg_id' => $kaffesalg_id), 'fields' => array('kilo')));
-    $vekt = 0;
-	debug($vekter);
-    foreach($vekter as $envekt)
-      $vekt += $envekt;
-    return $vekt;
-  }
-
   function registrerPakking($faktura_id, $user_id){
     $faktura = $this->find('first', array('conditions' => array('Faktura.nummer' => $faktura_id)));
     $dato = date("Y-m-d");
@@ -167,7 +155,8 @@ class Faktura extends AppModel {
      kalles fra ting_bring
   **/
   function bring_pakker($faktura_nr, $kaffesalg_id){
-    $vekt = $this->faktura_vekt($kaffesalg_id);
+    $vektSvar = $this->Kaffesalg->Kaffesalgvekt->find('first', array('conditions' => array('kaffesalg_id' => $kaffesalg_id)));
+    $vekt = $vektSvar['Kaffesalgvekt']['netto_kilo'];
     if($vekt <= 0)
       throw new TingBringException("Fekk ugyldig vekt " . $vekt . " på pakkka.");
     $restvekt = $vekt;
@@ -397,12 +386,15 @@ class Faktura extends AppModel {
     $tcpdf = $this->startEtikettPdf();
     $offset = 0;
     foreach ($fakturaer as $faktura){
-       if($offset > 250){
-	$tcpdf->AddPage();
-	$offset = 0;
+      $vekt = $this->Kaffesalg->Kaffesalgvekt->find('first', array('conditions' => array('kaffesalg_id' => $faktura['Faktura']['kaffesalg_id'])));
+      if($vekt['Kaffesalgvekt']['netto_gram'] < 1500){
+	if($offset > 250){
+	  $tcpdf->AddPage();
+	  $offset = 0;
+	}
+	$this->en_etikett($faktura, $tcpdf, $offset);
+	$offset += 45;
       }
-      $this->en_etikett($faktura, $tcpdf, $offset);
-      $offset += 45;
     }
     return $tcpdf;
   }

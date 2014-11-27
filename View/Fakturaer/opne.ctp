@@ -32,7 +32,8 @@ foreach ($opneTingingar as $faktura):
 		</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('Rekning', true), array('action'=>'synPdf', $faktura['Faktura']['nummer'])); ?>
-			<?php echo $this->Html->link(__('B-post', true), array('action'=>'bpost', $faktura['Faktura']['nummer'])); ?>
+			<?php if($vekt[$faktura['Faktura']['kaffesalg_id']] <= 1500) 
+			      echo $this->Html->link(__('B-post', true), array('action'=>'bpost', $faktura['Faktura']['nummer'])); ?>
 			<?php 
 			if(strlen($faktura['Faktura']['pakkeseddel']) > 1) { 
 			    echo $this->Html->link(__('Pakkeseddel', true), $faktura['Faktura']['pakkeseddel']); 
