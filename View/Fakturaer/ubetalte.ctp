@@ -19,7 +19,9 @@
 $i = 0;
 foreach ($fakturaer as $faktura):
 	$class = null;
-	if ($i++ % 2 == 0) {
+	if(null == $faktura['Faktura']['pakket'] || strlen($faktura['Faktura']['pakket']) < 5){
+		$class = ' class="markrow"';
+	} else if ($i++ % 2 == 0) {
 		$class = ' class="altrow"';
 	}
 ?>
@@ -67,6 +69,8 @@ foreach ($fakturaer as $faktura):
 	      		<?php if(strlen($faktura['Faktura']['sporing']) > 1) { echo $this->Html->link(__('Sporing', true), $faktura['Faktura']['sporing']); } ?>
 		<?php echo $this->Html->link(__('Betalt', true), array('controller' => 'pengeflyttinger', 'action'=>'faktura_innbetaling', $faktura['Faktura']['nummer'])); ?>
 		<?php echo $this->Html->link(__('Purra', true), array('controller' => 'purringer', 'action'=>'add', $faktura['Faktura']['nummer'])); ?>
+		<?php if(null == $faktura['Faktura']['pakket'] || strlen($faktura['Faktura']['pakket']) < 4) 
+		      	echo $this->Html->link(__('Pakka', true), array('controller' => 'fakturaer', 'action'=>'pakket', $faktura['Faktura']['nummer'])); ?>
 		</td>
 	</tr>
 		<?php  

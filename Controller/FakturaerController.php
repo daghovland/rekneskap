@@ -28,7 +28,7 @@ class FakturaerController extends AppController {
   }
 
   function opne(){
-    $this->set('opneTingingar', $this->Faktura->FakturaUbetalt->find('all', array('conditions' => array('pakket IS NULL'))));
+    $this->set('opneTingingar', $this->Faktura->find('all', array('conditions' => array('pakket IS NULL'))));
     $this->set('vekt', $this->Faktura->Kaffesalg->Kaffesalgvekt->find('list', array('fields' => array('kaffesalg_id', 'netto_gram'))));
     $this->set('kunder', $this->Faktura->Kunde->find('list', array('fields' => array('navn'))));
     $this->Session->write('forrigeSide', array('controller' => 'fakturaer', 'action' => 'opne'));
