@@ -73,20 +73,42 @@ class Kaffesalg extends AppModel {
       if(is_numeric($vekt) && $vekt > 0){
 	$tara = 1000;
 	$brutto_vekt = $vekt + $tara;
-	$file = fopen("http://fraktguide.bring.no/fraktguide/products/SERVICEPAKKE/price.xml?from=5006&to=" . $postnummer . "&weightInGrams=" . $brutto_vekt . "&edi=false&postingAtPostoffice=true", "r");
+	//API Url
+	$url = 'https://api.bring.com/shippingguide/products/price.xml';
+	$curl_opts = array('Content-Type: application/xml',
+			   'Accept: application/xml');
+	// The include must add login info to the $curl_opts, and set $bring_customer_no and $sender
+	include 'api_key.php';
+
+	$curl_opts[] = 'Host: api.bring.com';
+	$url = "https://api.bring.com/shippingguide/products/price.xml?product=servicepakke&from=5038&to=" . $postnummer . "&weightInGrams=" . $brutto_vekt . "&edi=false&postingAtPostoffice=true&additional=eVarsling";
+	//Initiate cURL.
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, $url);
+	curl_setopt($ch, CURLOPT_SSLVERSION, 3);
+	curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'SSLv3');
+	//Tell cURL that we want to send a GET request.
+	curl_setopt($ch, CURLOPT_POST, 0);
+
+	//Tell cURL that we want to get the result
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+	//Set the http options from api_key
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $curl_opts);
+ 
+	//Execute the request
+	$file = curl_exec($ch);
 	if (!$file) {
-	  echo "<p>Unable to open remote file.\n";
+	  echo curl_error($ch);
+	  echo "<p>Unable to open remote file. " . $url . "\n";
+	  curl_close($ch);
 	  exit;
 	}
-	while (!feof ($file)) {
-	  $line = fgets ($file, 1024);
-	  /* This only works if the title and its tags are on one line */
-	  if (preg_match ("@\<AmountWithVAT\>(.*)\</AmountWithVAT\>@i", $line, $out)) {
-	    $fraktpris = $out[1];
-	    break;
-	  }
+	/* This only works if the title and its tags are on one line */
+	if (preg_match ("@\<AmountWithVAT\>(.*)\</AmountWithVAT\>@i", $file, $out)) {
+	  $fraktpris = $out[1];
 	}
-	fclose($file);
+	curl_close($ch);
 	if(isset($fraktpris))
 	  return $fraktpris;
 	else {
