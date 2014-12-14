@@ -218,7 +218,7 @@ class Kaffesalg extends AppModel {
     foreach($kaffesalg['Kaffeflytting'] as $pf_idx => $pf){
       $pf['dato'] = $dato;
       $pf['modified'] = $dato;
-      $this->Pengeflytting->save($pf);
+      $this->Kaffeflytting->save($pf);
     }
     return $this->save($kaffesalg);
   }
