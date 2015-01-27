@@ -466,10 +466,7 @@ Kaffien kjem frå det zapatistiske kooperativet Yachil i Chiapas, Mexico. Kaffie
     $tcpdf->MultiCell(60,0, "Org.nr. 991 653 503 MVA\nFakturanr." . $faktura['Faktura']['nummer'] . "\nFakturadato: " . $faktura['Faktura']['faktura_dato'], 0, 'L', 0, 1);
     $tcpdf->Cell(190,0,"Forfallsdato: " . $faktura['Faktura']['betalings_frist'], 0, 1, 'R', 0);
     $tcpdf->SetFont($textfont,'B',12);
-    if(strtotime($faktura['Faktura']['faktura_dato'])- strtotime('10.3.2010') < 0)
-      $tcpdf->MultiCell(60,0, "Konto: 0539.57.98008\n\n", 0, 'L', 0, 1);
-    else
-      $tcpdf->MultiCell(60,0, "Konto: 1254.05.61786\n\n", 0, 'L', 0, 1);
+    $tcpdf->MultiCell(60,0, "Konto: 1254.05.61786\n\n", 0, 'L', 0, 1);
     $tcpdf->SetFont($textfont,'B',9);
     $tcpdf->MultiCell(120,0, $adressetekst, 0, 'L', 0, 0);
     $tcpdf->MultiCell(60,0, "Zapatistgruppa i Bergen\nMøllendalsveien 17\n5009 Bergen", 0, 'L', 0, 1);
