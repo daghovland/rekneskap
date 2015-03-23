@@ -1,0 +1,1 @@
+Simple accounting and billing software, specifically aimed at fairtrade coffee import. Includes billing and vat localized to Norway. Written as a cakephp app. Needs cake PHP v.1.3.7 and TCPDF (http://sourceforge.net/projects/tcpdf/files/).
