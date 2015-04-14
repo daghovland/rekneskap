@@ -222,6 +222,11 @@ class Faktura extends AppModel {
      Sette opp mottaker for bring tinging
   **/
   function bring_recipient($faktura, $recipient_reference){
+    $contact = array('email' => $faktura['Kunde']['epost']);
+    if(strlen($faktura['Kunde']['telefon']) >= 8){
+      $contact['phoneNumber'] = $faktura['Kunde']['telefon'];
+    }
+
     $recipient = array(
 		       'name' => substr($faktura['Kunde']['navn'],0,35),
 		       'addressLine' => $faktura['fakturaadresse']['linje1'],
@@ -231,10 +236,7 @@ class Faktura extends AppModel {
 		       "countryCode" => "no", 
 		       "reference" => $recipient_reference,
 		       "additionalAddressInfo" => $faktura['fakturaadresse']['merkes'], 
-		       'contact' => array(
-					    'email' => $faktura['Kunde']['epost'],
-					    'phoneNumber' => $faktura['Kunde']['telefon']
-					    )
+		       'contact' => $contact
 		       );
     if(array_key_exists('kontaktperson', $faktura['Kunde']) && $faktura['Kunde']['kontaktperson'] != null)
       $recipient['contact']['name'] = $faktura['Kunde']['kontaktperson'];

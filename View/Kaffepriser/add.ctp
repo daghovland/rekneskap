@@ -6,6 +6,7 @@
 		echo $this->Form->input('kaffitype_id');
 		echo $this->Form->input('beskrivelse');
 		echo $this->Form->input('pris');
+		echo $this->Form->input('gram');
 		echo $this->Form->input('haldbar');
 		echo $this->Form->input('intern_navn');
 		echo $this->Form->input('brennings_grad');
