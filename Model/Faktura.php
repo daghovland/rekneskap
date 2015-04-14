@@ -223,7 +223,7 @@ class Faktura extends AppModel {
   **/
   function bring_recipient($faktura, $recipient_reference){
     $recipient = array(
-		       'name' => $faktura['Kunde']['navn'],
+		       'name' => substr($faktura['Kunde']['navn'],0,35),
 		       'addressLine' => $faktura['fakturaadresse']['linje1'],
 		       'addressLine2' => $faktura['fakturaadresse']['linje2'],
 		       "postalCode" => $faktura['fakturaadresse']['postnummer'],

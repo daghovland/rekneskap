@@ -85,7 +85,7 @@ class Kaffesalg extends AppModel {
 	//Initiate cURL.
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_SSLVERSION, 3);
+	curl_setopt($ch, CURLOPT_SSLVERSION, 'CURL_SSLVERSION_TLSv1');
 	curl_setopt($ch, CURLOPT_SSL_CIPHER_LIST, 'SSLv3');
 	//Tell cURL that we want to send a GET request.
 	curl_setopt($ch, CURLOPT_POST, 0);
