@@ -71,6 +71,13 @@ foreach ($fakturaer as $faktura):
 		<?php echo $this->Html->link(__('Purra', true), array('controller' => 'purringer', 'action'=>'add', $faktura['Faktura']['nummer'])); ?>
 		<?php if(null == $faktura['Faktura']['pakket'] || strlen($faktura['Faktura']['pakket']) < 4) 
 		      	echo $this->Html->link(__('Pakka', true), array('controller' => 'fakturaer', 'action'=>'pakket', $faktura['Faktura']['nummer'])); ?>
+		<?php 
+			if(strlen($faktura['Faktura']['pakkeseddel']) > 1) { 
+			    echo $this->Html->link(__('Pakkeseddel', true), $faktura['Faktura']['pakkeseddel']); 
+			} else {
+			    echo $this->Html->link(__('Ting Servicepakke', true), array('action'=>'tingServicepakke', $faktura['Faktura']['nummer'])); 
+			    echo $this->Html->link(__('Ting Bedriftspakke', true), array('action'=>'tingBedriftspakke', $faktura['Faktura']['nummer']));
+			} ?>
 		</td>
 	</tr>
 		<?php  
