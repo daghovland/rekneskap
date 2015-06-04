@@ -226,16 +226,19 @@ class Faktura extends AppModel {
     if(strlen($faktura['Kunde']['telefon']) >= 8){
       $contact['phoneNumber'] = $faktura['Kunde']['telefon'];
     }
-
+    $kunde = $this->Kunde->find('first', array('conditions' => array('Kunde.nummer' => $faktura['Kunde']['nummer'])));
+    debug($kunde);
+    $adresse_type = 'LeveringsAdresse';
+			    
     $recipient = array(
 		       'name' => substr($faktura['Kunde']['navn'],0,35),
-		       'addressLine' => $faktura['fakturaadresse']['linje1'],
-		       'addressLine2' => $faktura['fakturaadresse']['linje2'],
-		       "postalCode" => $faktura['fakturaadresse']['postnummer'],
-		       "city" => strtoupper($faktura['fakturaadresse']['poststad']),
+		       'addressLine' => $kunde[$adresse_type]['linje1'],
+		       'addressLine2' => $kunde[$adresse_type]['linje2'],
+		       "postalCode" => $kunde[$adresse_type]['postnummer'],
+		       "city" => strtoupper($kunde[$adresse_type]['poststad']),
 		       "countryCode" => "no", 
 		       "reference" => $recipient_reference,
-		       "additionalAddressInfo" => $faktura['fakturaadresse']['merkes'], 
+		       "additionalAddressInfo" => $kunde[$adresse_type]['merkes'], 
 		       'contact' => $contact
 		       );
     if(array_key_exists('kontaktperson', $faktura['Kunde']) && $faktura['Kunde']['kontaktperson'] != null)
@@ -307,9 +310,9 @@ class Faktura extends AppModel {
       if($errors == null)
 	throw new TingBringException("Bring did not give confirmation, and no error message");
     }
-    debug($errors);
     if($errors != null){ 
-      throw new TingBringException($errors[0]->messages[0]->message);
+        debug($errors);
+	throw new TingBringException($errors[0]->messages[0]->message);
     }
     return true;
   }
@@ -334,22 +337,36 @@ class Faktura extends AppModel {
   }
 
   /**
-     Adresse tekst til fakktura og etikett
+     Adresse tekst til faktura
+     $er_faktura er sann for faktura, og usann for levering
   **/
-  function faktura_adresse($faktura){
-    $adressetekst = $faktura['Kunde']['navn'] . "\n" . $faktura['fakturaadresse']['linje1'] . "\n";
-    if($faktura['fakturaadresse']['linje2'] != "")
-      $adressetekst .= $faktura['fakturaadresse']['linje2'] . "\n";	
-    if($faktura['fakturaadresse']['linje3'] != "")
-      $adressetekst .= $faktura['fakturaadresse']['linje3'] . "\n";	
-    $adressetekst .= $faktura['fakturaadresse']['postnummer'] . " " . $faktura['fakturaadresse']['poststad'] . "\n";
+  function faktura_adresse($faktura, $er_faktura){
+    $kunde = $this->Kunde->find('first', array('conditions' => array('Kunde.nummer' => $faktura['Kunde']['nummer'])));
+    //    debug($kunde);
+    //debug($faktura);
+    if($er_faktura  && array_key_exists('nummer', $kunde['FakturaAdresse']) && $kunde['FakturaAdresse']['nummer'] != null){
+      $adresse_type = 'FakturaAdresse';
+    } else {
+      $adresse_type = 'LeveringsAdresse';    
+    }
+    $adressetekst = $faktura['Kunde']['navn'] . "\n" . $kunde[$adresse_type]['linje1'] . "\n";
+    if($kunde[$adresse_type]['linje2'] != "")
+      $adressetekst .= $faktura[$adresse_type]['linje2'] . "\n";	
+    if($kunde[$adresse_type]['linje3'] != "")
+      $adressetekst .= $kunde[$adresse_type]['linje3'] . "\n";	
+    $adressetekst .= $kunde[$adresse_type]['postnummer'] . " " . $kunde[$adresse_type]['poststad'] . "\n";
+    //    debug($adressetekst);
     return $adressetekst;
   }
 
+  /**
+     Lager etikett til  å sette på b-post o.l.
+     Bruker leveringsadresse hvis satt
+  **/
   function en_etikett($faktura, $tcpdf, $offset){
     //    $tcpdf->Image(ROOT . DS . WEBROOT_DIR . DS . 'img' . DS . 'bpost.jpg', 0, 10, 50, 0, 'jpeg', 'Frankopatrykk med miljo-B_Nynorsk.jpg', 'T', true, 0, 'L', false, false, 0, true, false);
     $tcpdf->Image(ROOT . DS . WEBROOT_DIR . DS . 'img' . DS . 'bpost.jpg', 5, $offset+13, 50, 0, 'jpeg', 'Frankopatrykk med miljo-B_Nynorsk.jpg');
-    $adressetekst = $this->faktura_adresse($faktura);
+    $adressetekst = $this->faktura_adresse($faktura, false);
     $tcpdf->MultiCell(190,5, $adressetekst, 0, 'L', false, 1, 50, $offset);
   }
 
@@ -418,7 +435,7 @@ class Faktura extends AppModel {
     $tcpdf->MultiCell(60,0, "mob.:45260227\nepost:bergen@zapatista.no\nvev: www.zapatista.no", 0, 'L', 0, 1);
     $tcpdf->MultiCell(190,0, "Dato: " . $faktura['Faktura']['faktura_dato'] . "\nForfallsdato: " . $faktura['Faktura']['betalings_frist'] . "\nFakturanr.: " . $faktura['Faktura']['nummer'] , 0, 'R', 0, 1);
     $tcpdf->SetFont($textfont,'B',9);
-    $adressetekst = $this->faktura_adresse($faktura);
+    $adressetekst = $this->faktura_adresse($faktura, true);
     if($faktura['fakturaadresse']['merkes'] != "")
       $adressetekst .= "Merk: " . $faktura['fakturaadresse']['merkes'] . "\n";	
     if($faktura['Kunde']['telefon'] != "")
