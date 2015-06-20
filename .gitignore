@@ -1,0 +1,5 @@
+schemas/oppdater.sh
+tmp
+Config/core.php
+Config/database.php
+Model/api_key.php
