@@ -43,7 +43,7 @@ BEGIN
   SET ps:=0;
   IF lengde < char_length(prefiks)+1 THEN
     SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'KID prefiks for langt til maks KID lengde';
+      SET MESSAGE_TEXT = 'KID prefiks for langt';
   END IF;
   kid_loop: LOOP
     SET lengde:=lengde-1;
@@ -74,12 +74,12 @@ BEGIN
   END IF;
   IF lengde < char_length(prefiks)+1 THEN
     SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'KID prefiks for langt til maks KID lengde';
+      SET MESSAGE_TEXT = 'KID prefiks for langt';
   END IF;
   SET kid_tekst:=CONCAT(prefiks,kid_kontroll(prefiks,lengde));
   IF char_length(kid_tekst) > lengde THEN
     SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'For langt KID ble laget. Intern feil.';
+      SET MESSAGE_TEXT = 'For langt KID ble laget';
   END IF;
   zeropre: LOOP
     IF char_length(kid_tekst) >= lengde THEN
