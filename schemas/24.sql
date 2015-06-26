@@ -41,10 +41,10 @@ RETURNS INT(1) UNSIGNED DETERMINISTIC
 BEGIN
   DECLARE siffersum,faktor,ps INT(10) UNSIGNED;
   SET ps:=0;
-  IF lengde < char_length(prefiks)+1 THEN
-    SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'KID prefiks for langt';
-  END IF;
+#  IF lengde < char_length(prefiks)+1 THEN
+#    SIGNAL SQLSTATE 'ERROR'
+#      SET MESSAGE_TEXT = 'KID prefiks for langt';
+#  END IF;
   kid_loop: LOOP
     SET lengde:=lengde-1;
     IF lengde < 1 THEN
@@ -68,19 +68,19 @@ CREATE FUNCTION lag_KID(prefiks INT(9) UNSIGNED, lengde INT(2) UNSIGNED)
 RETURNS VARCHAR(25) DETERMINISTIC
 BEGIN
   DECLARE kid_tekst VARCHAR(25);
-  IF lengde > 25 THEN
-    SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'For lang KID lengde';
-  END IF;
-  IF lengde < char_length(prefiks)+1 THEN
-    SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'KID prefiks for langt';
-  END IF;
+#  IF lengde > 25 THEN
+#    SIGNAL SQLSTATE 'ERROR'
+#      SET MESSAGE_TEXT = 'For lang KID lengde';
+#  END IF;
+#  IF lengde < char_length(prefiks)+1 THEN
+#    SIGNAL SQLSTATE 'ERROR'
+#      SET MESSAGE_TEXT = 'KID prefiks for langt';
+#  END IF;
   SET kid_tekst:=CONCAT(prefiks,kid_kontroll(prefiks,lengde));
-  IF char_length(kid_tekst) > lengde THEN
-    SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'For langt KID ble laget';
-  END IF;
+#  IF char_length(kid_tekst) > lengde THEN
+#    SIGNAL SQLSTATE 'ERROR'
+#      SET MESSAGE_TEXT = 'For langt KID ble laget';
+#  END IF;
   zeropre: LOOP
     IF char_length(kid_tekst) >= lengde THEN
       LEAVE zeropre;
@@ -96,18 +96,20 @@ BEGIN
   DECLARE nesteP,gammelKID INT(10) UNSIGNED;
   SET gammelKID = (SELECT KIDprefix FROM fakturaer WHERE nummer=faktura_id);
   IF NOT ISNULL(gammelKID) THEN
-    SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'Vil ikke sette KID når allerede eksisterer';
+#    SIGNAL SQLSTATE 'ERROR'
+#      SET MESSAGE_TEXT = 'Vil ikke sette KID når allerede eksisterer';
+    SET gammelKID = 0;
+  ELSE
+    SET nesteP=(SELECT neste FROM nesteKID);
+    IF ISNULL(nesteP) THEN
+      SET nesteP=1;
+    END IF;
+#    IF nesteP > 9999 THEN
+#      SIGNAL SQLSTATE 'ERROR'
+#        SET MESSAGE_TEXT = 'Alle KID nummer er brukt opp.';
+#    END IF;
+    UPDATE fakturaer SET KIDprefix=nesteP, KID=lag_KID(nesteP,5) WHERE nummer=faktura_id;
   END IF;
-  SET nesteP=(SELECT neste FROM nesteKID);
-  IF ISNULL(nesteP) THEN
-    SET nesteP=1;
-  END IF;
-  IF nesteP > 9999 THEN
-    SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'Alle KID nummer er brukt opp.';
-  END IF;
-  UPDATE fakturaer SET KIDprefix=nesteP, KID=lag_KID(nesteP,5) WHERE nummer=faktura_id;
 END;//
 
 
