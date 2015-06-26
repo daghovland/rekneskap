@@ -90,22 +90,33 @@ BEGIN
   RETURN kid_tekst;
 END;//
 
-DROP TRIGGER IF EXISTS fak_kid;
-CREATE TRIGGER fak_kid BEFORE INSERT ON fakturaer
-FOR EACH ROW 
+DROP PROCEDURE IF EXISTS sett_KID;
+CREATE PROCEDURE sett_KID(IN faktura_id INT(10) UNSIGNED)
 BEGIN
-  DECLARE nesteP INT(10) UNSIGNED;
+  DECLARE nesteP,gammelKID INT(10) UNSIGNED;
+  SET gammelKID = (SELECT KIDprefix FROM fakturaer WHERE nummer=faktura_id);
+  IF NOT ISNULL(gammelKID) THEN
+    SIGNAL SQLSTATE 'ERROR'
+      SET MESSAGE_TEXT = 'Vil ikke sette KID når allerede eksisterer';
+  END IF;
   SET nesteP=(SELECT neste FROM nesteKID);
   IF ISNULL(nesteP) THEN
     SET nesteP=1;
   END IF;
   IF nesteP > 9999 THEN
     SIGNAL SQLSTATE 'ERROR'
-      SET MESSAGE_TEXT = 'Alle KID nummer er brukt opp. Frigi flere nummer eller endre lengde';
+      SET MESSAGE_TEXT = 'Alle KID nummer er brukt opp.';
   END IF;
-  SET NEW.KIDprefix=nesteP;
-  SET NEW.KID=lag_KID(nesteP,5);
+  UPDATE fakturaer SET KIDprefix=nesteP, KID=lag_KID(nesteP,5) WHERE nummer=faktura_id;
 END;//
+
+
+#DROP TRIGGER IF EXISTS fak_kid;
+#CREATE TRIGGER fak_kid AFTER INSERT ON fakturaer
+#FOR EACH ROW 
+#BEGIN
+#  CALL sett_KID(NEW.nummer);
+#END;//
 delimiter ;
 
 REPLACE INTO versions VALUES (24, 'db_schema');

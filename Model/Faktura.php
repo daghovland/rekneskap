@@ -427,10 +427,11 @@ class Faktura extends AppModel {
     $tcpdf = $this->startPdf();
     $textfont = 'dejavusans'; // looks better, finer, and more condensed than 'dejavusans'
     
-    if(isset($faktura['Faktura']['KID']))
-      $kid = $faktura['Faktura']['KID'];
-    else
-      $kid = $faktura['Faktura']['KID'] = 'Ingen KID';
+    if(!isset($faktura['Faktura']['KID'])){
+      $this->query("CALL sett_KID(" . $faktura['Faktura']['nummer'] . ")");
+      $faktura = $this->findByNummer($faktura['Faktura']['nummer']);
+    }
+    $kid = $faktura['Faktura']['KID'];
 
     $tcpdf->SetFont($textfont,'B',9);
     $tcpdf->setTitle("Faktura " . $faktura['Faktura']['nummer'] . ": Rekning frå Zapatistgruppa i Bergen til " . $faktura['Kunde']['navn']);
@@ -486,8 +487,8 @@ Kaffien kjem frå det zapatistiske kooperativet Yachil i Chiapas, Mexico. Kaffie
       $tcpdf->Cell(30,0, $total_mva . ",-   kr",0,1,'R');
     }
     $tcpdf->setY(-100);
-    $tcpdf->SetFont($textfont,'',9);
-    $tcpdf->MultiCell(60,0, "Org.nr. 991 653 503 MVA\nFakturanr." . $faktura['Faktura']['nummer'] . "\nFakturadato: " . $faktura['Faktura']['faktura_dato'] . "\nKID: ". $kid, 0, 'L', 0, 1);
+    $tcpdf->SetFont($textfont,'B',9);
+    $tcpdf->MultiCell(60,0, "KID: ". $kid, 0, 'L', 0, 1);
     $tcpdf->Cell(190,0,"Forfallsdato: " . $faktura['Faktura']['betalings_frist'], 0, 1, 'R', 0);
     $tcpdf->SetFont($textfont,'B',12);
     $tcpdf->MultiCell(60,0, "Konto: 1254.05.61786\n\n", 0, 'L', 0, 1);
