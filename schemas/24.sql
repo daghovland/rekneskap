@@ -5,7 +5,7 @@
 CREATE OR REPLACE VIEW  `nesteKID` as 
 SELECT f1.KIDprefix+1 as neste 
 from 
-fakturaer f1 LEFT JOIN fakturaer f2 
+fakturaer f1 LEFT JOIN fakturaer f2
 ON f1.KIDprefix +1 = f2.KIDprefix
 WHERE f2.KIDprefix IS NULL
 AND NOT ISNULL( f1.KIDprefix )
@@ -31,16 +31,22 @@ BEGIN
   RETURN tvs;
 END;//
 
-# Lager KID mod 10 kontroll-siffer
+# Lager KID mod 10 med kontroll-siffer
+# Lengde er totallengden av KID, inkludert kontrollsiffer
 # Se http://www.nets.eu/no-nb/produkter/Inn-og-utbetalinger/OCR%20giro/Documents/OCR%20giro%20Systemspesifikasjon.pdf
 
 DROP FUNCTION IF EXISTS kid_kontroll;
 CREATE FUNCTION kid_kontroll(prefiks INT(25) UNSIGNED, lengde INT(2) UNSIGNED)
-RETURNS INT(10) UNSIGNED DETERMINISTIC
+RETURNS INT(1) UNSIGNED DETERMINISTIC
 BEGIN
   DECLARE siffersum,faktor,ps INT(10) UNSIGNED;
   SET ps:=0;
+  IF lengde < char_length(prefiks)+1 THEN
+    SIGNAL SQLSTATE 'ERROR'
+      SET MESSAGE_TEXT = 'KID prefiks for langt til maks KID lengde';
+  END IF;
   kid_loop: LOOP
+    SET lengde:=lengde-1;
     IF lengde < 1 THEN
       LEAVE kid_loop;
     END IF;
@@ -51,18 +57,36 @@ BEGIN
     SET siffersum:=faktor*(prefiks % 10);
     SET ps:=ps+tverrsum(siffersum);
     SET prefiks:=FLOOR(prefiks/10);
-    SET lengde:=lengde-1;
   END LOOP kid_loop;
   RETURN 10 - (ps % 10);
 END;//
 
 #Lager selve KID strengen mod 10
-DROP FUNCTION IF EXISTS lag_kid;
-CREATE FUNCTION lag_kid(prefiks INT(9) UNSIGNED, lengde INT(2) UNSIGNED)
-RETURNS VARCHAR(10) DETERMINISTIC
+# lengde er totallengde av KID, inkludert prefiks
+DROP FUNCTION IF EXISTS lag_KID;
+CREATE FUNCTION lag_KID(prefiks INT(9) UNSIGNED, lengde INT(2) UNSIGNED)
+RETURNS VARCHAR(25) DETERMINISTIC
 BEGIN
-  DECLARE kid_tekst VARCHAR(10);
+  DECLARE kid_tekst VARCHAR(25);
+  IF lengde > 25 THEN
+    SIGNAL SQLSTATE 'ERROR'
+      SET MESSAGE_TEXT = 'For lang KID lengde';
+  END IF;
+  IF lengde < char_length(prefiks)+1 THEN
+    SIGNAL SQLSTATE 'ERROR'
+      SET MESSAGE_TEXT = 'KID prefiks for langt til maks KID lengde';
+  END IF;
   SET kid_tekst:=CONCAT(prefiks,kid_kontroll(prefiks,lengde));
+  IF char_length(kid_tekst) > lengde THEN
+    SIGNAL SQLSTATE 'ERROR'
+      SET MESSAGE_TEXT = 'For langt KID ble laget. Intern feil.';
+  END IF;
+  zeropre: LOOP
+    IF char_length(kid_tekst) >= lengde THEN
+      LEAVE zeropre;
+    END IF;
+    SET kid_tekst := CONCAT('0',kid_tekst);
+  END LOOP zeropre;
   RETURN kid_tekst;
 END;//
 
@@ -75,8 +99,12 @@ BEGIN
   IF ISNULL(nesteP) THEN
     SET nesteP=1;
   END IF;
+  IF nesteP > 9999 THEN
+    SIGNAL SQLSTATE 'ERROR'
+      SET MESSAGE_TEXT = 'Alle KID nummer er brukt opp. Frigi flere nummer eller endre lengde';
+  END IF;
   SET NEW.KIDprefix=nesteP;
-  SET NEW.KID=tverrsum(nesteP);
+  SET NEW.KID=lag_KID(nesteP,5);
 END;//
 delimiter ;
 
