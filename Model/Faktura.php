@@ -144,7 +144,10 @@ class Faktura extends AppModel {
     $faktura['Kaffesalg']['dato'] = $dato;
     if(!$this->save($faktura))
       return false;
-    return $this->Kaffesalg->settSalgsDato($faktura['Kaffesalg']['nummer']);
+    if(!$this->Kaffesalg->settSalgsDato($faktura['Kaffesalg']['nummer']))
+      return false;
+    $this->Purring->epostPurring($faktura_id, 'pakke_melding');
+    return true;
   }
 
   
@@ -226,7 +229,6 @@ class Faktura extends AppModel {
       $contact['phoneNumber'] = $faktura['Kunde']['telefon'];
     }
     $kunde = $this->Kunde->find('first', array('conditions' => array('Kunde.nummer' => $faktura['Kunde']['nummer'])));
-    debug($kunde);
     $adresse_type = 'LeveringsAdresse';
 			    
     $recipient = array(

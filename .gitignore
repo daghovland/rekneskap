@@ -1,5 +1,7 @@
 schemas/oppdater.sh
 tmp
 Config/core.php
+Config/email.php
 Config/database.php
 Model/api_key.php
+*~

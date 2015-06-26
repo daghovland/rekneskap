@@ -1,6 +1,6 @@
 Vi registrerte <?php echo $fakturaDato; ?>  eit sal til de/deg.</p>
 
-Salet har rekning nr. <?php echo $fakturaNr; ?>  og skulle ha vore betalt <?php echo $betalingsFrist; ?>.  Rekninga er lagt ved som pdf.</p>
+Vennlegst betal rekninga med KID <?php echo $KID; ?>. Opprinneleg betalingsfrist var <?php echo $betalingsFrist; ?>.  Rekninga er også lagt ved som pdf.</p>
 
 <p>Her er detaljane om innhaldet og prisen p&aring; kaffien:</p>
 <br />
