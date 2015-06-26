@@ -1,6 +1,6 @@
 # Legg KID inn i fakturaer
-#ALTER TABLE `fakturaer` ADD COLUMN `KIDprefix` INT(10) UNSIGNED ;
-#ALTER TABLE `fakturaer` ADD COLUMN `KID` VARCHAR(10) ;
+ALTER TABLE `fakturaer` ADD COLUMN `KIDprefix` INT(10) UNSIGNED ;
+ALTER TABLE `fakturaer` ADD COLUMN `KID` VARCHAR(10) ;
 
 CREATE OR REPLACE VIEW  `nesteKID` as 
 SELECT f1.KIDprefix+1 as neste 
@@ -58,7 +58,7 @@ BEGIN
     SET ps:=ps+tverrsum(siffersum);
     SET prefiks:=FLOOR(prefiks/10);
   END LOOP kid_loop;
-  RETURN 10 - (ps % 10);
+  RETURN (10 - (ps % 10))%10;
 END;//
 
 #Lager selve KID strengen mod 10
