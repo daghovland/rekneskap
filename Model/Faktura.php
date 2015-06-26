@@ -10,7 +10,6 @@ class TingBringException extends CakeException {
 };
 
 class Faktura extends AppModel {
-
   var $name = 'Faktura';
   public $primaryKey = 'nummer';
   var $validate = array(
@@ -427,13 +426,19 @@ class Faktura extends AppModel {
   function lagFakturaTcpdf($faktura, $kaffesalg){
     $tcpdf = $this->startPdf();
     $textfont = 'dejavusans'; // looks better, finer, and more condensed than 'dejavusans'
+    
+    if(isset($faktura['Faktura']['KID']))
+      $kid = $faktura['Faktura']['KID'];
+    else
+      $kid = $faktura['Faktura']['KID'] = 'Ingen KID';
+
     $tcpdf->SetFont($textfont,'B',9);
     $tcpdf->setTitle("Faktura " . $faktura['Faktura']['nummer'] . ": Rekning frå Zapatistgruppa i Bergen til " . $faktura['Kunde']['navn']);
     $tcpdf->setSubject("Café YaBasta. Kaffi frå zapatistiske kooperativ");
     $tcpdf->MultiCell(60,0, "Zapatistgruppa i Bergen\nMøllendalsveien 17\n5009 Bergen\nOrg.nr. 991 653 503 MVA", 0, 'L', 0, 1);
     $tcpdf->SetFont($textfont,'',9);
     $tcpdf->MultiCell(60,0, "mob.:45260227\nepost:bergen@zapatista.no\nvev: www.zapatista.no", 0, 'L', 0, 1);
-    $tcpdf->MultiCell(190,0, "Dato: " . $faktura['Faktura']['faktura_dato'] . "\nForfallsdato: " . $faktura['Faktura']['betalings_frist'] . "\nFakturanr.: " . $faktura['Faktura']['nummer'] , 0, 'R', 0, 1);
+    $tcpdf->MultiCell(190,0, "Dato: " . $faktura['Faktura']['faktura_dato'] . "\nForfallsdato: " . $faktura['Faktura']['betalings_frist'] . "\nFakturanr.: " . $faktura['Faktura']['nummer'] . "\nKID: " . $kid, 0, 'R', 0, 1);
     $tcpdf->SetFont($textfont,'B',9);
     $adressetekst = $this->faktura_adresse($faktura, true);
     if($faktura['fakturaadresse']['merkes'] != "")
@@ -443,7 +448,7 @@ class Faktura extends AppModel {
     $tcpdf->MultiCell(190,0, $adressetekst, 0, 'L', 0, 1);
     $tcpdf->SetFont($textfont,'',9);
     $BrevTekst = "\nTakk for tinginga!\n
-Me håper at du er nøgd med tenestene våre. Gje oss gjerne tilbakemelding om det er noko du vil me skal forbetre. Me set pris på om du kan referere til fakturanummer ved betaling!
+Me håper at du er nøgd med tenestene våre. Gje oss gjerne tilbakemelding om det er noko du vil me skal forbetre. Me set pris på om du kan bruke KID ved betaling!
 
 Kaffien kjem frå det zapatistiske kooperativet Yachil i Chiapas, Mexico. Kaffien er laga av arabicabønner av høgste kvalitet, og er dyrka utan bruk av sprøytemiddel og kunstgjødsel. Den vart brend, malt og pakka ved familien Lindvalls røsteri i Uppsala. ";
     if(array_key_exists('Selger', $kaffesalg)){
@@ -482,7 +487,7 @@ Kaffien kjem frå det zapatistiske kooperativet Yachil i Chiapas, Mexico. Kaffie
     }
     $tcpdf->setY(-100);
     $tcpdf->SetFont($textfont,'',9);
-    $tcpdf->MultiCell(60,0, "Org.nr. 991 653 503 MVA\nFakturanr." . $faktura['Faktura']['nummer'] . "\nFakturadato: " . $faktura['Faktura']['faktura_dato'], 0, 'L', 0, 1);
+    $tcpdf->MultiCell(60,0, "Org.nr. 991 653 503 MVA\nFakturanr." . $faktura['Faktura']['nummer'] . "\nFakturadato: " . $faktura['Faktura']['faktura_dato'] . "\nKID: ". $kid, 0, 'L', 0, 1);
     $tcpdf->Cell(190,0,"Forfallsdato: " . $faktura['Faktura']['betalings_frist'], 0, 1, 'R', 0);
     $tcpdf->SetFont($textfont,'B',12);
     $tcpdf->MultiCell(60,0, "Konto: 1254.05.61786\n\n", 0, 'L', 0, 1);

@@ -4,6 +4,16 @@
 			<?php echo $faktura['Faktura']['nummer']; ?>
 			&nbsp;
 		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('KID'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo isset($faktura['Faktura']['KID']) ? $faktura['Faktura']['KID'] : 'Ingen KID'; ?>
+			&nbsp;
+		</dd>
+		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('KID prefix'); ?></dt>
+		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
+			<?php echo $faktura['Faktura']['KIDprefix']; ?>
+			&nbsp;
+		</dd>
 		<dt<?php if ($i % 2 == 0) echo $class;?>><?php echo __('Fakturakunde'); ?></dt>
 		<dd<?php if ($i++ % 2 == 0) echo $class;?>>
 			<?php echo $this->Html->link($faktura['Kunde']['navn'], array('controller'=> 'kunder', 'action'=>'view', $faktura['Kunde']['nummer'])); ?>
