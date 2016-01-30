@@ -94,8 +94,48 @@ class Faktura extends AppModel {
     return $utestaende;
   }
 
-  
 
+  /**
+     Henter OCR lister fra nets
+  **/
+  function hentOCR(){
+    // Must set $nets_kundenr, $nets_adresse, $private_key and $public_key
+    include 'api_key.php';
+    $session = ssh2_connect($nets_adresse, $nets_port);
+    ssh2_auth_pubkey_file($session, $nets_kundenr, $public_key, $private_key, 'secret');
+    $connection_string = "ssh2.sftp://$session/";
+    $stream = fopen($connection_string . "Outbound/OCR*", 'r');
+    $ocr_string = stream_get_contents($stream);
+    return $ocr_string;
+  }
+
+
+  function hentSisteOCR(){
+    $ocr_stringg = $this->hentOCR();
+    $this->lesOCR($ocr_string);
+  }
+
+  function meld_ocr_feil($ocr){
+    echo "Noe feil med ocr-fil: $ocr";
+  }
+
+  /**
+     Tar som input innholdet av en OCR-fil fra nets som en string
+  **/
+  function lesOCR($ocr){
+    $ocr_lines = explode(PHP_EOL, $ocr);
+    if(substr($ocr_lines[0],0,16) != 'NY00001000008080'){
+      $this->meld_ocr_feil($ocr);
+    }
+    foreach ($ocr_lines as $ocr_line) {
+      if(substr($ocr_line,0,8) == 'NY091330'){
+	$kid = substr($ocr_line,70,5);
+	$dato = substr($ocr_line,16,6);
+	$kroner = int(substr($ocr_line,33,15));
+	$oere = int(substr($ocr_line,48,2));
+      }
+    }
+  }
   /**
      Sender purringer til alle som har vært forfalt og ikke purret i minst to uker
      
