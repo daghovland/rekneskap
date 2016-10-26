@@ -34,6 +34,11 @@ class FakturaerController extends AppController {
     $this->Session->write('forrigeSide', array('controller' => 'fakturaer', 'action' => 'opne'));
   }
 
+  function lesOCR(){
+    $this->Faktura->lesOCRMappe();
+    $this->layout = "tom";
+  }
+  
   function pakket($id = null){
     if($id){
       $user_id = $this->Auth->user('nummer');

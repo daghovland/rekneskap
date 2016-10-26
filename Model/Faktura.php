@@ -3,6 +3,7 @@ App::uses('CakeEmail', 'Network/Email');
 App::uses('Auth','Controller/Component');
 App::import('Vendor','xtcpdf'); 
 //App::import('Vendor','fpdi'); 
+use Cake\ORM\TableRegistry;
 
 class TingBringException extends CakeException {
   protected $_messageTemplate = 'Det oppstod ein feil i tinginga av pakke hos Bring: %s.';
@@ -97,27 +98,42 @@ class Faktura extends AppModel {
 
   /**
      Henter OCR lister fra nets
+     Brukes ikke - bruker i stedet crontab med sftp til selve nedlastingen
   **/
+  /*
   function hentOCR(){
     // Must set $nets_kundenr, $nets_adresse, $private_key and $public_key
     include 'api_key.php';
     $session = ssh2_connect($nets_adresse, $nets_port);
     ssh2_auth_pubkey_file($session, $nets_kundenr, $public_key, $private_key, 'secret');
     $connection_string = "ssh2.sftp://$session/";
-    $stream = fopen($connection_string . "Outbound/OCR*", 'r');
-    $ocr_string = stream_get_contents($stream);
+    $ocr_file = ssh_scp_recv($connection_string . "Outbound/OCR*");
     return $ocr_string;
   }
+  */
 
 
   function hentSisteOCR(){
-    $ocr_stringg = $this->hentOCR();
+    $ocr_string = $this->hentOCR();
     $this->lesOCR($ocr_string);
   }
 
   function meld_ocr_feil($ocr){
     echo "Noe feil med ocr-fil: $ocr";
   }
+
+  /**
+     Leser alle OCR filer i mappe som 
+     konfigurert i api_key.php
+  **/
+  function lesOCRMappe(){
+    include 'api_key.php';
+    foreach (scandir($ocr_mappe) as $ocr_file){
+      $ocr_string = file_get_contents($ocr_mappe . "/" . $ocr_file);
+      $this->lesOCR($ocr_string);
+      rename($ocr_mappe . "/" . $ocr_file, $lest_ocr_mappe . "/" . $ocr_file);
+  }
+}
 
   /**
      Tar som input innholdet av en OCR-fil fra nets som en string
@@ -134,7 +150,17 @@ class Faktura extends AppModel {
 	$kroner = int(substr($ocr_line,33,15));
 	$oere = int(substr($ocr_line,48,2));
       }
+      betalt_ocr_regning($kid, $dato, $kroner, $oere);
     }
+  }
+
+
+  /**
+     Registerer betaling av en regning, basert på OCR-data
+  **/
+  function betalt_ocr_regning($kid, $dato, $kroner, $oere){
+    
+    $regningsBetaling = $this->Pengeflytting->save($data = array('dato'=> $dato, 'kroner' => $kroner, 'oere' => $oere, 'dekningsFaktura' => $this->nummer, 'til' => 56, 'fra' => 51));
   }
   /**
      Sender purringer til alle som har vært forfalt og ikke purret i minst to uker
