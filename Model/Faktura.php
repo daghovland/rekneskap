@@ -159,8 +159,8 @@ class Faktura extends AppModel {
      Registerer betaling av en regning, basert på OCR-data
   **/
   function betalt_ocr_regning($kid, $dato, $kroner, $oere){
-    
-    $regningsBetaling = $this->Pengeflytting->save($data = array('dato'=> $dato, 'kroner' => $kroner, 'oere' => $oere, 'dekningsFaktura' => $this->nummer, 'til' => 56, 'fra' => 51));
+    $kidfaktura = $this->find($type = 'first', array('conditions' => array('Faktura.KID' => $kid, 'Faktura.kroner' => $kroner)));
+    $regningsBetaling = $this->Pengeflytting->save($data = array('dato'=> $dato, 'kroner' => $kroner, 'oere' => $oere, 'dekningsFaktura' => $kidfaktura->nummer, 'til' => 56, 'fra' => 51));
   }
   /**
      Sender purringer til alle som har vært forfalt og ikke purret i minst to uker
