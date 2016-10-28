@@ -129,11 +129,24 @@ class Faktura extends AppModel {
   function lesOCRMappe(){
     include 'api_key.php';
     foreach (scandir($ocr_mappe) as $ocr_file){
-      $ocr_string = file_get_contents($ocr_mappe . "/" . $ocr_file);
-      $this->lesOCR($ocr_string);
-      rename($ocr_mappe . "/" . $ocr_file, $lest_ocr_mappe . "/" . $ocr_file);
+      if(substr($ocr_file, 0, 5) == "OCR.D"){
+        $ocr_string = file_get_contents($ocr_mappe . "/" . $ocr_file);
+        $betalingsinfoer = $this->lesOCR($ocr_string);
+        //debug($ocr_file);
+        //debug($betalingsinfoer);
+        $feil_lagring = false;
+        foreach($betalingsinfoer as $betalingsinfo){
+          $betalingsinfo['filnavn'] = $ocr_file;
+          if(!$this->betalt_ocr_regning($betalingsinfo))
+            $feil_lagring = true;
+        }
+	if($feil_lagring)
+          debug("Feil i behandling av OCR fil" . $ocr_file);
+        else
+          rename($ocr_mappe . "/" . $ocr_file, $lest_ocr_mappe . "/" . $ocr_file);
+      }
+    }
   }
-}
 
   /**
      Tar som input innholdet av en OCR-fil fra nets som en string
@@ -141,26 +154,55 @@ class Faktura extends AppModel {
   function lesOCR($ocr){
     $ocr_lines = explode(PHP_EOL, $ocr);
     if(substr($ocr_lines[0],0,16) != 'NY00001000008080'){
+      //debug($ocr_lines[0]);
       $this->meld_ocr_feil($ocr);
+      return false;
     }
+    $betalingsinfoer = array();
     foreach ($ocr_lines as $ocr_line) {
       if(substr($ocr_line,0,8) == 'NY091330'){
-	$kid = substr($ocr_line,70,5);
-	$dato = substr($ocr_line,16,6);
-	$kroner = int(substr($ocr_line,33,15));
-	$oere = int(substr($ocr_line,48,2));
+	$betalingsinfo = array();
+	$betalingsinfo['kid'] = substr($ocr_line,69,5);
+        $day = substr($ocr_line,15,2);
+        $month = substr($ocr_line,17,2);
+        $year = substr($ocr_line, 19,2);
+	$betalingsinfo['dato'] = "20" . $year . "-" . $month . "-" . $day;
+	$betalingsinfo['kroner'] = (int) (substr($ocr_line,32,15));
+	$betalingsinfo['oere'] = (int) (substr($ocr_line,47,2));
+        $betalingsinfoer[] = $betalingsinfo;
       }
-      betalt_ocr_regning($kid, $dato, $kroner, $oere);
     }
+    return $betalingsinfoer;
   }
 
 
   /**
      Registerer betaling av en regning, basert på OCR-data
   **/
-  function betalt_ocr_regning($kid, $dato, $kroner, $oere){
-    $kidfaktura = $this->find($type = 'first', array('conditions' => array('Faktura.KID' => $kid, 'Faktura.kroner' => $kroner)));
-    $regningsBetaling = $this->Pengeflytting->save($data = array('dato'=> $dato, 'kroner' => $kroner, 'oere' => $oere, 'dekningsFaktura' => $kidfaktura->nummer, 'til' => 56, 'fra' => 51));
+  function betalt_ocr_regning($info){
+    $kidfaktura = $this->find($type = 'first', array('conditions' => array('Faktura.KID' => $info['kid'])));
+    //debug($kidfaktura['Faktura']['nummer']);
+    if($kidfaktura['Faktura']){
+      //debug("Lagrer betaling av regning" . $kidfaktura['Faktura']['nummer']);
+
+      $bet = array();
+
+      $bet['dato'] = $info['dato'];
+      $bet['kroner'] = $info['kroner'];
+      $bet['oere'] = $info['oere'];
+      $bet['dekningsFaktura'] = $kidfaktura['Faktura']['nummer'];
+      $bet['til'] = 56;
+      $bet['fra'] = 51;
+      $bet['beskrivelse'] = 'Automatisk fra OCR giro' . $info['filnavn'];
+
+      //debug($info);
+      $retval = $this->Pengeflytting->create(array('Pengeflytting' => $bet));
+      $retval = $this->Pengeflytting->save();
+      //debug($retval);
+      $this->Pengeflytting->clear();
+      return $retval;
+    }
+    return false;
   }
   /**
      Sender purringer til alle som har vært forfalt og ikke purret i minst to uker
