@@ -109,8 +109,9 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $kaffibrenning['id'];?></td>
-			<td><?php echo $kaffibrenning['navn'];?></td>
+			<td><?php echo $this->Html->link($kaffibrenning['id'], array('controller'=> 'kaffibrenningar', 'action'=>'view', $kaffibrenning['id']));?></td>
+			<td><?php echo $this->Html->link($kaffibrenning['navn'], array('controller'=> 'kaffibrenningar', 'action'=>'view', $kaffibrenning['id']));?></td>
+			<td><?php echo $kaffibrenning['brenneri'];?></td>
 			<td><?php echo $kaffibrenning['brenneri'];?></td>
 			<td><?php echo $kaffibrenning['brent'];?></td>
 			<td><?php echo $kaffibrenning['kilo'];?></td>
@@ -155,7 +156,7 @@
 		?>
 		<tr<?php echo $class;?>>
 			<td><?php echo $this->Html->link($utgift['nummer'], array('controller' => 'pengeflyttinger', 'action' => 'view', $utgift['nummer']));?></td>
-			<td><?php echo $utgift['fra'];?></td>
+			<td><?php echo $this->Html->link($utgift['fra'], array('controller' => 'kontoer', 'action' => 'view', $utgift['fra']));?></td>
 			<td><?php echo $utgift['til'];?></td>
 			<td><?php echo $utgift['kroner'];?>,
 			     <?php echo $utgift['oere'];?></td>

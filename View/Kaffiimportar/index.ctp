@@ -30,7 +30,7 @@ foreach ($kaffiimportar as $kaffiimport):
 			<?php echo $kaffiimport['Kaffiimport']['id']; ?>
 		</td>
 		<td>
-			<?php echo $kaffiimport['Kaffiimport']['navn']; ?>
+			<?php echo $this->Html->link($kaffiimport['Kaffiimport']['navn'], array('action'=>'view', $kaffiimport['Kaffiimport']['id'])); ?>
 		</td>
 		<td>
 			<?php echo $kaffiimport['Kaffiimport']['kooperativ']; ?>

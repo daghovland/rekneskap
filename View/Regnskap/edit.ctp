@@ -13,7 +13,7 @@
 </div>
 <div class="actions">
 	<ul>
-		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Regnskap.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Regnskap.id'))); ?></li>
+<!--		<li><?php echo $this->Html->link(__('Delete', true), array('action'=>'delete', $this->Form->value('Regnskap.id')), null, sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Regnskap.id'))); ?></li>-->
 		<li><?php echo $this->Html->link(__('List Regnskap', true), array('action'=>'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Start Saldoers', true), array('controller'=> 'start_saldoers', 'action'=>'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Start Saldoer', true), array('controller'=> 'start_saldoers', 'action'=>'add')); ?> </li>

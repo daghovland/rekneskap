@@ -29,10 +29,11 @@ foreach ($kaffibrenningar as $kaffibrenning):
 ?>
 	<tr<?php echo $class;?>>
 		<td>
-			<?php echo $kaffibrenning['Kaffibrenning']['id']; ?>
+			<?php echo $this->Html->link($kaffibrenning['Kaffibrenning']['id'], array('action'=>'view', $kaffibrenning['Kaffibrenning']['id'])); ?>
 		</td>
 		<td>
-			<?php echo $kaffibrenning['Kaffibrenning']['navn']; ?>
+			<?php echo $this->Html->link($kaffibrenning['Kaffibrenning']['navn'], array('action'=>'view', $kaffibrenning['Kaffibrenning']['id'])); ?>
+		</td>
 		</td>
 		<td>
 			<?php echo $kaffibrenning['Kaffibrenning']['brenneri']; ?>
