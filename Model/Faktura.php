@@ -460,7 +460,7 @@ class Faktura extends AppModel {
     }
     $adressetekst = $faktura['Kunde']['navn'] . "\n" . $kunde[$adresse_type]['linje1'] . "\n";
     if($kunde[$adresse_type]['linje2'] != "")
-      $adressetekst .= $faktura[$adresse_type]['linje2'] . "\n";	
+      $adressetekst .= $kunde[$adresse_type]['linje2'] . "\n";	
     if($kunde[$adresse_type]['linje3'] != "")
       $adressetekst .= $kunde[$adresse_type]['linje3'] . "\n";	
     $adressetekst .= $kunde[$adresse_type]['postnummer'] . " " . $kunde[$adresse_type]['poststad'] . "\n";

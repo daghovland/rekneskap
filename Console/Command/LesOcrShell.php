@@ -1,10 +1,9 @@
 <?php
-class LesOcr extends AppShell {
+class LesOcrShell extends AppShell {
     public $uses = array('Faktura');
  
-    public function lesOCR() {
+    public function main() {
 		$this->Faktura->lesOCRMappe();
-       }
     }
 }
 ?>
