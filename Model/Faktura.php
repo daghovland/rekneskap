@@ -386,7 +386,7 @@ class Faktura extends AppModel {
 			   );
     $recipient = $this->bring_recipient($faktura,  $recipient_reference);
     $services = array();
-    if($pakketype != 'BPAKKE_DOR-DOR'){
+    if($pakke_type != 'BPAKKE_DOR-DOR'){
       $evarsling = array('id' => 'EVARSLING',
                          'email' => $faktura['Kunde']['epost']);
       if($faktura['Kunde']['telefon'] > 100000)
