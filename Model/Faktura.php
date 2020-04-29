@@ -385,8 +385,11 @@ class Faktura extends AppModel {
 			   'consignments' => array()
 			   );
     $recipient = $this->bring_recipient($faktura,  $recipient_reference);
-    $services = array('recipientNotification' => array('email' => $faktura['Kunde']['epost'],
-						       'mobile' => $faktura['Kunde']['telefon']));
+    $evarsling = array('id' => 'EVARSLING',
+                        'email' => $faktura['Kunde']['epost']);
+    if($faktura['Kunde']['telefon'] > 100000)
+			$evarsling['mobile'] = $faktura['Kunde']['telefon'];
+    $services = array($evarsling);
 
     $consignments = 
       array("correlationId" => "YABASTA-" . $faktura['Faktura']['nummer'],
@@ -397,7 +400,7 @@ class Faktura extends AppModel {
 			       ),
 	    'product' => array('id' => $pakke_type,
 			       'customerNumber' => $bring_customer_no,
-			       'services' => $services,
+			       'additionalServices' => $services,
 			       'customsDeclaration' => null),
 	    'purchaseOrder' => null, 
 	    'packages' => $this->bring_pakker($faktura['Faktura']['nummer'], $faktura['Kaffesalg']['nummer'])
