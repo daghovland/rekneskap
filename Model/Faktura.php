@@ -385,12 +385,14 @@ class Faktura extends AppModel {
 			   'consignments' => array()
 			   );
     $recipient = $this->bring_recipient($faktura,  $recipient_reference);
-    $evarsling = array('id' => 'EVARSLING',
-                        'email' => $faktura['Kunde']['epost']);
-    if($faktura['Kunde']['telefon'] > 100000)
-			$evarsling['mobile'] = $faktura['Kunde']['telefon'];
-    $services = array($evarsling);
-
+    $services = array();
+    if($pakketype != 'BPAKKE_DOR-DOR'){
+      $evarsling = array('id' => 'EVARSLING',
+                         'email' => $faktura['Kunde']['epost']);
+      if($faktura['Kunde']['telefon'] > 100000)
+		$evarsling['mobile'] = $faktura['Kunde']['telefon'];
+      $services[] = $evarsling;
+    }
     $consignments = 
       array("correlationId" => "YABASTA-" . $faktura['Faktura']['nummer'],
 	    "shippingDateTime" => (time() + (2 * 24 * 60 * 60))*1000,
